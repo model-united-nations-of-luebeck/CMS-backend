@@ -18,7 +18,64 @@ class Conference(models.Model):
     treasurer = models.CharField("Treasurer", max_length=50, help_text="Full name of the Treasurer of the MUNOL Association")
     vice_treasurer = models.CharField("Vice-Treasurer", max_length=50, help_text="Full name of the Vice-Treasurer of the MUNOL Association")
 
+class School(models.Model):
+    ''' School that is planning to attend the conference '''
+    name = models.CharField("School Name", max_length=50, help_text="Name will be used like this for badges and certificates.")
+    street = models.CharField("Street Name", max_length=50)
+    zipcode = models.CharField("ZIP Code", max_length=10)
+    country = models.CharField("Country of origin", max_length=50)
+    requested = models.PositiveSmallIntegerField("Number of requested students", help_text="Note, that this is the <b>requested</b> number, <u>not</u> the confirmed one which might be lower.")
+    HOSTEL = 'hostel'
+    GUEST_FAMILY = 'guest family'
+    OTHER = 'other'
+    HOUSING_OPTIONS = [
+        (HOSTEL, 'hostel'),
+        (GUEST_FAMILY, 'guest family'),
+        (OTHER, 'other self-organized accommodation')
+    ]
+    housing = models.CharField("Housing option", max_length=50, choices=HOUSING_OPTIONS, default=OTHER, help_text="Please note, that housing in guest families is not available for all delegations and we will prefer international delegations in our housing who travels the longest distances.")
+    WAITING_FOR_PRE_REGISTRATION = 'WAITING_FOR_PRE_REGISTRATION'
+    PRE_REGISTRATION_DONE = 'PRE_REGISTRATION_DONE'
+    WAITING_FOR_DATA_PROTECTION = 'WAITING_FOR_DATA_PROTECTION'
+    WAITING_FOR_FINAL_REGISTRATION = 'WAITING_FOR_FINAL_REGISTRATION'
+    FINAL_REGISTRATION_DONE = 'FINAL_REGISTRATION_DONE'
+    STATUS_CHOICES = [
+        (WAITING_FOR_PRE_REGISTRATION, 'waiting for pre-registration'),
+        (PRE_REGISTRATION_DONE, 'pre-registration done'),
+        (WAITING_FOR_DATA_PROTECTION, 'waiting for data protection'),
+        (WAITING_FOR_FINAL_REGISTRATION, 'waiting for final registration'),
+        (FINAL_REGISTRATION_DONE, 'final registration done')
+    ]
+    registration_status = models.CharField("Registation status", max_length=50, choices=STATUS_CHOICES, default=WAITING_FOR_PRE_REGISTRATION, help_text="This status indicates at what stage of registration the school is.")
+    arrival = models.TextField("Arrival Information", blank=True, help_text="Please provide date, time and location (e.g. school, conference venue, train station, airport, ...) of arrival here so that we can plan the registration process and housing respectively.")
+    departure = models.TextField("Departure Information", blank=True, help_text="Please provide date, time and location (e.g. conference venue, train station, airport, ...) of departure here so that we can plan in advance.")
 
+
+class MemberOrganization(models.Model):
+    ''' A represented state, former state, observer state, NGO, IGO, UN sub-body or other member of the UN '''
+    name = models.CharField("Member state's or Organization's name", max_length=50, help_text="Use common (short) version of the name, e.g. 'Russia' instead of 'Russion Federation' or 'EU' instrad of 'European Union', so use abbreviations. This name is only used internally and thus allows to create Countries twice, e.g. China 1 and China 2 if the delegation is split between two schools.")
+    official_name = models.CharField("Official Name", max_length=150, help_text="Official name as stated on resolutions of the UN, e.g. 'Russion Federation' instead of Russia. No abbreviations allowed here.")
+    placard_name = models.CharField("Placards Name", max_length=50, help_text="The best readable compromise between no abbreviation but also not the full official name")
+    MEMBER_STATE = 'member state'
+    OBSERVER_STATE = 'observer state'
+    FORMER_MEMBER = 'former member state'
+    NON_GOVERNMENTAL_ORGANIZATION = 'non-governmental organization'
+    INTER_GOVERNMENTAL_ORGANIZATION = 'inter-governmental organization'
+    UN_SUB_BODY = 'UN sub-body'
+    STATUS_CHOICES = [
+        (MEMBER_STATE, 'member state'),
+        (OBSERVER_STATE, 'observer state'),
+        (FORMER_MEMBER, 'former member state'),
+        (NON_GOVERNMENTAL_ORGANIZATION, 'non-governmental organization'),
+        (INTER_GOVERNMENTAL_ORGANIZATION, 'inter-governmental organization'),
+        (UN_SUB_BODY, 'UN sub-body'),
+    ]
+    status = models.CharField("Status in the UN", max_length=50, choices=STATUS_CHOICES, default=MEMBER_STATE) #TODO: Are there more choices?
+    active = models.BooleanField("Represented at this conference?", default=False, help_text="This allows to store all countries but only select the ones to be simulated and quickly change the selection.")
+
+    class Meta:
+        verbose_name = "Member Organization"
+        
 class Person(models.Model):
     ''' Person in general as a human being'''
     first_name = models.CharField("first name", max_length=50, help_text="Including second names if wanted")
@@ -51,5 +108,45 @@ class Participant(Person):
     ]
     diet = models.CharField("diet", max_length=10, choices=DIET_CHOICES, default=VEGETARIAN, help_text="main diet, smaller variations like allergies shall be indicated in the extras field")
     #picture
-    birthday = models.DateField("brithday")
+    birthday = models.DateField("birthday")
     extras = models.TextField("extra information", blank=True, help_text="please include here all additional information about diet, allergies, preferences etc. so that we can try to provide a perfect conference")
+
+class Delegate(Participant):
+    ''' Delegates are the main participants of MUN conferences and represent a delegation's position in their forum. '''
+    ambassador = models.BooleanField("Is the delegate the delegation's ambassador?", default=False, help_text="one delegate per delegation has to be selected to be the ambassador of the delegation") #TODO: how do we ensure that there is one, but only one ambassador per delegation? Do we do it on database level or in front end software?
+    represents = models.ForeignKey(MemberOrganization, help_text = "select member organization which is represented by this delegate", on_delete=models.PROTECT)
+    school = models.ForeignKey(School, help_text = "select the school which is attended by this delegate", on_delete=models.PROTECT)
+    # forum
+
+class StudentOfficer(Participant):
+    ''' Student Officers are the participants that chair a forum '''
+    position_name = models.CharField("Position name", max_length=20, help_text="e.g. Chairman, Chairwoman, President, ... but <b>NOT</b> the entire title like 'Vice-Chairman of the First Committee' this will be generated automatically")
+    position_level = models.BooleanField("Is this the main Student Officer of the forum?", default=False, help_text="Main Student Officers might have other duties and obligations than vice/deputy Student Officers")
+    school_name = models.CharField("School name", max_length=50, help_text="Name of the school/institution the student officer attends.") #Explanation: Chairs don't belong to schools' delegations but the name shall still be available. Also chairs can participate without their school participating.
+    # forum
+    # plenary /PGA, PECOSOC
+
+    class Meta:
+        verbose_name = "Student Officer"
+
+class MUNDirector(Participant):
+     ''' MUN Directors are responsible for supervising their schools' delegates'''
+     landline_phone = PhoneNumberField("landline phone", blank=True, help_text="in case that a call is quicker than an email, don't forget the country code")
+     english_teacher = models.BooleanField("Is the MUN-Director an English teacher?", default=True, help_text="English teachers can help with correcting the language and grammar of resolutions.")
+     school = models.ForeignKey(School, help_text = "select the school at which this MUN Director teaches", on_delete=models.PROTECT)
+
+     class Meta:
+        verbose_name = "MUN-Director"
+
+class Executive(Participant):
+    ''' Executives are part of the organising team '''
+    position_name = models.CharField("Position name", max_length=50, help_text="e.g. 'Assistant Head of School Management'")
+    position_level = models.BooleanField("Is this the Head of this position?", default=False, help_text="Main Head might have other duties and obligations than Assistant Heads")
+    department_name = models.CharField("Department name", max_length=50, help_text="e.g. 'School Management', note that this name is <b>not</b> the entire position title")
+    school_name = models.CharField("School name", max_length=50, default="Thomas-Mann-Schule", help_text="Name of the school/institution the Executive attends.") 
+
+class Staff(Participant):
+    ''' Staffs help in some departments and forums to keep the conference running smoothly '''
+    position_name = models.CharField("Position name", max_length=50, help_text="e.g. 'Administration Staff' or 'IT Staff'")
+    school_name = models.CharField("School name", max_length=50, default="Thomas-Mann-Schule", help_text="Name of the school/institution the Staff member attends.") 
+
