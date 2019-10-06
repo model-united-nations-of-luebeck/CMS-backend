@@ -75,6 +75,35 @@ class MemberOrganization(models.Model):
 
     class Meta:
         verbose_name = "Member Organization"
+
+class Location(models.Model):
+    ''' a conference venue which can be show on a map '''
+    name = models.CharField("Location name", max_length=100, help_text="e.g. 'Thomas-Mann-Schule'")
+    latitude = models.DecimalField("Latitude", decimal_places=2, max_digits=10, help_text="e.g. XX.XXXXXXXX") #TODO: Example needed
+    longitude = models.DecimalField("Longitude", decimal_places=2, max_digits=10, help_text="e.g. XX.XXXXXXXX") #TODO: Example needed
+    zoom_level = models.PositiveSmallIntegerField("Zoom level", help_text="a number between 1 and 20, like google maps zoom levels")
+    address = models.CharField("Address", max_length=100, help_text="e.g. 'Thomas-Mann-Straße 14', i.e. Streetname and House Number")
+
+class Room(Location):
+    ''' Rooms within the School are also locations '''
+    room_number = models.CharField("Room Number", max_length=10, help_text="e.g. '0.23'")
+    floor = models.PositiveSmallIntegerField("Floor", help_text="Ground Floor is level 0, First Floor is 1, etc.")
+
+class Plenary(models.Model):
+    ''' A plenary session of several forums '''
+    name = models.CharField("Plenary Name", max_length=50, help_text="e.g. 'General Assembly' or 'Economic and Social Council'")
+    location = models.ForeignKey(Location, null=True, blank=True, help_text="Select a conference venue where this plenary takes place", on_delete=models.SET_NULL)
+    #lunch
+
+class Forum(models.Model):
+    ''' A body of the UN, usually committees, councils, commissions, special conferences etc. '''
+    name = models.CharField("Forum Name", max_length=50, help_text="e.g. 'First Committee', 'Economic and Social Council")
+    abbreviation = models.CharField("Abbreviated Forum Name", max_length=10, blank=True, help_text="e.g. 'GA1', 'ECOSOC'")
+    subtitle = models.CharField("Explanatory Subtitle", max_length=75, blank=True, help_text="e.g. 'Disarmament and International Security")
+    email = models.EmailField("E-Mail", blank=True, help_text="Email will be displayed on website")
+    room = models.ForeignKey(Room, null=True, blank=True, help_text="Select a Room within the conference venue", on_delete=models.SET_NULL)
+    plenary = models.ForeignKey(Plenary, null=True, blank=True, help_text="Select a Plenary if this forum is part of it, otherwise choose none.", on_delete=models.SET_NULL)
+    #lunch
         
 class Person(models.Model):
     ''' Person in general as a human being'''
@@ -116,15 +145,15 @@ class Delegate(Participant):
     ambassador = models.BooleanField("Is the delegate the delegation's ambassador?", default=False, help_text="one delegate per delegation has to be selected to be the ambassador of the delegation") #TODO: how do we ensure that there is one, but only one ambassador per delegation? Do we do it on database level or in front end software?
     represents = models.ForeignKey(MemberOrganization, help_text = "select member organization which is represented by this delegate", on_delete=models.PROTECT)
     school = models.ForeignKey(School, help_text = "select the school which is attended by this delegate", on_delete=models.PROTECT)
-    # forum
+    forum = models.ForeignKey(Forum, help_text="Select which forum this Delegate is a member of", on_delete=models.PROTECT)
 
 class StudentOfficer(Participant):
     ''' Student Officers are the participants that chair a forum '''
     position_name = models.CharField("Position name", max_length=20, help_text="e.g. Chairman, Chairwoman, President, ... but <b>NOT</b> the entire title like 'Vice-Chairman of the First Committee' this will be generated automatically")
     position_level = models.BooleanField("Is this the main Student Officer of the forum?", default=False, help_text="Main Student Officers might have other duties and obligations than vice/deputy Student Officers")
     school_name = models.CharField("School name", max_length=50, help_text="Name of the school/institution the student officer attends.") #Explanation: Chairs don't belong to schools' delegations but the name shall still be available. Also chairs can participate without their school participating.
-    # forum
-    # plenary /PGA, PECOSOC
+    forum = models.ForeignKey(Forum, null=True, blank=True, help_text="Select which forum this Student Officer is chairing", on_delete=models.SET_NULL)
+    plenary = models.ForeignKey(Plenary, null=True, blank=True, help_text="Select if this Student Officer is also chairing a Plenary.", on_delete=models.SET_NULL)
 
     class Meta:
         verbose_name = "Student Officer"
@@ -150,3 +179,40 @@ class Staff(Participant):
     position_name = models.CharField("Position name", max_length=50, help_text="e.g. 'Administration Staff' or 'IT Staff'")
     school_name = models.CharField("School name", max_length=50, default="Thomas-Mann-Schule", help_text="Name of the school/institution the Staff member attends.") 
 
+class Event(models.Model):
+    ''' An event during the conference '''
+    name = models.CharField("Event name", max_length=100, help_text="How is the event called")
+    day = models.DateField("Day", help_text="On which day does it take place?")
+    start_time = models.TimeField("Start Time", help_text="Specify the beginning time")
+    end_time = models.TimeField("End Time", blank=True, help_text="Specify the end time, none if it's open ended")
+    info = models.CharField("Additional information", blank=True, max_length=200, help_text="Add additional information, e.g. dress code, speakers title")
+    location = models.ForeignKey(Location, null=True, blank=True, help_text="Select where the event happens", on_delete=models.SET_NULL)
+
+class Lunch(Event):
+    ''' important event of the day '''
+    # still have to figure out how to include this into forums and plenarys
+
+class Issue(models.Model):
+    ''' An Issue on the Agenda of the conference '''
+    name = models.CharField("Issue name", max_length=256, help_text="Official Issue title as on the Agenda")
+    forum = models.ForeignKey(Forum, help_text="Select the forum in which this issue is debated", on_delete=models.PROTECT)
+    #research report
+
+class Document(models.Model):
+    ''' A PDF Document for the conference '''
+    name = models.CharField("Name of the document", max_length=100, help_text="Document's name")
+    path = models.CharField("Path", max_length=512, help_text="Path to document on server") #TODO: Is this the right field, URL/URI?
+    created = models.DateTimeField("Created at", help_text="When was this document created") #TODO:default=now
+    author = models.CharField("Author(s)", blank=True, max_length=100, help_text="Who created this document?")
+
+class ResearchReport(Document):
+    ''' A background research report for one issue '''
+    issue = models.ForeignKey(Issue, help_text="Select the issue this research report belongs to", on_delete=models.CASCADE)
+    class Meta:
+        verbose_name = "Research Report"
+
+class PositionPaper(Document):
+    ''' A document stating the delegations position on issues debated in a forum '''
+    delegate = models.ForeignKey(Delegate, help_text="Who has written this position paper?", on_delete=models.CASCADE)
+    class Meta:
+        verbose_name = "Position Paper"
