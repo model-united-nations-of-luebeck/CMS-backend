@@ -39,14 +39,17 @@ class School(models.Model):
     WAITING_FOR_DATA_PROTECTION = 'WAITING_FOR_DATA_PROTECTION'
     WAITING_FOR_FINAL_REGISTRATION = 'WAITING_FOR_FINAL_REGISTRATION'
     FINAL_REGISTRATION_DONE = 'FINAL_REGISTRATION_DONE'
+    CANCELED = 'CANCELED'
     STATUS_CHOICES = [
         (WAITING_FOR_PRE_REGISTRATION, 'waiting for pre-registration'),
         (PRE_REGISTRATION_DONE, 'pre-registration done'),
         (WAITING_FOR_DATA_PROTECTION, 'waiting for data protection'),
         (WAITING_FOR_FINAL_REGISTRATION, 'waiting for final registration'),
-        (FINAL_REGISTRATION_DONE, 'final registration done')
+        (FINAL_REGISTRATION_DONE, 'final registration done'),
+        (CANCELED, 'canceled')
     ]
     registration_status = models.CharField("Registation status", max_length=50, choices=STATUS_CHOICES, default=WAITING_FOR_PRE_REGISTRATION, help_text="This status indicates at what stage of registration the school is.")
+    fee = models.BooleanField("Pre-registration fee", default=False, help_text="Was the pre-registration fee paid?")
     arrival = models.TextField("Arrival Information", blank=True, help_text="Please provide date, time and location (e.g. school, conference venue, train station, airport, ...) of arrival here so that we can plan the registration process and housing respectively.")
     departure = models.TextField("Departure Information", blank=True, help_text="Please provide date, time and location (e.g. conference venue, train station, airport, ...) of departure here so that we can plan in advance.")
 
@@ -159,12 +162,21 @@ class StudentOfficer(Participant):
         verbose_name = "Student Officer"
 
 class MUNDirector(Participant):
-     ''' MUN Directors are responsible for supervising their schools' delegates'''
-     landline_phone = PhoneNumberField("landline phone", blank=True, help_text="in case that a call is quicker than an email, don't forget the country code")
-     english_teacher = models.BooleanField("Is the MUN-Director an English teacher?", default=True, help_text="English teachers can help with correcting the language and grammar of resolutions.")
-     school = models.ForeignKey(School, help_text = "select the school at which this MUN Director teaches", on_delete=models.PROTECT)
-
-     class Meta:
+    ''' MUN Directors are responsible for supervising their schools' delegates'''
+    landline_phone = PhoneNumberField("landline phone", blank=True, help_text="in case that a call is quicker than an email, don't forget the country code")
+    english_teacher = models.BooleanField("Is the MUN-Director an English teacher?", default=True, help_text="English teachers can help with correcting the language and grammar of resolutions.")
+    school = models.ForeignKey(School, help_text = "select the school at which this MUN Director teaches", on_delete=models.PROTECT)
+    HOSTEL = 'hostel'
+    GUEST_FAMILY = 'guest family'
+    OTHER = 'other'
+    HOUSING_OPTIONS = [
+        (HOSTEL, 'hostel'),
+        (GUEST_FAMILY, 'guest family'),
+        (OTHER, 'other self-organized accommodation')
+    ]
+    housing = models.CharField("Housing option", max_length=50, choices=HOUSING_OPTIONS, default=OTHER, help_text="Please note, that housing in guest families is not available for all MUN-Directors.")
+    #TODO: Figure out how to set BIRTHDAY to >18 because this can be assumed.
+    class Meta:
         verbose_name = "MUN-Director"
 
 class Executive(Participant):
@@ -178,6 +190,13 @@ class Staff(Participant):
     ''' Staffs help in some departments and forums to keep the conference running smoothly '''
     position_name = models.CharField("Position name", max_length=50, help_text="e.g. 'Administration Staff' or 'IT Staff'")
     school_name = models.CharField("School name", max_length=50, default="Thomas-Mann-Schule", help_text="Name of the school/institution the Staff member attends.") 
+
+class Advisor(Participant):
+    ''' Advisors are former participants who now support the conference with their knowledge '''
+    car = models.BooleanField("Car available", blank=True, default=False, help_text="Do you have a car available during MUNOL and have a driving license so that you could help driving people and stuff around?")
+    availability = models.CharField("Availability during week", blank=True, max_length=512, help_text="Please specify on which days and nighs you will attend the conference and give your advice")
+    experience = models.CharField("MUN Experience", blank=True, max_length=512, help_text="Please specify which role you had in former MUNOL sessions and other conferences, e.g. 'School Management 2013'")
+    help = models.CharField("Areas of help", max_length=512, help_text="In which areas would you like to support the team?")
 
 class Event(models.Model):
     ''' An event during the conference '''

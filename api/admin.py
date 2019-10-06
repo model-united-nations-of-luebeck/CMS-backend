@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Conference, Participant, Delegate, StudentOfficer, MUNDirector, Executive, Staff, MemberOrganization, School, Forum, Plenary, Location, Room, Event, Lunch, Issue, Document, ResearchReport, PositionPaper
+from .models import Conference, Participant, Delegate, StudentOfficer, MUNDirector, Executive, Staff, Advisor, MemberOrganization, School, Forum, Plenary, Location, Room, Event, Lunch, Issue, Document, ResearchReport, PositionPaper
 
 # Register your models here for the admin site.
 
@@ -10,6 +10,7 @@ admin.site.register(StudentOfficer)
 admin.site.register(MUNDirector)
 admin.site.register(Executive)
 admin.site.register(Staff)
+admin.site.register(Advisor)
 admin.site.register(MemberOrganization)
 admin.site.register(School)
 admin.site.register(Forum)
