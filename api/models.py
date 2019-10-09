@@ -73,7 +73,7 @@ class MemberOrganization(models.Model):
         (INTER_GOVERNMENTAL_ORGANIZATION, 'inter-governmental organization'),
         (UN_SUB_BODY, 'UN sub-body'),
     ]
-    status = models.CharField("Status in the UN", max_length=50, choices=STATUS_CHOICES, default=MEMBER_STATE) #TODO: Are there more choices?
+    status = models.CharField("Status in the UN", max_length=50, choices=STATUS_CHOICES, default=MEMBER_STATE) 
     active = models.BooleanField("Represented at this conference?", default=False, help_text="This allows to store all countries but only select the ones to be simulated and quickly change the selection.")
 
     class Meta:
@@ -82,8 +82,8 @@ class MemberOrganization(models.Model):
 class Location(models.Model):
     ''' a conference venue which can be show on a map '''
     name = models.CharField("Location name", max_length=100, help_text="e.g. 'Thomas-Mann-Schule'")
-    latitude = models.DecimalField("Latitude", decimal_places=2, max_digits=10, help_text="e.g. XX.XXXXXXXX") #TODO: Example needed
-    longitude = models.DecimalField("Longitude", decimal_places=2, max_digits=10, help_text="e.g. XX.XXXXXXXX") #TODO: Example needed
+    latitude = models.DecimalField("Latitude", decimal_places=6, max_digits=9, help_text="e.g. 53.860421") 
+    longitude = models.DecimalField("Longitude", decimal_places=6, max_digits=9, help_text="e.g. 10.713462")
     zoom_level = models.PositiveSmallIntegerField("Zoom level", help_text="a number between 1 and 20, like google maps zoom levels")
     address = models.CharField("Address", max_length=100, help_text="e.g. 'Thomas-Mann-Straße 14', i.e. Streetname and House Number")
 
@@ -221,7 +221,7 @@ class Document(models.Model):
     ''' A PDF Document for the conference '''
     name = models.CharField("Name of the document", max_length=100, help_text="Document's name")
     path = models.CharField("Path", max_length=512, help_text="Path to document on server") #TODO: Is this the right field, URL/URI?
-    created = models.DateTimeField("Created at", help_text="When was this document created") #TODO:default=now
+    created = models.DateTimeField("Created at", auto_now_add=True, elp_text="When was this document created") #auto_now_add sets the current datetime when the object is first created
     author = models.CharField("Author(s)", blank=True, max_length=100, help_text="Who created this document?")
 
 class ResearchReport(Document):
