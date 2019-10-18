@@ -1,9 +1,9 @@
 from django.db import models
 from phonenumber_field.modelfields import PhoneNumberField
-
+ 
 # Models (sometimes also calles entities or data templates) are stored here. These models describe what kind of objects we deal with in our app. However, the objects themselves are stored in a database.
 
-class Conference(models.Model):
+class Conference(models.Model): 
     ''' A conference object represents one session of the MUN conference with the corresponding details'''
     year = models.PositiveSmallIntegerField("year of the conference", help_text="Use format YYYY for years so 2019 instead of just 19")
     startdate = models.DateField("first day", help_text="Use the first day of the conference as start date, at MUNOL it's usually Monday")
@@ -139,13 +139,13 @@ class Participant(Person):
         (VEGAN, 'vegan')
     ]
     diet = models.CharField("diet", max_length=10, choices=DIET_CHOICES, default=VEGETARIAN, help_text="main diet, smaller variations like allergies shall be indicated in the extras field")
-    #picture
-    birthday = models.DateField("birthday")
+    picture = models.ImageField("badge photo", blank=True, help_text="please provide a passport-style photo for the badge")
+    birthday = models.DateField("birthday", blank=True)
     extras = models.TextField("extra information", blank=True, help_text="please include here all additional information about diet, allergies, preferences etc. so that we can try to provide a perfect conference")
 
 class Delegate(Participant):
     ''' Delegates are the main participants of MUN conferences and represent a delegation's position in their forum. '''
-    ambassador = models.BooleanField("Is the delegate the delegation's ambassador?", default=False, help_text="one delegate per delegation has to be selected to be the ambassador of the delegation") #TODO: how do we ensure that there is one, but only one ambassador per delegation? Do we do it on database level or in front end software?
+    ambassador = models.BooleanField("Is the delegate the delegation's ambassador?", default=False, help_text="one delegate per delegation has to be selected to be the ambassador of the delegation") # Question: how do we ensure that there is one, but only one ambassador per delegation? Do we do it on database level or in front end software? Answer: Do it in front end and not in DB. If no ambassador is chosen, we simply select the first one of each delegation.
     represents = models.ForeignKey(MemberOrganization, help_text = "select member organization which is represented by this delegate", on_delete=models.PROTECT)
     school = models.ForeignKey(School, help_text = "select the school which is attended by this delegate", on_delete=models.PROTECT)
     forum = models.ForeignKey(Forum, help_text="Select which forum this Delegate is a member of", on_delete=models.PROTECT)
@@ -175,7 +175,8 @@ class MUNDirector(Participant):
         (OTHER, 'other self-organized accommodation')
     ]
     housing = models.CharField("Housing option", max_length=50, choices=HOUSING_OPTIONS, default=OTHER, help_text="Please note, that housing in guest families is not available for all MUN-Directors.")
-    #TODO: Figure out how to set BIRTHDAY to >18 because this can be assumed.
+    # Figure out how to set BIRTHDAY to >18 because this can be assumed. 
+    # Solved: We don't need to store a Birthday, it can also be blank and then we don't show it for MUN Directors, only for other participants and enforce setting a birthday there.
     class Meta:
         verbose_name = "MUN-Director"
 
@@ -220,8 +221,8 @@ class Issue(models.Model):
 class Document(models.Model):
     ''' A PDF Document for the conference '''
     name = models.CharField("Name of the document", max_length=100, help_text="Document's name")
-    path = models.CharField("Path", max_length=512, help_text="Path to document on server") #TODO: Is this the right field, URL/URI?
-    created = models.DateTimeField("Created at", auto_now_add=True, elp_text="When was this document created") #auto_now_add sets the current datetime when the object is first created
+    file = models.FileField("File", help_text="Document file on server")
+    created = models.DateTimeField("Created at", auto_now_add=True, help_text="When was this document created") #auto_now_add sets the current datetime when the object is first created
     author = models.CharField("Author(s)", blank=True, max_length=100, help_text="Who created this document?")
 
 class ResearchReport(Document):
