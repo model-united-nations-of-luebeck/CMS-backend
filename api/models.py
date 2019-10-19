@@ -92,11 +92,23 @@ class Room(Location):
     room_number = models.CharField("Room Number", max_length=10, help_text="e.g. '0.23'")
     floor = models.PositiveSmallIntegerField("Floor", help_text="Ground Floor is level 0, First Floor is 1, etc.")
 
+class Event(models.Model):
+    ''' An event during the conference '''
+    name = models.CharField("Event name", max_length=100, help_text="How is the event called")
+    day = models.DateField("Day", help_text="On which day does it take place?")
+    start_time = models.TimeField("Start Time", help_text="Specify the beginning time")
+    end_time = models.TimeField("End Time", blank=True, help_text="Specify the end time, none if it's open ended")
+    info = models.CharField("Additional information", blank=True, max_length=200, help_text="Add additional information, e.g. dress code, speakers title")
+    location = models.ForeignKey(Location, null=True, blank=True, help_text="Select where the event happens", on_delete=models.SET_NULL)
+
+class Lunch(Event):
+    ''' important event of the day '''
+
 class Plenary(models.Model):
     ''' A plenary session of several forums '''
     name = models.CharField("Plenary Name", max_length=50, help_text="e.g. 'General Assembly' or 'Economic and Social Council'")
     location = models.ForeignKey(Location, null=True, blank=True, help_text="Select a conference venue where this plenary takes place", on_delete=models.SET_NULL)
-    #lunch
+    lunches = models.ManyToManyField(Lunch)  #might have to be limitted to 3 or 5 lunch events per plenary
 
 class Forum(models.Model):
     ''' A body of the UN, usually committees, councils, commissions, special conferences etc. '''
@@ -106,7 +118,7 @@ class Forum(models.Model):
     email = models.EmailField("E-Mail", blank=True, help_text="Email will be displayed on website")
     room = models.ForeignKey(Room, null=True, blank=True, help_text="Select a Room within the conference venue", on_delete=models.SET_NULL)
     plenary = models.ForeignKey(Plenary, null=True, blank=True, help_text="Select a Plenary if this forum is part of it, otherwise choose none.", on_delete=models.SET_NULL)
-    #lunch
+    lunches = models.ManyToManyField(Lunch)  #might have to be limitted to 3 or 5 lunch events per forum
         
 class Person(models.Model):
     ''' Person in general as a human being'''
@@ -198,19 +210,6 @@ class Advisor(Participant):
     availability = models.CharField("Availability during week", blank=True, max_length=512, help_text="Please specify on which days and nighs you will attend the conference and give your advice")
     experience = models.CharField("MUN Experience", blank=True, max_length=512, help_text="Please specify which role you had in former MUNOL sessions and other conferences, e.g. 'School Management 2013'")
     help = models.CharField("Areas of help", max_length=512, help_text="In which areas would you like to support the team?")
-
-class Event(models.Model):
-    ''' An event during the conference '''
-    name = models.CharField("Event name", max_length=100, help_text="How is the event called")
-    day = models.DateField("Day", help_text="On which day does it take place?")
-    start_time = models.TimeField("Start Time", help_text="Specify the beginning time")
-    end_time = models.TimeField("End Time", blank=True, help_text="Specify the end time, none if it's open ended")
-    info = models.CharField("Additional information", blank=True, max_length=200, help_text="Add additional information, e.g. dress code, speakers title")
-    location = models.ForeignKey(Location, null=True, blank=True, help_text="Select where the event happens", on_delete=models.SET_NULL)
-
-class Lunch(Event):
-    ''' important event of the day '''
-    # still have to figure out how to include this into forums and plenarys
 
 class Issue(models.Model):
     ''' An Issue on the Agenda of the conference '''
