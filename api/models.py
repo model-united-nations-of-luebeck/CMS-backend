@@ -52,6 +52,7 @@ class School(models.Model):
     fee = models.BooleanField("Pre-registration fee", default=False, help_text="Was the pre-registration fee paid?")
     arrival = models.TextField("Arrival Information", blank=True, help_text="Please provide date, time and location (e.g. school, conference venue, train station, airport, ...) of arrival here so that we can plan the registration process and housing respectively.")
     departure = models.TextField("Departure Information", blank=True, help_text="Please provide date, time and location (e.g. conference venue, train station, airport, ...) of departure here so that we can plan in advance.")
+    comment = models.TextField("Internal Comment", blank=True, help_text="Write down notes and comments regarding this school here, e.g. outstanding fees, contact persons names, etc.")
 
 
 class MemberOrganization(models.Model):
@@ -75,6 +76,7 @@ class MemberOrganization(models.Model):
     ]
     status = models.CharField("Status in the UN", max_length=50, choices=STATUS_CHOICES, default=MEMBER_STATE) 
     active = models.BooleanField("Represented at this conference?", default=False, help_text="This allows to store all countries but only select the ones to be simulated and quickly change the selection.")
+    flag = models.FileField("Flag File", blank=True, help_text="Flag of the Member Organization if it has one")
 
     class Meta:
         verbose_name = "Member Organization"

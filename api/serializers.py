@@ -11,12 +11,12 @@ class ConferenceSerializer(serializers.ModelSerializer):
 class SchoolSerializer(serializers.ModelSerializer):
     class Meta:
         model = School
-        fields = ['id', 'name', 'street', 'zipcode', 'country', 'requested', 'housing', 'registration_status', 'fee', 'arrival', 'departure']
+        fields = ['id', 'name', 'street', 'zipcode', 'country', 'requested', 'housing', 'registration_status', 'fee', 'arrival', 'departure', 'comment']
 
 class MemberOrganizationSerializer(serializers.ModelSerializer):
     class Meta:
         model = MemberOrganization
-        fields = ['id', 'name', 'official_name', 'placard_name', 'status', 'active'] 
+        fields = ['id', 'name', 'official_name', 'placard_name', 'status', 'active', 'flag'] 
 
 class LocationSerializer(serializers.ModelSerializer):
     class Meta:
