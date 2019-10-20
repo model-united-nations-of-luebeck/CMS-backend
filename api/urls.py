@@ -1,10 +1,48 @@
 from django.conf.urls import url
 
-from api.views import ConferenceRUDView, ConferenceLCView
+from api.views import ConferenceRUDView, ConferenceLCView, SchoolRUDView, SchoolLCView, MemberOrganizationRUDView, MemberOrganizationLCView, LocationRUDView, LocationLCView, RoomRUDView, RoomLCView, EventRUDView, EventLCView, LunchRUDView, LunchLCView, PlenaryRUDView, PlenaryLCView, ForumRUDView, ForumLCView, ParticipantRUDView, ParticipantLCView, DelegateRUDView, DelegateLCView, StudentOfficerRUDView, StudentOfficerLCView, MUNDirectorRUDView, MUNDirectorLCView, ExecutiveRUDView, ExecutiveLCView, StaffRUDView, StaffLCView, AdvisorRUDView, AdvisorLCView, IssueRUDView, IssueLCView, DocumentRUDView, DocumentLCView, ResearchReportRUDView, ResearchReportLCView, PositionPaperRUDView, PositionPaperLCView
 
 app_name = 'api'
 
 urlpatterns = [
-    url(r'^(?P<pk>\d+)/$', ConferenceRUDView.as_view(), name='conference-rud'),
-    url(r'^$', ConferenceLCView.as_view(), name='conference-lc')
+    url(r'^conferences/(?P<pk>\d+)/$', ConferenceRUDView.as_view(), name='conference-rud'),
+    url(r'^conferences/$', ConferenceLCView.as_view(), name='conference-lc'),
+    url(r'^schools/(?P<pk>\d+)/$', SchoolRUDView.as_view(), name='school-rud'),
+    url(r'^schools/$', SchoolLCView.as_view(), name='school-lc'),
+    url(r'^member-organizations/(?P<pk>\d+)/$', MemberOrganizationRUDView.as_view(), name='member-organization-rud'),
+    url(r'^member-organizations/$', MemberOrganizationLCView.as_view(), name='member-organization-lc'),
+    url(r'^locations/(?P<pk>\d+)/$', LocationRUDView.as_view(), name='location-rud'),
+    url(r'^locations/$', LocationLCView.as_view(), name='location-lc'),
+    url(r'^rooms/(?P<pk>\d+)/$', RoomRUDView.as_view(), name='room-rud'),
+    url(r'^rooms/$', RoomLCView.as_view(), name='room-lc'),
+    url(r'^events/(?P<pk>\d+)/$', EventRUDView.as_view(), name='event-rud'),
+    url(r'^events/$', EventLCView.as_view(), name='event-lc'),
+    url(r'^lunches/(?P<pk>\d+)/$', LunchRUDView.as_view(), name='lunch-rud'),
+    url(r'^lunches/$', LunchLCView.as_view(), name='lunch-lc'),
+    url(r'^plenaries/(?P<pk>\d+)/$', PlenaryRUDView.as_view(), name='plenary-rud'),
+    url(r'^plenaries/$', PlenaryLCView.as_view(), name='plenary-lc'),
+    url(r'^forums/(?P<pk>\d+)/$', ForumRUDView.as_view(), name='forum-rud'),
+    url(r'^forums/$', ForumLCView.as_view(), name='forum-lc'),
+    url(r'^participants/(?P<pk>\d+)/$', ParticipantRUDView.as_view(), name='participant-rud'),
+    url(r'^participants/$', ParticipantLCView.as_view(), name='participant-lc'),
+    url(r'^delegates/(?P<pk>\d+)/$', DelegateRUDView.as_view(), name='delegate-rud'),
+    url(r'^delegates/$', DelegateLCView.as_view(), name='delegate-lc'),
+    url(r'^student-officers/(?P<pk>\d+)/$', StudentOfficerRUDView.as_view(), name='student-officer-rud'),
+    url(r'^student-officers/$', StudentOfficerLCView.as_view(), name='student-officer-lc'),
+    url(r'^mun-directors/(?P<pk>\d+)/$', MUNDirectorRUDView.as_view(), name='mun-director-rud'),
+    url(r'^mun-directors/$', MUNDirectorLCView.as_view(), name='mun-director-lc'),
+    url(r'^executives/(?P<pk>\d+)/$', ExecutiveRUDView.as_view(), name='executive-rud'),
+    url(r'^executives/$', ExecutiveLCView.as_view(), name='executive-lc'),
+    url(r'^staffs/(?P<pk>\d+)/$', StaffRUDView.as_view(), name='staff-rud'),
+    url(r'^staffs/$', StaffLCView.as_view(), name='staff-lc'),
+    url(r'^advisors/(?P<pk>\d+)/$', AdvisorRUDView.as_view(), name='advisor-rud'),
+    url(r'^advisors/$', AdvisorLCView.as_view(), name='advisor-lc'),
+    url(r'^issues/(?P<pk>\d+)/$', IssueRUDView.as_view(), name='issue-rud'),
+    url(r'^issues/$', IssueLCView.as_view(), name='issue-lc'),
+    url(r'^documents/(?P<pk>\d+)/$', DocumentRUDView.as_view(), name='document-rud'),
+    url(r'^documents/$', DocumentLCView.as_view(), name='document-lc'),
+    url(r'^research-reports/(?P<pk>\d+)/$', ResearchReportRUDView.as_view(), name='research-report-rud'),
+    url(r'^research-reports/$', ResearchReportLCView.as_view(), name='research-report-lc'),
+    url(r'^position-papers/(?P<pk>\d+)/$', PositionPaperRUDView.as_view(), name='position-paper-rud'),
+    url(r'^position-papers/$', PositionPaperLCView.as_view(), name='position-paper-lc'),
 ]

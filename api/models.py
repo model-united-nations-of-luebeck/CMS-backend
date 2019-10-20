@@ -174,7 +174,7 @@ class StudentOfficer(Participant):
         verbose_name = "Student Officer"
 
 class MUNDirector(Participant):
-    ''' MUN Directors are responsible for supervising their schools' delegates'''
+    ''' MUN-Directors are responsible for supervising their schools' delegates'''
     landline_phone = PhoneNumberField("landline phone", blank=True, help_text="in case that a call is quicker than an email, don't forget the country code")
     english_teacher = models.BooleanField("Is the MUN-Director an English teacher?", default=True, help_text="English teachers can help with correcting the language and grammar of resolutions.")
     school = models.ForeignKey(School, help_text = "select the school at which this MUN Director teaches", on_delete=models.PROTECT)
@@ -215,8 +215,7 @@ class Issue(models.Model):
     ''' An Issue on the Agenda of the conference '''
     name = models.CharField("Issue name", max_length=256, help_text="Official Issue title as on the Agenda")
     forum = models.ForeignKey(Forum, help_text="Select the forum in which this issue is debated", on_delete=models.PROTECT)
-    #research report
-
+    
 class Document(models.Model):
     ''' A PDF Document for the conference '''
     name = models.CharField("Name of the document", max_length=100, help_text="Document's name")
