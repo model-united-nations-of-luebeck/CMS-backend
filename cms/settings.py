@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'api',
     'phonenumber_field',
+    'django_extensions',
 ]
 
 MIDDLEWARE = [
@@ -120,3 +121,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# options for generating a model diagram
+GRAPH_MODELS = {
+  'all_applications': True,
+  'group_models': True,
+}
