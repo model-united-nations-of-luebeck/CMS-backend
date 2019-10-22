@@ -156,7 +156,7 @@ class Participant(Person):
     extras = models.TextField("extra information", blank=True, help_text="please include here all additional information about diet, allergies, preferences etc. so that we can try to provide a perfect conference")
 
 class Delegate(Participant):
-    ''' Delegates are the main participants of MUN conferences and represent a delegation's position in their forum. '''
+    ''' Delegates are the main participants of MUN :model:`api.Conference` and represent a delegation's position in their :model:`api.Forum`. '''
     ambassador = models.BooleanField("Is the delegate the delegation's ambassador?", default=False, help_text="one delegate per delegation has to be selected to be the ambassador of the delegation") # Question: how do we ensure that there is one, but only one ambassador per delegation? Do we do it on database level or in front end software? Answer: Do it in front end and not in DB. If no ambassador is chosen, we simply select the first one of each delegation.
     represents = models.ForeignKey(MemberOrganization, help_text = "select member organization which is represented by this delegate", on_delete=models.PROTECT)
     school = models.ForeignKey(School, help_text = "select the school which is attended by this delegate", on_delete=models.PROTECT)

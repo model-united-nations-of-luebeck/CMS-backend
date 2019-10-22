@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'api',
     'phonenumber_field',
     'django_extensions',
+    'django.contrib.admindocs',
 ]
 
 MIDDLEWARE = [
