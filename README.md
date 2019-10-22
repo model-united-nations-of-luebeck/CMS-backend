@@ -20,7 +20,7 @@ To update the requirements according to your virtual environment, use
 
 This diagram demonstrates the models and their fields and relationships. 
 
-[[api_visualization.png]]
+![Models Diagram Image](api_visualization.png)
 
 To generate a diagram from all models excluding the internal classes use
 > python manage.py graph_models -a -t original -g --hide-edge-labels -X AbstractBaseSession,Session,User,AbstractBaseUser,PermissionsMixin,AbstractUser,Group,Permission,ContentType,LogEntry > app_visualization.dot
