@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django_extensions',
     'django.contrib.admindocs',
     'rest_framework',
+    'rest_framework.authtoken',
 ]
 
 MIDDLEWARE = [
@@ -124,8 +125,19 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+
 # options for generating a model diagram
 GRAPH_MODELS = {
   'all_applications': True,
   'group_models': True,
+
+# Authentication methods and Permissions for the REST API
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
+    ],
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',
+    ]
 }
