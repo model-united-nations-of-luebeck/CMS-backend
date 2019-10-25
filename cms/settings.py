@@ -130,6 +130,7 @@ STATIC_URL = '/static/'
 GRAPH_MODELS = {
   'all_applications': True,
   'group_models': True,
+}
 
 # Authentication methods and Permissions for the REST API
 REST_FRAMEWORK = {
