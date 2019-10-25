@@ -52,6 +52,7 @@ class School(models.Model):
     fee = models.BooleanField("Pre-registration fee", default=False, help_text="Was the pre-registration fee paid?")
     arrival = models.TextField("Arrival Information", blank=True, help_text="Please provide date, time and location (e.g. school, conference venue, train station, airport, ...) of arrival here so that we can plan the registration process and housing respectively.")
     departure = models.TextField("Departure Information", blank=True, help_text="Please provide date, time and location (e.g. conference venue, train station, airport, ...) of departure here so that we can plan in advance.")
+    comment = models.TextField("Internal Comment", blank=True, help_text="Write down notes and comments regarding this school here, e.g. outstanding fees, contact persons names, etc.")
 
 
 class MemberOrganization(models.Model):
@@ -75,6 +76,7 @@ class MemberOrganization(models.Model):
     ]
     status = models.CharField("Status in the UN", max_length=50, choices=STATUS_CHOICES, default=MEMBER_STATE) 
     active = models.BooleanField("Represented at this conference?", default=False, help_text="This allows to store all countries but only select the ones to be simulated and quickly change the selection.")
+    flag = models.FileField("Flag File", blank=True, help_text="Flag of the Member Organization if it has one")
 
     class Meta:
         verbose_name = "Member Organization"
@@ -174,7 +176,7 @@ class StudentOfficer(Participant):
         verbose_name = "Student Officer"
 
 class MUNDirector(Participant):
-    ''' MUN Directors are responsible for supervising their schools' delegates'''
+    ''' MUN-Directors are responsible for supervising their schools' delegates'''
     landline_phone = PhoneNumberField("landline phone", blank=True, help_text="in case that a call is quicker than an email, don't forget the country code")
     english_teacher = models.BooleanField("Is the MUN-Director an English teacher?", default=True, help_text="English teachers can help with correcting the language and grammar of resolutions.")
     school = models.ForeignKey(School, help_text = "select the school at which this MUN Director teaches", on_delete=models.PROTECT)
@@ -215,8 +217,7 @@ class Issue(models.Model):
     ''' An Issue on the Agenda of the conference '''
     name = models.CharField("Issue name", max_length=256, help_text="Official Issue title as on the Agenda")
     forum = models.ForeignKey(Forum, help_text="Select the forum in which this issue is debated", on_delete=models.PROTECT)
-    #research report
-
+    
 class Document(models.Model):
     ''' A PDF Document for the conference '''
     name = models.CharField("Name of the document", max_length=100, help_text="Document's name")
