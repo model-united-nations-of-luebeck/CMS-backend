@@ -1,3 +1,7 @@
+## Django Development ##
+# exclude media folder contents
+media/
+
 #VS Code Settings
 .vscode/*
 
