@@ -153,7 +153,7 @@ class Participant(Person):
         (VEGAN, 'vegan')
     ]
     diet = models.CharField("diet", max_length=10, choices=DIET_CHOICES, default=VEGETARIAN, help_text="main diet, smaller variations like allergies shall be indicated in the extras field")
-    picture = models.ImageField("badge photo", blank=True, help_text="please provide a passport-style photo for the badge")
+    picture = models.ImageField("badge photo", blank=True, upload_to="images/badge_photos", help_text="please provide a passport-style photo for the badge")
     birthday = models.DateField("birthday", blank=True)
     extras = models.TextField("extra information", blank=True, help_text="please include here all additional information about diet, allergies, preferences etc. so that we can try to provide a perfect conference")
 
@@ -221,7 +221,7 @@ class Issue(models.Model):
 class Document(models.Model):
     ''' A PDF Document for the conference '''
     name = models.CharField("Name of the document", max_length=100, help_text="Document's name")
-    file = models.FileField("File", help_text="Document file on server")
+    file = models.FileField("File", upload_to="documents", help_text="Document file on server")
     created = models.DateTimeField("Created at", auto_now_add=True, help_text="When was this document created") #auto_now_add sets the current datetime when the object is first created
     author = models.CharField("Author(s)", blank=True, max_length=100, help_text="Who created this document?")
 
