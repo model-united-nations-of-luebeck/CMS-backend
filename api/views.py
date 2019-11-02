@@ -9,7 +9,7 @@ from api.models import Conference, School, MemberOrganization, Location, Room, E
 class GenericMUNOLViewSet(viewsets.ModelViewSet):
     permission_classes = (MUNOLDjangoModelPermission,)
     
-class ConferenceViewSet(viewsets.ModelViewSet):
+class ConferenceViewSet(GenericMUNOLViewSet):
     queryset = Conference.objects.all()
     serializer_class = ConferenceSerializer
     permission_classes = (AllowAny,)
