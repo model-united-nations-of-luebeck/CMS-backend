@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from rest_framework import generics, viewsets # generic views for RUD, LC views; viewsets for ModelViewSets
 from api.permissions import MUNOLDjangoModelPermission, MUNOLDjangoModelPermissionsOrAnonReadOnly
-from rest_framework.permissions import AllowAny
+from rest_framework.permissions import IsAuthenticatedOrReadOnly
 
 from api.serializers import ConferenceSerializer, SchoolSerializer, MemberOrganizationSerializer, LocationSerializer, RoomSerializer, EventSerializer, LunchSerializer, PlenarySerializer, ForumSerializer, ParticipantSerializer, DelegateSerializer, StudentOfficerSerializer, MUNDirectorSerializer, ExecutiveSerializer, StaffSerializer, AdvisorSerializer, IssueSerializer, DocumentSerializer, ResearchReportSerializer, PositionPaperSerializer
 from api.models import Conference, School, MemberOrganization, Location, Room, Event, Lunch, Plenary, Forum, Participant, Delegate, StudentOfficer, MUNDirector, Executive, Staff, Advisor, Issue, Document, ResearchReport, PositionPaper
@@ -12,7 +12,7 @@ class GenericMUNOLViewSet(viewsets.ModelViewSet):
 class ConferenceViewSet(GenericMUNOLViewSet):
     queryset = Conference.objects.all()
     serializer_class = ConferenceSerializer
-    permission_classes = (AllowAny,)
+    permission_classes = (IsAuthenticatedOrReadOnly,)
     
 class SchoolViewSet(GenericMUNOLViewSet):
     queryset = School.objects.all()
