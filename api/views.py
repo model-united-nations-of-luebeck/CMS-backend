@@ -12,7 +12,7 @@ class GenericMUNOLViewSet(viewsets.ModelViewSet):
 class ConferenceViewSet(GenericMUNOLViewSet):
     queryset = Conference.objects.all()
     serializer_class = ConferenceSerializer
-    permission_classes = (DjangoModelPermissionsOrAnonReadOnly,)
+    permission_classes = (MUNOLDjangoModelPermissionsOrAnonReadOnly,)
     
 class SchoolViewSet(GenericMUNOLViewSet):
     queryset = School.objects.all()
