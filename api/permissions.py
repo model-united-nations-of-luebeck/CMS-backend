@@ -27,6 +27,7 @@ class MUNOLDjangoModelPermissionsOrAnonReadOnly(DjangoModelPermissionsOrAnonRead
     and
     https://www.django-rest-framework.org/api-guide/permissions/#djangomodelpermissions
     '''
-    def __init__(self):
+    '''def __init__(self):
         self.perms_map = copy.deepcopy(self.perms_map)
         self.perms_map['GET'] = ['%(app_label)s.view_%(model_name)s']        
+        '''
