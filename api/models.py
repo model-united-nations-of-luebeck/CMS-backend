@@ -18,6 +18,9 @@ class Conference(models.Model):
     treasurer = models.CharField("Treasurer", max_length=50, help_text="Full name of the Treasurer of the MUNOL Association")
     vice_treasurer = models.CharField("Vice-Treasurer", max_length=50, help_text="Full name of the Vice-Treasurer of the MUNOL Association")
 
+    def __str__(self):
+        return "MUNOL {}".format(self.year)
+
 class School(models.Model):
     ''' School that is planning to attend the conference '''
     name = models.CharField("School Name", max_length=50, help_text="Name will be used like this for badges and certificates.")
@@ -54,6 +57,8 @@ class School(models.Model):
     departure = models.TextField("Departure Information", blank=True, help_text="Please provide date, time and location (e.g. conference venue, train station, airport, ...) of departure here so that we can plan in advance.")
     comment = models.TextField("Internal Comment", blank=True, help_text="Write down notes and comments regarding this school here, e.g. outstanding fees, contact persons names, etc.")
 
+    def __str__(self):
+        return "{}, {}".format(self.name, self.country)
 
 class MemberOrganization(models.Model):
     ''' A represented state, former state, observer state, NGO, IGO, UN sub-body or other member of the UN '''
@@ -81,6 +86,9 @@ class MemberOrganization(models.Model):
     class Meta:
         verbose_name = "Member Organization"
 
+    def __str__(self):
+        return self.name
+
 class Location(models.Model):
     ''' a conference venue which can be show on a map '''
     name = models.CharField("Location name", max_length=100, help_text="e.g. 'Thomas-Mann-Schule'")
@@ -89,10 +97,16 @@ class Location(models.Model):
     zoom_level = models.PositiveSmallIntegerField("Zoom level", help_text="a number between 1 and 20, like google maps zoom levels")
     address = models.CharField("Address", max_length=100, help_text="e.g. 'Thomas-Mann-Straße 14', i.e. Streetname and House Number")
 
+    def __str__(self):
+        return self.name
+
 class Room(Location):
     ''' Rooms within the School are also locations '''
     room_number = models.CharField("Room Number", max_length=10, help_text="e.g. '0.23'")
     floor = models.PositiveSmallIntegerField("Floor", help_text="Ground Floor is level 0, First Floor is 1, etc.")
+
+    def __str__(self):
+        return self.room_number
 
 class Event(models.Model):
     ''' An event during the conference '''
@@ -103,6 +117,9 @@ class Event(models.Model):
     info = models.CharField("Additional information", blank=True, max_length=200, help_text="Add additional information, e.g. dress code, speakers title")
     location = models.ForeignKey(Location, null=True, blank=True, help_text="Select where the event happens", on_delete=models.SET_NULL)
 
+    def __str__(self):
+        return "{}, {}, {}".format(self.name, self.day, self.start_time)
+
 class Lunch(Event):
     ''' important event of the day '''
 
@@ -111,6 +128,9 @@ class Plenary(models.Model):
     name = models.CharField("Plenary Name", max_length=50, help_text="e.g. 'General Assembly' or 'Economic and Social Council'")
     location = models.ForeignKey(Location, null=True, blank=True, help_text="Select a conference venue where this plenary takes place", on_delete=models.SET_NULL)
     lunches = models.ManyToManyField(Lunch)  #might have to be limitted to 3 or 5 lunch events per plenary
+
+    def __str__(self):
+        return self.name
 
 class Forum(models.Model):
     ''' A body of the UN, usually committees, councils, commissions, special conferences etc. '''
@@ -121,6 +141,9 @@ class Forum(models.Model):
     room = models.ForeignKey(Room, null=True, blank=True, help_text="Select a Room within the conference venue", on_delete=models.SET_NULL)
     plenary = models.ForeignKey(Plenary, null=True, blank=True, help_text="Select a Plenary if this forum is part of it, otherwise choose none.", on_delete=models.SET_NULL)
     lunches = models.ManyToManyField(Lunch)  #might have to be limitted to 3 or 5 lunch events per forum
+
+    def __str__(self):
+        return self.name
         
 class Person(models.Model):
     ''' Person in general as a human being'''
@@ -141,6 +164,8 @@ class Person(models.Model):
     class Meta:
         abstract = True
 
+    def __str__(self):
+            return "{} {}".format(self.first_name, self.last_name)
 
 class Participant(Person):
     '''Participants are persons who take part in the conference and thus have additional attributes'''
@@ -218,12 +243,18 @@ class Issue(models.Model):
     name = models.CharField("Issue name", max_length=256, help_text="Official Issue title as on the Agenda")
     forum = models.ForeignKey(Forum, help_text="Select the forum in which this issue is debated", on_delete=models.PROTECT)
     
+    def __str__(self):
+        return self.name
+
 class Document(models.Model):
     ''' A PDF Document for the conference '''
     name = models.CharField("Name of the document", max_length=100, help_text="Document's name")
     file = models.FileField("File", upload_to="documents", help_text="Document file on server")
     created = models.DateTimeField("Created at", auto_now_add=True, help_text="When was this document created") #auto_now_add sets the current datetime when the object is first created
     author = models.CharField("Author(s)", blank=True, max_length=100, help_text="Who created this document?")
+
+    def __str__(self):
+        return self.name
 
 class ResearchReport(Document):
     ''' A background research report for one issue '''
