@@ -81,7 +81,7 @@ class MemberOrganization(models.Model):
     ]
     status = models.CharField("Status in the UN", max_length=50, choices=STATUS_CHOICES, default=MEMBER_STATE) 
     active = models.BooleanField("Represented at this conference?", default=False, help_text="This allows to store all countries but only select the ones to be simulated and quickly change the selection.")
-    flag = models.FileField("Flag File", blank=True, null=True, help_text="Flag of the Member Organization if it has one")
+    flag = models.URLField("Flag URL", blank=True, null=True, help_text="URL to SVG Flag file of the Member Organization if it has one")
 
     class Meta:
         verbose_name = "Member Organization"
