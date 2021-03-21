@@ -4,7 +4,7 @@ This repo organizes the backend of a Conference Management System for Model UN c
 
 ## Development Instructions
 
-At the moment this project uses Python 3.9.0 and Django 3.0.5
+At the moment this project uses Python 3.9.0 and Django 3.1.6
 
 To install the requirements after cloning the code, run
 
