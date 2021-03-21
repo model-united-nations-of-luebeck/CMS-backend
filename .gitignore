@@ -6,8 +6,7 @@ media/
 .vscode/*
 
 # Virtual environment related things
-bin/*
-pyvenv.cfg
+envs/*
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
