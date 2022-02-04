@@ -2,6 +2,9 @@
 # exclude media folder contents
 media/
 
+# ignore migrations as they are performed locally in each instance
+api/migrations/*
+
 #VS Code Settings
 .vscode/*
 

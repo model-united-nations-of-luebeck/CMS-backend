@@ -4,7 +4,7 @@ This repo organizes the backend of a Conference Management System for Model UN c
 
 ## Development Instructions
 
-At the moment this project uses Python 3.9.0 and Django 3.1.6. It is recommended to create a virtual environment inside the `envs` folder, e.g. by using [venv](https://docs.python.org/3/tutorial/venv.html).
+At the moment this project uses Python 3.9.0 and Django 3.1.13. It is recommended to create a virtual environment inside the `envs` folder, e.g. by using [venv](https://docs.python.org/3/tutorial/venv.html).
 
 To install the requirements after cloning the code and activating the environment (e.g. `source envs/my-env/bin/activate`), run
 
@@ -29,3 +29,18 @@ To generate a diagram from all models excluding the internal classes use
 > python manage.py graph_models -a -t original -g --hide-edge-labels -X AbstractBaseSession,Session,User,AbstractBaseUser,PermissionsMixin,AbstractUser,Group,Permission,ContentType,LogEntry -o api_visualization.png
 
 This requires `graphviz` to be installed, e.g. by using `conda install grpahviz`.
+
+## Deployment...
+
+### ...for testing
+
+In `cms/settings.py`
+
+- add your domain to `ALLOWED_HOSTS = []`
+
+### ...for production
+
+In addition to testing deployment: In `cms/settings.py` set
+
+- `DEBUG = False`
+- security key to a secure key that only you know
