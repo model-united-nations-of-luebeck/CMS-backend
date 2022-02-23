@@ -1,5 +1,5 @@
 from django.urls import path
-from . import placards, badges, certificates
+from . import placards, badges, certificates, roll_call_lists
 
 app_name = 'pdfs'
 
@@ -22,5 +22,7 @@ urlpatterns = [
     path('executive_certificate', certificates.executives_certificate, name="executive certificate"),
     path('staff_certificate', certificates.staff_certificate, name="staff certificate"),
     path('mundirector_certificate', certificates.mundirector_certificate, name="mundirector certificate"),
+
+    path('forum_roll_call_list', roll_call_lists.forum_roll_call_list, name="forum roll call list"),
 ]
 
