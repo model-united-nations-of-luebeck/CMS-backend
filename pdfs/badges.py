@@ -105,7 +105,7 @@ def _create_badge(participants:list = [], color:tuple=(255,255,255), year=1998):
     p.showPage()    
     p.save()
     buffer.seek(0)
-    return FileResponse(buffer, filename='badges.pdf')
+    return FileResponse(FileWrapper(buffer), filename='badges.pdf', content_type="application/pdf", as_attachment=True)
 
 def advisor_badge(request):
     participants = Advisor.objects.all()

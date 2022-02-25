@@ -1,6 +1,7 @@
 import io
 import os
 import textwrap
+from wsgiref.util import FileWrapper
 import PIL
 import base64
 from django.http import FileResponse
@@ -40,7 +41,7 @@ def _create_sign(text:str='', pagesize=A4):
     p.showPage()   
     p.save()
     buffer.seek(0)
-    return FileResponse(buffer, filename='sign.pdf')
+    return FileResponse(FileWrapper(buffer), filename='sign.pdf', content_type="application/pdf", as_attachment=True)
 
 def sign(request):
     

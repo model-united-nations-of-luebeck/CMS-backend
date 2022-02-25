@@ -1,6 +1,7 @@
 import io
 import os
 import textwrap
+from wsgiref.util import FileWrapper
 import PIL
 import base64
 from django.http import FileResponse
@@ -72,7 +73,7 @@ def _create_forum_roll_call_list(forums:list=[], pagesize=A4):
             p.showPage()   
     p.save()
     buffer.seek(0)
-    return FileResponse(buffer, filename='rollcalllist.pdf')
+    return FileResponse(FileWrapper(buffer), filename='rollcalllist.pdf', content_type="application/pdf", as_attachment=True)
 
 def forum_roll_call_list(request):
     forums = Forum.objects.all()

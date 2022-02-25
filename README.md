@@ -37,6 +37,7 @@ This requires `graphviz` to be installed, e.g. by using `conda install grpahviz`
 In `cms/settings.py`
 
 - add your domain to `ALLOWED_HOSTS = []`
+- add media (fonts, images) to `media` folder
 
 ### ...for production
 

@@ -1,5 +1,6 @@
 import io
 from tkinter import Image
+from wsgiref.util import FileWrapper
 from django.http import FileResponse
 from reportlab.pdfgen import canvas
 from reportlab.lib.pagesizes import landscape, A4,A3 
@@ -64,7 +65,7 @@ def _create_placards_file(names: list = [], pagesize=A4):
 
     # FileResponse sets the Content-Disposition header so that browsers present the option to save the file.
     buffer.seek(0)
-    return FileResponse(buffer, filename='placards.pdf')
+    return FileResponse(FileWrapper(buffer), filename='placards.pdf', content_type="application/pdf", as_attachment=True)
 
 
 def _create_orga_placards_file(officers: list = [], pagesize=A4):
@@ -111,7 +112,7 @@ def _create_orga_placards_file(officers: list = [], pagesize=A4):
 
     # FileResponse sets the Content-Disposition header so that browsers present the option to save the file.
     buffer.seek(0)
-    return FileResponse(buffer, filename='placards.pdf')
+    return FileResponse(FileWrapper(buffer), filename='placards.pdf', content_type="application/pdf", as_attachment=True)
 
 def executive_placards(request):
     filtered_executives = []

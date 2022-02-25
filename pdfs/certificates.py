@@ -1,6 +1,7 @@
 import io
 import os
 import textwrap
+from wsgiref.util import FileWrapper
 import PIL
 import base64
 from django.http import FileResponse
@@ -368,7 +369,7 @@ def _create_certificate(participants:list = [], session=1, year=1998, startday:s
     p.showPage()    
     p.save()
     buffer.seek(0)
-    return FileResponse(buffer, filename='certificates.pdf')
+    return FileResponse(FileWrapper(buffer), filename='certificates.pdf', content_type="application/pdf", as_attachment=True)
 
 def delegate_certificate(request):
     participants = Delegate.objects.all()
