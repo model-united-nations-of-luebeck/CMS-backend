@@ -42,13 +42,14 @@ def _create_badge(participants:list = [], color:tuple=(255,255,255), year=1998):
         p.drawImage(logo, 9*mm,7*mm,35*mm,35*mm, mask='auto')
         
         #print badge photo if set
-        image_path = str(participant.picture) if participant.picture !='' and participant.picture else 'images/bild.jpeg'
-        bild = ImageReader(os.path.join(settings.MEDIA_ROOT, image_path))
-
-        if participant.base64photo:
+        if hasattr(participant,'base64photo'):
             msg = base64.b64decode(participant.base64photo)
             buf = io.BytesIO(msg)
             bild = ImageReader(PIL.Image.open(buf))
+        else:
+            image_path = str(participant.picture) if participant.picture !='' and participant.picture else 'images/bild.jpeg'
+            bild = ImageReader(os.path.join(settings.MEDIA_ROOT, image_path))
+
 
         p.drawImage(bild, 54*mm,8*mm,30*mm,40*mm, mask='auto')
 
