@@ -140,7 +140,7 @@ class Forum(models.Model):
     email = models.EmailField("E-Mail", blank=True, null=True, help_text="Email will be displayed on website")
     room = models.ForeignKey(Room, blank=True, null=True, help_text="Select a Room within the conference venue", on_delete=models.SET_NULL)
     plenary = models.ForeignKey(Plenary, blank=True, null=True, help_text="Select a Plenary if this forum is part of it, otherwise choose none.", on_delete=models.SET_NULL)
-    lunches = models.ManyToManyField(Lunch)  #might have to be limitted to 3 or 5 lunch events per forum
+    lunches = models.ManyToManyField(Lunch, blank=True)  #might have to be limited to 3 or 5 lunch events per forum
 
     def __str__(self):
         return self.name
