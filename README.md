@@ -30,6 +30,22 @@ To generate a diagram from all models excluding the internal classes use
 
 This requires `graphviz` to be installed, e.g. by using `conda install grpahviz`.
 
+## Initial data / Test data
+
+As the database is empty in the beginning and filling it manually is a lot of work, two helper functions can be used:
+
+1. A set of initial data entries for data, that will most likely be used at every conference, e.g. member organizations and forums, is provided in the `testdata` directory. Simply load it as a [fixture](https://docs.djangoproject.com/en/4.0/howto/initial-data/#providing-initial-data-with-migrations) with
+
+   > python manage.py loaddata testdata/forums.json
+
+2. As the participants always change, fake participants can be generated for testing purposes. Use the custom commands in `management/commands/...`, e.g.
+
+   > python manage.py setup_test_delegate -n 20
+
+   The `-n` or `--number` parameter is optional and specifies how many of this type shall be generated. To populate the database with all types, use
+
+   > python manage.py setup_test_data
+
 ## Deployment...
 
 ### ...for testing
