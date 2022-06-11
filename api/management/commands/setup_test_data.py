@@ -13,4 +13,5 @@ class Command(BaseCommand):
         generate_mun_directors()
         generate_student_officers()
         generate_delegates()
+        self.stdout.write("Test data created successfully")
 

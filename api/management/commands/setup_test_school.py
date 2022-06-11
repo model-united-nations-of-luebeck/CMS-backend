@@ -15,3 +15,4 @@ class Command(BaseCommand):
             generate_schools(n)
         else:
             generate_schools()
+        self.stdout.write("School(s) created successfully")

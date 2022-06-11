@@ -15,3 +15,4 @@ class Command(BaseCommand):
             generate_mun_directors(n)
         else:
             generate_mun_directors()
+        self.stdout.write("MUN Director(s) created successfully")

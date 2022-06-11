@@ -15,3 +15,4 @@ class Command(BaseCommand):
             generate_student_officers(n)
         else:
             generate_student_officers()
+        self.stdout.write("Student Officer(s) created successfully")

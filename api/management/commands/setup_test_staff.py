@@ -15,3 +15,4 @@ class Command(BaseCommand):
             generate_staffs(n)
         else:
             generate_staffs()
+        self.stdout.write("Staff created successfully")

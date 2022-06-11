@@ -15,3 +15,4 @@ class Command(BaseCommand):
             generate_delegates(n)
         else:
             generate_delegates()
+        self.stdout.write("Delegate(s) created successfully")

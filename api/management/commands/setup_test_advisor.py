@@ -15,3 +15,4 @@ class Command(BaseCommand):
             generate_advisors(n)
         else:
             generate_advisors()
+        self.stdout.write("Advisor(s) created successfully")

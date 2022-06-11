@@ -15,3 +15,4 @@ class Command(BaseCommand):
             generate_executives(n)
         else:
             generate_executives()
+        self.stdout.write("Executive(s) created successfully")
