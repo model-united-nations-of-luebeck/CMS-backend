@@ -80,7 +80,7 @@ def generate_mun_directors(n:int=50):
     
     for _ in range(n):
 
-        mun_director = MUNDirector.objects.get_or_create(first_name=fake.first_name(), last_name=fake.first_name(), gender=select_randomly_from_choices(Person.GENDER_CHOICES), email=fake.email(), mobile='', diet=random.choice(Participant.DIET_CHOICES), birthday=fake.date(), extras=fake.text(), landline_phone='', english_teacher=random.choice([True, False]), school=random.choice(School.objects.all()), housing=random.choice(MUNDirector.HOUSING_OPTIONS))
+        mun_director = MUNDirector.objects.get_or_create(first_name=fake.first_name(), last_name=fake.first_name(), gender=select_randomly_from_choices(Person.GENDER_CHOICES), email=fake.email(), mobile='', diet=select_randomly_from_choices(Participant.DIET_CHOICES), birthday=fake.date(), extras=fake.text(), landline_phone='', english_teacher=random.choice([True, False]), school=random.choice(School.objects.all()), housing=select_randomly_from_choices(MUNDirector.HOUSING_OPTIONS))
 
 def generate_student_officers(n:int=30):
     '''
