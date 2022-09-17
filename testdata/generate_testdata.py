@@ -5,6 +5,10 @@ This file provides methods to fill the Conference Management System with realist
 from api.models import Conference, Delegate, Executive, Forum, MUNDirector, MemberOrganization, Participant, School, Advisor, Person, Staff, StudentOfficer
 import random
 
+from phonenumber_field.validators import validate_international_phonenumber
+from django.core.exceptions import ValidationError
+LOCALES = ['DE', 'IT', 'TR', 'en_US'] # only phone numbers for these regions are generated
+
 # initialization # 
 from faker import Faker
 fake = Faker(['de_DE'])
@@ -22,6 +26,20 @@ def select_randomly_from_choices(choices: list)-> str:
     returns a string for the database
     '''
     return random.choice([choice[0] for choice in choices])
+
+def generate_valid_phone_number() -> str:
+    '''
+    Randomly generates phone numbers that are valid, at least according to the PhoneNumberField Validator.
+    '''
+    while True:  # generate numbers until a valid one is found
+        try:
+            locale = random.choice(LOCALES) # switch locales
+            fake = Faker(locale)
+            number = fake.phone_number()
+            validate_international_phonenumber(number)
+            return number
+        except ValidationError:
+            pass # ignore invalid phone numbers
 
 def generate_conference():
     '''
@@ -48,7 +66,7 @@ def generate_advisors(n:int=20):
     '''
     
     for _ in range(n):
-        advisor = Advisor.objects.get_or_create(first_name=fake.first_name(), last_name=fake.first_name(), gender=select_randomly_from_choices(Person.GENDER_CHOICES), email=fake.email(), mobile='', diet=select_randomly_from_choices(Participant.DIET_CHOICES), birthday=fake.date(), extras=fake.text(), car=random.choice([True, False]), availability=fake.text(), experience=fake.text())
+        advisor = Advisor.objects.get_or_create(first_name=fake.first_name(), last_name=fake.first_name(), gender=select_randomly_from_choices(Person.GENDER_CHOICES), email=fake.email(), mobile=generate_valid_phone_number(), diet=select_randomly_from_choices(Participant.DIET_CHOICES), birthday=fake.date(), extras=fake.text(), car=random.choice([True, False]), availability=fake.text(), experience=fake.text())
         
 def generate_staffs(n:int=40):
     '''
@@ -59,7 +77,7 @@ def generate_staffs(n:int=40):
 
     for _ in range(n):
 
-        staff = Staff.objects.get_or_create(first_name=fake.first_name(), last_name=fake.first_name(), gender=select_randomly_from_choices(Person.GENDER_CHOICES), email=fake.email(), mobile='', diet=select_randomly_from_choices(Participant.DIET_CHOICES), birthday=fake.date(), extras=fake.text(),position_name=random.choice(position_names), school_name=fake.name()+ "-School")
+        staff = Staff.objects.get_or_create(first_name=fake.first_name(), last_name=fake.first_name(), gender=select_randomly_from_choices(Person.GENDER_CHOICES), email=fake.email(), mobile=generate_valid_phone_number(), diet=select_randomly_from_choices(Participant.DIET_CHOICES), birthday=fake.date(), extras=fake.text(),position_name=random.choice(position_names), school_name=fake.name()+ "-School")
         
 def generate_executives(n:int=30):
     '''
@@ -71,7 +89,7 @@ def generate_executives(n:int=30):
 
     for _ in range(n):
 
-        executive = Executive.objects.get_or_create(first_name=fake.first_name(), last_name=fake.first_name(), gender=select_randomly_from_choices(Person.GENDER_CHOICES), email=fake.email(), mobile='', diet=select_randomly_from_choices(Participant.DIET_CHOICES), birthday=fake.date(), extras=fake.text(),position_name=random.choice(position_names), school_name=fake.name()+ "-School", position_level=random.choice([True, False]),department_name=random.choice(department_names))
+        executive = Executive.objects.get_or_create(first_name=fake.first_name(), last_name=fake.first_name(), gender=select_randomly_from_choices(Person.GENDER_CHOICES), email=fake.email(), mobile=generate_valid_phone_number(), diet=select_randomly_from_choices(Participant.DIET_CHOICES), birthday=fake.date(), extras=fake.text(),position_name=random.choice(position_names), school_name=fake.name()+ "-School", position_level=random.choice([True, False]),department_name=random.choice(department_names))
         
 def generate_mun_directors(n:int=50):
     '''
@@ -80,7 +98,7 @@ def generate_mun_directors(n:int=50):
     
     for _ in range(n):
 
-        mun_director = MUNDirector.objects.get_or_create(first_name=fake.first_name(), last_name=fake.first_name(), gender=select_randomly_from_choices(Person.GENDER_CHOICES), email=fake.email(), mobile='', diet=select_randomly_from_choices(Participant.DIET_CHOICES), birthday=fake.date(), extras=fake.text(), landline_phone='', english_teacher=random.choice([True, False]), school=random.choice(School.objects.all()), housing=select_randomly_from_choices(MUNDirector.HOUSING_OPTIONS))
+        mun_director = MUNDirector.objects.get_or_create(first_name=fake.first_name(), last_name=fake.first_name(), gender=select_randomly_from_choices(Person.GENDER_CHOICES), email=fake.email(), mobile=generate_valid_phone_number(), diet=select_randomly_from_choices(Participant.DIET_CHOICES), birthday=fake.date(), extras=fake.text(), mobile=generate_valid_phone_number(), english_teacher=random.choice([True, False]), school=random.choice(School.objects.all()), housing=select_randomly_from_choices(MUNDirector.HOUSING_OPTIONS))
 
 def generate_student_officers(n:int=30):
     '''
@@ -91,7 +109,7 @@ def generate_student_officers(n:int=30):
 
     for _ in range(n):
 
-        student_officer = StudentOfficer.objects.get_or_create(first_name=fake.first_name(), last_name=fake.first_name(), gender=select_randomly_from_choices(Person.GENDER_CHOICES), email=fake.email(), mobile='', diet=select_randomly_from_choices(Participant.DIET_CHOICES), birthday=fake.date(), extras=fake.text(), position_name=random.choice(position_names), position_level=random.choice([True, False]), school_name=fake.name()+"-School", forum=random.choice(Forum.objects.all()))
+        student_officer = StudentOfficer.objects.get_or_create(first_name=fake.first_name(), last_name=fake.first_name(), gender=select_randomly_from_choices(Person.GENDER_CHOICES), email=fake.email(), mobile=generate_valid_phone_number(), diet=select_randomly_from_choices(Participant.DIET_CHOICES), birthday=fake.date(), extras=fake.text(), position_name=random.choice(position_names), position_level=random.choice([True, False]), school_name=fake.name()+"-School", forum=random.choice(Forum.objects.all()))
 
 def generate_delegates(n:int=250):
     '''
@@ -100,4 +118,4 @@ def generate_delegates(n:int=250):
     
     for _ in range(n):
 
-        delegate = Delegate.objects.get_or_create(first_name=fake.first_name(), last_name=fake.first_name(), gender=select_randomly_from_choices(Person.GENDER_CHOICES), email=fake.email(), mobile='', diet=select_randomly_from_choices(Participant.DIET_CHOICES), birthday=fake.date(), extras=fake.text(), ambassador=random.choice([True, False]), represents=random.choice(MemberOrganization.objects.all()), school=random.choice(School.objects.all()), forum=random.choice(Forum.objects.all()))
+        delegate = Delegate.objects.get_or_create(first_name=fake.first_name(), last_name=fake.first_name(), gender=select_randomly_from_choices(Person.GENDER_CHOICES), email=fake.email(), mobile=generate_valid_phone_number(), diet=select_randomly_from_choices(Participant.DIET_CHOICES), birthday=fake.date(), extras=fake.text(), ambassador=random.choice([True, False]), represents=random.choice(MemberOrganization.objects.all()), school=random.choice(School.objects.all()), forum=random.choice(Forum.objects.all()))
