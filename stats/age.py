@@ -9,8 +9,6 @@ def _get_age_counts(group) -> dict:
     From a Participant (sub)class, return the age groups counts as dictionary
     '''
     start_date = Conference.objects.first().startdate
-    
-    print("Tom")
     not_defined = group.objects.filter(birthday__isnull=True).count()
     under_16 = group.objects.filter(birthday__gt=start_date - relativedelta(years=16)).count()
     middle = group.objects.filter(birthday__lte=start_date - relativedelta(years=16),birthday__gt=start_date - relativedelta(years=18)).count()
@@ -76,7 +74,6 @@ def birthdays_during_conference(request):
     conference = Conference.objects.first()
     start_date = conference.startdate
     end_date = conference.enddate
-    print(start_date, end_date)
     conference_days = [start_date+relativedelta(days=x) for x in range((end_date - start_date).days+1)]
     
     birthdays = []
@@ -87,6 +84,5 @@ def birthdays_during_conference(request):
                               "date": day,
                               "id": participant.id})
     
-    print(birthdays)
     return JsonResponse({"birthdays":birthdays})
 
