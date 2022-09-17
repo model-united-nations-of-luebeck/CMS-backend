@@ -26,5 +26,6 @@ urlpatterns = [
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     url(r'^api/', include('api.urls', namespace='api')),
     url(r'^api-token-auth/', views.obtain_auth_token),
-    url(r'^pdfs/', include('pdfs.urls', namespace='pdfs'))
+    url(r'^pdfs/', include('pdfs.urls', namespace='pdfs')),
+    url(r'^stats/', include('stats.urls', namespace='stats'))
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
