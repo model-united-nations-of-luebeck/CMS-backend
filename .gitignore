@@ -1,3 +1,6 @@
+# test data
+testdata/*.json
+
 ## Django Development ##
 # exclude media folder contents
 media/
