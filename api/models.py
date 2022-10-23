@@ -1,7 +1,7 @@
 from django.db import models
 from phonenumber_field.modelfields import PhoneNumberField
  
-# Models (sometimes also calles entities or data templates) are stored here. These models describe what kind of objects we deal with in our app. However, the objects themselves are stored in a database.
+# Models (sometimes also called entities or data templates) are stored here. These models describe what kind of objects we deal with in our app. However, the objects themselves are stored in a database.
 
 class Conference(models.Model): 
     ''' A conference object represents one session of the MUN conference with the corresponding details'''
@@ -52,7 +52,7 @@ class School(models.Model):
         (FINAL_REGISTRATION_DONE, 'final registration done'),
         (CANCELED, 'canceled')
     ]
-    registration_status = models.CharField("Registation status", max_length=50, choices=STATUS_CHOICES, default=WAITING_FOR_PRE_REGISTRATION, help_text="This status indicates at what stage of registration the school is.")
+    registration_status = models.CharField("Registration status", max_length=50, choices=STATUS_CHOICES, default=WAITING_FOR_PRE_REGISTRATION, help_text="This status indicates at what stage of registration the school is.")
     fee = models.BooleanField("Pre-registration fee", default=False, help_text="Was the pre-registration fee paid?")
     arrival = models.TextField("Arrival Information", blank=True, null=True, help_text="Please provide date, time and location (e.g. school, conference venue, train station, airport, ...) of arrival here so that we can plan the registration process and housing respectively.")
     departure = models.TextField("Departure Information", blank=True, null=True, help_text="Please provide date, time and location (e.g. conference venue, train station, airport, ...) of departure here so that we can plan in advance.")
@@ -63,8 +63,8 @@ class School(models.Model):
 
 class MemberOrganization(models.Model):
     ''' A represented state, former state, observer state, NGO, IGO, UN sub-body or other member of the UN '''
-    name = models.CharField("Member state's or Organization's name", max_length=50, help_text="Use common (short) version of the name, e.g. 'Russia' instead of 'Russion Federation' or 'EU' instrad of 'European Union', so use abbreviations. This name is only used internally and thus allows to create Countries twice, e.g. China 1 and China 2 if the delegation is split between two schools.")
-    official_name = models.CharField("Official Name", max_length=150, help_text="Official name as stated on resolutions of the UN, e.g. 'Russion Federation' instead of Russia. No abbreviations allowed here.")
+    name = models.CharField("Member state's or Organization's name", max_length=50, help_text="Use common (short) version of the name, e.g. 'Russia' instead of 'Russian Federation' or 'EU' instead of 'European Union', so use abbreviations. This name is only used internally and thus allows to create Countries twice, e.g. China 1 and China 2 if the delegation is split between two schools.")
+    official_name = models.CharField("Official Name", max_length=150, help_text="Official name as stated on resolutions of the UN, e.g. 'Russian Federation' instead of Russia. No abbreviations allowed here.")
     placard_name = models.CharField("Placards Name", max_length=50, help_text="The best readable compromise between no abbreviation but also not the full official name")
     MEMBER_STATE = 'member state'
     OBSERVER_STATE = 'observer state'
@@ -96,7 +96,7 @@ class Location(models.Model):
     latitude = models.DecimalField("Latitude", decimal_places=6, max_digits=9, help_text="e.g. 53.860421") 
     longitude = models.DecimalField("Longitude", decimal_places=6, max_digits=9, help_text="e.g. 10.713462")
     zoom_level = models.PositiveSmallIntegerField("Zoom level", help_text="a number between 1 and 20, like google maps zoom levels")
-    address = models.CharField("Address", max_length=100, help_text="e.g. 'Thomas-Mann-Straße 14', i.e. Streetname and House Number")
+    address = models.CharField("Address", max_length=100, help_text="e.g. 'Thomas-Mann-Straße 14', i.e. Street Name and House Number")
 
     def __str__(self):
         return self.name
@@ -128,7 +128,7 @@ class Plenary(models.Model):
     ''' A plenary session of several forums '''
     name = models.CharField("Plenary Name", max_length=50, help_text="e.g. 'General Assembly' or 'Economic and Social Council'")
     location = models.ForeignKey(Location, blank=True, null=True, help_text="Select a conference venue where this plenary takes place", on_delete=models.SET_NULL)
-    lunches = models.ManyToManyField(Lunch)  #might have to be limitted to 3 or 5 lunch events per plenary
+    lunches = models.ManyToManyField(Lunch)  #might have to be limited to 3 or 5 lunch events per plenary
 
     def __str__(self):
         return self.name
