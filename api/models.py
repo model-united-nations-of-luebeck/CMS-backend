@@ -24,11 +24,11 @@ class Conference(models.Model):
 class School(models.Model):
     ''' School that is planning to attend the conference '''
     name = models.CharField("School Name", max_length=50, help_text="Name will be used like this for badges and certificates.")
-    street = models.CharField("Street Name", max_length=50)
-    city = models.CharField("City", max_length=50)
-    zipcode = models.CharField("ZIP Code", max_length=10)
-    country = models.CharField("Country of origin", max_length=50)
-    requested = models.PositiveSmallIntegerField("Number of requested students", help_text="Note, that this is the <b>requested</b> number, <u>not</u> the confirmed one which might be lower.")
+    street = models.CharField("Street Name", max_length=50, blank=True, null=True)
+    city = models.CharField("City", max_length=50, blank=True, null=True)
+    zipcode = models.CharField("ZIP Code", max_length=10, blank=True, null=True)
+    country = models.CharField("Country of origin", max_length=50, blank=True, null=True)
+    requested = models.PositiveSmallIntegerField("Number of requested students", help_text="Note, that this is the <b>requested</b> number, <u>not</u> the confirmed one which might be lower.", blank=True, null=True)
     HOSTEL = 'hostel'
     GUEST_FAMILY = 'guest family'
     OTHER = 'other'
