@@ -1,5 +1,4 @@
 import io
-from tkinter import Image
 from wsgiref.util import FileWrapper
 from django.http import FileResponse
 from reportlab.pdfgen import canvas
