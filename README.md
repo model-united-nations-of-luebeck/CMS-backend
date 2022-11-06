@@ -61,3 +61,6 @@ In addition to testing deployment: In `cms/settings.py` set
 
 - `DEBUG = False`
 - security key to a secure key that only you know
+- set paths in `cms/settings.py`, especially `FORCE_SCRIPT_NAME` if you don't want to serve under root domain URL, but under something like `mydomain.org/cms`
+
+From uberspace there are instructions for setting up Django projects: [Django Guide Uberspace](https://lab.uberspace.de/guide_django/)
