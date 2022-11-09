@@ -1,10 +1,10 @@
 # Conference Management System Backend
 
-This repo organizes the backend of a Conference Management System for Model UN conferences. It aimes to allow smoothless registration and administration of participants, allocation of delegations and general management of a conference.
+This repo organizes the backend of a Conference Management System for Model UN conferences. It aims to allow smooth registration and administration of participants, allocation of delegations and general management of a conference.
 
 ## Development Instructions
 
-At the moment this project uses Python 3.9.0 and Django 3.1.13. It is recommended to create a virtual environment inside the `envs` folder, e.g. by using [venv](https://docs.python.org/3/tutorial/venv.html).
+At the moment this project uses Python 3.6+ and Django 3.1.14. It is recommended to create a virtual environment inside the `envs` folder, e.g. by using [venv](https://docs.python.org/3/tutorial/venv.html).
 
 To install the requirements after cloning the code and activating the environment (e.g. `source envs/my-env/bin/activate`), run
 
@@ -53,7 +53,12 @@ As the database is empty in the beginning and filling it manually is a lot of wo
 In `cms/settings.py`
 
 - add your domain to `ALLOWED_HOSTS = []`
+- add your frontend domain to `CORS_ORIGIN_WHITELIST`
+
+Furthermore
+
 - add media (fonts, images) to `media` folder
+- add test data .json files if you want to populate your DB with them
 
 ### ...for production
 
@@ -61,6 +66,10 @@ In addition to testing deployment: In `cms/settings.py` set
 
 - `DEBUG = False`
 - security key to a secure key that only you know
-- set paths in `cms/settings.py`, especially `FORCE_SCRIPT_NAME` if you don't want to serve under root domain URL, but under something like `mydomain.org/cms`
+- set paths especially `FORCE_SCRIPT_NAME` if you don't want to serve under root domain URL, but under something like `mydomain.org/cms`
+
+Serve static files by running `python manage.py collectstatic` which generates a `static/` folder that needs to be served under `mydomain.org/cms/static` and includes the CSS, JS and image files. If the styling is missing, it might be a hint that the static files aren't loaded correctly.
+
+Perform migration of the database by running `python manage.py migrate`.
 
 From uberspace there are instructions for setting up Django projects: [Django Guide Uberspace](https://lab.uberspace.de/guide_django/)
