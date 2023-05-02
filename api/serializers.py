@@ -52,7 +52,7 @@ class ForumSerializer(serializers.ModelSerializer):
 class ParticipantSerializer(Base64ModelSerializer):
     class Meta:
         model = Participant
-        fields = ['id', 'first_name', 'last_name', 'gender', 'pronouns', 'email', 'email_verified',  'mobile', 'diet', 'picture', 'birthday', 'extras', 'role', 'data_consent_time', 'data_consent_ip', 'media_consent_time', 'media_consent_ip']
+        fields = ['id', 'first_name', 'last_name', 'gender', 'pronouns', 'email', 'email_verified',  'mobile', 'diet', 'picture', 'birthday', 'extras', 'role', 'position', 'data_consent_time', 'data_consent_ip', 'media_consent_time', 'media_consent_ip']
 
 class DelegateSerializer(Base64ModelSerializer):
     class Meta:

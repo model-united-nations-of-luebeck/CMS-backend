@@ -165,3 +165,7 @@ CSRF_TRUSTED_ORIGINS = os.getenv('CSRF_TRUSTED_ORIGINS', 'http://localhost:8080'
 
 # since Django 3.2, the default primary key needs to be set explicitly to keep AutoField instead of enw BigAutoField
 DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
+
+EMAIL_HOST = 'smtp.office365.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True

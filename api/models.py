@@ -161,14 +161,16 @@ class Person(models.Model):
     MALE = 'm'
     FEMALE = 'f'
     OTHER = 'o'
+    UNSPECIFIED = 'u'
     GENDER_CHOICES = [
         (MALE, 'male'),
         (FEMALE, 'female'),
-        (OTHER, 'other')
+        (OTHER, 'other'),
+        (UNSPECIFIED, "prefer not to say")
     ]
-    gender = models.CharField("gender", max_length=1, choices=GENDER_CHOICES, default=FEMALE,
+    gender = models.CharField("gender", max_length=1, choices=GENDER_CHOICES, default=UNSPECIFIED,
                               help_text="the diversity of genders is reflected in the 'other' choice")
-    email = models.EmailField("E-Mail", blank=True, null=True)
+    email = models.EmailField("E-Mail", blank=True, null=True, unique=True)
     email_verified = models.BooleanField("E-Mail verified", default=False, help_text="Has the email address been verified?")
     mobile = PhoneNumberField("mobile phone", blank=True,  null=True,
                               help_text="remember to include the country code, e.g. for Germany +49 and then leave out the leading 0")
@@ -207,7 +209,9 @@ class Participant(Person):
     data_consent_ip = models.GenericIPAddressField("Data Consent given from IP", blank=True, null=True, help_text="From which IP address did the participant give consent to store their data? Null if not given yet.")
     media_consent_time = models.DateTimeField("Media Consent given at", blank=True, null=True, help_text="When did the participant give consent to use their media? Null if not given yet.")
     media_consent_ip = models.GenericIPAddressField("Media Consent given from IP", blank=True, null=True, help_text="From which IP address did the participant give consent to use their media? Null if not given yet.")
-
+    position = models.TextField("the position specific to their role", blank=True)
+    app_code = models.CharField("app login code", blank=True, editable=False, max_length=8, help_text="auto-generated one time login code")
+    app_code_expires_by = models.DateTimeField("app code expires by", blank=True, editable=False, null=True, help_text="expiration date for the app code")
 
 class Event(models.Model):
     ''' An event during the conference '''

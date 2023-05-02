@@ -116,3 +116,6 @@ venv.bak/
 # mypy
 .mypy_cache/
 .DS_Store
+
+# Secret token file
+/api/mobile_app/secret.py
