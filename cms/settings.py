@@ -359,3 +359,6 @@ ADMINS = eval(os.getenv('ADMINS', '[]'))
 
 # Email address that error messages come from
 SERVER_EMAIL = os.getenv('SERVER_EMAIL', 'noreply@example.com')
+EMAIL_HOST = 'smtp.office365.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True

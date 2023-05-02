@@ -1,6 +1,8 @@
+from django.urls import path
+from django.conf.urls import include
 from rest_framework.routers import DefaultRouter
 
-from api.views import ConferenceViewSet, SchoolViewSet, MemberOrganizationViewSet, LocationViewSet, RoomViewSet, EventViewSet, LunchViewSet, PlenaryViewSet, ForumViewSet, ParticipantViewSet, DelegateViewSet, StudentOfficerViewSet, MUNDirectorViewSet, ExecutiveViewSet, StaffViewSet, AdvisorViewSet, IssueViewSet, DocumentViewSet, ResearchReportViewSet, PositionPaperViewSet
+from api.views import *
 
 app_name = 'api'
 
@@ -26,4 +28,8 @@ router.register('issues', IssueViewSet)
 router.register('documents', DocumentViewSet)
 router.register('research-reports', ResearchReportViewSet)
 router.register('position-papers', PositionPaperViewSet)
-urlpatterns = router.urls
+
+urlpatterns = [
+    path('mobile/', include("api.mobile_app.urls")),
+    path('', include(router.urls)),
+]

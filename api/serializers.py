@@ -96,8 +96,7 @@ class EmailConfirmationMixin:
 class ParticipantSerializer(EmailConfirmationMixin, Base64ModelSerializer):
     class Meta:
         model = Participant
-        fields = ['id', 'first_name', 'last_name', 'gender', 'pronouns', 'email', 'mobile', 'picture', 'birthday', 'extras', 'role', 'data_consent_time', 'data_consent_ip', 'media_consent_time', 'media_consent_ip', 'organizers_notice_time', 'organizers_notice_ip']
-
+        fields = ['id', 'first_name', 'last_name', 'gender', 'pronouns', 'email', 'mobile', 'picture', 'birthday', 'extras', 'role', 'diet', 'position', 'data_consent_time', 'data_consent_ip', 'media_consent_time', 'media_consent_ip', 'organizers_notice_time', 'organizers_notice_ip']
 class DelegateSerializer(EmailConfirmationMixin, Base64ModelSerializer):
     class Meta:
         model = Delegate

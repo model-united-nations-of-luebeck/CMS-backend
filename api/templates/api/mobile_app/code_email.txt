@@ -1,0 +1,4 @@
+Your verification code is:
+{{ code }}
+
+If you did not request this e-mail, please ignore it.
