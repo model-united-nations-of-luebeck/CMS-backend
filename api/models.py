@@ -153,13 +153,15 @@ class Person(models.Model):
     MALE = 'm'
     FEMALE = 'f'
     OTHER = 'o'
+    UNSPECIFIED = 'u'
     GENDER_CHOICES = [
         (MALE, 'male'),
         (FEMALE, 'female'),
-        (OTHER, 'other')
+        (OTHER, 'other'),
+        (UNSPECIFIED, "prefer not to say")
     ]
-    gender = models.CharField("gender", max_length=1, choices=GENDER_CHOICES, default=FEMALE, help_text="the diversity of genders is reflected in the 'other' choice")
-    email = models.EmailField("E-Mail", blank=True, null=True)
+    gender = models.CharField("gender", max_length=1, choices=GENDER_CHOICES, default=UNSPECIFIED, help_text="the diversity of genders is reflected in the 'other' choice")
+    email = models.EmailField("E-Mail", blank=True, null=True, unique=True)
     mobile = PhoneNumberField("mobile phone", blank=True,  null=True, help_text="remember to include the country code, e.g. for Germany +49 and then leave out the leading 0")
 
     class Meta:
@@ -182,6 +184,11 @@ class Participant(Person):
     picture = models.ImageField("badge photo", blank=True, null=True, upload_to="images/badge_photos", help_text="please provide a passport-style photo for the badge")
     birthday = models.DateField("birthday", blank=True, null=True)
     extras = models.TextField("extra information", blank=True, null=True, help_text="please include here all additional information about diet, allergies, preferences etc. so that we can try to provide a perfect conference")
+    ROLE_CHOICES = [("advisor", 'Conference Advisor'), ('chair', 'Chair'), ('delegate', 'Delegate'), ("mun_director", "MUN Director"), ('executive', 'Executive'), ("staff", 'Staff')]
+    role = models.CharField("the role they are participating in the conference as", choices=ROLE_CHOICES, max_length=12, blank=True)
+    position = models.TextField("the position specific to their role", blank=True)
+    app_code = models.CharField("app login code", blank=True, editable=False, max_length=8, help_text="auto-generated one time login code")
+    app_code_expires_by = models.DateTimeField("app code expires by", blank=True, editable=False, null=True, help_text="expiration date for the app code")
 
 class Delegate(Participant):
     ''' Delegates are the main participants of MUN :model:`api.Conference` and represent a delegation's position in their :model:`api.Forum`. '''
@@ -215,7 +222,7 @@ class MUNDirector(Participant):
         (OTHER, 'other self-organized accommodation')
     ]
     housing = models.CharField("Housing option", max_length=50, choices=HOUSING_OPTIONS, default=OTHER, help_text="Please note, that housing in guest families is not available for all MUN-Directors.")
-    # Figure out how to set BIRTHDAY to >18 because this can be assumed. 
+    # Figure out how to set BIRTHDAY to >18 because this can be assumed.
     # Solved: We don't need to store a Birthday, it can also be blank and then we don't show it for MUN Directors, only for other participants and enforce setting a birthday there.
     class Meta:
         verbose_name = "MUN-Director"
@@ -225,7 +232,7 @@ class Executive(Participant):
     position_name = models.CharField("Position name", max_length=50, help_text="e.g. 'Assistant Head of School Management'")
     position_level = models.BooleanField("Is this the Head of this position?", default=False, help_text="Main Head might have other duties and obligations than Assistant Heads")
     department_name = models.CharField("Department name", max_length=50, help_text="e.g. 'School Management', note that this name is <b>not</b> the entire position title")
-    school_name = models.CharField("School name", max_length=50, default="Thomas-Mann-Schule", help_text="Name of the school/institution the Executive attends.") 
+    school_name = models.CharField("School name", max_length=50, default="Thomas-Mann-Schule", help_text="Name of the school/institution the Executive attends.")
 
 class Staff(Participant):
     ''' Staffs help in some departments and forums to keep the conference running smoothly '''
