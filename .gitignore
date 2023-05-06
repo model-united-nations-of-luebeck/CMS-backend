@@ -119,3 +119,6 @@ venv.bak/
 
 # Secret token file
 /api/mobile_app/secret.py
+
+# PyCharm files
+.idea/
