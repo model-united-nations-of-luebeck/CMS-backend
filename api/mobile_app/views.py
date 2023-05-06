@@ -1,5 +1,7 @@
-import os
+import json
 import secrets
+from typing import Any
+
 import jwt
 
 from datetime import date, timedelta
@@ -12,6 +14,7 @@ from django.template import loader
 from django.utils import timezone
 from requests import get, HTTPError
 from rest_framework import status
+from rest_framework.renderers import JSONRenderer
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
@@ -30,6 +33,7 @@ pgp_key = serialization.load_pem_private_key(RSA_PRIVATE_KEY, password=RSA_PASSP
 
 SENDER_EMAIL = "app@munol.org"
 
+
 def generate_login_code():
     characters = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789"  # Does not contain 0, O, 1, I as to not be ambiguous
     return ''.join(secrets.choice(characters) for _ in range(6))
@@ -47,7 +51,7 @@ class RequestLoginCodeView(APIView):
             # Migrate participant from old CMS
             try:
                 migrated_data = get("https://app.munol.org/migrate_participants.php?email",
-                                     headers={"X-Authorization": MIGRATE_TOKEN}, params={"email": email})
+                                    headers={"X-Authorization": MIGRATE_TOKEN}, params={"email": email})
                 if migrated_data.status_code != 200 and migrated_data.status_code != 403:
                     migrated_data.raise_for_status()
             except HTTPError:
@@ -78,7 +82,8 @@ class RequestLoginCodeView(APIView):
 
         for _ in range(0, 5):
             try:
-                send_mail("MUNOL App verification code", email_txt, f'MUNOL App <{SENDER_EMAIL}>', [email], html_message=email_html, auth_user=SENDER_EMAIL, auth_password=EMAIL_PASSWORD)
+                send_mail("MUNOL App verification code", email_txt, f'MUNOL App <{SENDER_EMAIL}>', [email],
+                          html_message=email_html, auth_user=SENDER_EMAIL, auth_password=EMAIL_PASSWORD)
                 return Response({"detail": "A login code was sent to your email address."})
             except SMTPException:
                 pass
@@ -117,6 +122,11 @@ class LoginView(APIView):
         serializer = DigitalBadgeSerializer(participant)
         badge_data = serializer.data
         badge_data['exp'] = next_conference.enddate + timedelta(days=1)
-        token = jwt.encode(badge_data, pgp_key, algorithm="RS256")
+        token = jwt.encode(badge_data, pgp_key, algorithm="RS256", json_encoder=DigitalBadgeEncoder)
 
         return Response({"digital_badge": token})
+
+
+class DigitalBadgeEncoder(json.JSONEncoder):
+    def encode(self, participant: Any) -> str:
+        return str(JSONRenderer().render(participant))
