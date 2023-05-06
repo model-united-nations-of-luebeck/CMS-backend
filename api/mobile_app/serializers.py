@@ -17,7 +17,7 @@ class DigitalBadgeSerializer(serializers.ModelSerializer):
     class Meta:
         model = Participant
         # This should NEVER serialize __all__, app_code or app_code_expires_by
-        fields = ['first_name', 'last_name', 'picture', 'birthday', 'role', 'position']
+        fields = ['first_name', 'last_name', 'email', 'picture', 'birthday', 'role', 'position']
 
 
 class MigratedParticipantSerializer(ModelSerializer):
