@@ -129,4 +129,4 @@ class LoginView(APIView):
 
 class DigitalBadgeEncoder(json.JSONEncoder):
     def encode(self, participant: Any) -> str:
-        return str(JSONRenderer().render(participant))
+        return JSONRenderer().render(participant).decode('utf-8')
