@@ -135,7 +135,7 @@ class Plenary(models.Model):
 
 class Forum(models.Model):
     ''' A body of the UN, usually committees, councils, commissions, special conferences etc. '''
-    name = models.CharField("Forum Name", max_length=50, help_text="e.g. 'First Committee', 'Economic and Social Council")
+    name = models.CharField("Forum Name", max_length=60, help_text="e.g. 'First Committee', 'Economic and Social Council")
     abbreviation = models.CharField("Abbreviated Forum Name", max_length=10, blank=True, null=True, help_text="e.g. 'GA1', 'ECOSOC'")
     subtitle = models.CharField("Explanatory Subtitle", max_length=75, blank=True, null=True, help_text="e.g. 'Disarmament and International Security")
     email = models.EmailField("E-Mail", blank=True, null=True, help_text="Email will be displayed on website")
@@ -186,7 +186,7 @@ class Participant(Person):
     extras = models.TextField("extra information", blank=True, null=True, help_text="please include here all additional information about diet, allergies, preferences etc. so that we can try to provide a perfect conference")
     ROLE_CHOICES = [("advisor", 'Conference Advisor'), ('chair', 'Chair'), ('delegate', 'Delegate'), ("mun_director", "MUN Director"), ('executive', 'Executive'), ("staff", 'Staff')]
     role = models.CharField("the role they are participating in the conference as", choices=ROLE_CHOICES, max_length=12, blank=True)
-    position = models.TextField("the position specific to their role", blank=True)
+    position = models.CharField("the position specific to their role", max_length=30, blank=True)
     app_code = models.CharField("app login code", blank=True, editable=False, max_length=8, help_text="auto-generated one time login code")
     app_code_expires_by = models.DateTimeField("app code expires by", blank=True, editable=False, null=True, help_text="expiration date for the app code")
 
