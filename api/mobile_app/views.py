@@ -95,8 +95,8 @@ class LoginView(APIView):
         serializer = LoginCodeSerializer(data=request.data)
         if not serializer.is_valid():
             return Response(status=status.HTTP_400_BAD_REQUEST, data={"detail": "Invalid request body."})
-        email = serializer.validated_data["email"]
-        code = serializer.validated_data["code"]
+        email = serializer.validated_data["email"].lower()
+        code = serializer.validated_data["code"].upper()
         try:
             next_conference = Conference.objects.filter(enddate__gte=date.today()).order_by("enddate")[0]
         except Conference.DoesNotExist:
@@ -106,8 +106,8 @@ class LoginView(APIView):
             participant = Participant.objects.get(email__exact=email)
         except Participant.DoesNotExist:
             return Response(status=status.HTTP_403_FORBIDDEN,
-                            data={"detail": "An account with the specified email "
-                                            "address does not exist."})
+                            data={"detail": "An account with the specified email address does not exist. "
+                                            "If you are sure that this is a correct email address, contact app@munol.org."})
         if not participant.app_code or participant.app_code != code:
             return Response(status=status.HTTP_403_FORBIDDEN,
                             data={"detail": "The submitted code was not correct."})
