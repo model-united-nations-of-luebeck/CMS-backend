@@ -13,6 +13,10 @@ class LoginCodeSerializer(serializers.Serializer):
     code = serializers.CharField(min_length=6, max_length=6)
 
 
+class VerifySerializer(serializers.Serializer):
+    token = serializers.CharField()
+
+
 class DigitalBadgeSerializer(serializers.ModelSerializer):
     role = serializers.CharField(source='get_role_display')
     class Meta:

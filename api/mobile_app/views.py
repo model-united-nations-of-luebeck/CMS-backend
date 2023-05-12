@@ -4,7 +4,7 @@ from typing import Any
 
 import jwt
 
-from datetime import date, timedelta
+from datetime import date, timedelta, datetime
 from smtplib import SMTPException
 
 from cryptography.hazmat.backends import default_backend
@@ -12,6 +12,7 @@ from cryptography.hazmat.primitives import serialization
 from django.core.mail import send_mail
 from django.template import loader
 from django.utils import timezone
+from jwt import ExpiredSignatureError, InvalidTokenError
 from requests import get, HTTPError
 from rest_framework import status
 from rest_framework.renderers import JSONRenderer
@@ -24,10 +25,9 @@ from api.models import Participant, Conference
 # Make sure to create a secret.py in the same folder as this file and specify:
 # - MIGRATE_TOKEN for the old CMS
 # - EMAIL_PASSWORD for the smtp auth used in the verification code emails
-# - RSA_PASSPHRASE for the digital badge signature
-# - RSA_PRIVATE_KEY for the digital badge signature
+# - RSA_PUBLIC_KEY, RSA_PRIVATE_KEY, RSA_PASSPHRASE for the digital badge signature
 # Use secret.example.py as a template.
-from api.mobile_app.secret import MIGRATE_TOKEN, RSA_PASSPHRASE, EMAIL_PASSWORD, RSA_PRIVATE_KEY
+from api.mobile_app.secret import MIGRATE_TOKEN, RSA_PASSPHRASE, EMAIL_PASSWORD, RSA_PRIVATE_KEY, RSA_PUBLIC_KEY
 
 pgp_key = serialization.load_pem_private_key(RSA_PRIVATE_KEY, password=RSA_PASSPHRASE, backend=default_backend())
 
@@ -121,10 +121,25 @@ class LoginView(APIView):
 
         serializer = DigitalBadgeSerializer(participant)
         badge_data = serializer.data
-        badge_data['exp'] = next_conference.enddate + timedelta(days=1)
+        badge_data['exp'] = datetime.combine(next_conference.enddate + timedelta(days=1), datetime.min.time())
         token = jwt.encode(badge_data, pgp_key, algorithm="RS256", json_encoder=DigitalBadgeEncoder)
 
         return Response({"digital_badge": token})
+
+
+class VerifyView(APIView):
+    def post(self, request):
+        serializer = VerifySerializer(data=request.data)
+        if not serializer.is_valid():
+            return Response(status=status.HTTP_400_BAD_REQUEST, data={"detail": "Invalid request body."})
+        token = serializer.validated_data['token']
+        try:
+            jwt.decode(token, RSA_PUBLIC_KEY, algorithms=["RS256"])
+        except ExpiredSignatureError:
+            return Response({"expired": True, "invalid": True})
+        except:
+            return Response({"expired": False, "invalid": True})
+        return Response({"expired": False, "invalid": False})
 
 
 class DigitalBadgeEncoder(json.JSONEncoder):
