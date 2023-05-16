@@ -235,11 +235,12 @@ class Participant(Person):
         user = self.user
         super().delete(*args, **kwargs)
         user.delete()
-    position = models.TextField("the position specific to their role", blank=True, max_length=30)
+    position = models.TextField("the position specific to their role", blank=True, max_length=100)
     app_code = models.CharField("app login code", blank=True, editable=False, max_length=8, help_text="auto-generated one time login code")
     app_code_expires_by = models.DateTimeField("app code expires by", blank=True, editable=False, null=True, help_text="expiration date for the app code")
     def save(self, *args, **kwargs):
-        self.email = self.email.lower()
+        if self.email is not None:
+            self.email = self.email.lower()
         return super().save(*args, **kwargs)
 
 class Event(models.Model):
