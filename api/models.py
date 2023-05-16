@@ -186,11 +186,12 @@ class Participant(Person):
     extras = models.TextField("extra information", blank=True, null=True, help_text="please include here all additional information about diet, allergies, preferences etc. so that we can try to provide a perfect conference")
     ROLE_CHOICES = [("advisor", 'Conference Advisor'), ('chair', 'Chair'), ('delegate', 'Delegate'), ("mun_director", "MUN Director"), ('executive', 'Executive'), ("staff", 'Staff')]
     role = models.CharField("the role they are participating in the conference as", choices=ROLE_CHOICES, max_length=12, blank=True)
-    position = models.CharField("the position specific to their role", max_length=30, blank=True)
+    position = models.CharField("the position specific to their role", max_length=100, blank=True)
     app_code = models.CharField("app login code", blank=True, editable=False, max_length=8, help_text="auto-generated one time login code")
     app_code_expires_by = models.DateTimeField("app code expires by", blank=True, editable=False, null=True, help_text="expiration date for the app code")
     def save(self, *args, **kwargs):
-        self.email = self.email.lower()
+        if self.email is not None:
+            self.email = self.email.lower()
         return super().save(*args, **kwargs)
 
 class Delegate(Participant):
