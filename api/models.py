@@ -37,7 +37,8 @@ class School(models.Model):
         (GUEST_FAMILY, 'guest family'),
         (OTHER, 'other self-organized accommodation')
     ]
-    housing = models.CharField("Housing option", max_length=50, choices=HOUSING_OPTIONS, default=OTHER, help_text="Please note, that housing in guest families is not available for all delegations and we will prefer international delegations in our housing who travels the longest distances.")
+    housing_delegates = models.CharField("Housing option for delegates", max_length=50, choices=HOUSING_OPTIONS, default=OTHER, help_text="Please note, that housing in guest families is not available for all delegations and we will prefer international delegations in our housing who travel the longest distances.")
+    housing_mun_directors = models.CharField("Housing option for MUN-Directors", max_length=50, choices=HOUSING_OPTIONS, default=OTHER, help_text="Please note, that housing in guest families is not available for all delegations and we will prefer international delegations in our housing who travels the longest distances.")
     WAITING_FOR_PRE_REGISTRATION = 'WAITING_FOR_PRE_REGISTRATION'
     PRE_REGISTRATION_DONE = 'PRE_REGISTRATION_DONE'
     WAITING_FOR_DATA_PROTECTION = 'WAITING_FOR_DATA_PROTECTION'
@@ -186,6 +187,7 @@ class Participant(Person):
 class Delegate(Participant):
     ''' Delegates are the main participants of MUN :model:`api.Conference` and represent a delegation's position in their :model:`api.Forum`. '''
     ambassador = models.BooleanField("Is the delegate the delegation's ambassador?", default=False, help_text="one delegate per delegation has to be selected to be the ambassador of the delegation") # Question: how do we ensure that there is one, but only one ambassador per delegation? Do we do it on database level or in front end software? Answer: Do it in front end and not in DB. If no ambassador is chosen, we simply select the first one of each delegation.
+    first_timer = models.BooleanField("It the delegate participating in their first MUN conference?", default=True, help_text="There is a first MUN conference for everyone. Knowing this in advance, the team can prepare a smooth first conference for first timers.")
     represents = models.ForeignKey(MemberOrganization, help_text = "select member organization which is represented by this delegate", on_delete=models.PROTECT)
     school = models.ForeignKey(School, help_text = "select the school which is attended by this delegate", on_delete=models.PROTECT)
     forum = models.ForeignKey(Forum, help_text="Select which forum this Delegate is a member of", on_delete=models.PROTECT)
