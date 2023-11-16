@@ -11,7 +11,7 @@ class ConferenceSerializer(serializers.ModelSerializer):
 class SchoolSerializer(serializers.ModelSerializer):
     class Meta:
         model = School
-        fields = ['id', 'name', 'street', 'city', 'zipcode', 'country', 'requested', 'housing_delegates', 'housing_mundirectors', 'registration_status', 'fee', 'arrival', 'departure', 'comment']
+        fields = ['id', 'name', 'street', 'city', 'zipcode', 'country', 'requested', 'housing_delegates', 'housing_mun_directors', 'registration_status', 'fee', 'arrival', 'departure', 'comment']
 
 class MemberOrganizationSerializer(serializers.ModelSerializer):
     class Meta:
