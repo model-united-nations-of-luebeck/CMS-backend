@@ -11,7 +11,7 @@ class ConferenceSerializer(serializers.ModelSerializer):
 class SchoolSerializer(serializers.ModelSerializer):
     class Meta:
         model = School
-        fields = ['id', 'name', 'street', 'city', 'zipcode', 'country', 'requested', 'housing', 'registration_status', 'fee', 'arrival', 'departure', 'comment']
+        fields = ['id', 'name', 'street', 'city', 'zipcode', 'country', 'requested', 'housing_delegates', 'housing_mundirectors', 'registration_status', 'fee', 'arrival', 'departure', 'comment']
 
 class MemberOrganizationSerializer(serializers.ModelSerializer):
     class Meta:
@@ -66,7 +66,7 @@ class StudentOfficerSerializer(serializers.ModelSerializer):
 class MUNDirectorSerializer(serializers.ModelSerializer):
     class Meta:
         model = MUNDirector
-        fields = ['id', 'first_name', 'last_name', 'gender', 'email', 'mobile', 'diet', 'picture', 'birthday', 'extras', 'landline_phone', 'english_teacher', 'school', 'housing']
+        fields = ['id', 'first_name', 'last_name', 'gender', 'email', 'mobile', 'diet', 'picture', 'birthday', 'extras', 'landline_phone', 'english_teacher', 'school']
 
 class ExecutiveSerializer(serializers.ModelSerializer):
     class Meta:

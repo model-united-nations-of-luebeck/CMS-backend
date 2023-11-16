@@ -211,12 +211,7 @@ class MUNDirector(Participant):
     HOSTEL = 'hostel'
     GUEST_FAMILY = 'guest family'
     OTHER = 'other'
-    HOUSING_OPTIONS = [
-        (HOSTEL, 'hostel'),
-        (GUEST_FAMILY, 'guest family'),
-        (OTHER, 'other self-organized accommodation')
-    ]
-    housing = models.CharField("Housing option", max_length=50, choices=HOUSING_OPTIONS, default=OTHER, help_text="Please note, that housing in guest families is not available for all MUN-Directors.")
+    help_text="Please note, that housing in guest families is not available for all MUN-Directors."
     # Figure out how to set BIRTHDAY to >18 because this can be assumed. 
     # Solved: We don't need to store a Birthday, it can also be blank and then we don't show it for MUN Directors, only for other participants and enforce setting a birthday there.
     class Meta:

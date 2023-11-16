@@ -57,7 +57,9 @@ def generate_schools(n:int=30):
     
     for _ in range(n):
         
-        school = School.objects.get_or_create(name=fake.name() + "-School", street=fake.street_name(), city=fake.city(), zipcode=fake.postcode(), country=fake.country(), requested=random.randint(1,30), housing=select_randomly_from_choices(School.HOUSING_OPTIONS), registration_status=select_randomly_from_choices(School.STATUS_CHOICES), fee=random.choice([True, False]), arrival=fake.text(), departure=fake.text(), comment=fake.text())
+        school = School.objects.get_or_create(name=fake.name() + "-School", street=fake.street_name(), city=fake.city(), zipcode=fake.postcode(), country=fake.country(), requested=random.randint(1,30), housing_delegates=select_randomly_from_choices(School.HOUSING_OPTIONS),
+        housing_mun_directors=select_randomly_from_choices(School.HOUSING_OPTIONS),  
+        registration_status=select_randomly_from_choices(School.STATUS_CHOICES), fee=random.choice([True, False]), arrival=fake.text(), departure=fake.text(), comment=fake.text())
 
 
 def generate_advisors(n:int=20):
@@ -98,7 +100,7 @@ def generate_mun_directors(n:int=50):
     
     for _ in range(n):
 
-        mun_director = MUNDirector.objects.get_or_create(first_name=fake.first_name(), last_name=fake.first_name(), gender=select_randomly_from_choices(Person.GENDER_CHOICES), email=fake.email(), mobile=generate_valid_phone_number(), diet=select_randomly_from_choices(Participant.DIET_CHOICES), birthday=fake.date(), extras=fake.text(), landline_phone=generate_valid_phone_number(), english_teacher=random.choice([True, False]), school=random.choice(School.objects.all()), housing=select_randomly_from_choices(MUNDirector.HOUSING_OPTIONS))
+        mun_director = MUNDirector.objects.get_or_create(first_name=fake.first_name(), last_name=fake.first_name(), gender=select_randomly_from_choices(Person.GENDER_CHOICES), email=fake.email(), mobile=generate_valid_phone_number(), diet=select_randomly_from_choices(Participant.DIET_CHOICES), birthday=fake.date(), extras=fake.text(), landline_phone=generate_valid_phone_number(), english_teacher=random.choice([True, False]), school=random.choice(School.objects.all()))
 
 def generate_student_officers(n:int=30):
     '''
