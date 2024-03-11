@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'phonenumber_field',
     'django_extensions',
     'django.contrib.admindocs',
+    'django_filters',
     'rest_framework',
     'rest_framework.authtoken',
     'drfpasswordless',
@@ -157,7 +158,8 @@ REST_FRAMEWORK = {
     ],
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.IsAdminUser', 
-    ]
+    ],
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend']
 }
 
 # allowing CORS for client in development only
