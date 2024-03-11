@@ -48,30 +48,37 @@ class ForumViewSet(GenericMUNOLViewSet):
 class ParticipantViewSet(GenericMUNOLViewSet):
     queryset = Participant.objects.all()
     serializer_class = ParticipantSerializer
+    filterset_fields = ['email']
 
 class DelegateViewSet(GenericMUNOLViewSet):
     queryset = Delegate.objects.all()
     serializer_class = DelegateSerializer
+    filterset_fields = ['email']
 
 class StudentOfficerViewSet(GenericMUNOLViewSet):
     queryset = StudentOfficer.objects.all()
     serializer_class = StudentOfficerSerializer
+    filterset_fields = ['email']
 
 class MUNDirectorViewSet(GenericMUNOLViewSet):
     queryset = MUNDirector.objects.all()
     serializer_class = MUNDirectorSerializer
+    filterset_fields = ['email']
 
 class ExecutiveViewSet(GenericMUNOLViewSet):
     queryset = Executive.objects.all()
     serializer_class = ExecutiveSerializer
+    filterset_fields = ['email']
 
 class StaffViewSet(GenericMUNOLViewSet):
     queryset = Staff.objects.all()
     serializer_class = StaffSerializer
+    filterset_fields = ['email']
 
 class AdvisorViewSet(GenericMUNOLViewSet):
     queryset = Advisor.objects.all()
     serializer_class = AdvisorSerializer
+    filterset_fields = ['email']
 
 class IssueViewSet(GenericMUNOLViewSet):
     queryset = Issue.objects.all()
