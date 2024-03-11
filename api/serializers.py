@@ -31,7 +31,7 @@ class RoomSerializer(serializers.ModelSerializer):
 class EventSerializer(serializers.ModelSerializer):
     class Meta:
         model = Event
-        fields = ['id', 'name', 'day', 'start_time', 'end_time', 'info', 'location']
+        fields = ['id', 'name', 'day', 'start_time', 'end_time', 'info', 'location', 'relevance']
 
 class LunchSerializer(serializers.ModelSerializer):
     class Meta:
@@ -51,7 +51,7 @@ class ForumSerializer(serializers.ModelSerializer):
 class ParticipantSerializer(serializers.ModelSerializer):
     class Meta:
         model = Participant
-        fields = ['id', 'first_name', 'last_name', 'gender', 'email', 'mobile', 'diet', 'picture', 'birthday', 'extras']
+        fields = ['id', 'first_name', 'last_name', 'gender', 'email', 'mobile', 'diet', 'picture', 'birthday', 'extras', 'role']
 
 class DelegateSerializer(serializers.ModelSerializer):
     class Meta:
