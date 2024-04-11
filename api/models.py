@@ -57,8 +57,10 @@ class School(models.Model):
         (GUEST_FAMILY, 'guest family'),
         (OTHER, 'other self-organized accommodation')
     ]
-    housing_delegates = models.CharField("Housing option for delegates", max_length=50, choices=HOUSING_OPTIONS, default=OTHER, help_text="Please note, that housing in guest families is not available for all delegations and we will prefer international delegations in our housing who travel the longest distances.")
-    housing_mun_directors = models.CharField("Housing option for MUN-Directors", max_length=50, choices=HOUSING_OPTIONS, default=OTHER, help_text="Please note, that housing in guest families is not available for all delegations and we will prefer international delegations in our housing who travels the longest distances.")
+    housing_delegates = models.CharField("Housing option for delegates", max_length=50, choices=HOUSING_OPTIONS, default=OTHER,
+                                         help_text="Please note, that housing in guest families is not available for all delegations and we will prefer international delegations in our housing who travel the longest distances.")
+    housing_mun_directors = models.CharField("Housing option for MUN-Directors", max_length=50, choices=HOUSING_OPTIONS, default=OTHER,
+                                             help_text="Please note, that housing in guest families is not available for all delegations and we will prefer international delegations in our housing who travels the longest distances.")
     WAITING_FOR_PRE_REGISTRATION = 'WAITING_FOR_PRE_REGISTRATION'
     PRE_REGISTRATION_DONE = 'PRE_REGISTRATION_DONE'
     WAITING_FOR_DATA_PROTECTION = 'WAITING_FOR_DATA_PROTECTION'
@@ -166,9 +168,11 @@ class Person(models.Model):
         (FEMALE, 'female'),
         (OTHER, 'other')
     ]
-    gender = models.CharField("gender", max_length=1, choices=GENDER_CHOICES, default=FEMALE, help_text="the diversity of genders is reflected in the 'other' choice")
+    gender = models.CharField("gender", max_length=1, choices=GENDER_CHOICES, default=FEMALE,
+                              help_text="the diversity of genders is reflected in the 'other' choice")
     email = models.EmailField("E-Mail", blank=True, null=True)
-    mobile = PhoneNumberField("mobile phone", blank=True,  null=True, help_text="remember to include the country code, e.g. for Germany +49 and then leave out the leading 0")
+    mobile = PhoneNumberField("mobile phone", blank=True,  null=True,
+                              help_text="remember to include the country code, e.g. for Germany +49 and then leave out the leading 0")
 
     class Meta:
         abstract = True
@@ -189,65 +193,92 @@ class Participant(Person):
     ]
     diet = models.CharField("diet", max_length=10, choices=DIET_CHOICES, default=VEGETARIAN,
                             help_text="main diet, smaller variations like allergies shall be indicated in the extras field")
-    ROLE_CHOICES = [("advisor", 'Conference Advisor'), ('chair', 'Chair'), ('delegate', 'Delegate'),
+    ROLE_CHOICES = [("advisor", 'Conference Advisor'), ('student officer', 'Student Officer'), ('delegate', 'Delegate'),
                     ("mun_director", "MUN Director"), ('executive', 'Executive'), ("staff", 'Staff')]
     role = models.CharField("the role they are participating in the conference as",
-                            choices=ROLE_CHOICES, max_length=12, blank=True, editable=False)
+                            choices=ROLE_CHOICES, max_length=15, blank=True, editable=False)
     picture = models.ImageField("badge photo", blank=True, null=True, upload_to="images/badge_photos",
                                 help_text="please provide a passport-style photo for the badge")
     birthday = models.DateField("birthday", blank=True, null=True)
-    extras = models.TextField("extra information", blank=True, null=True, help_text="please include here all additional information about diet, allergies, preferences etc. so that we can try to provide a perfect conference")
+    extras = models.TextField("extra information", blank=True, null=True,
+                              help_text="please include here all additional information about diet, allergies, preferences etc. so that we can try to provide a perfect conference")
 
 
 class Event(models.Model):
     ''' An event during the conference '''
-    name = models.CharField("Event name", max_length=100, help_text="How is the event called")
+    name = models.CharField("Event name", max_length=100,
+                            help_text="How is the event called")
     day = models.DateField("Day", help_text="On which day does it take place?")
-    start_time = models.TimeField("Start Time", help_text="Specify the beginning time")
-    end_time = models.TimeField("End Time", blank=True, null=True, help_text="Specify the end time, none if it's open ended")
-    info = models.CharField("Additional information", blank=True, null=True, max_length=200, help_text="Add additional information, e.g. dress code, speakers title")
-    location = models.ForeignKey(Location, blank=True, null=True, help_text="Select where the event happens", on_delete=models.SET_NULL)
-    relevance = MultiSelectField(choices=Participant.ROLE_CHOICES, blank=True, null=True)
+    start_time = models.TimeField(
+        "Start Time", help_text="Specify the beginning time")
+    end_time = models.TimeField("End Time", blank=True, null=True,
+                                help_text="Specify the end time, none if it's open ended")
+    info = models.CharField("Additional information", blank=True, null=True, max_length=200,
+                            help_text="Add additional information, e.g. dress code, speakers title")
+    location = models.ForeignKey(Location, blank=True, null=True,
+                                 help_text="Select where the event happens", on_delete=models.SET_NULL)
+    relevance = MultiSelectField(
+        choices=Participant.ROLE_CHOICES, blank=True, null=True)
 
     def __str__(self):
         return "{}, {}, {}".format(self.name, self.day, self.start_time)
 
+
 class Lunch(Event):
     ''' important event of the day '''
 
+
 class Plenary(models.Model):
     ''' A plenary session of several forums '''
-    name = models.CharField("Plenary Name", max_length=50, help_text="e.g. 'General Assembly' or 'Economic and Social Council'")
-    location = models.ForeignKey(Location, blank=True, null=True, help_text="Select a conference venue where this plenary takes place", on_delete=models.SET_NULL)
-    lunches = models.ManyToManyField(Lunch)  #might have to be limited to 3 or 5 lunch events per plenary
+    name = models.CharField("Plenary Name", max_length=50,
+                            help_text="e.g. 'General Assembly' or 'Economic and Social Council'")
+    location = models.ForeignKey(Location, blank=True, null=True,
+                                 help_text="Select a conference venue where this plenary takes place", on_delete=models.SET_NULL)
+    # might have to be limited to 3 or 5 lunch events per plenary
+    lunches = models.ManyToManyField(Lunch)
 
     def __str__(self):
         return self.name
+
 
 class Forum(models.Model):
     ''' A body of the UN, usually committees, councils, commissions, special conferences etc. '''
-    name = models.CharField("Forum Name", max_length=50, help_text="e.g. 'First Committee', 'Economic and Social Council")
-    abbreviation = models.CharField("Abbreviated Forum Name", max_length=10, blank=True, null=True, help_text="e.g. 'GA1', 'ECOSOC'")
-    subtitle = models.CharField("Explanatory Subtitle", max_length=75, blank=True, null=True, help_text="e.g. 'Disarmament and International Security")
-    email = models.EmailField("E-Mail", blank=True, null=True, help_text="Email will be displayed on website")
-    room = models.ForeignKey(Room, blank=True, null=True, help_text="Select a Room within the conference venue", on_delete=models.SET_NULL)
-    plenary = models.ForeignKey(Plenary, blank=True, null=True, help_text="Select a Plenary if this forum is part of it, otherwise choose none.", on_delete=models.SET_NULL)
-    lunches = models.ManyToManyField(Lunch, blank=True)  #might have to be limited to 3 or 5 lunch events per forum
+    name = models.CharField("Forum Name", max_length=50,
+                            help_text="e.g. 'First Committee', 'Economic and Social Council")
+    abbreviation = models.CharField(
+        "Abbreviated Forum Name", max_length=10, blank=True, null=True, help_text="e.g. 'GA1', 'ECOSOC'")
+    subtitle = models.CharField("Explanatory Subtitle", max_length=75, blank=True,
+                                null=True, help_text="e.g. 'Disarmament and International Security")
+    email = models.EmailField(
+        "E-Mail", blank=True, null=True, help_text="Email will be displayed on website")
+    room = models.ForeignKey(Room, blank=True, null=True,
+                             help_text="Select a Room within the conference venue", on_delete=models.SET_NULL)
+    plenary = models.ForeignKey(Plenary, blank=True, null=True,
+                                help_text="Select a Plenary if this forum is part of it, otherwise choose none.", on_delete=models.SET_NULL)
+    # might have to be limited to 3 or 5 lunch events per forum
+    lunches = models.ManyToManyField(Lunch, blank=True)
 
     def __str__(self):
         return self.name
-        
+
 
 class Delegate(Participant):
     ''' Delegates are the main participants of MUN :model:`api.Conference` and represent a delegation's position in their :model:`api.Forum`. '''
-    ambassador = models.BooleanField("Is the delegate the delegation's ambassador?", default=False, help_text="one delegate per delegation has to be selected to be the ambassador of the delegation") # Question: how do we ensure that there is one, but only one ambassador per delegation? Do we do it on database level or in front end software? Answer: Do it in front end and not in DB. If no ambassador is chosen, we simply select the first one of each delegation.
-    first_timer = models.BooleanField("It the delegate participating in their first MUN conference?", default=True, help_text="There is a first MUN conference for everyone. Knowing this in advance, the team can prepare a smooth first conference for first timers.")
-    represents = models.ForeignKey(MemberOrganization, help_text = "select member organization which is represented by this delegate", on_delete=models.PROTECT)
-    school = models.ForeignKey(School, help_text = "select the school which is attended by this delegate", on_delete=models.PROTECT)
-    forum = models.ForeignKey(Forum, help_text="Select which forum this Delegate is a member of", on_delete=models.PROTECT)
+    ambassador = models.BooleanField("Is the delegate the delegation's ambassador?", default=False,
+                                     help_text="one delegate per delegation has to be selected to be the ambassador of the delegation")  # Question: how do we ensure that there is one, but only one ambassador per delegation? Do we do it on database level or in front end software? Answer: Do it in front end and not in DB. If no ambassador is chosen, we simply select the first one of each delegation.
+    first_timer = models.BooleanField("It the delegate participating in their first MUN conference?", default=True,
+                                      help_text="There is a first MUN conference for everyone. Knowing this in advance, the team can prepare a smooth first conference for first timers.")
+    represents = models.ForeignKey(
+        MemberOrganization, help_text="select member organization which is represented by this delegate", on_delete=models.PROTECT)
+    school = models.ForeignKey(
+        School, help_text="select the school which is attended by this delegate", on_delete=models.PROTECT)
+    forum = models.ForeignKey(
+        Forum, help_text="Select which forum this Delegate is a member of", on_delete=models.PROTECT)
+
     def save(self, *args, **kwargs):
         self.role = 'delegate'
         return super().save(*args, **kwargs)
+
 
 class StudentOfficer(Participant):
     ''' Student Officers are the participants that chair a forum '''
@@ -267,7 +298,7 @@ class StudentOfficer(Participant):
         verbose_name = "Student Officer"
 
     def save(self, *args, **kwargs):
-        self.role = 'chair'
+        self.role = 'student officer'
         return super().save(*args, **kwargs)
 
 
@@ -282,8 +313,8 @@ class MUNDirector(Participant):
     HOSTEL = 'hostel'
     GUEST_FAMILY = 'guest family'
     OTHER = 'other'
-    help_text="Please note, that housing in guest families is not available for all MUN-Directors."
-    # Figure out how to set BIRTHDAY to >18 because this can be assumed. 
+    help_text = "Please note, that housing in guest families is not available for all MUN-Directors."
+    # Figure out how to set BIRTHDAY to >18 because this can be assumed.
     # Solved: We don't need to store a Birthday, it can also be blank and then we don't show it for MUN Directors, only for other participants and enforce setting a birthday there.
 
     class Meta:
@@ -296,14 +327,19 @@ class MUNDirector(Participant):
 
 class Executive(Participant):
     ''' Executives are part of the organising team '''
-    position_name = models.CharField("Position name", max_length=50, help_text="e.g. 'Assistant Head of School Management'")
-    position_level = models.BooleanField("Is this the Head of this position?", default=False, help_text="Main Head might have other duties and obligations than Assistant Heads")
-    department_name = models.CharField("Department name", max_length=50, help_text="e.g. 'School Management', note that this name is <b>not</b> the entire position title")
-    school_name = models.CharField("School name", max_length=50, default="Thomas-Mann-Schule", help_text="Name of the school/institution the Executive attends.") 
-    
+    position_name = models.CharField(
+        "Position name", max_length=50, help_text="e.g. 'Assistant Head of School Management'")
+    position_level = models.BooleanField("Is this the Head of this position?", default=False,
+                                         help_text="Main Head might have other duties and obligations than Assistant Heads")
+    department_name = models.CharField(
+        "Department name", max_length=50, help_text="e.g. 'School Management', note that this name is <b>not</b> the entire position title")
+    school_name = models.CharField("School name", max_length=50, default="Thomas-Mann-Schule",
+                                   help_text="Name of the school/institution the Executive attends.")
+
     def save(self, *args, **kwargs):
         self.role = 'executive'
         return super().save(*args, **kwargs)
+
 
 class Staff(Participant):
     ''' Staffs help in some departments and forums to keep the conference running smoothly '''
@@ -315,6 +351,7 @@ class Staff(Participant):
     def save(self, *args, **kwargs):
         self.role = 'staff'
         return super().save(*args, **kwargs)
+
 
 class Advisor(Participant):
     ''' Advisors are former participants who now support the conference with their knowledge '''
@@ -330,6 +367,7 @@ class Advisor(Participant):
     def save(self, *args, **kwargs):
         self.role = 'advisor'
         return super().save(*args, **kwargs)
+
 
 class Issue(models.Model):
     ''' An Issue on the Agenda of the conference '''
