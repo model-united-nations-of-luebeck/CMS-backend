@@ -1,5 +1,5 @@
 appdirs==1.4.3
-asgiref==3.2.10
+asgiref=3.8.1
 Babel==2.9.1
 certifi==2023.7.22
 distlib==0.3.0
