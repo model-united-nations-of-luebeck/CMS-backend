@@ -231,7 +231,8 @@ class Lunch(Event):
 class Plenary(models.Model):
     ''' A plenary session of several forums '''
     name = models.CharField("Plenary Name", max_length=50,
-                            help_text="e.g. 'General Assembly' or 'Economic and Social Council'")
+                            help_text="e.g. 'General Assembly' or 'Economic and Social Council'"),
+    abbreviation = models.CharField("Abbreviated Plenary Name", max_length=10, blank=True, null=True, help_text="e.g. 'GA', 'ECOSOC'"),
     location = models.ForeignKey(Location, blank=True, null=True,
                                  help_text="Select a conference venue where this plenary takes place", on_delete=models.SET_NULL)
     # might have to be limited to 3 or 5 lunch events per plenary
