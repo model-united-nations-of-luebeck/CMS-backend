@@ -41,7 +41,7 @@ class LunchSerializer(serializers.ModelSerializer):
 class PlenarySerializer(serializers.ModelSerializer):
     class Meta:
         model = Plenary
-        fields = ['id', 'name', 'location', 'lunches']
+        fields = ['id', 'name', 'abbreviation', 'location', 'lunches']
 
 class ForumSerializer(serializers.ModelSerializer):
     class Meta:
