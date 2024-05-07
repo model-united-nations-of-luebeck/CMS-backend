@@ -236,7 +236,7 @@ class Plenary(models.Model):
     location = models.ForeignKey(Location, blank=True, null=True,
                                  help_text="Select a conference venue where this plenary takes place", on_delete=models.SET_NULL)
     # might have to be limited to 3 or 5 lunch events per plenary
-    lunches = models.ManyToManyField(Lunch, blank=True, null=True)
+    lunches = models.ManyToManyField(Lunch, blank=True)
 
     def __str__(self):
         return self.name
