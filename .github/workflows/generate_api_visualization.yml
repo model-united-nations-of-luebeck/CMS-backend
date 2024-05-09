@@ -1,10 +1,10 @@
 name: Generate API Visualization
-# This workflow is triggered on push events to 'master' branch, and pull request events on any branch, only when 'api/models.py' is modified. Or when a developer triggers it. It generates an API visualization file and pushes it to the repository, so that it can be viewed in the GitHub repository README.
+# This workflow is triggered on push events to 'main' branch, and pull request events on any branch, only when 'api/models.py' is modified. Or when a developer triggers it. It generates an API visualization file and pushes it to the repository, so that it can be viewed in the GitHub repository README.
 
 on:
   push:
     branches:
-      - master
+      - main
     paths:
       - "api/models.py"
   pull_request:
