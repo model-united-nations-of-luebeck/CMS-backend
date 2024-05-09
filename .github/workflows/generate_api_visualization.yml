@@ -18,10 +18,9 @@ jobs:
 
     steps:
       - name: Checkout code
-        - name: Checkout code
-          uses: actions/checkout@v4
-          with:
-            ref: ${{ github.event.pull_request.head.ref || github.ref }} # Use the branch name of the pull request, if it is a pull request event. Otherwise, use the branch name of the push event or manually selected branch when triggered manually.
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.ref || github.ref }} # Use the branch name of the pull request, if it is a pull request event. Otherwise, use the branch name of the push event or manually selected branch when triggered manually.
 
       - name: Set up Python
         uses: actions/setup-python@v5
