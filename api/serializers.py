@@ -1,4 +1,5 @@
 from rest_framework import serializers
+from drf_writable_nested.serializers import WritableNestedModelSerializer
 from api.models import Conference, School, MemberOrganization, Location, Room, Event, Lunch, Plenary, Forum, Participant, Delegate, StudentOfficer, MUNDirector, Executive, Staff, Advisor, Issue, Document, ResearchReport, PositionPaper
 
 # Serializers convert to JSON and validate data passed
@@ -28,22 +29,37 @@ class RoomSerializer(serializers.ModelSerializer):
         model = Room
         fields = ['id', 'name', 'latitude', 'longitude', 'zoom_level', 'address', 'room_number', 'floor']
 
-class EventSerializer(serializers.ModelSerializer):
+class EventSerializer(WritableNestedModelSerializer):
+    # Direct Foreign Key Relationship
+    location = LocationSerializer(allow_null=True)
+
     class Meta:
         model = Event
         fields = ['id', 'name', 'day', 'start_time', 'end_time', 'info', 'location', 'relevance']
 
-class LunchSerializer(serializers.ModelSerializer):
+class LunchSerializer(WritableNestedModelSerializer):
+    # Direct Foreign Key Relationship
+    location = LocationSerializer(allow_null=True)
+
     class Meta:
         model = Lunch
         fields = ['id', 'name', 'day', 'start_time', 'end_time', 'info', 'location']
 
-class PlenarySerializer(serializers.ModelSerializer):
+class PlenarySerializer(WritableNestedModelSerializer):
+    # Direct Foreign Key Relationship
+    location = LocationSerializer(allow_null=True)
+    lunches = LunchSerializer(many=True, allow_null=True)
+
     class Meta:
         model = Plenary
         fields = ['id', 'name', 'abbreviation', 'location', 'lunches']
 
-class ForumSerializer(serializers.ModelSerializer):
+class ForumSerializer(WritableNestedModelSerializer):
+    # Direct Foreign Key Relationships
+    plenary = PlenarySerializer(allow_null=True)
+    room = RoomSerializer(allow_null=True)
+    lunches = LunchSerializer(many=True, allow_null=True)
+
     class Meta:
         model = Forum
         fields = ['id', 'name', 'abbreviation', 'subtitle', 'email', 'room', 'plenary', 'lunches']
@@ -53,17 +69,29 @@ class ParticipantSerializer(serializers.ModelSerializer):
         model = Participant
         fields = ['id', 'first_name', 'last_name', 'gender', 'email', 'mobile', 'diet', 'picture', 'birthday', 'extras', 'role']
 
-class DelegateSerializer(serializers.ModelSerializer):
+class DelegateSerializer(WritableNestedModelSerializer):
+    # Direct Foreign Key Relationships
+    represents = MemberOrganizationSerializer(allow_null=True)
+    school = SchoolSerializer(allow_null=True)
+    forum = ForumSerializer(allow_null=True)
+
     class Meta:
         model = Delegate
         fields = ['id', 'first_name', 'last_name', 'gender', 'email', 'mobile', 'diet', 'picture', 'birthday', 'extras', 'ambassador', 'represents', 'school', 'forum']
 
-class StudentOfficerSerializer(serializers.ModelSerializer):
+class StudentOfficerSerializer(WritableNestedModelSerializer):
+    # Direct Foreign Key Relationships
+    forum = ForumSerializer(allow_null=True)
+    plenary = PlenarySerializer(allow_null=True)
+
     class Meta:
         model = StudentOfficer
         fields = ['id', 'first_name', 'last_name', 'gender', 'email', 'mobile', 'diet', 'picture', 'birthday', 'extras', 'position_name', 'position_level', 'school_name', 'forum', 'plenary']
 
-class MUNDirectorSerializer(serializers.ModelSerializer):
+class MUNDirectorSerializer(WritableNestedModelSerializer):
+    # Direct Foreign Key Relationship
+    school = SchoolSerializer(allow_null=True)
+
     class Meta:
         model = MUNDirector
         fields = ['id', 'first_name', 'last_name', 'gender', 'email', 'mobile', 'diet', 'picture', 'birthday', 'extras', 'landline_phone', 'english_teacher', 'school']
@@ -83,22 +111,31 @@ class AdvisorSerializer(serializers.ModelSerializer):
         model = Advisor
         fields = ['id', 'first_name', 'last_name', 'gender', 'email', 'mobile', 'diet', 'picture', 'birthday', 'extras', 'car', 'availability', 'experience', 'help']
 
-class IssueSerializer(serializers.ModelSerializer):
+class IssueSerializer(WritableNestedModelSerializer):
+    # Direct Foreign Key Relationship
+    forum = ForumSerializer(allow_null=True)
+
     class Meta:
         model = Issue
         fields = ['id', 'name', 'forum']
-        
+       
 class DocumentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Document
         fields = ['id', 'name', 'file', 'created', 'author']
-        
-class ResearchReportSerializer(serializers.ModelSerializer):
+       
+class ResearchReportSerializer(WritableNestedModelSerializer):
+    # Direct Foreign Key Relationship
+    issue = IssueSerializer(allow_null=True)
+
     class Meta:
         model = ResearchReport
         fields = ['id', 'name', 'file', 'created', 'author', 'issue']
                 
-class PositionPaperSerializer(serializers.ModelSerializer):
+class PositionPaperSerializer(WritableNestedModelSerializer):
+    # Direct Foreign Key Relationship
+    delegate = DelegateSerializer(allow_null=True)
+
     class Meta:
         model = PositionPaper
         fields = ['id', 'name', 'file', 'created', 'author', 'delegate']
