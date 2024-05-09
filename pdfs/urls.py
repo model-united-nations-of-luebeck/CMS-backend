@@ -1,9 +1,9 @@
 from django.urls import path
-from placards import placards, custom_placard, executive_placards, student_officer_placards
-from badges import advisor_badge, executive_badge, delegate_badge, staff_badge, student_officer_badge, mundirector_badge, custom_badge
-from certificates import delegate_certificate, student_officer_certificate, executives_certificate, staff_certificate, mundirector_certificate
-from roll_call_lists import forum_roll_call_list
-from signs import sign
+from .placards import placards, custom_placard, executive_placards, student_officer_placards
+from .badges import advisor_badge, executive_badge, delegate_badge, staff_badge, student_officer_badge, mundirector_badge, custom_badge
+from .certificates import delegate_certificate, student_officer_certificate, executives_certificate, staff_certificate, mundirector_certificate
+from .roll_call_lists import forum_roll_call_list
+from .signs import sign
 
 app_name = 'pdfs'
 
