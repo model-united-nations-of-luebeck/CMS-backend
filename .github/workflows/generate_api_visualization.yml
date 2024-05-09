@@ -1,6 +1,16 @@
 name: Generate API Visualization
+# This workflow is triggered on push events to 'master' branch, and pull request events on any branch, only when 'api/models.py' is modified. Or when a developer triggers it. It generates an API visualization file and pushes it to the repository, so that it can be viewed in the GitHub repository README.
 
-on: [push]
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - "api/models.py"
+  pull_request:
+    paths:
+      - "api/models.py"
+  workflow_dispatch:
 
 jobs:
   generate_api_visualization:
@@ -9,8 +19,6 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 2
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -20,18 +28,19 @@ jobs:
       - name: Set up Graphviz
         uses: ts-graphviz/setup-graphviz@v2
 
-      - name: Check for changes in api/models.py and generate API visualization if necessary
+      - name: Install dependencies
         run: |
-          if git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep -q "api/models.py"; then
-            echo "api/models.py has been modified."
-            python -m pip install -r requirements.txt
-            python -m pip install pygraphviz
-            python manage.py graph_models -a -t original -g --hide-edge-labels -X AbstractBaseSession,Session,User,AbstractBaseUser,PermissionsMixin,AbstractUser,Group,Permission,ContentType,LogEntry -o api_visualization.png
-            git config --local user.email "action@github.com"
-            git config --local user.name "GitHub Action"
-            git add api_visualization.png
-            git commit -m "Update API visualization due to changes in api/models.py."
-            git push
-          else
-            echo "api/models.py has not been modified."
-          fi
+          python -m pip install -r requirements.txt
+          python -m pip install pygraphviz
+
+      - name: Generate API visualization
+        run: |
+          python manage.py graph_models -a -t original -g --hide-edge-labels -X AbstractBaseSession,Session,User,AbstractBaseUser,PermissionsMixin,AbstractUser,Group,Permission,ContentType,LogEntry -o api_visualization.png
+
+      - name: Commit and push API visualization
+        run: |
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "github-actions[bot]"
+          git add api_visualization.png
+          git commit -m "Generate API visualization"
+          git push
