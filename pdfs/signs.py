@@ -16,10 +16,11 @@ from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.platypus import Table, TableStyle
 from reportlab.lib import colors
-pdfmetrics.registerFont(TTFont('CenturyGothic', os.path.join(settings.MEDIA_ROOT, 'fonts/Century Gothic Regular.TTF')))
-pdfmetrics.registerFont(TTFont('CenturyGothicBold', os.path.join(settings.MEDIA_ROOT, 'fonts/Century Gothic Bold.TTF')))
-pdfmetrics.registerFont(TTFont('CenturyGothicItalic', os.path.join(settings.MEDIA_ROOT, 'fonts/Century Gothic Italic.TTF')))
-pdfmetrics.registerFont(TTFont('Times-Roman-Small-Caps-Bold', os.path.join(settings.MEDIA_ROOT, 'fonts/Times-Roman-Small-Caps-Bold.ttf')))
+if  os.path.exists(os.path.join(settings.MEDIA_ROOT, 'fonts/Century Gothic Regular.TTF')):
+    pdfmetrics.registerFont(TTFont('CenturyGothic', os.path.join(settings.MEDIA_ROOT, 'fonts/Century Gothic Regular.TTF')))
+    pdfmetrics.registerFont(TTFont('CenturyGothicBold', os.path.join(settings.MEDIA_ROOT, 'fonts/Century Gothic Bold.TTF')))
+    pdfmetrics.registerFont(TTFont('CenturyGothicItalic', os.path.join(settings.MEDIA_ROOT, 'fonts/Century Gothic Italic.TTF')))
+    pdfmetrics.registerFont(TTFont('Times-Roman-Small-Caps-Bold', os.path.join(settings.MEDIA_ROOT, 'fonts/Times-Roman-Small-Caps-Bold.ttf')))
 
 def _create_sign(text:str='', pagesize=A4):
     

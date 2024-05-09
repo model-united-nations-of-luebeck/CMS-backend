@@ -406,7 +406,7 @@ class ResearchReport(Document):
 
 
 class PositionPaper(Document):
-    ''' A document stating one delegation's position on issues debated in a forum '''
+    ''' A document stating one delegatio's position on issues debated in a forum '''
     delegate = models.ForeignKey(
         Delegate, help_text="Who has written this position paper?", on_delete=models.CASCADE)
 
