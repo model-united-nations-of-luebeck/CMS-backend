@@ -1,0 +1,32 @@
+name: Generate API Visualization
+
+on: [push]
+
+jobs:
+  generate_api_visualization:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.8"
+
+      - name: Check for changes in api/models.py and generate API visualization if necessary
+        run: |
+          if git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep -q "api/models.py"; then
+            echo "api/models.py has been modified."
+            python -m pip install -r requirements.txt
+            python -m pip install graphviz
+            python manage.py graph_models -a -t original -g --hide-edge-labels -X AbstractBaseSession,Session,User,AbstractBaseUser,PermissionsMixin,AbstractUser,Group,Permission,ContentType,LogEntry -o api_visualization.png
+            git config --local user.email "action@github.com"
+            git config --local user.name "GitHub Action"
+            git add api_visualization.png
+            git commit -m "Update API visualization due to changes in api/models.py."
+            git push
+          else
+            echo "api/models.py has not been modified."
+          fi
