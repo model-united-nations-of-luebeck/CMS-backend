@@ -22,7 +22,7 @@ jobs:
           if git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep -q "api/models.py"; then
             echo "api/models.py has been modified."
             python -m pip install -r requirements.txt
-            python -m pip install graphviz
+            python -m pip install pygraphviz
             python manage.py graph_models -a -t original -g --hide-edge-labels -X AbstractBaseSession,Session,User,AbstractBaseUser,PermissionsMixin,AbstractUser,Group,Permission,ContentType,LogEntry -o api_visualization.png
             git config --local user.email "action@github.com"
             git config --local user.name "GitHub Action"
