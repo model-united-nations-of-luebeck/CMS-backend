@@ -26,7 +26,7 @@ This diagram demonstrates the models and their fields and relationships.
 
 To generate a diagram from all models excluding the internal classes use
 
-> python manage.py graph_models -a -t original -g --hide-edge-labels -X AbstractBaseSession,Session,User,AbstractBaseUser,PermissionsMixin,AbstractUser,Group,Permission,ContentType,LogEntry -o api_visualization.png
+> python manage.py graph_models api -t django2018 --hide-edge-labels -R --arrow-shape vee -o api_visualization.png
 
 This requires `pygraphviz` to be installed, e.g. by using `pip install pygraphviz`. Depending on your [operating system](https://pygraphviz.github.io/documentation/stable/install.html) `graphviz` needs to be installed additionally, e.g. with `brew` or `apt`.
 
