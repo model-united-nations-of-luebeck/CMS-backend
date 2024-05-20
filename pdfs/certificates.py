@@ -406,15 +406,15 @@ def participant_certificate(request, participants):
 
     #determine dates of current conference
     conference = Conference.objects.first()
-    startdate = conference.startdate
-    startday = startdate.day
-    startmonth = date(startdate, 'F')
-    enddate = conference.enddate
-    endday = enddate.day
-    endmonth= date(enddate, 'F')
-    year = startdate.year
+    start_date = conference.start_date
+    start_day = start_date.day
+    start_month = date(start_date, 'F')
+    end_date = conference.end_date
+    end_day = end_date.day
+    end_month= date(end_date, 'F')
+    year = start_date.year
     session = conference.annual_session
     
     
-    return _create_certificate(participants = filtered_participants, session=session, year=year, startday=startday, startmonth=startmonth, endday=endday, endmonth=endmonth, secgen="Tom Rix", depsecgen="Tom Rix", cms='Tom Rix & Tom Rix')
+    return _create_certificate(participants = filtered_participants, session=session, year=year, startday=start_day, startmonth=start_month, endday=end_day, endmonth=end_month, secgen="Tom Rix", depsecgen="Tom Rix", cms='Tom Rix & Tom Rix')
 

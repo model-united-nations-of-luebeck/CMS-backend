@@ -6,12 +6,12 @@ from api.models import Conference, School, MemberOrganization, Location, Room, E
 class ConferenceSerializer(serializers.ModelSerializer):
     class Meta:
         model = Conference
-        fields = ['id', 'year', 'startdate', 'enddate', 'annual_session', 'theme', 'pre_registration_deadline', 'final_registration_deadline', 'position_paper_deadline', 'chairhuman', 'vice_chairhuman', 'treasurer', 'vice_treasurer']
+        fields = ['id', 'year', 'start_date', 'end_date', 'annual_session', 'theme', 'pre_registration_deadline', 'final_registration_deadline', 'position_paper_deadline', 'chair_human', 'vice_chair_human', 'treasurer', 'vice_treasurer']
 
 class SchoolSerializer(serializers.ModelSerializer):
     class Meta:
         model = School
-        fields = ['id', 'name', 'street', 'city', 'zipcode', 'country', 'requested', 'housing_delegates', 'housing_mun_directors', 'registration_status', 'fee', 'arrival', 'departure', 'comment']
+        fields = ['id', 'name', 'street', 'city', 'zipcode', 'country', 'requested', 'housing_delegates', 'housing_mun_directors', 'registration_status', 'fee_paid', 'arrival', 'departure', 'comment']
 
 class MemberOrganizationSerializer(serializers.ModelSerializer):
     class Meta:
@@ -51,37 +51,37 @@ class ForumSerializer(serializers.ModelSerializer):
 class ParticipantSerializer(serializers.ModelSerializer):
     class Meta:
         model = Participant
-        fields = ['id', 'first_name', 'last_name', 'gender', 'email', 'mobile', 'diet', 'picture', 'birthday', 'extras', 'role']
+        fields = ['id', 'first_name', 'last_name', 'gender', 'pronouns', 'email', 'mobile', 'diet', 'picture', 'birthday', 'extras', 'role']
 
 class DelegateSerializer(serializers.ModelSerializer):
     class Meta:
         model = Delegate
-        fields = ['id', 'first_name', 'last_name', 'gender', 'email', 'mobile', 'diet', 'picture', 'birthday', 'extras', 'ambassador', 'represents', 'school', 'forum']
+        fields = ['id', 'first_name', 'last_name', 'gender', 'pronouns', 'email', 'mobile', 'diet', 'picture', 'birthday', 'extras', 'ambassador', 'represents', 'school', 'forum']
 
 class StudentOfficerSerializer(serializers.ModelSerializer):
     class Meta:
         model = StudentOfficer
-        fields = ['id', 'first_name', 'last_name', 'gender', 'email', 'mobile', 'diet', 'picture', 'birthday', 'extras', 'position_name', 'position_level', 'school_name', 'forum', 'plenary']
+        fields = ['id', 'first_name', 'last_name', 'gender', 'pronouns', 'email', 'mobile', 'diet', 'picture', 'birthday', 'extras', 'position_name', 'position_level', 'school_name', 'forum', 'plenary']
 
 class MUNDirectorSerializer(serializers.ModelSerializer):
     class Meta:
         model = MUNDirector
-        fields = ['id', 'first_name', 'last_name', 'gender', 'email', 'mobile', 'diet', 'picture', 'birthday', 'extras', 'landline_phone', 'english_teacher', 'school']
+        fields = ['id', 'first_name', 'last_name', 'gender', 'pronouns', 'email', 'mobile', 'diet', 'picture', 'birthday', 'extras', 'landline_phone', 'english_teacher', 'school']
 
 class ExecutiveSerializer(serializers.ModelSerializer):
     class Meta:
         model = Executive
-        fields = ['id', 'first_name', 'last_name', 'gender', 'email', 'mobile', 'diet', 'picture', 'birthday', 'extras', 'position_name', 'position_level', 'department_name', 'school_name']
+        fields = ['id', 'first_name', 'last_name', 'gender', 'pronouns', 'email', 'mobile', 'diet', 'picture', 'birthday', 'extras', 'position_name', 'position_level', 'department_name', 'school_name']
 
 class StaffSerializer(serializers.ModelSerializer):
     class Meta:
         model = Staff
-        fields = ['id', 'first_name', 'last_name', 'gender', 'email', 'mobile', 'diet', 'picture', 'birthday', 'extras', 'position_name', 'school_name']
+        fields = ['id', 'first_name', 'last_name', 'gender', 'pronouns', 'email', 'mobile', 'diet', 'picture', 'birthday', 'extras', 'position_name', 'school_name']
 
 class AdvisorSerializer(serializers.ModelSerializer):
     class Meta:
         model = Advisor
-        fields = ['id', 'first_name', 'last_name', 'gender', 'email', 'mobile', 'diet', 'picture', 'birthday', 'extras', 'car', 'availability', 'experience', 'help']
+        fields = ['id', 'first_name', 'last_name', 'gender', 'pronouns', 'email', 'mobile', 'diet', 'picture', 'birthday', 'extras', 'car', 'availability', 'experience', 'help']
 
 class IssueSerializer(serializers.ModelSerializer):
     class Meta:
