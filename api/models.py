@@ -57,9 +57,9 @@ class School(models.Model):
         (GUEST_FAMILY, 'guest family'),
         (OTHER, 'other self-organized accommodation')
     ]
-    housing_delegates = models.CharField("Housing option for delegates", max_length=50, choices=HOUSING_OPTIONS, default=OTHER,
+    housing_delegates = models.CharField("Housing option for delegates", max_length=50, choices=HOUSING_OPTIONS,
                                          help_text="Please note, that housing in guest families is not available for all delegations and we will prefer international delegations in our housing who travel the longest distances.")
-    housing_mun_directors = models.CharField("Housing option for MUN-Directors", max_length=50, choices=HOUSING_OPTIONS, default=OTHER,
+    housing_mun_directors = models.CharField("Housing option for MUN-Directors", max_length=50, choices=HOUSING_OPTIONS,
                                              help_text="Please note, that housing in guest families is not available for all delegations and we will prefer international delegations in our housing who travels the longest distances.")
     WAITING_FOR_PRE_REGISTRATION = 'WAITING_FOR_PRE_REGISTRATION'
     PRE_REGISTRATION_DONE = 'PRE_REGISTRATION_DONE'
@@ -309,10 +309,7 @@ class MUNDirector(Participant):
                                           help_text="English teachers can help with correcting the language and grammar of resolutions.")
     school = models.ForeignKey(
         School, help_text="select the school at which this MUN Director teaches", on_delete=models.PROTECT)
-    HOSTEL = 'hostel'
-    GUEST_FAMILY = 'guest family'
-    OTHER = 'other'
-    help_text = "Please note, that housing in guest families is not available for all MUN-Directors."
+    
     # Figure out how to set BIRTHDAY to >18 because this can be assumed.
     # Solved: We don't need to store a Birthday, it can also be blank and then we don't show it for MUN Directors, only for other participants and enforce setting a birthday there.
 
