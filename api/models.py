@@ -63,14 +63,12 @@ class School(models.Model):
                                              help_text="Please note, that housing in guest families is not available for all delegations and we will prefer international delegations in our housing who travels the longest distances.")
     WAITING_FOR_PRE_REGISTRATION = 'WAITING_FOR_PRE_REGISTRATION'
     PRE_REGISTRATION_DONE = 'PRE_REGISTRATION_DONE'
-    WAITING_FOR_DATA_PROTECTION = 'WAITING_FOR_DATA_PROTECTION'
     WAITING_FOR_FINAL_REGISTRATION = 'WAITING_FOR_FINAL_REGISTRATION'
     FINAL_REGISTRATION_DONE = 'FINAL_REGISTRATION_DONE'
     CANCELED = 'CANCELED'
     STATUS_CHOICES = [
         (WAITING_FOR_PRE_REGISTRATION, 'waiting for pre-registration'),
         (PRE_REGISTRATION_DONE, 'pre-registration done'),
-        (WAITING_FOR_DATA_PROTECTION, 'waiting for data protection'),
         (WAITING_FOR_FINAL_REGISTRATION, 'waiting for final registration'),
         (FINAL_REGISTRATION_DONE, 'final registration done'),
         (CANCELED, 'canceled')
