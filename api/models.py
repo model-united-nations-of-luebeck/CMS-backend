@@ -77,7 +77,7 @@ class School(models.Model):
     ]
     registration_status = models.CharField("Registration status", max_length=50, choices=STATUS_CHOICES,
                                            default=WAITING_FOR_PRE_REGISTRATION, help_text="This status indicates at what stage of registration the school is.")
-    fee = models.BooleanField("Pre-registration fee", default=False,
+    fee_paid = models.BooleanField("Pre-registration fee paid", default=False,
                               help_text="Was the pre-registration fee paid?")
     arrival = models.TextField("Arrival Information", blank=True, null=True,
                                help_text="Please provide date, time and location (e.g. school, conference venue, train station, airport, ...) of arrival here so that we can plan the registration process and housing respectively.")
