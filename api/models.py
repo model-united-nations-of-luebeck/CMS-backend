@@ -172,6 +172,8 @@ class Person(models.Model):
     mobile = PhoneNumberField("mobile phone", blank=True,  null=True,
                               help_text="remember to include the country code, e.g. for Germany +49 and then leave out the leading 0")
     birthday = models.DateField("birthday", blank=True, null=True)
+    pronouns = models.CharField("pronouns", max_length=50, blank=True, null=True,
+                                help_text="pronouns to be used to reference a person, e.g. 'she/her', 'he/him', 'they/them' or custom pronouns")
 
     class Meta:
         abstract = True
