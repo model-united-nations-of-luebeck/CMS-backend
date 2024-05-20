@@ -57,9 +57,9 @@ class School(models.Model):
         (GUEST_FAMILY, 'guest family'),
         (OTHER, 'other self-organized accommodation')
     ]
-    housing_delegates = models.CharField("Housing option for delegates", max_length=50, choices=HOUSING_OPTIONS,
+    housing_delegates = models.CharField("Housing option for delegates", max_length=50, choices=HOUSING_OPTIONS, blank=True,
                                          help_text="Please note, that housing in guest families is not available for all delegations and we will prefer international delegations in our housing who travel the longest distances.")
-    housing_mun_directors = models.CharField("Housing option for MUN-Directors", max_length=50, choices=HOUSING_OPTIONS,
+    housing_mun_directors = models.CharField("Housing option for MUN-Directors", max_length=50, choices=HOUSING_OPTIONS, blank=True,
                                              help_text="Please note, that housing in guest families is not available for all delegations and we will prefer international delegations in our housing who travels the longest distances.")
     WAITING_FOR_PRE_REGISTRATION = 'WAITING_FOR_PRE_REGISTRATION'
     PRE_REGISTRATION_DONE = 'PRE_REGISTRATION_DONE'
