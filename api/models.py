@@ -155,9 +155,9 @@ class Room(Location):
 class Person(models.Model):
     ''' Person in general as a human being'''
     first_name = models.CharField(
-        "first name", max_length=50, help_text="Including second names if wanted")
+        "first name", max_length=50, help_text="Including second names if wanted", blank=True)
     last_name = models.CharField(
-        "last name", max_length=50, help_text="Including prefixes like 'von', 'zu', 'de' etc.")
+        "last name", max_length=50, help_text="Including prefixes like 'von', 'zu', 'de' etc.", blank=True)
     MALE = 'm'
     FEMALE = 'f'
     OTHER = 'o'
