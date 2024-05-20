@@ -270,7 +270,7 @@ class Delegate(Participant):
     represents = models.ForeignKey(
         MemberOrganization, help_text="select member organization which is represented by this delegate", on_delete=models.PROTECT)
     school = models.ForeignKey(
-        School, help_text="select the school which is attended by this delegate", on_delete=models.PROTECT)
+        School, help_text="select the school which is attended by this delegate", on_delete=models.PROTECT, blank=True, null=True)
     forum = models.ForeignKey(
         Forum, help_text="Select which forum this Delegate is a member of", on_delete=models.PROTECT)
 
