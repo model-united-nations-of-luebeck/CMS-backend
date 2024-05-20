@@ -171,6 +171,7 @@ class Person(models.Model):
     email = models.EmailField("E-Mail", blank=True, null=True)
     mobile = PhoneNumberField("mobile phone", blank=True,  null=True,
                               help_text="remember to include the country code, e.g. for Germany +49 and then leave out the leading 0")
+    birthday = models.DateField("birthday", blank=True, null=True)
 
     class Meta:
         abstract = True
@@ -197,7 +198,6 @@ class Participant(Person):
                             choices=ROLE_CHOICES, max_length=15, blank=True, editable=False)
     picture = models.ImageField("badge photo", blank=True, null=True, upload_to="images/badge_photos",
                                 help_text="please provide a passport-style photo for the badge")
-    birthday = models.DateField("birthday", blank=True, null=True)
     extras = models.TextField("extra information", blank=True, null=True,
                               help_text="please include here all additional information about diet, allergies, preferences etc. so that we can try to provide a perfect conference")
 
