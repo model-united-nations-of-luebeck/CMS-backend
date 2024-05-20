@@ -27,4 +27,3 @@ urlpatterns = [
 
     path('signs', signs.sign, name="signs"),
 ]
-

@@ -139,8 +139,8 @@ if not DEBUG:
 
 # options for generating a model diagram
 GRAPH_MODELS = {
-  'all_applications': True,
-  'group_models': True,
+  'app_labels': ['api'],
+  
 }
 
 # Authentication methods and Permissions for the REST API

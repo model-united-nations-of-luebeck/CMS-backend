@@ -1,0 +1,48 @@
+name: Generate API Visualization
+# This workflow is triggered on push events to 'main' branch, and pull request events on any branch, only when 'api/models.py' is modified. Or when a developer triggers it. It generates an API visualization file and pushes it to the repository, so that it can be viewed in the GitHub repository README.
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "api/models.py"
+  pull_request:
+    paths:
+      - "api/models.py"
+  workflow_dispatch:
+
+jobs:
+  generate_api_visualization:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.ref || github.ref }} # Use the branch name of the pull request, if it is a pull request event. Otherwise, use the branch name of the push event or manually selected branch when triggered manually.
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.8"
+
+      - name: Set up Graphviz
+        uses: ts-graphviz/setup-graphviz@v2
+
+      - name: Install dependencies
+        run: |
+          python -m pip install -r requirements.txt
+          python -m pip install pygraphviz
+
+      - name: Generate API visualization
+        run: |
+          python manage.py graph_models api -t django2018 --hide-edge-labels -R --arrow-shape vee -o api_visualization.png
+
+      - name: Commit and push API visualization
+        run: |
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "github-actions[bot]"
+          git add api_visualization.png
+          git commit -m "Generate API visualization"
+          git push
