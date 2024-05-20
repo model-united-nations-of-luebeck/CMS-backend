@@ -9,9 +9,9 @@ class Conference(models.Model):
     ''' A conference object represents one session of the MUN conference with the corresponding details'''
     year = models.PositiveSmallIntegerField(
         "year of the conference", help_text="Use format YYYY for years so 2019 instead of just 19")
-    startdate = models.DateField(
+    start_date = models.DateField(
         "first day", help_text="Use the first day of the conference as start date, at MUNOL it's usually Monday")
-    enddate = models.DateField(
+    end_date = models.DateField(
         "last day", help_text="Last day of the conference, at MUNOL usually Saturday")
     annual_session = models.PositiveSmallIntegerField(
         "annual session", help_text="First session was in 1998, i.e. MUNOL 2020 will be the 23rd session")
@@ -23,9 +23,9 @@ class Conference(models.Model):
         "final registration deadline", blank=True, null=True)
     position_paper_deadline = models.DateTimeField(
         "position paper deadline", blank=True, null=True)
-    chairhuman = models.CharField("Chair:wo:man", max_length=50,
+    chair_human = models.CharField("Chair:wo:man", max_length=50,
                                   help_text="Full name of the Chairman/woman of the MUNOL Association")
-    vice_chairhuman = models.CharField("Vice-Chair:wo:man", max_length=50,
+    vice_chair_human = models.CharField("Vice-Chair:wo:man", max_length=50,
                                        help_text="Full name of the Vice-Chairman/woman of the MUNOL Association")
     treasurer = models.CharField(
         "Treasurer", max_length=50, help_text="Full name of the Treasurer of the MUNOL Association")
