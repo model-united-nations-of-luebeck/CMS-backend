@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from api.models import Conference, School, MemberOrganization, Location, Room, Event, Lunch, Plenary, Forum, Participant, Delegate, StudentOfficer, MUNDirector, Executive, Staff, Advisor, Issue, Document, ResearchReport, PositionPaper
+from drf_extra_fields.fields import Base64ImageField
 
 # Serializers convert to JSON and validate data passed
 
@@ -79,6 +80,7 @@ class StaffSerializer(serializers.ModelSerializer):
         fields = ['id', 'first_name', 'last_name', 'gender', 'pronouns', 'email', 'mobile', 'diet', 'picture', 'birthday', 'extras', 'position_name', 'school_name']
 
 class AdvisorSerializer(serializers.ModelSerializer):
+    picture = Base64ImageField(required=False)
     class Meta:
         model = Advisor
         fields = ['id', 'first_name', 'last_name', 'gender', 'pronouns', 'email', 'mobile', 'diet', 'picture', 'birthday', 'extras', 'car', 'availability', 'experience', 'help']
