@@ -198,8 +198,8 @@ class Participant(Person):
                     ("mun_director", "MUN Director"), ('executive', 'Executive'), ("staff", 'Staff')]
     role = models.CharField("the role they are participating in the conference as",
                             choices=ROLE_CHOICES, max_length=15, blank=True, editable=False)
-    picture = models.ImageField("badge photo", blank=True, null=True, upload_to="images/badge_photos",
-                                help_text="please provide a passport-style photo for the badge")
+    picture = models.TextField("badge photo", blank=True, null=True,
+                                help_text="please provide a passport-style photo for the badge, base64 encoded")
     extras = models.TextField("extra information", blank=True, null=True,
                               help_text="please include here all additional information about diet, allergies, preferences etc. so that we can try to provide a perfect conference")
 
