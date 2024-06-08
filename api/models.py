@@ -330,7 +330,7 @@ class Executive(Participant):
     position_level = models.BooleanField("Is this the Head of this position?", default=False,
                                          help_text="Main Head might have other duties and obligations than Assistant Heads")
     department_name = models.CharField(
-        "Department name", max_length=50, help_text="e.g. 'School Management', note that this name is <b>not</b> the entire position title")
+        "Department name", max_length=50, blank=True, null=True, help_text="e.g. 'School Management', note that this name is <b>not</b> the entire position title. Some positions may not belong to a department.")
     school_name = models.CharField("School name", max_length=50, default="Thomas-Mann-Schule",
                                    help_text="Name of the school/institution the Executive attends.")
 
