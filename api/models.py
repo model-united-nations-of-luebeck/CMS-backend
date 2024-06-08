@@ -359,7 +359,7 @@ class Advisor(Participant):
                                     help_text="Please specify on which days and nighs you will attend the conference and give your advice")
     experience = models.CharField("MUN Experience", blank=True, null=True, max_length=512,
                                   help_text="Please specify which role you had in former MUNOL sessions and other conferences, e.g. 'School Management 2013'")
-    help = models.CharField("Areas of help", max_length=512,
+    help = models.CharField("Areas of help", max_length=512, blank=True, null=True,
                             help_text="In which areas would you like to support the team?")
 
     def save(self, *args, **kwargs):
