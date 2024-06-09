@@ -9,9 +9,9 @@ class Conference(models.Model):
     ''' A conference object represents one session of the MUN conference with the corresponding details'''
     year = models.PositiveSmallIntegerField(
         "year of the conference", help_text="Use format YYYY for years so 2019 instead of just 19")
-    startdate = models.DateField(
+    start_date = models.DateField(
         "first day", help_text="Use the first day of the conference as start date, at MUNOL it's usually Monday")
-    enddate = models.DateField(
+    end_date = models.DateField(
         "last day", help_text="Last day of the conference, at MUNOL usually Saturday")
     annual_session = models.PositiveSmallIntegerField(
         "annual session", help_text="First session was in 1998, i.e. MUNOL 2020 will be the 23rd session")
@@ -23,9 +23,9 @@ class Conference(models.Model):
         "final registration deadline", blank=True, null=True)
     position_paper_deadline = models.DateTimeField(
         "position paper deadline", blank=True, null=True)
-    chairhuman = models.CharField("Chair:wo:man", max_length=50,
+    chair_human = models.CharField("Chair:wo:man", max_length=50,
                                   help_text="Full name of the Chairman/woman of the MUNOL Association")
-    vice_chairhuman = models.CharField("Vice-Chair:wo:man", max_length=50,
+    vice_chair_human = models.CharField("Vice-Chair:wo:man", max_length=50,
                                        help_text="Full name of the Vice-Chairman/woman of the MUNOL Association")
     treasurer = models.CharField(
         "Treasurer", max_length=50, help_text="Full name of the Treasurer of the MUNOL Association")
@@ -57,27 +57,25 @@ class School(models.Model):
         (GUEST_FAMILY, 'guest family'),
         (OTHER, 'other self-organized accommodation')
     ]
-    housing_delegates = models.CharField("Housing option for delegates", max_length=50, choices=HOUSING_OPTIONS, default=OTHER,
+    housing_delegates = models.CharField("Housing option for delegates", max_length=50, choices=HOUSING_OPTIONS, blank=True,
                                          help_text="Please note, that housing in guest families is not available for all delegations and we will prefer international delegations in our housing who travel the longest distances.")
-    housing_mun_directors = models.CharField("Housing option for MUN-Directors", max_length=50, choices=HOUSING_OPTIONS, default=OTHER,
+    housing_mun_directors = models.CharField("Housing option for MUN-Directors", max_length=50, choices=HOUSING_OPTIONS, blank=True,
                                              help_text="Please note, that housing in guest families is not available for all delegations and we will prefer international delegations in our housing who travels the longest distances.")
     WAITING_FOR_PRE_REGISTRATION = 'WAITING_FOR_PRE_REGISTRATION'
     PRE_REGISTRATION_DONE = 'PRE_REGISTRATION_DONE'
-    WAITING_FOR_DATA_PROTECTION = 'WAITING_FOR_DATA_PROTECTION'
     WAITING_FOR_FINAL_REGISTRATION = 'WAITING_FOR_FINAL_REGISTRATION'
     FINAL_REGISTRATION_DONE = 'FINAL_REGISTRATION_DONE'
     CANCELED = 'CANCELED'
     STATUS_CHOICES = [
         (WAITING_FOR_PRE_REGISTRATION, 'waiting for pre-registration'),
         (PRE_REGISTRATION_DONE, 'pre-registration done'),
-        (WAITING_FOR_DATA_PROTECTION, 'waiting for data protection'),
         (WAITING_FOR_FINAL_REGISTRATION, 'waiting for final registration'),
         (FINAL_REGISTRATION_DONE, 'final registration done'),
         (CANCELED, 'canceled')
     ]
     registration_status = models.CharField("Registration status", max_length=50, choices=STATUS_CHOICES,
                                            default=WAITING_FOR_PRE_REGISTRATION, help_text="This status indicates at what stage of registration the school is.")
-    fee = models.BooleanField("Pre-registration fee", default=False,
+    fee_paid = models.BooleanField("Pre-registration fee paid", default=False,
                               help_text="Was the pre-registration fee paid?")
     arrival = models.TextField("Arrival Information", blank=True, null=True,
                                help_text="Please provide date, time and location (e.g. school, conference venue, train station, airport, ...) of arrival here so that we can plan the registration process and housing respectively.")
@@ -157,9 +155,9 @@ class Room(Location):
 class Person(models.Model):
     ''' Person in general as a human being'''
     first_name = models.CharField(
-        "first name", max_length=50, help_text="Including second names if wanted")
+        "first name", max_length=50, help_text="Including second names if wanted", blank=True)
     last_name = models.CharField(
-        "last name", max_length=50, help_text="Including prefixes like 'von', 'zu', 'de' etc.")
+        "last name", max_length=50, help_text="Including prefixes like 'von', 'zu', 'de' etc.", blank=True)
     MALE = 'm'
     FEMALE = 'f'
     OTHER = 'o'
@@ -173,6 +171,9 @@ class Person(models.Model):
     email = models.EmailField("E-Mail", blank=True, null=True)
     mobile = PhoneNumberField("mobile phone", blank=True,  null=True,
                               help_text="remember to include the country code, e.g. for Germany +49 and then leave out the leading 0")
+    birthday = models.DateField("birthday", blank=True, null=True)
+    pronouns = models.CharField("pronouns", max_length=50, blank=True, null=True,
+                                help_text="pronouns to be used to reference a person, e.g. 'she/her', 'he/him', 'they/them' or custom pronouns")
 
     class Meta:
         abstract = True
@@ -197,9 +198,8 @@ class Participant(Person):
                     ("mun_director", "MUN Director"), ('executive', 'Executive'), ("staff", 'Staff')]
     role = models.CharField("the role they are participating in the conference as",
                             choices=ROLE_CHOICES, max_length=15, blank=True, editable=False)
-    picture = models.ImageField("badge photo", blank=True, null=True, upload_to="images/badge_photos",
-                                help_text="please provide a passport-style photo for the badge")
-    birthday = models.DateField("birthday", blank=True, null=True)
+    picture = models.TextField("badge photo", blank=True, null=True,
+                                help_text="please provide a passport-style photo for the badge, base64 encoded")
     extras = models.TextField("extra information", blank=True, null=True,
                               help_text="please include here all additional information about diet, allergies, preferences etc. so that we can try to provide a perfect conference")
 
@@ -272,7 +272,7 @@ class Delegate(Participant):
     represents = models.ForeignKey(
         MemberOrganization, help_text="select member organization which is represented by this delegate", on_delete=models.PROTECT)
     school = models.ForeignKey(
-        School, help_text="select the school which is attended by this delegate", on_delete=models.PROTECT)
+        School, help_text="select the school which is attended by this delegate", on_delete=models.PROTECT, blank=True, null=True)
     forum = models.ForeignKey(
         Forum, help_text="Select which forum this Delegate is a member of", on_delete=models.PROTECT)
 
@@ -285,8 +285,6 @@ class StudentOfficer(Participant):
     ''' Student Officers are the participants that chair a forum '''
     position_name = models.CharField(
         "Position name", max_length=20, help_text="e.g. Chairman, Chairwoman, President, ... but <b>NOT</b> the entire title like 'Vice-Chairman of the First Committee' this will be generated automatically")
-    position_level = models.BooleanField("Is this the main Student Officer of the forum?", default=False,
-                                         help_text="Main Student Officers might have other duties and obligations than vice/deputy Student Officers")
     # Explanation: Chairs don't belong to schools' delegations but the name shall still be available. Also chairs can participate without their school participating.
     school_name = models.CharField(
         "School name", max_length=50, help_text="Name of the school/institution the student officer attends.")
@@ -311,10 +309,7 @@ class MUNDirector(Participant):
                                           help_text="English teachers can help with correcting the language and grammar of resolutions.")
     school = models.ForeignKey(
         School, help_text="select the school at which this MUN Director teaches", on_delete=models.PROTECT)
-    HOSTEL = 'hostel'
-    GUEST_FAMILY = 'guest family'
-    OTHER = 'other'
-    help_text = "Please note, that housing in guest families is not available for all MUN-Directors."
+    
     # Figure out how to set BIRTHDAY to >18 because this can be assumed.
     # Solved: We don't need to store a Birthday, it can also be blank and then we don't show it for MUN Directors, only for other participants and enforce setting a birthday there.
 
@@ -330,12 +325,8 @@ class Executive(Participant):
     ''' Executives are part of the organising team '''
     position_name = models.CharField(
         "Position name", max_length=50, help_text="e.g. 'Assistant Head of School Management'")
-    position_level = models.BooleanField("Is this the Head of this position?", default=False,
-                                         help_text="Main Head might have other duties and obligations than Assistant Heads")
-    department_name = models.CharField(
-        "Department name", max_length=50, help_text="e.g. 'School Management', note that this name is <b>not</b> the entire position title")
     school_name = models.CharField("School name", max_length=50, default="Thomas-Mann-Schule",
-                                   help_text="Name of the school/institution the Executive attends.")
+                                    help_text="Name of the school/institution the Executive attends.")
 
     def save(self, *args, **kwargs):
         self.role = 'executive'
@@ -362,7 +353,7 @@ class Advisor(Participant):
                                     help_text="Please specify on which days and nighs you will attend the conference and give your advice")
     experience = models.CharField("MUN Experience", blank=True, null=True, max_length=512,
                                   help_text="Please specify which role you had in former MUNOL sessions and other conferences, e.g. 'School Management 2013'")
-    help = models.CharField("Areas of help", max_length=512,
+    help = models.CharField("Areas of help", max_length=512, blank=True, null=True,
                             help_text="In which areas would you like to support the team?")
 
     def save(self, *args, **kwargs):

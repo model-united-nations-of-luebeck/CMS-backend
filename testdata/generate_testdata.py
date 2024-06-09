@@ -46,7 +46,7 @@ def generate_conference():
     Generates an artificial conference
     '''
 
-    conference = Conference.objects.create(year=2022, startdate='2022-05-30', enddate='2022-06-04', annual_session=25, theme='Responsible Consumption and Production', pre_registration_deadline='2022-12-18T22:55:00Z', chairhuman='Leonard Roemer', vice_chairhuman='Robin Schaub', treasurer='Lasse Rother', vice_treasurer='Nina Mellmann')
+    conference = Conference.objects.create(year=2022, start_date='2022-05-30', end_date='2022-06-04', annual_session=25, theme='Responsible Consumption and Production', pre_registration_deadline='2022-12-18T22:55:00Z', chair_human='Leonard Roemer', vice_chair_human='Robin Schaub', treasurer='Lasse Rother', vice_treasurer='Nina Mellmann')
     
 
 
@@ -59,7 +59,7 @@ def generate_schools(n:int=30):
         
         school = School.objects.get_or_create(name=fake.name() + "-School", street=fake.street_name(), city=fake.city(), zipcode=fake.postcode(), country=fake.country(), requested=random.randint(1,30), housing_delegates=select_randomly_from_choices(School.HOUSING_OPTIONS),
         housing_mun_directors=select_randomly_from_choices(School.HOUSING_OPTIONS),  
-        registration_status=select_randomly_from_choices(School.STATUS_CHOICES), fee=random.choice([True, False]), arrival=fake.text(), departure=fake.text(), comment=fake.text())
+        registration_status=select_randomly_from_choices(School.STATUS_CHOICES), fee_paid=random.choice([True, False]), arrival=fake.text(), departure=fake.text(), comment=fake.text())
 
 
 def generate_advisors(n:int=20):

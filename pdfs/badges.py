@@ -165,6 +165,6 @@ def participant_badge(request, participants, color):
         filtered_participants.append(participant)
 
     #determine year of current conference
-    year = Conference.objects.first().startdate.year
+    year = Conference.objects.first().start_date.year
     return _create_badge(participants = filtered_participants, color=color, year=year)
 
