@@ -285,8 +285,6 @@ class StudentOfficer(Participant):
     ''' Student Officers are the participants that chair a forum '''
     position_name = models.CharField(
         "Position name", max_length=20, help_text="e.g. Chairman, Chairwoman, President, ... but <b>NOT</b> the entire title like 'Vice-Chairman of the First Committee' this will be generated automatically")
-    position_level = models.BooleanField("Is this the main Student Officer of the forum?", default=False,
-                                         help_text="Main Student Officers might have other duties and obligations than vice/deputy Student Officers")
     # Explanation: Chairs don't belong to schools' delegations but the name shall still be available. Also chairs can participate without their school participating.
     school_name = models.CharField(
         "School name", max_length=50, help_text="Name of the school/institution the student officer attends.")
@@ -327,12 +325,8 @@ class Executive(Participant):
     ''' Executives are part of the organising team '''
     position_name = models.CharField(
         "Position name", max_length=50, help_text="e.g. 'Assistant Head of School Management'")
-    position_level = models.BooleanField("Is this the Head of this position?", default=False,
-                                         help_text="Main Head might have other duties and obligations than Assistant Heads")
-    department_name = models.CharField(
-        "Department name", max_length=50, blank=True, null=True, help_text="e.g. 'School Management', note that this name is <b>not</b> the entire position title. Some positions may not belong to a department.")
     school_name = models.CharField("School name", max_length=50, default="Thomas-Mann-Schule",
-                                   help_text="Name of the school/institution the Executive attends.")
+                                    help_text="Name of the school/institution the Executive attends.")
 
     def save(self, *args, **kwargs):
         self.role = 'executive'

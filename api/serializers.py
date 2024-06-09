@@ -61,7 +61,7 @@ class DelegateSerializer(serializers.ModelSerializer):
 class StudentOfficerSerializer(serializers.ModelSerializer):
     class Meta:
         model = StudentOfficer
-        fields = ['id', 'first_name', 'last_name', 'gender', 'pronouns', 'email', 'mobile', 'diet', 'picture', 'birthday', 'extras', 'position_name', 'position_level', 'school_name', 'forum', 'plenary']
+        fields = ['id', 'first_name', 'last_name', 'gender', 'pronouns', 'email', 'mobile', 'diet', 'picture', 'birthday', 'extras', 'position_name', 'school_name', 'forum', 'plenary']
 
 class MUNDirectorSerializer(serializers.ModelSerializer):
     class Meta:
@@ -71,7 +71,7 @@ class MUNDirectorSerializer(serializers.ModelSerializer):
 class ExecutiveSerializer(serializers.ModelSerializer):
     class Meta:
         model = Executive
-        fields = ['id', 'first_name', 'last_name', 'gender', 'pronouns', 'email', 'mobile', 'diet', 'picture', 'birthday', 'extras', 'position_name', 'position_level', 'department_name', 'school_name']
+        fields = ['id', 'first_name', 'last_name', 'gender', 'pronouns', 'email', 'mobile', 'diet', 'picture', 'birthday', 'extras', 'position_name', 'school_name']
 
 class StaffSerializer(serializers.ModelSerializer):
     class Meta:
