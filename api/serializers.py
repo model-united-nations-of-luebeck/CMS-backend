@@ -56,7 +56,7 @@ class ParticipantSerializer(serializers.ModelSerializer):
 class DelegateSerializer(serializers.ModelSerializer):
     class Meta:
         model = Delegate
-        fields = ['id', 'first_name', 'last_name', 'gender', 'pronouns', 'email', 'mobile', 'diet', 'picture', 'birthday', 'extras', 'ambassador', 'represents', 'school', 'forum']
+        fields = ['id', 'first_name', 'last_name', 'gender', 'pronouns', 'email', 'mobile', 'diet', 'picture', 'birthday', 'extras', 'ambassador', 'first_timer', 'represents', 'school', 'forum']
 
 class StudentOfficerSerializer(serializers.ModelSerializer):
     class Meta:
