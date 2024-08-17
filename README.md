@@ -4,7 +4,7 @@ This repo organizes the backend of a Conference Management System for Model UN c
 
 ## Development Instructions
 
-At the moment this project uses Python 3.8+ and Django 3.2.25. It is recommended to create a virtual environment inside the `envs` folder, e.g. by using [venv](https://docs.python.org/3/tutorial/venv.html).
+At the moment this project uses Python 3.8+ and Django 4.2.15 (LTS). It is recommended to create a virtual environment inside the `envs` folder, e.g. by using [venv](https://docs.python.org/3/tutorial/venv.html).
 
 To install the requirements after cloning the code and activating the environment (e.g. `source envs/my-env/bin/activate`), run
 

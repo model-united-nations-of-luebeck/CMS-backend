@@ -1,4 +1,3 @@
-from django.conf.urls import url
 from rest_framework.routers import DefaultRouter
 
 from api.views import ConferenceViewSet, SchoolViewSet, MemberOrganizationViewSet, LocationViewSet, RoomViewSet, EventViewSet, LunchViewSet, PlenaryViewSet, ForumViewSet, ParticipantViewSet, DelegateViewSet, StudentOfficerViewSet, MUNDirectorViewSet, ExecutiveViewSet, StaffViewSet, AdvisorViewSet, IssueViewSet, DocumentViewSet, ResearchReportViewSet, PositionPaperViewSet
