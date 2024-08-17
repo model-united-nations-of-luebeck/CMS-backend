@@ -158,6 +158,9 @@ CORS_ORIGIN_ALLOW_ALL = False
 CORS_ORIGIN_WHITELIST = [
         'http://localhost:8080',
 ]
+CSRF_TRUSTED_ORIGINS = [
+        'http://localhost:8080',
+]
 
 # since Django 3.2, the default primary key needs to be set explicitly to keep AutoField instead of enw BigAutoField
 DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
