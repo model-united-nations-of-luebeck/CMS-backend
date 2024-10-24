@@ -202,6 +202,10 @@ class Participant(Person):
                                 help_text="please provide a passport-style photo for the badge, base64 encoded")
     extras = models.TextField("extra information", blank=True, null=True,
                               help_text="please include here all additional information about diet, allergies, preferences etc. so that we can try to provide a perfect conference")
+    data_consent_time = models.DateTimeField("Data Consent given at", blank=True, null=True, help_text="When did the participant give consent to store their data? Null if not given yet.")
+    data_consent_ip = models.GenericIPAddressField("Data Consent given from IP", blank=True, null=True, help_text="From which IP address did the participant give consent to store their data? Null if not given yet.")
+    media_consent_time = models.DateTimeField("Media Consent given at", blank=True, null=True, help_text="When did the participant give consent to use their media? Null if not given yet.")
+    media_consent_ip = models.GenericIPAddressField("Media Consent given from IP", blank=True, null=True, help_text="From which IP address did the participant give consent to use their media? Null if not given yet.")
 
 
 class Event(models.Model):
