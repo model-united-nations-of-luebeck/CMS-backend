@@ -30,7 +30,7 @@ SECRET_KEY = ')i%i76w(%m#e4&f&16+s!_1nx%48)me*b)ix5tud!)&oa-il8o'
 DEBUG = os.getenv('DEBUG', 'False')
 
 # enter URLs of allowed hosts here, e.g. munoltom.pythonanywhere.com
-ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', [])
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '').split(',')
 
 
 # Application definition
