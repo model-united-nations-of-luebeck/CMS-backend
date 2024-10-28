@@ -160,7 +160,7 @@ REST_FRAMEWORK = {
 # allowing CORS for client in development only
 CORS_ORIGIN_ALLOW_ALL = False
 CORS_ORIGIN_WHITELIST = os.getenv('CORS_ORIGIN_WHITELIST', ['http://localhost:8080']).split(',')
-CSRF_TRUSTED_ORIGINS = os.getenv('CORS_ORIGIN_WHITELIST', ['http://localhost:8080']).split(',')
+CSRF_TRUSTED_ORIGINS = os.getenv('CSRF_ORIGIN_WHITELIST', ['http://localhost:8080']).split(',')
 
 # since Django 3.2, the default primary key needs to be set explicitly to keep AutoField instead of enw BigAutoField
 DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
