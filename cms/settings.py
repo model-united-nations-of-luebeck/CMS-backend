@@ -10,7 +10,11 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
+from dotenv import load_dotenv
 import os
+
+# load .env file
+load_dotenv()
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -23,10 +27,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = ')i%i76w(%m#e4&f&16+s!_1nx%48)me*b)ix5tud!)&oa-il8o'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.getenv('DEBUG', 'False')
 
 # enter URLs of allowed hosts here, e.g. munoltom.pythonanywhere.com
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', [])
 
 
 # Application definition
@@ -155,12 +159,8 @@ REST_FRAMEWORK = {
 
 # allowing CORS for client in development only
 CORS_ORIGIN_ALLOW_ALL = False
-CORS_ORIGIN_WHITELIST = [
-        'http://localhost:8080',
-]
-CSRF_TRUSTED_ORIGINS = [
-        'http://localhost:8080',
-]
+CORS_ORIGIN_WHITELIST = os.getenv('CORS_ORIGIN_WHITELIST', ['http://localhost:8080']).split(',')
+CSRF_TRUSTED_ORIGINS = os.getenv('CORS_ORIGIN_WHITELIST', ['http://localhost:8080']).split(',')
 
 # since Django 3.2, the default primary key needs to be set explicitly to keep AutoField instead of enw BigAutoField
 DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
