@@ -27,7 +27,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = ')i%i76w(%m#e4&f&16+s!_1nx%48)me*b)ix5tud!)&oa-il8o'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.getenv('DEBUG', 'False')
+DEBUG = (os.getenv('DEBUG', 'False') == 'True')
 
 # enter URLs of allowed hosts here, e.g. munoltom.pythonanywhere.com
 ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '').split()
