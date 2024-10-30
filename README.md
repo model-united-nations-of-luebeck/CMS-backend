@@ -65,11 +65,11 @@ Furthermore
 
 ### ...for production
 
-In addition to testing deployment: In `cms/settings.py` set
+In addition to testing deployment: In your production `.env` file set
 
 - `DEBUG=False`
 - `SECURITY_KEY` to a secure key that only you know
-- set paths especially `FORCE_SCRIPT_NAME` if you don't want to serve under root domain URL, but under something like `mydomain.org/cms`
+- `USE_X_FORWARDED_HOST=True` and `FORCE_SCRIPT_NAME='/cms'` if you don't want to serve under root domain URL, but under something like `mydomain.org/cms`
 
 Serve static files by running `python manage.py collectstatic` which generates a `static/` folder that needs to be served under `mydomain.org/cms/static` and includes the CSS, JS and image files. If the styling is missing, it might be a hint that the static files aren't loaded correctly.
 

@@ -135,10 +135,11 @@ STATIC_URL = '/static/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
-# Sets the prefix path for serving in subfolders, only in production
-if not DEBUG:
-    USE_X_FORWARDED_HOST = True
-    FORCE_SCRIPT_NAME = '/cms'
+# Sets the prefix path for serving in subfolders, usually only done in production
+if os.getenv('USE_X_FORWARDED_HOST'):
+    USE_X_FORWARDED_HOST = os.getenv('USE_X_FORWARDED_HOST') == 'True'
+if os.getenv('FORCE_SCRIPT_NAME'):
+    FORCE_SCRIPT_NAME = os.getenv('FORCE_SCRIPT_NAME')
 
 # options for generating a model diagram
 GRAPH_MODELS = {
