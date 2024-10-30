@@ -24,10 +24,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = ')i%i76w(%m#e4&f&16+s!_1nx%48)me*b)ix5tud!)&oa-il8o'
+SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.getenv('DEBUG', 'False')
+DEBUG = (os.getenv('DEBUG', 'False') == 'True')
 
 # enter URLs of allowed hosts here, e.g. munoltom.pythonanywhere.com
 ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '').split()
@@ -135,10 +135,11 @@ STATIC_URL = '/static/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
-# Sets the prefix path for serving in subfolders, only in production
-if not DEBUG:
-    USE_X_FORWARDED_HOST = True
-    FORCE_SCRIPT_NAME = '/cms'
+# Sets the prefix path for serving in subfolders, usually only done in production
+if os.getenv('USE_X_FORWARDED_HOST'):
+    USE_X_FORWARDED_HOST = os.getenv('USE_X_FORWARDED_HOST') == 'True'
+if os.getenv('FORCE_SCRIPT_NAME'):
+    FORCE_SCRIPT_NAME = os.getenv('FORCE_SCRIPT_NAME')
 
 # options for generating a model diagram
 GRAPH_MODELS = {
