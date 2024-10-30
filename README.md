@@ -4,7 +4,7 @@ This repo organizes the backend of a Conference Management System for Model UN c
 
 ## Development Instructions
 
-At the moment this project uses Python 3.8+ and Django 4.2.15 (LTS). It is recommended to create a virtual environment inside the `envs` folder, e.g. by using [venv](https://docs.python.org/3/tutorial/venv.html).
+At the moment this project uses Python 3.8+ and Django 4.2.16 (LTS). It is recommended to create a virtual environment inside the `envs` folder, e.g. by using [venv](https://docs.python.org/3/tutorial/venv.html).
 
 To install the requirements after cloning the code and activating the environment (e.g. `source envs/my-env/bin/activate`), run
 
@@ -48,12 +48,15 @@ As the database is empty in the beginning and filling it manually is a lot of wo
 
 ## Deployment...
 
+Most configuration options can be set with an environment file. An example can be found in `.env.example`. Copy this, rename it to `.env`, and adjust it to your local setting. These variables are then read for example in `cms/settings.py`.
+
 ### ...for testing
 
-In `cms/settings.py`
+In your .env file
 
-- add your domain to `ALLOWED_HOSTS = []`
-- add your frontend domain to `CORS_ORIGIN_WHITELIST`
+- add your domain to `ALLOWED_HOSTS`, e.g. `ALLOWED_HOSTS='mydomain.com my.second.domain.com'`. Note that a list can be given separated by whitespaces
+- add your domain to both `CORS_ORIGIN_WHITELIST` and `CSRF_TRUSTED_ORIGINS`, e.g. `CORS_ORIGIN_WHITELIST='https://mydomain.com'`. Note that here the protocol is also specified. Again, lists can be given by separating multiple entries with a white space.
+- set `DEBUG=True`
 
 Furthermore
 
@@ -64,7 +67,7 @@ Furthermore
 
 In addition to testing deployment: In `cms/settings.py` set
 
-- `DEBUG = False`
+- `DEBUG=False`
 - security key to a secure key that only you know
 - set paths especially `FORCE_SCRIPT_NAME` if you don't want to serve under root domain URL, but under something like `mydomain.org/cms`
 
