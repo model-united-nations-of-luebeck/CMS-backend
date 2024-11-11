@@ -307,8 +307,6 @@ class StudentOfficer(Participant):
 
 class MUNDirector(Participant):
     ''' MUN-Directors are responsible for supervising their schools' delegates'''
-    landline_phone = PhoneNumberField("landline phone", blank=True, null=True,
-                                      help_text="in case that a call is quicker than an email, don't forget the country code")
     english_teacher = models.BooleanField("Is the MUN-Director an English teacher?", default=True,
                                           help_text="English teachers can help with correcting the language and grammar of resolutions.")
     school = models.ForeignKey(

@@ -66,7 +66,7 @@ class StudentOfficerSerializer(serializers.ModelSerializer):
 class MUNDirectorSerializer(serializers.ModelSerializer):
     class Meta:
         model = MUNDirector
-        fields = ['id', 'first_name', 'last_name', 'gender', 'pronouns', 'email', 'mobile', 'diet', 'picture', 'birthday', 'extras', 'data_consent_time', 'data_consent_ip', 'media_consent_time', 'media_consent_ip', 'landline_phone', 'english_teacher', 'school']
+        fields = ['id', 'first_name', 'last_name', 'gender', 'pronouns', 'email', 'mobile', 'diet', 'picture', 'birthday', 'extras', 'data_consent_time', 'data_consent_ip', 'media_consent_time', 'media_consent_ip', 'english_teacher', 'school']
 
 class ExecutiveSerializer(serializers.ModelSerializer):
     class Meta:
