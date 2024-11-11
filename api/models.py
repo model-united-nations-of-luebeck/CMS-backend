@@ -288,7 +288,7 @@ class Delegate(Participant):
 class StudentOfficer(Participant):
     ''' Student Officers are the participants that chair a forum '''
     position_name = models.CharField(
-        "Position name", max_length=20, help_text="e.g. Chairman, Chairwoman, President, ... but <b>NOT</b> the entire title like 'Vice-Chairman of the First Committee' this will be generated automatically")
+        "Position name", max_length=100, help_text="Full position name, e.g. 'Vice-Chairman of the First Committee', 'Chairwoman of the Human Rights Council' or 'President of the General Assembly'")
     # Explanation: Chairs don't belong to schools' delegations but the name shall still be available. Also chairs can participate without their school participating.
     school_name = models.CharField(
         "School name", max_length=50, help_text="Name of the school/institution the student officer attends.")
