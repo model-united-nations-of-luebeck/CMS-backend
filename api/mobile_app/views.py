@@ -29,13 +29,15 @@ from api.models import Participant, Conference
 # Use secret.example.py as a template.
 from api.mobile_app.secret import MIGRATE_TOKEN, RSA_PASSPHRASE, EMAIL_PASSWORD, RSA_PRIVATE_KEY, RSA_PUBLIC_KEY
 
-pgp_key = serialization.load_pem_private_key(RSA_PRIVATE_KEY, password=RSA_PASSPHRASE, backend=default_backend())
+pgp_key = serialization.load_pem_private_key(
+    RSA_PRIVATE_KEY, password=RSA_PASSPHRASE, backend=default_backend())
 
 SENDER_EMAIL = "app@munol.org"
 
 
 def generate_login_code():
-    characters = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789"  # Does not contain 0, O, 1, I as to not be ambiguous
+    # Does not contain 0, O, 1, I as to not be ambiguous
+    characters = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789"
     return ''.join(secrets.choice(characters) for _ in range(6))
 
 
@@ -63,9 +65,11 @@ class RequestLoginCodeView(APIView):
                                 data={"detail": "An account with the specified email "
                                                 "address does not exist."})
 
-            serializer = MigratedParticipantSerializer(data=migrated_data.json())
+            serializer = MigratedParticipantSerializer(
+                data=migrated_data.json())
             if not serializer.is_valid():
-                print(serializer.errors)
+                print("[Migration Error] " + serializer.errors)
+                print("[Migration Error] " + migrated_data.json())
                 return Response(status=status.HTTP_500_INTERNAL_SERVER_ERROR,
                                 data={"detail": "Something went wrong while fetching participant data."})
             participant = serializer.save()
@@ -74,7 +78,7 @@ class RequestLoginCodeView(APIView):
         participant.app_code_expires_by = timezone.now() + timedelta(minutes=15)
         participant.save()
 
-        if email == "apple.tester@munol.org" :
+        if email == "apple.tester@munol.org":
             return Response({"detail": "A login code was sent to your email address."})
         txt_template = loader.get_template("api/mobile_app/code_email.txt")
         html_template = loader.get_template("api/mobile_app/code_email.html")
@@ -100,7 +104,8 @@ class LoginView(APIView):
         email = serializer.validated_data["email"].lower()
         code = serializer.validated_data["code"].upper()
         try:
-            next_conference = Conference.objects.filter(enddate__gte=date.today()).order_by("enddate")[0]
+            next_conference = Conference.objects.filter(
+                enddate__gte=date.today()).order_by("enddate")[0]
         except Conference.DoesNotExist:
             return Response(status=status.HTTP_403_FORBIDDEN,
                             data={"detail": "There is no planned upcoming conference."})
@@ -124,8 +129,10 @@ class LoginView(APIView):
 
         serializer = DigitalBadgeSerializer(participant)
         badge_data = serializer.data
-        badge_data['exp'] = datetime.combine(next_conference.enddate + timedelta(days=1), datetime.min.time())
-        token = jwt.encode(badge_data, pgp_key, algorithm="RS256", json_encoder=DigitalBadgeEncoder)
+        badge_data['exp'] = datetime.combine(
+            next_conference.enddate + timedelta(days=1), datetime.min.time())
+        token = jwt.encode(badge_data, pgp_key, algorithm="RS256",
+                           json_encoder=DigitalBadgeEncoder)
 
         return Response({"digital_badge": token})
 
@@ -143,6 +150,19 @@ class VerifyView(APIView):
         except:
             return Response({"expired": False, "invalid": True})
         return Response({"expired": False, "invalid": False})
+
+
+class LoginProblemView(APIView):
+    def post(self, request):
+        serializer = LoginProblemSerializer(data=request.data)
+        if not serializer.is_valid():
+            return Response(status=status.HTTP_400_BAD_REQUEST, data={"detail": "Invalid request body."})
+        email = serializer.validated_data['email']
+        print("[Login Problem] " + email)
+        send_mail("MUNOL App Login Issue", f"User with E-Mail \"{email}\" reported a login problem.", f'MUNOL App <{SENDER_EMAIL}>', [
+                  SENDER_EMAIL], auth_user=SENDER_EMAIL, auth_password=EMAIL_PASSWORD)
+
+        return Response()
 
 
 class DigitalBadgeEncoder(json.JSONEncoder):

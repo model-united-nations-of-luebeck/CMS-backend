@@ -17,12 +17,18 @@ class VerifySerializer(serializers.Serializer):
     token = serializers.CharField()
 
 
+class LoginProblemSerializer(serializers.Serializer):
+    email = serializers.EmailField()
+
+
 class DigitalBadgeSerializer(serializers.ModelSerializer):
     role = serializers.CharField(source='get_role_display')
+
     class Meta:
         model = Participant
         # This should NEVER serialize __all__, app_code or app_code_expires_by
-        fields = ['first_name', 'last_name', 'picture', 'birthday', 'role', 'position']
+        fields = ['first_name', 'last_name',
+                  'picture', 'birthday', 'role', 'position']
 
 
 class MigratedParticipantSerializer(ModelSerializer):
