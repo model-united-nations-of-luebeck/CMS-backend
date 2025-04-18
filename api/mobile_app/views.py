@@ -159,10 +159,15 @@ class LoginProblemView(APIView):
             return Response(status=status.HTTP_400_BAD_REQUEST, data={"detail": "Invalid request body."})
         email = serializer.validated_data['email']
         print("[Login Problem] " + email)
-        send_mail("MUNOL App Login Issue", f"User with E-Mail \"{email}\" reported a login problem.", f'MUNOL App <{SENDER_EMAIL}>', [
-                  SENDER_EMAIL], auth_user=SENDER_EMAIL, auth_password=EMAIL_PASSWORD)
 
-        return Response()
+        for _ in range(0, 5):
+            try:
+                send_mail("MUNOL App Login Issue", f"User with E-Mail \"{email}\" reported a login problem.", f'MUNOL App <{SENDER_EMAIL}>',
+                    [SENDER_EMAIL], auth_user=SENDER_EMAIL, auth_password=EMAIL_PASSWORD)
+                return Response({"detail": "Your problem was reported."})
+            except SMTPException:
+                pass
+        return Response(status=status.HTTP_500_INTERNAL_SERVER_ERROR, data={"detail": "Something went wrong."})
 
 
 class DigitalBadgeEncoder(json.JSONEncoder):
