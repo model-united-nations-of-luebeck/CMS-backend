@@ -27,3 +27,4 @@ gunicorn==23.0.0
 
 drf-base64~=2.0
 requests~=2.29.0
+drf-spectacular=0.28.0
