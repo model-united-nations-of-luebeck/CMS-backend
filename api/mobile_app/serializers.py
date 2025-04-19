@@ -22,8 +22,6 @@ class LoginProblemSerializer(serializers.Serializer):
 
 
 class DigitalBadgeSerializer(serializers.ModelSerializer):
-    role = serializers.CharField(source='get_role_display')
-
     class Meta:
         model = Participant
         # This should NEVER serialize __all__, app_code or app_code_expires_by
