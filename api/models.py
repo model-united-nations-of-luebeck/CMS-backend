@@ -231,7 +231,7 @@ class Event(models.Model):
     location = models.ForeignKey(Location, blank=True, null=True,
                                  help_text="Select where the event happens", on_delete=models.SET_NULL)
     relevance = MultiSelectField(
-        choices=Participant.ROLE_CHOICES, blank=True, null=True)
+        choices=Participant.ROLE_CHOICES)
 
     def __str__(self):
         return "{}, {}, {}".format(self.name, self.day, self.start_time)
