@@ -105,7 +105,7 @@ class LoginView(APIView):
         code = serializer.validated_data["code"].upper()
         try:
             next_conference = Conference.objects.filter(
-                enddate__gte=date.today()).order_by("enddate")[0]
+                end_date__gte=date.today()).order_by("end_date")[0]
         except Conference.DoesNotExist:
             return Response(status=status.HTTP_403_FORBIDDEN,
                             data={"detail": "There is no planned upcoming conference."})
@@ -130,7 +130,7 @@ class LoginView(APIView):
         serializer = DigitalBadgeSerializer(participant)
         badge_data = serializer.data
         badge_data['exp'] = datetime.combine(
-            next_conference.enddate + timedelta(days=1), datetime.min.time())
+            next_conference.end_date + timedelta(days=1), datetime.min.time())
         token = jwt.encode(badge_data, pgp_key, algorithm="RS256",
                            json_encoder=DigitalBadgeEncoder)
 
