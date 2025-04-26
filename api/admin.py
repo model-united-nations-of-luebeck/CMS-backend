@@ -12,10 +12,10 @@ class ParticipantAdmin(admin.ModelAdmin):
     )
     def rendered_badge_photo(self, obj):
         if obj.picture:
-            if obj.picture.startswith('data:image/') and ';base64,' in obj.picture:
-                return mark_safe(f'<img src="{obj.picture}" alt="Badge Photo" width="350" height="450" />')
+            if obj.picture and hasattr(obj.picture, 'url'):
+                return mark_safe(f'<img src="{obj.picture.url}" alt="Badge Photo" width="350" height="450" />')
             else:
-                return 'Photo data is not base 64 encoded'
+                return 'Photo Invalid'
         else:
             return 'No Photo Available'
     
