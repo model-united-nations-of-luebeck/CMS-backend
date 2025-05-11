@@ -1,4 +1,5 @@
 from rest_framework import serializers
+from drf_base64.serializers import ModelSerializer as Base64ModelSerializer
 from api.models import Conference, School, MemberOrganization, Location, Room, Event, Lunch, Plenary, Forum, Participant, Delegate, StudentOfficer, MUNDirector, Executive, Staff, Advisor, Issue, Document, ResearchReport, PositionPaper
 
 # Serializers convert to JSON and validate data passed
@@ -48,37 +49,37 @@ class ForumSerializer(serializers.ModelSerializer):
         model = Forum
         fields = ['id', 'name', 'abbreviation', 'subtitle', 'email', 'room', 'plenary', 'lunches']
 
-class ParticipantSerializer(serializers.ModelSerializer):
+class ParticipantSerializer(Base64ModelSerializer):
     class Meta:
         model = Participant
         fields = ['id', 'first_name', 'last_name', 'gender', 'pronouns', 'email', 'email_verified',  'mobile', 'diet', 'picture', 'birthday', 'extras', 'role', 'data_consent_time', 'data_consent_ip', 'media_consent_time', 'media_consent_ip']
 
-class DelegateSerializer(serializers.ModelSerializer):
+class DelegateSerializer(Base64ModelSerializer):
     class Meta:
         model = Delegate
         fields = ['id', 'first_name', 'last_name', 'gender', 'pronouns', 'email', 'email_verified', 'mobile', 'diet', 'picture', 'birthday', 'extras', 'data_consent_time', 'data_consent_ip', 'media_consent_time', 'media_consent_ip', 'ambassador', 'first_timer', 'represents', 'school', 'forum']
 
-class StudentOfficerSerializer(serializers.ModelSerializer):
+class StudentOfficerSerializer(Base64ModelSerializer):
     class Meta:
         model = StudentOfficer
         fields = ['id', 'first_name', 'last_name', 'gender', 'pronouns', 'email', 'email_verified', 'mobile', 'diet', 'picture', 'birthday', 'extras', 'data_consent_time', 'data_consent_ip', 'media_consent_time', 'media_consent_ip', 'position_name', 'school_name', 'forum', 'plenary']
 
-class MUNDirectorSerializer(serializers.ModelSerializer):
+class MUNDirectorSerializer(Base64ModelSerializer):
     class Meta:
         model = MUNDirector
         fields = ['id', 'first_name', 'last_name', 'gender', 'pronouns', 'email', 'email_verified', 'mobile', 'diet', 'picture', 'birthday', 'extras', 'data_consent_time', 'data_consent_ip', 'media_consent_time', 'media_consent_ip', 'english_teacher', 'school']
 
-class ExecutiveSerializer(serializers.ModelSerializer):
+class ExecutiveSerializer(Base64ModelSerializer):
     class Meta:
         model = Executive
         fields = ['id', 'first_name', 'last_name', 'gender', 'pronouns', 'email', 'email_verified', 'mobile', 'diet', 'picture', 'birthday', 'extras', 'data_consent_time', 'data_consent_ip', 'media_consent_time', 'media_consent_ip', 'position_name', 'school_name']
 
-class StaffSerializer(serializers.ModelSerializer):
+class StaffSerializer(Base64ModelSerializer):
     class Meta:
         model = Staff
         fields = ['id', 'first_name', 'last_name', 'gender', 'pronouns', 'email', 'email_verified', 'mobile', 'diet', 'picture', 'birthday', 'extras', 'data_consent_time', 'data_consent_ip', 'media_consent_time', 'media_consent_ip', 'position_name', 'school_name']
 
-class AdvisorSerializer(serializers.ModelSerializer):
+class AdvisorSerializer(Base64ModelSerializer):
     class Meta:
         model = Advisor
         fields = ['id', 'first_name', 'last_name', 'gender', 'pronouns', 'email', 'email_verified', 'mobile', 'diet', 'picture', 'birthday', 'extras', 'data_consent_time', 'data_consent_ip', 'media_consent_time', 'media_consent_ip', 'car', 'availability', 'experience', 'help']
