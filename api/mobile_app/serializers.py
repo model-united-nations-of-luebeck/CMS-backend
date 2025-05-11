@@ -35,3 +35,4 @@ class MigratedParticipantSerializer(ModelSerializer):
         # This should NEVER serialize __all__, app_code or app_code_expires_by
         fields = ['id', 'first_name', 'last_name', 'gender', 'email', 'mobile', 'diet', 'picture', 'birthday', 'extras',
                   'role', 'position']
+        extra_kwargs = {'role': {'read_only': False}}
