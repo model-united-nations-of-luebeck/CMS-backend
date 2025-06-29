@@ -1,6 +1,11 @@
 from django.db import models
 from multiselectfield import MultiSelectField
 from phonenumber_field.modelfields import PhoneNumberField
+from django.contrib.auth.models import User
+from django.conf import settings
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+from rest_framework.authtoken.models import Token
 
 # Models (sometimes also called entities or data templates) are stored here. These models describe what kind of objects we deal with in our app. However, the objects themselves are stored in a database.
 
@@ -38,6 +43,7 @@ class Conference(models.Model):
 
 class School(models.Model):
     ''' School that is planning to attend the conference '''
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='school')
     name = models.CharField("School Name", max_length=50,
                             help_text="Name will be used like this for badges and certificates.")
     street = models.CharField(
@@ -407,3 +413,10 @@ class PositionPaper(Document):
 
     class Meta:
         verbose_name = "Position Paper"
+
+
+@receiver(post_save, sender=settings.AUTH_USER_MODEL)
+def create_auth_token(sender, instance=None, created=False, **kwargs):
+    """Create an auth token for every newly created user."""
+    if created:
+        Token.objects.create(user=instance)
