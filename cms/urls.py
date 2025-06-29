@@ -18,13 +18,14 @@ from django.urls import include, path, re_path
 from django.conf import settings
 from django.conf.urls.static import static
 from rest_framework.authtoken import views
+from api.views import MUNOLObtainAuthToken
 
 urlpatterns = [
     path('admin/doc/', include('django.contrib.admindocs.urls')),
     path('admin/', admin.site.urls),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     path('api/', include('api.urls', namespace='api')),
-    re_path(r'^api-token-auth/', views.obtain_auth_token),
+    path('api-token-auth/', MUNOLObtainAuthToken.as_view(), name='api_token_auth'),
     path('pdfs/', include('pdfs.urls', namespace='pdfs')),
     path('stats/', include('stats.urls', namespace='stats'))
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

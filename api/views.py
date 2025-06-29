@@ -1,6 +1,9 @@
 from django.shortcuts import render
-from rest_framework import generics, viewsets # generic views for RUD, LC views; viewsets for ModelViewSets
+from rest_framework import viewsets # viewsets for ModelViewSets
 from api.permissions import MUNOLDjangoModelPermission, MUNOLDjangoModelPermissionsOrAnonReadOnly
+from rest_framework.authtoken.views import ObtainAuthToken
+from rest_framework.authtoken.models import Token
+from rest_framework.response import Response
 
 from api.serializers import ConferenceSerializer, SchoolSerializer, MemberOrganizationSerializer, LocationSerializer, RoomSerializer, EventSerializer, LunchSerializer, PlenarySerializer, ForumSerializer, ParticipantSerializer, DelegateSerializer, StudentOfficerSerializer, MUNDirectorSerializer, ExecutiveSerializer, StaffSerializer, AdvisorSerializer, IssueSerializer, DocumentSerializer, ResearchReportSerializer, PositionPaperSerializer
 from api.models import Conference, School, MemberOrganization, Location, Room, Event, Lunch, Plenary, Forum, Participant, Delegate, StudentOfficer, MUNDirector, Executive, Staff, Advisor, Issue, Document, ResearchReport, PositionPaper
@@ -89,3 +92,30 @@ class ResearchReportViewSet(GenericMUNOLViewSet):
 class PositionPaperViewSet(GenericMUNOLViewSet):
     queryset = PositionPaper.objects.all()
     serializer_class = PositionPaperSerializer                  
+
+
+class MUNOLObtainAuthToken(ObtainAuthToken):
+    """
+    Custom authentication view to return additional user information
+    along with the token, e.g. school_id or participant_id.
+    """
+
+    def post(self, request, *args, **kwargs):
+        response = super().post(request, *args, **kwargs)
+        token = Token.objects.get(key=response.data['token'])
+        user = token.user
+
+        if hasattr(user, 'school') and user.school is not None:
+            return Response({
+                'token': token.key,
+                'school_id': getattr(user.school, 'id', None),
+            })
+        elif hasattr(user, 'participant') and user.participant is not None:
+            return Response({
+                'token': token.key,
+                'participant_id': getattr(user.participant, 'id', None),
+            })
+        else:
+            return Response({
+                'token': token.key,
+            })
