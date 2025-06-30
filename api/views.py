@@ -128,5 +128,5 @@ class SchoolRegisterView(APIView):
         serializer = SchoolRegistrationSerializer(data=request.data)
         if serializer.is_valid():
             school = serializer.save()
-            return Response({'school_id': school.id}, status=status.HTTP_201_CREATED)
+            return Response(SchoolSerializer(school).data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

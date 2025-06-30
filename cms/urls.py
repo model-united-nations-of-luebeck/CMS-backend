@@ -24,8 +24,8 @@ urlpatterns = [
     path('admin/doc/', include('django.contrib.admindocs.urls')),
     path('admin/', admin.site.urls),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
-    path('api/', include('api.urls', namespace='api')),
     path('api/schools/register/', SchoolRegisterView.as_view(), name='school_register'),
+    path('api/', include('api.urls', namespace='api')),
     path('api-token-auth/', MUNOLObtainAuthToken.as_view(), name='api_token_auth'),
     path('pdfs/', include('pdfs.urls', namespace='pdfs')),
     path('stats/', include('stats.urls', namespace='stats'))
