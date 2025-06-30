@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from drf_base64.serializers import ModelSerializer as Base64ModelSerializer
+from django.contrib.auth.models import User
 from api.models import Conference, School, MemberOrganization, Location, Room, Event, Lunch, Plenary, Forum, Participant, Delegate, StudentOfficer, MUNDirector, Executive, Staff, Advisor, Issue, Document, ResearchReport, PositionPaper
 
 # Serializers convert to JSON and validate data passed
@@ -13,6 +14,23 @@ class SchoolSerializer(serializers.ModelSerializer):
     class Meta:
         model = School
         fields = ['id', 'name', 'street', 'city', 'zipcode', 'country', 'requested', 'housing_delegates', 'housing_mun_directors', 'registration_status', 'fee_paid', 'arrival', 'departure', 'comment']
+
+class SchoolRegistrationSerializer(serializers.ModelSerializer):
+    username = serializers.CharField(write_only=True)
+    password = serializers.CharField(write_only=True)
+
+    class Meta:
+        model = School
+        fields = ['username', 'password', 'name']  # include your school fields
+
+    def create(self, validated_data):
+        username = validated_data.pop('username')
+        password = validated_data.pop('password')
+
+        user = User.objects.create_user(username=username, password=password)
+        school = School.objects.create(user=user, **validated_data)
+        return school
+
 
 class MemberOrganizationSerializer(serializers.ModelSerializer):
     class Meta:

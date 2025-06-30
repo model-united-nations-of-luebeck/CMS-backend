@@ -4,6 +4,9 @@ from api.permissions import MUNOLDjangoModelPermission, MUNOLDjangoModelPermissi
 from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework.authtoken.models import Token
 from rest_framework.response import Response
+from rest_framework.views import APIView
+from rest_framework import status
+from api.serializers import SchoolRegistrationSerializer
 
 from api.serializers import ConferenceSerializer, SchoolSerializer, MemberOrganizationSerializer, LocationSerializer, RoomSerializer, EventSerializer, LunchSerializer, PlenarySerializer, ForumSerializer, ParticipantSerializer, DelegateSerializer, StudentOfficerSerializer, MUNDirectorSerializer, ExecutiveSerializer, StaffSerializer, AdvisorSerializer, IssueSerializer, DocumentSerializer, ResearchReportSerializer, PositionPaperSerializer
 from api.models import Conference, School, MemberOrganization, Location, Room, Event, Lunch, Plenary, Forum, Participant, Delegate, StudentOfficer, MUNDirector, Executive, Staff, Advisor, Issue, Document, ResearchReport, PositionPaper
@@ -119,3 +122,11 @@ class MUNOLObtainAuthToken(ObtainAuthToken):
             return Response({
                 'token': token.key,
             })
+        
+class SchoolRegisterView(APIView):
+    def post(self, request):
+        serializer = SchoolRegistrationSerializer(data=request.data)
+        if serializer.is_valid():
+            school = serializer.save()
+            return Response({'school_id': school.id}, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
