@@ -191,7 +191,7 @@ class Person(models.Model):
 
 class Participant(Person):
     '''Participants are persons who take part in the conference and thus have additional attributes'''
-    user = models.OneToOneField(User, on_delete=models.CASCADE, null=True, blank=True)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, null=True, blank=True, related_name='participant')
     MEAT = 'meat'
     VEGETARIAN = 'vegetarian'
     VEGAN = 'vegan'
