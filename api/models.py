@@ -191,6 +191,7 @@ class Person(models.Model):
 
 class Participant(Person):
     '''Participants are persons who take part in the conference and thus have additional attributes'''
+    user = models.OneToOneField(User, on_delete=models.CASCADE, null=True, blank=True)
     MEAT = 'meat'
     VEGETARIAN = 'vegetarian'
     VEGAN = 'vegan'
@@ -213,6 +214,23 @@ class Participant(Person):
     data_consent_ip = models.GenericIPAddressField("Data Consent given from IP", blank=True, null=True, help_text="From which IP address did the participant give consent to store their data? Null if not given yet.")
     media_consent_time = models.DateTimeField("Media Consent given at", blank=True, null=True, help_text="When did the participant give consent to use their media? Null if not given yet.")
     media_consent_ip = models.GenericIPAddressField("Media Consent given from IP", blank=True, null=True, help_text="From which IP address did the participant give consent to use their media? Null if not given yet.")
+
+    def save(self, *args, **kwargs):
+        # Always save participant first to get pk
+        super().save(*args, **kwargs)
+
+        # Create user if it doesn't exist already
+        if not self.user:
+            user = User(username=f"participant_{self.pk}")
+            user.set_unusable_password()
+            user.save()
+            self.user = user
+            super().save(update_fields=["user"])
+
+        # Sync emails between user and participant, e.g. when email is updated
+        if self.email and self.user.email != self.email:
+            self.user.email = self.email
+            self.user.save()
 
 
 class Event(models.Model):
