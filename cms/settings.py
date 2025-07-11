@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'django.contrib.admindocs',
     'rest_framework',
     'rest_framework.authtoken',
+    'drfpasswordless',
 ]
 
 MIDDLEWARE = [
@@ -164,5 +165,114 @@ CORS_ORIGIN_ALLOW_ALL = False
 CORS_ORIGIN_WHITELIST = os.getenv('CORS_ORIGIN_WHITELIST', 'http://localhost:8080').split()
 CSRF_TRUSTED_ORIGINS = os.getenv('CSRF_TRUSTED_ORIGINS', 'http://localhost:8080').split()
 
-# since Django 3.2, the default primary key needs to be set explicitly to keep AutoField instead of enw BigAutoField
+# since Django 3.2, the default primary key needs to be set explicitly to keep AutoField instead of new BigAutoField
 DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
+
+PASSWORDLESS_AUTH = {
+
+    # Allowed auth types, can be EMAIL, MOBILE, or both.
+    'PASSWORDLESS_AUTH_TYPES': ['EMAIL'],
+
+    # URL Prefix for Authentication Endpoints
+    'PASSWORDLESS_AUTH_PREFIX': 'auth/',
+    
+    #  URL Prefix for Verification Endpoints
+    'PASSWORDLESS_VERIFY_PREFIX': 'auth/verify/',
+
+    # Amount of time that tokens last, in seconds
+    'PASSWORDLESS_TOKEN_EXPIRE_TIME': 15 * 60,
+
+    # The user's email field name
+    'PASSWORDLESS_USER_EMAIL_FIELD_NAME': 'email',
+
+    # The user's mobile field name
+    # 'PASSWORDLESS_USER_MOBILE_FIELD_NAME': 'mobile',
+
+    # Marks itself as verified the first time a user completes auth via token.
+    # Automatically unmarks itself if email is changed.
+    'PASSWORDLESS_USER_MARK_EMAIL_VERIFIED': True,
+    'PASSWORDLESS_USER_EMAIL_VERIFIED_FIELD_NAME': 'email_verified',
+
+    # Marks itself as verified the first time a user completes auth via token.
+    # Automatically unmarks itself if mobile number is changed.
+    # 'PASSWORDLESS_USER_MARK_MOBILE_VERIFIED': False,
+    # 'PASSWORDLESS_USER_MOBILE_VERIFIED_FIELD_NAME': 'mobile_verified',
+
+    # The email the callback token is sent from
+    'PASSWORDLESS_EMAIL_NOREPLY_ADDRESS': os.getenv('EMAIL_FROM_ADDRESS', None),
+
+    # The email subject
+    'PASSWORDLESS_EMAIL_SUBJECT': "Your Login Token",
+
+    # A plaintext email message overridden by the html message. Takes one string.
+    'PASSWORDLESS_EMAIL_PLAINTEXT_MESSAGE': (
+        "Enter this token to sign in: %s.\n\n"
+        "If you did not request this e-mail, please ignore it."
+    ),
+
+    # The email template name.
+    'PASSWORDLESS_EMAIL_TOKEN_HTML_TEMPLATE_NAME': "passwordless_default_token_email.html",
+
+    # Your twilio number that sends the callback tokens.
+    # 'PASSWORDLESS_MOBILE_NOREPLY_NUMBER': None,
+
+    # The message sent to mobile users logging in. Takes one string.
+    # 'PASSWORDLESS_MOBILE_MESSAGE': "Use this code to log in: %s",
+
+    # Registers previously unseen aliases as new users.
+    'PASSWORDLESS_REGISTER_NEW_USERS': False,
+
+    # Suppresses actual SMS for testing
+    # 'PASSWORDLESS_TEST_SUPPRESSION': False,
+
+    # Context Processors for Email Template
+    # 'PASSWORDLESS_CONTEXT_PROCESSORS': [],
+
+    # The verification email subject
+    # 'PASSWORDLESS_EMAIL_VERIFICATION_SUBJECT': "Your Verification Token",
+
+    # A plaintext verification email message overridden by the html message. Takes one string.
+    # 'PASSWORDLESS_EMAIL_VERIFICATION_PLAINTEXT_MESSAGE': "Enter this verification code: %s",
+
+    # The verification email template name.
+    # 'PASSWORDLESS_EMAIL_VERIFICATION_TOKEN_HTML_TEMPLATE_NAME': "passwordless_default_verification_token_email.html",
+
+    # The message sent to mobile users logging in. Takes one string.
+    # 'PASSWORDLESS_MOBILE_VERIFICATION_MESSAGE': "Enter this verification code: %s",
+
+    # Automatically send verification email or sms when a user changes their alias.
+    # 'PASSWORDLESS_AUTO_SEND_VERIFICATION_TOKEN': False,
+
+    # What function is called to construct an authentication tokens when
+    # exchanging a passwordless token for a real user auth token. This function
+    # should take a user and return a tuple of two values. The first value is
+    # the token itself, the second is a boolean value representing whether
+    # the token was newly created.
+    'PASSWORDLESS_AUTH_TOKEN_CREATOR': 'drfpasswordless.utils.create_authentication_token',
+    
+    # What function is called to construct a serializer for drf tokens when
+    # exchanging a passwordless token for a real user auth token.
+    'PASSWORDLESS_AUTH_TOKEN_SERIALIZER': 'drfpasswordless.serializers.TokenResponseSerializer',
+
+    # A dictionary of demo user's primary key mapped to their static pin
+    # 'PASSWORDLESS_DEMO_USERS': {},
+
+    # configurable function for sending email
+    # 'PASSWORDLESS_EMAIL_CALLBACK': 'drfpasswordless.utils.send_email_with_callback_token',
+    "PASSWORDLESS_EMAIL_CALLBACK": "api.auth.send_passwordless_email",
+    
+    # configurable function for sending sms
+    # 'PASSWORDLESS_SMS_CALLBACK': 'drfpasswordless.utils.send_sms_with_callback_token',
+
+    # Token Generation Retry Count
+    'PASSWORDLESS_TOKEN_GENERATION_ATTEMPTS': 3
+
+
+}
+
+EMAIL_HOST = os.getenv('EMAIL_HOST', None)
+EMAIL_PORT = os.getenv('EMAIL_PORT', 587)
+EMAIL_USE_TLS = os.getenv('EMAIL_USE_TLS', True)
+EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER', None)
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD', None)
+EMAIL_BACKEND = os.getenv('EMAIL_BACKEND', 'django.core.mail.backends.smtp.EmailBackend')

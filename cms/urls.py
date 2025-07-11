@@ -28,5 +28,6 @@ urlpatterns = [
     path('api/', include('api.urls', namespace='api')),
     path('api-token-auth/', MUNOLObtainAuthToken.as_view(), name='api_token_auth'),
     path('pdfs/', include('pdfs.urls', namespace='pdfs')),
-    path('stats/', include('stats.urls', namespace='stats'))
+    path('stats/', include('stats.urls', namespace='stats')),
+    path('', include('drfpasswordless.urls', namespace='drfpasswordless')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
