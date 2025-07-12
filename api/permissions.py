@@ -39,9 +39,9 @@ class ParticipantAccess(BasePermission):
         if request.user == obj.user and request.method in ['GET', 'HEAD', 'OPTIONS', 'PUT', 'PATCH']:
             return True
 
-        # Allow other authenticated users to access only if no personal info is present (checked by data_consent_time)
+        # Allow other authenticated users to access non-personal data
         if request.method in SAFE_METHODS:
-            return not (obj.data_consent_time)
+            return True # Further checks will be done in the viewset
         
         # Deny access for all other cases
         return False
