@@ -6,6 +6,7 @@ from django.conf import settings
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from rest_framework.authtoken.models import Token
+import uuid
 
 # Models (sometimes also called entities or data templates) are stored here. These models describe what kind of objects we deal with in our app. However, the objects themselves are stored in a database.
 
@@ -159,7 +160,8 @@ class Room(Location):
 
 
 class Person(models.Model):
-    ''' Person in general as a human being'''
+    ''' Person in general as a human being. Used UUID as primary key to avoid id guessing.'''
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     first_name = models.CharField(
         "first name", max_length=50, help_text="Including second names if wanted", blank=True)
     last_name = models.CharField(
