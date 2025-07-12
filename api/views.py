@@ -1,12 +1,14 @@
 from django.shortcuts import render
 from rest_framework import viewsets # viewsets for ModelViewSets
-from api.permissions import ReadOnly, IsParticipantThemself, BelongsToSchool, IsOrganizer
+from api.permissions import ReadOnly, ParticipantAccess, BelongsToSchool, IsOrganizer
+from rest_framework.permissions import SAFE_METHODS
 from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework.authtoken.models import Token
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework import status
 from api.serializers import SchoolRegistrationSerializer
+from drfpasswordless.utils import send_email_with_callback_token
 
 from api.serializers import ConferenceSerializer, SchoolSerializer, MemberOrganizationSerializer, LocationSerializer, RoomSerializer, EventSerializer, LunchSerializer, PlenarySerializer, ForumSerializer, ParticipantSerializer, DelegateSerializer, StudentOfficerSerializer, MUNDirectorSerializer, ExecutiveSerializer, StaffSerializer, AdvisorSerializer, IssueSerializer, DocumentSerializer, ResearchReportSerializer, PositionPaperSerializer
 from api.models import Conference, School, MemberOrganization, Location, Room, Event, Lunch, Plenary, Forum, Participant, Delegate, StudentOfficer, MUNDirector, Executive, Staff, Advisor, Issue, Document, ResearchReport, PositionPaper
@@ -61,39 +63,61 @@ class ForumViewSet(GenericMUNOLViewSet):
     permission_classes = [ReadOnly|IsOrganizer]
 
 class ParticipantViewSet(GenericMUNOLViewSet):
-    queryset = Participant.objects.all()
+    queryset = Participant.objects.select_related('user').all()
     serializer_class = ParticipantSerializer
-    permission_classes = [IsParticipantThemself|IsOrganizer]
+    permission_classes = [ParticipantAccess|IsOrganizer]
 
-class DelegateViewSet(GenericMUNOLViewSet):
-    queryset = Delegate.objects.all()
+    def retrieve(self, request, *args, **kwargs):
+        instance = self.get_object()
+    
+        # If the user is authenticated (by using the frontend) and not the participant themselves,
+        # send a passwordless token to their email, if they have one stored and already filled personal data.
+        # This is to ensure that personal data is not exposed without consent
+        if request.user.is_authenticated and request.method in SAFE_METHODS and request.user != instance.user and instance.data_consent_time:
+            if instance.email:
+                send_email_with_callback_token(instance.email)
+                return Response(
+                    {"detail": "Login required. Token has been sent to this participant's email."},
+                    status=status.HTTP_403_FORBIDDEN,
+                )
+            else:
+                return Response(
+                    {"detail": "This participant has no email address set."},
+                    status=status.HTTP_403_FORBIDDEN,
+                )
+        return None
+
+        return super().retrieve(request, *args, **kwargs)
+
+class DelegateViewSet(ParticipantViewSet):
+    queryset = Delegate.objects.select_related('user').all()
     serializer_class = DelegateSerializer
-    permission_classes = [IsParticipantThemself|BelongsToSchool|IsOrganizer]
+    permission_classes = [ParticipantAccess|BelongsToSchool|IsOrganizer]
 
-class StudentOfficerViewSet(GenericMUNOLViewSet):
-    queryset = StudentOfficer.objects.all()
+class StudentOfficerViewSet(ParticipantViewSet):
+    queryset = StudentOfficer.objects.select_related('user').all()
     serializer_class = StudentOfficerSerializer
-    permission_classes = [IsParticipantThemself|IsOrganizer]
+    permission_classes = [ParticipantAccess|IsOrganizer]
 
-class MUNDirectorViewSet(GenericMUNOLViewSet):
-    queryset = MUNDirector.objects.all()
+class MUNDirectorViewSet(ParticipantViewSet):
+    queryset = MUNDirector.objects.select_related('user').all()
     serializer_class = MUNDirectorSerializer
-    permission_classes = [IsParticipantThemself|BelongsToSchool|IsOrganizer]
+    permission_classes = [ParticipantAccess|BelongsToSchool|IsOrganizer]
 
-class ExecutiveViewSet(GenericMUNOLViewSet):
-    queryset = Executive.objects.all()
+class ExecutiveViewSet(ParticipantViewSet):
+    queryset = Executive.objects.select_related('user').all()
     serializer_class = ExecutiveSerializer
-    permission_classes = [IsParticipantThemself|IsOrganizer]
+    permission_classes = [ParticipantAccess|IsOrganizer]
 
-class StaffViewSet(GenericMUNOLViewSet):
-    queryset = Staff.objects.all()
+class StaffViewSet(ParticipantViewSet):
+    queryset = Staff.objects.select_related('user').all()
     serializer_class = StaffSerializer
-    permission_classes = [IsParticipantThemself|IsOrganizer]
+    permission_classes = [ParticipantAccess|IsOrganizer]
 
-class AdvisorViewSet(GenericMUNOLViewSet):
-    queryset = Advisor.objects.all()
+class AdvisorViewSet(ParticipantViewSet):
+    queryset = Advisor.objects.select_related('user').all()
     serializer_class = AdvisorSerializer
-    permission_classes = [IsParticipantThemself|IsOrganizer]
+    permission_classes = [ParticipantAccess|IsOrganizer]
 
 class IssueViewSet(GenericMUNOLViewSet):
     queryset = Issue.objects.all()

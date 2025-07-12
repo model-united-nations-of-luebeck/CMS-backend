@@ -1,5 +1,5 @@
 from rest_framework.permissions import BasePermission, SAFE_METHODS
-from api.models import School, MUNDirector, Delegate
+from api.models import School, MUNDirector, Delegate, Advisor
 
 class ReadOnly(BasePermission):
     '''
@@ -8,18 +8,42 @@ class ReadOnly(BasePermission):
     def has_permission(self, request, view):
         return request.method in SAFE_METHODS
     
-class IsParticipantThemself(BasePermission):
+class ParticipantAccess(BasePermission):
     '''
-    Permission for participants to access their own data.
+    Grants access to a participant's data if:
+    1. the requesting user is authenticated and the participant themselves (authenticated via token)
+    2. the requesting user is authenticated (not necessarily the participant themselves) and there is no personal data stored in the participant's object yet (checked by data_consent_time). If personal data is stored, the viewset should send a passwordless token to the participant's email address to authenticate them.
+
+    Allows creating new Advisor objects.
+
+    Denies access if the method is DELETE or the user is not authenticated.
     '''
+
     def has_permission(self, request, view):
-        if request.user.is_authenticated and request.method in ['GET', 'HEAD', 'OPTIONS', 'PUT', 'PATCH']:
-            return hasattr(request.user, 'participant') and request.user.participant is not None
-        return False
+        if not request.user or not request.user.is_authenticated:
+            return False  # Only allow authenticated requests 
+        
+        if request.method == "DELETE":
+            return False # Deny DELETE requests
+        
+        # Restrict creation to Advisor objects only
+        if request.method == "POST":
+            model_class = getattr(getattr(view, 'queryset', None), 'model', None)
+            if model_class != Advisor:
+                return False
+            
+        return True
 
     def has_object_permission(self, request, view, obj):
-        if hasattr(request.user, 'participant') and request.user.participant is not None:
-            return obj == request.user.participant
+        # Allow participant's own user to access/change their data
+        if request.user == obj.user and request.method in ['GET', 'HEAD', 'OPTIONS', 'PUT', 'PATCH']:
+            return True
+
+        # Allow other authenticated users to access only if no personal info is present (checked by data_consent_time)
+        if request.method in SAFE_METHODS:
+            return not (obj.data_consent_time)
+        
+        # Deny access for all other cases
         return False
 
 class BelongsToSchool(BasePermission):
