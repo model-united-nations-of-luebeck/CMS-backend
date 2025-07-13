@@ -80,12 +80,12 @@ class ParticipantViewSet(GenericMUNOLViewSet):
                 callback_token = create_callback_token_for_user(instance.user, 'EMAIL', 'AUTH')
                 send_passwordless_email(instance.user, callback_token)
                 return Response(
-                    {"detail": "Login required. Token has been sent to this participant's email address. Please also check your spam folder."},
+                    {"detail": "Login required. Token has been sent to this participant's email address. Please also check your spam folder.", "dialog": "token_sent"},
                     status=status.HTTP_403_FORBIDDEN,
                 )
             else:
                 return Response(
-                    {"detail": "Login required. Sending token failed because this participant has no email address set."},
+                    {"detail": "Login required. Sending token failed because this participant has no email address set.", "dialog": "no_email"},
                     status=status.HTTP_403_FORBIDDEN,
                 )
 
