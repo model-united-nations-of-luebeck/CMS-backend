@@ -75,7 +75,7 @@ class ParticipantViewSet(GenericMUNOLViewSet):
         # send a passwordless token to their email, if they have an email address stored and
         # already filled in personal data (checked by data_consent_time).
         # This is to ensure that personal data is not exposed without consent
-        if request.user.is_authenticated and not request.user.is_staff and request.method in SAFE_METHODS and request.user != instance.user and instance.data_consent_time:
+        if request.user.is_authenticated and not request.user.is_staff and request.method in SAFE_METHODS and instance.user is not None and request.user != instance.user and instance.data_consent_time:
             if instance.email:
                 callback_token = create_callback_token_for_user(instance.user, 'EMAIL', 'AUTH')
                 send_passwordless_email(instance.user, callback_token)
