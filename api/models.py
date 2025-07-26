@@ -194,16 +194,6 @@ class Person(models.Model):
 class Participant(Person):
     '''Participants are persons who take part in the conference and thus have additional attributes'''
     user = models.OneToOneField(User, on_delete=models.CASCADE, null=True, blank=True, related_name='participant')
-    MEAT = 'meat'
-    VEGETARIAN = 'vegetarian'
-    VEGAN = 'vegan'
-    DIET_CHOICES = [
-        (MEAT, 'meat'),
-        (VEGETARIAN, 'vegetarian'),
-        (VEGAN, 'vegan')
-    ]
-    diet = models.CharField("diet", max_length=10, choices=DIET_CHOICES, default=VEGETARIAN,
-                            help_text="main diet, smaller variations like allergies shall be indicated in the extras field")
     ROLE_CHOICES = [("advisor", 'Conference Advisor'), ('student officer', 'Student Officer'), ('delegate', 'Delegate'),
                     ("mun_director", "MUN Director"), ('executive', 'Executive'), ("staff", 'Staff')]
     role = models.CharField("the role they are participating in the conference as",
