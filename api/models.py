@@ -177,7 +177,6 @@ class Person(models.Model):
     gender = models.CharField("gender", max_length=1, choices=GENDER_CHOICES, default=FEMALE,
                               help_text="the diversity of genders is reflected in the 'other' choice")
     email = models.EmailField("E-Mail", blank=True, null=True)
-    email_verified = models.BooleanField("E-Mail verified", default=False, help_text="Has the email address been verified?")
     mobile = PhoneNumberField("mobile phone", blank=True,  null=True,
                               help_text="remember to include the country code, e.g. for Germany +49 and then leave out the leading 0")
     birthday = models.DateField("birthday", blank=True, null=True)
