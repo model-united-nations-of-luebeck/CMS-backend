@@ -86,7 +86,7 @@ class IsOrganizer(BasePermission):
     '''
     def has_permission(self, request, view):
         if request.user.is_authenticated and request.user.is_staff:
-            # TODO: Set organizer is_staff to True when authenticating
+            # is_staff is set to True for organizers in the authentication process in AzureADJWTAuthentication
             return True
         return False
 
