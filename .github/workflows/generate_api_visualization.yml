@@ -1,4 +1,6 @@
 name: Generate API Visualization
+permissions:
+  contents: write
 # This workflow is triggered on pull request events on any branch, only when 'api/models.py' is modified. Or when a developer triggers it. It generates an API visualization file and pushes it to the repository, so that it can be viewed in the GitHub repository README.
 
 on:
