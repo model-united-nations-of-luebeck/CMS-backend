@@ -176,8 +176,8 @@ class Person(models.Model):
     ]
     gender = models.CharField("gender", max_length=1, choices=GENDER_CHOICES, default=FEMALE,
                               help_text="the diversity of genders is reflected in the 'other' choice")
-    email = models.EmailField("E-Mail", blank=True, null=True)
-    email_verified = models.BooleanField("E-Mail verified", default=False, help_text="Has the email address been verified?")
+    email = models.EmailField("E-Mail", blank=True, null=True, unique=True,
+                              help_text="Please provide a valid email address, e.g. for passwordless authentication (needs to be unique). If you don't have one, leave it blank.")
     mobile = PhoneNumberField("mobile phone", blank=True,  null=True,
                               help_text="remember to include the country code, e.g. for Germany +49 and then leave out the leading 0")
     birthday = models.DateField("birthday", blank=True, null=True)
@@ -194,16 +194,6 @@ class Person(models.Model):
 class Participant(Person):
     '''Participants are persons who take part in the conference and thus have additional attributes'''
     user = models.OneToOneField(User, on_delete=models.CASCADE, null=True, blank=True, related_name='participant')
-    MEAT = 'meat'
-    VEGETARIAN = 'vegetarian'
-    VEGAN = 'vegan'
-    DIET_CHOICES = [
-        (MEAT, 'meat'),
-        (VEGETARIAN, 'vegetarian'),
-        (VEGAN, 'vegan')
-    ]
-    diet = models.CharField("diet", max_length=10, choices=DIET_CHOICES, default=VEGETARIAN,
-                            help_text="main diet, smaller variations like allergies shall be indicated in the extras field")
     ROLE_CHOICES = [("advisor", 'Conference Advisor'), ('student officer', 'Student Officer'), ('delegate', 'Delegate'),
                     ("mun_director", "MUN Director"), ('executive', 'Executive'), ("staff", 'Staff')]
     role = models.CharField("the role they are participating in the conference as",

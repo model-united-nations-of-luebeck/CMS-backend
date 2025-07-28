@@ -154,6 +154,7 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.BasicAuthentication',
         'rest_framework.authentication.TokenAuthentication',
+        'api.authentication.AzureADJWTAuthentication',  # Single sign-on with Azure AD
     ],
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.IsAdminUser', 
@@ -276,3 +277,9 @@ EMAIL_USE_TLS = os.getenv('EMAIL_USE_TLS', True)
 EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER', None)
 EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD', None)
 EMAIL_BACKEND = os.getenv('EMAIL_BACKEND', 'django.core.mail.backends.smtp.EmailBackend')
+
+# Azure AD JWT settings
+AZURE_TENANT_ID = os.getenv('AZURE_TENANT_ID', None)  
+AZURE_JWKS_URL = f"https://login.microsoftonline.com/{AZURE_TENANT_ID}/discovery/v2.0/keys"
+AZURE_AUDIENCE = os.getenv('AZURE_AUDIENCE', None)
+AZURE_ISSUER = f"https://login.microsoftonline.com/{AZURE_TENANT_ID}/v2.0"
