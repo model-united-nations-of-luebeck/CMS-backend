@@ -34,9 +34,11 @@ This requires `pygraphviz` to be installed, e.g. by using `pip install pygraphvi
 
 As the database is empty in the beginning and filling it manually is a lot of work, two helper functions can be used:
 
-1. A set of initial data entries for data, that will most likely be used at every conference, e.g. member organizations, locations and forums, is provided in the `test_data` directory. Simply load it as a [fixture](https://docs.djangoproject.com/en/4.0/howto/initial-data/#providing-initial-data-with-migrations) with
+1. A set of initial data entries for data, that will most likely be used at every conference, e.g. member organizations, locations, forums and plenaries, is provided in the `test_data` directory. Simply load it as a [fixture](https://docs.djangoproject.com/en/4.0/howto/initial-data/#providing-initial-data-with-migrations) with
 
    > python manage.py loaddata test_data/forums.json
+
+   > python manage.py loaddata test_data/plenaries.json
 
    > python manage.py loaddata test_data/locations.json
 

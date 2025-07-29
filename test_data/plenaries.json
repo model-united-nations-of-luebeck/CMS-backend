@@ -1,0 +1,26 @@
+[
+    {
+        "model": "api.plenary",
+        "pk": 1,
+        "fields": {
+            "name": "General Assembly",
+            "abbreviation": "GA",
+            "location": null,
+            "lunches": [
+                5
+            ]
+        }
+    },
+    {
+        "model": "api.plenary",
+        "pk": 2,
+        "fields": {
+            "name": "Economic and Social Council",
+            "abbreviation": "ECOSOC",
+            "location": 27,
+            "lunches": [
+                5
+            ]
+        }
+    }
+]

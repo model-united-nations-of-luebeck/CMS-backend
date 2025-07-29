@@ -1,20 +1,158 @@
 [
     {
-        "model": "api.Forum",
-        "pk": 10,
+        "model": "api.forum",
+        "pk": 1,
         "fields": {
-            "name": "Fourth Committee",
-            "abbreviation": "GA4",
-            "subtitle": "Special Political and Decolonization"
+            "name": "First Committee",
+            "abbreviation": "GA1",
+            "subtitle": "Disarmament and International Security",
+            "email": "first_committee@munol.org",
+            "room": null,
+            "plenary": 1,
+            "lunches": []
         }
     },
     {
-        "model": "api.Forum",
+        "model": "api.forum",
+        "pk": 2,
+        "fields": {
+            "name": "Second Committee",
+            "abbreviation": "GA2",
+            "subtitle": "Economic and Financial",
+            "email": "second_committee@munol.org",
+            "room": null,
+            "plenary": 1,
+            "lunches": []
+        }
+    },
+    {
+        "model": "api.forum",
+        "pk": 3,
+        "fields": {
+            "name": "Third Committee",
+            "abbreviation": "GA3",
+            "subtitle": "Social, Humanitarian and Cultural",
+            "email": "third_committee@munol.org",
+            "room": null,
+            "plenary": 1,
+            "lunches": []
+        }
+    },
+    {
+        "model": "api.forum",
+        "pk": 4,
+        "fields": {
+            "name": "Fourth Committee",
+            "abbreviation": "GA4",
+            "subtitle": "Special Political and Decolonization",
+            "email": "fourth_committee@munol.org",
+            "room": null,
+            "plenary": 1,
+            "lunches": []
+        }
+    },
+    {
+        "model": "api.forum",
+        "pk": 5,
+        "fields": {
+            "name": "Security Council",
+            "abbreviation": "SC",
+            "subtitle": null,
+            "email": "security_council@munol.org",
+            "room": null,
+            "plenary": null,
+            "lunches": []
+        }
+    },
+    {
+        "model": "api.forum",
+        "pk": 6,
+        "fields": {
+            "name": "Human Rights Council",
+            "abbreviation": "HRC",
+            "subtitle": null,
+            "email": "human_rights_council@munol.org",
+            "room": null,
+            "plenary": null,
+            "lunches": []
+        }
+    },
+    {
+        "model": "api.forum",
+        "pk": 7,
+        "fields": {
+            "name": "Environmental Commission",
+            "abbreviation": "EC",
+            "subtitle": null,
+            "email": "environmental_commission@munol.org",
+            "room": null,
+            "plenary": 3,
+            "lunches": []
+        }
+    },
+    {
+        "model": "api.forum",
+        "pk": 8,
+        "fields": {
+            "name": "Commission on the Status of Women",
+            "abbreviation": "CSW",
+            "subtitle": null,
+            "email": "commission_status_of_women@munol.org",
+            "room": null,
+            "plenary": 3,
+            "lunches": []
+        }
+    },
+    {
+        "model": "api.forum",
+        "pk": 9,
+        "fields": {
+            "name": "Commission for Social Development",
+            "abbreviation": "CSD",
+            "subtitle": null,
+            "email": "commission_on_social_development@munol.org",
+            "room": null,
+            "plenary": 3,
+            "lunches": []
+        }
+    },
+    {
+        "model": "api.forum",
+        "pk": 10,
+        "fields": {
+            "name": "Commission on Population and Development",
+            "abbreviation": "CPD",
+            "subtitle": null,
+            "email": "commission_population_development@munol.org",
+            "room": null,
+            "plenary": 3,
+            "lunches": []
+        }
+    },
+    {
+        "model": "api.forum",
         "pk": 11,
         "fields": {
-            "name": "Fifth Committee",
-            "abbreviation": "GA5",
-            "subtitle": "Administrative and Budgetary"
+            "name": "Commission on Crime Prevention and Criminal Justice",
+            "abbreviation": "CCPCJ",
+            "subtitle": null,
+            "email": "crime_prevention_criminal_justice@munol.org",
+            "room": null,
+            "plenary": 3,
+            "lunches": []
+        }
+    },
+    {
+        "model": "api.forum",
+        "pk": 12,
+        "fields": {
+            "name": "Crisis Committee",
+            "abbreviation": "Crisis",
+            "subtitle": null,
+            "email": "crisis_committee@munol.org",
+            "room": null,
+            "plenary": null,
+            "lunches": []
         }
     }
 ]
