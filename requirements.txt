@@ -4,7 +4,7 @@ Babel==2.9.1
 certifi==2024.7.4
 cryptography==45.0.5
 distlib==0.3.0
-Django==4.2.18
+Django==4.2.22
 django-cors-headers==4.4.0
 django-extensions==3.2.3
 django-filter==2.4.0
