@@ -4,6 +4,7 @@ This file provides methods to fill the Conference Management System with realist
 
 from api.models import Delegate, Executive, Forum, Plenary, MUNDirector, MemberOrganization, School, Advisor, Person, Staff, StudentOfficer, Issue
 import random
+from typing import List, Tuple
 import datetime
 from django.contrib.auth.models import User
 
@@ -20,7 +21,7 @@ TEST_PRONOUNS = ['he/him', 'she/her', 'they/them', 'ze/hir', 'xe/xem', 'ey/em', 
 
 # define methods for generating data # 
 
-def select_randomly_from_choices(choices: list[tuple])-> str:
+def select_randomly_from_choices(choices: List[Tuple[str, str]]) -> str:
     '''
     Randomly selects an option from a list of choices. 
 
