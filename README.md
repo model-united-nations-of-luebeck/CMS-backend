@@ -4,7 +4,7 @@ This repo organizes the backend of a Conference Management System for Model UN c
 
 ## Development Instructions
 
-At the moment this project uses Python 3.8+ and Django 4.2.16 (LTS). It is recommended to create a virtual environment inside the `envs` folder, e.g. by using [venv](https://docs.python.org/3/tutorial/venv.html).
+At the moment this project uses Python 3.8+ and Django 4.2.22 (LTS). It is recommended to create a virtual environment inside the `envs` folder, e.g. by using [venv](https://docs.python.org/3/tutorial/venv.html).
 
 To install the requirements after cloning the code and activating the environment (e.g. `source envs/my-env/bin/activate`), run
 
@@ -84,5 +84,7 @@ In addition to testing deployment: In your production `.env` file set
 Serve static files by running `python manage.py collectstatic` which generates a `static/` folder that needs to be served under `mydomain.org/cms/static` and includes the CSS, JS and image files. If the styling is missing, it might be a hint that the static files aren't loaded correctly.
 
 Perform migration of the database by running `python manage.py migrate`.
+
+To setup the authentication correctly, adjust the authentication related environment variables. In particular you need to register an application in your Azure instance, as described in [this guide](https://medium.com/@kuntumallashivani/a-guide-to-msal-3-0-authentication-in-vue-3-8c364cc26f53). Read more on authentication in the [wiki](https://github.com/model-united-nations-of-luebeck/CMS-backend/wiki/Conference-Management-System-backend-wiki).
 
 From uberspace there are instructions for setting up Django projects: [Django Guide Uberspace](https://lab.uberspace.de/guide_django/)
