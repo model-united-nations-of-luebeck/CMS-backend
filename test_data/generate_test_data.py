@@ -204,7 +204,7 @@ def generate_student_officers(n:int=30):
             position_name=random.choice(position_names), school_name=fake.name()+"-School", forum=random.choice(Forum.objects.all()),
             plenary=random.choice(Plenary.objects.all()))
 
-def generate_valid_forum_member_organization_combo() -> tuple[Forum, MemberOrganization]:
+def generate_valid_forum_member_organization_combo() -> Tuple[Forum, MemberOrganization]:
     '''
     Generates a valid combination of Forum and MemberOrganization such that the MemberOrganization is not already represented in the Forum by a Delegate.
     '''
