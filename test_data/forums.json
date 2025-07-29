@@ -1,0 +1,20 @@
+[
+    {
+        "model": "api.Forum",
+        "pk": 10,
+        "fields": {
+            "name": "Fourth Committee",
+            "abbreviation": "GA4",
+            "subtitle": "Special Political and Decolonization"
+        }
+    },
+    {
+        "model": "api.Forum",
+        "pk": 11,
+        "fields": {
+            "name": "Fifth Committee",
+            "abbreviation": "GA5",
+            "subtitle": "Administrative and Budgetary"
+        }
+    }
+]

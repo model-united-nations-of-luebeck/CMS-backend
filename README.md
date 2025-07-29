@@ -34,15 +34,23 @@ This requires `pygraphviz` to be installed, e.g. by using `pip install pygraphvi
 
 As the database is empty in the beginning and filling it manually is a lot of work, two helper functions can be used:
 
-1. A set of initial data entries for data, that will most likely be used at every conference, e.g. member organizations and forums, is provided in the `testdata` directory. Simply load it as a [fixture](https://docs.djangoproject.com/en/4.0/howto/initial-data/#providing-initial-data-with-migrations) with
+1. A set of initial data entries for data, that will most likely be used at every conference, e.g. member organizations, locations and forums, is provided in the `test_data` directory. Simply load it as a [fixture](https://docs.djangoproject.com/en/4.0/howto/initial-data/#providing-initial-data-with-migrations) with
 
-   > python manage.py loaddata testdata/forums.json
+   > python manage.py loaddata test_data/forums.json
 
-2. As the participants always change, fake participants can be generated for testing purposes. Use the custom commands in `management/commands/...`, e.g.
+   > python manage.py loaddata test_data/locations.json
 
-   > python manage.py setup_test_delegate -n 20
+   > python manage.py loaddata test_data/member_organizations.json
 
-   The `-n` or `--number` parameter is optional and specifies how many of this type shall be generated. To populate the database with all types, use
+2. Based on this initial data (from 1.) you can generate fake schools and participants for testing purposes. Use the custom commands in `management/commands/...`, e.g.
+
+   > python manage.py setup_test_delegates -n 200
+
+   or
+
+   > python manage.py setup_test_staffs -n 50
+
+   The `-n` or `--number` parameter is optional and specifies how many of this type shall be generated. If nothing is specified a sensible default number will be used. To populate the database with all types, use
 
    > python manage.py setup_test_data
 

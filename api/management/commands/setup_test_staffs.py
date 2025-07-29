@@ -1,12 +1,12 @@
 from django.core.management.base import BaseCommand
-from testdata.generate_testdata import generate_staffs
+from test_data.generate_test_data import generate_staffs
 
 class Command(BaseCommand):
-    help = 'Add test staff to the database'
+    help = 'Add test staffs to the database'
 
     def add_arguments(self, parser):
         # Optional argument
-        parser.add_argument('-n', '--number', type=int, help='Define the number of staff to be created', )
+        parser.add_argument('-n', '--number', type=int, help='Define the number of staffs to be created', )
 
 
     def handle(self, *args, **kwargs):

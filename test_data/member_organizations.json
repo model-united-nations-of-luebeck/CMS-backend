@@ -1,0 +1,2510 @@
+[
+    {
+        "model": "api.memberorganization",
+        "pk": 1,
+        "fields": {
+            "name": "Afghanistan",
+            "official_name": "Islamic Republic of Afghanistan",
+            "placard_name": "Afghanistan",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/af.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 2,
+        "fields": {
+            "name": "Albania",
+            "official_name": "Republic of Albania",
+            "placard_name": "Albania",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/al.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 3,
+        "fields": {
+            "name": "Algeria",
+            "official_name": "People's Democratic Republic of Algeria",
+            "placard_name": "Algeria",
+            "status": "member state",
+            "active": false,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/dz.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 4,
+        "fields": {
+            "name": "Andorra",
+            "official_name": "Principality of Andorra",
+            "placard_name": "Andorra",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/ad.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 5,
+        "fields": {
+            "name": "Angola",
+            "official_name": "Republic of Angola",
+            "placard_name": "Angola",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/ao.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 6,
+        "fields": {
+            "name": "Antigua and Barbuda",
+            "official_name": "Antigua and Barbuda",
+            "placard_name": "Antigua and Barbuda",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/ag.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 7,
+        "fields": {
+            "name": "Argentina",
+            "official_name": "Republic of Argentina ",
+            "placard_name": "Argentina",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/ar.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 8,
+        "fields": {
+            "name": "Armenia",
+            "official_name": "Republic of Armenia",
+            "placard_name": "Armenia",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/am.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 9,
+        "fields": {
+            "name": "Australia",
+            "official_name": "Commonwealth of Australia",
+            "placard_name": "Australia",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/au.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 10,
+        "fields": {
+            "name": "Austria",
+            "official_name": "Republic of Austria",
+            "placard_name": "Austria",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/at.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 11,
+        "fields": {
+            "name": "Azerbaijan",
+            "official_name": "Republic of Azerbaijan",
+            "placard_name": "Azerbaijan",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/az.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 12,
+        "fields": {
+            "name": "Bahamas",
+            "official_name": "Commonwealth of the Bahamas",
+            "placard_name": "Bahamas",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/bs.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 13,
+        "fields": {
+            "name": "Bahrain",
+            "official_name": "Kingdom of Bahrain",
+            "placard_name": "Bahrain",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/bh.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 14,
+        "fields": {
+            "name": "Bangladesh",
+            "official_name": "People's Republic of Bangladesh",
+            "placard_name": "Bangladesh",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/bd.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 15,
+        "fields": {
+            "name": "Barbados",
+            "official_name": "Barbados",
+            "placard_name": "Barbados",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/bb.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 16,
+        "fields": {
+            "name": "Belarus",
+            "official_name": "Republic of Belarus",
+            "placard_name": "Belarus",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/by.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 17,
+        "fields": {
+            "name": "Belgium",
+            "official_name": "Kingdom of Belgium",
+            "placard_name": "Belgium",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/be.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 18,
+        "fields": {
+            "name": "Belize",
+            "official_name": "Belize",
+            "placard_name": "Belize",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/bz.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 19,
+        "fields": {
+            "name": "Benin",
+            "official_name": "Republic of Benin",
+            "placard_name": "Benin",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/bj.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 20,
+        "fields": {
+            "name": "Bhutan",
+            "official_name": "Kingdom of Bhutan",
+            "placard_name": "Bhutan",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/bt.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 21,
+        "fields": {
+            "name": "Bolivia",
+            "official_name": "Plurinational State of Bolivia",
+            "placard_name": "Bolivia",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/bo.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 22,
+        "fields": {
+            "name": "Bosnia and Herzegovina",
+            "official_name": "Bosnia and Herzegovina",
+            "placard_name": "Bosnia and Herzegovina",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/ba.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 23,
+        "fields": {
+            "name": "Botswana",
+            "official_name": "Republic of Botswana",
+            "placard_name": "Botswana",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/bw.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 24,
+        "fields": {
+            "name": "Brazil",
+            "official_name": "Federative Republic of Brazil",
+            "placard_name": "Brazil",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/br.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 25,
+        "fields": {
+            "name": "Brunei",
+            "official_name": "Negara Brunei Darussalam",
+            "placard_name": "Brunei",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/bn.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 26,
+        "fields": {
+            "name": "Bulgaria",
+            "official_name": "Republic of Bulgaria",
+            "placard_name": "Bulgaria",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/bg.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 27,
+        "fields": {
+            "name": "Burkina Faso",
+            "official_name": "Burkina Faso",
+            "placard_name": "Burkina Faso",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/bf.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 28,
+        "fields": {
+            "name": "Burundi",
+            "official_name": "Republic of Burundi",
+            "placard_name": "Burundi",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/bi.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 29,
+        "fields": {
+            "name": "Cambodia",
+            "official_name": "Kingdom of Cambodia",
+            "placard_name": "Cambodia",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/kh.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 30,
+        "fields": {
+            "name": "Cameroon",
+            "official_name": "Republic of Cameroon",
+            "placard_name": "Cameroon",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/cm.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 31,
+        "fields": {
+            "name": "Canada",
+            "official_name": "Canada",
+            "placard_name": "Canada",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/ca.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 32,
+        "fields": {
+            "name": "Cape Verde",
+            "official_name": "Republic of Cabo Verde",
+            "placard_name": "Cape Verde",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/cv.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 33,
+        "fields": {
+            "name": "CAR",
+            "official_name": "Central African Republic",
+            "placard_name": "Central African Republic",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/cf.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 34,
+        "fields": {
+            "name": "Chad",
+            "official_name": "Republic of Chad",
+            "placard_name": "Chad",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/td.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 35,
+        "fields": {
+            "name": "Chile",
+            "official_name": "Republic of Chile",
+            "placard_name": "Chile",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/cl.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 36,
+        "fields": {
+            "name": "China",
+            "official_name": "People's Republic of China",
+            "placard_name": "China",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/cn.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 37,
+        "fields": {
+            "name": "Colombia",
+            "official_name": "Republic of Colombia",
+            "placard_name": "Colombia",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/co.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 38,
+        "fields": {
+            "name": "Comoros",
+            "official_name": "Union of the Comoros",
+            "placard_name": "Comoros",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/km.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 39,
+        "fields": {
+            "name": "Congo",
+            "official_name": "Republic of the Congo",
+            "placard_name": "Congo",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/cg.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 40,
+        "fields": {
+            "name": "Costa Rica",
+            "official_name": "Republic of Costa Rica",
+            "placard_name": "Costa Rica",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/cr.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 41,
+        "fields": {
+            "name": "Côte d’Ivoire",
+            "official_name": "Republic of Côte d’Ivoire",
+            "placard_name": "Côte d’Ivoire",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/ci.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 42,
+        "fields": {
+            "name": "Croatia",
+            "official_name": "Republic of Croatia",
+            "placard_name": "Croatia",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/hr.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 43,
+        "fields": {
+            "name": "Cuba",
+            "official_name": "Republic of Cuba",
+            "placard_name": "Cuba",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/cu.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 44,
+        "fields": {
+            "name": "Cyprus",
+            "official_name": "Republic of Cyprus",
+            "placard_name": "Cyprus",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/cy.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 45,
+        "fields": {
+            "name": "Czech Republic",
+            "official_name": "Czech Republic",
+            "placard_name": "Czech Republic",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/cz.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 46,
+        "fields": {
+            "name": "DPRK",
+            "official_name": "Democratic People's Republic of Korea",
+            "placard_name": "DPR Korea",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/kp.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 47,
+        "fields": {
+            "name": "DR Congo",
+            "official_name": "Democratic Republic of the Congo",
+            "placard_name": "DR Congo",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/cd.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 48,
+        "fields": {
+            "name": "Denmark",
+            "official_name": "Kingdom of Denmark",
+            "placard_name": "Denmark",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/dk.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 49,
+        "fields": {
+            "name": "Djibouti",
+            "official_name": "Republic of Djibouti",
+            "placard_name": "Djibouti",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/dj.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 50,
+        "fields": {
+            "name": "Dominica",
+            "official_name": "Commonwealth of Dominica",
+            "placard_name": "Dominica",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/do.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 51,
+        "fields": {
+            "name": "Ecuador",
+            "official_name": "Dominican Republic Republic of Ecuador",
+            "placard_name": "Ecuador",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/ec.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 52,
+        "fields": {
+            "name": "Egypt",
+            "official_name": "Arab Republic of Egypt",
+            "placard_name": "Egypt",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/eg.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 53,
+        "fields": {
+            "name": "El Salvador",
+            "official_name": "Republic of El Salvador",
+            "placard_name": "El Salvador",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/sv.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 54,
+        "fields": {
+            "name": "Equatorial Guinea",
+            "official_name": "Republic of Equatorial Guinea",
+            "placard_name": "Equatorial Guinea",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/gq.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 55,
+        "fields": {
+            "name": "Eritrea",
+            "official_name": "State of Eritrea",
+            "placard_name": "Eritrea",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/er.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 56,
+        "fields": {
+            "name": "Estonia",
+            "official_name": "Republic of Estonia",
+            "placard_name": "Estonia",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/ee.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 57,
+        "fields": {
+            "name": "Ethiopia",
+            "official_name": "Federal Democratic Republic of Ethiopia",
+            "placard_name": "Ethiopia",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/et.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 58,
+        "fields": {
+            "name": "Fiji",
+            "official_name": "Republic of Fiji ",
+            "placard_name": "Fiji",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/fj.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 59,
+        "fields": {
+            "name": "Finland",
+            "official_name": "Republic of Finland",
+            "placard_name": "Finland",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/fi.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 60,
+        "fields": {
+            "name": "France",
+            "official_name": "Republic of France",
+            "placard_name": "France",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/fr.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 61,
+        "fields": {
+            "name": "Gabon",
+            "official_name": "Gabonese Republic",
+            "placard_name": "Gabon",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/ga.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 62,
+        "fields": {
+            "name": "Gambia",
+            "official_name": "Islamic Republic of the Gambia",
+            "placard_name": "Gambia",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/gm.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 63,
+        "fields": {
+            "name": "Georgia",
+            "official_name": "Georgia",
+            "placard_name": "Georgia",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/gs.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 64,
+        "fields": {
+            "name": "Germany",
+            "official_name": "Federal Republic of Germany",
+            "placard_name": "Germany",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/de.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 65,
+        "fields": {
+            "name": "Ghana",
+            "official_name": "Republic of Ghana",
+            "placard_name": "Ghana",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/gh.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 66,
+        "fields": {
+            "name": "Greece",
+            "official_name": "Hellenic Republic",
+            "placard_name": "Greece",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/gr.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 67,
+        "fields": {
+            "name": "Grenada",
+            "official_name": "Grenada",
+            "placard_name": "Grenada",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/gd.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 68,
+        "fields": {
+            "name": "Guatemala",
+            "official_name": "Republic of Guatemala",
+            "placard_name": "Guatemala",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/gt.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 69,
+        "fields": {
+            "name": "Guinea",
+            "official_name": "Republic of Guinea",
+            "placard_name": "Guinea",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/pg.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 70,
+        "fields": {
+            "name": "Guinea-Bissau",
+            "official_name": "Republic of Guinea-Bissau",
+            "placard_name": "Guinea-Bissau",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/gw.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 71,
+        "fields": {
+            "name": "Guyana",
+            "official_name": "Republic of Guyana",
+            "placard_name": "Guyana",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/gy.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 72,
+        "fields": {
+            "name": "Haiti",
+            "official_name": "Republic of Haiti",
+            "placard_name": "Haiti",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/ht.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 73,
+        "fields": {
+            "name": "Honduras",
+            "official_name": "Republic of Honduras",
+            "placard_name": "Honduras",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/hn.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 74,
+        "fields": {
+            "name": "Hungary",
+            "official_name": "Hungary",
+            "placard_name": "Hungary",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/hu.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 75,
+        "fields": {
+            "name": "Iceland",
+            "official_name": "Republic of Iceland",
+            "placard_name": "Iceland",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/is.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 76,
+        "fields": {
+            "name": "India",
+            "official_name": "Republic of India",
+            "placard_name": "India",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/io.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 77,
+        "fields": {
+            "name": "Indonesia",
+            "official_name": "Republic of Indonesia",
+            "placard_name": "Indonesia",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/id.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 78,
+        "fields": {
+            "name": "Iran",
+            "official_name": "Islamic Republic of Iran",
+            "placard_name": "Iran",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/ir.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 79,
+        "fields": {
+            "name": "Iraq",
+            "official_name": "Republic of Iraq",
+            "placard_name": "Iraq",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/iq.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 80,
+        "fields": {
+            "name": "Ireland",
+            "official_name": "Ireland",
+            "placard_name": "Ireland",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/ie.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 81,
+        "fields": {
+            "name": "Israel",
+            "official_name": "State of Israel",
+            "placard_name": "Israel",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/il.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 82,
+        "fields": {
+            "name": "Italy",
+            "official_name": "Republic of Italy",
+            "placard_name": "Italy",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/it.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 83,
+        "fields": {
+            "name": "Jamaica",
+            "official_name": "Jamaica",
+            "placard_name": "Jamaica",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/jm.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 84,
+        "fields": {
+            "name": "Japan",
+            "official_name": "Japan",
+            "placard_name": "Japan",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/jp.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 85,
+        "fields": {
+            "name": "Jordan",
+            "official_name": "Hashemite Kingdom of Jordan",
+            "placard_name": "Jordan",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/jo.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 86,
+        "fields": {
+            "name": "Kazakhstan",
+            "official_name": "Republic of Kazakhstan",
+            "placard_name": "Kazakhstan",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/kz.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 87,
+        "fields": {
+            "name": "Kenya",
+            "official_name": "Republic of Kenya",
+            "placard_name": "Kenya",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/ke.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 88,
+        "fields": {
+            "name": "Kiribati",
+            "official_name": "Republic of Kiribati",
+            "placard_name": "Kiribati",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/ki.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 89,
+        "fields": {
+            "name": "Kuwait",
+            "official_name": "State of Kuwait",
+            "placard_name": "Kuwait",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/kw.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 90,
+        "fields": {
+            "name": "Kyrgyzstan",
+            "official_name": "Kyrgyz Republic",
+            "placard_name": "Kyrgyzstan",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/kg.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 91,
+        "fields": {
+            "name": "Laos",
+            "official_name": "Lao People's Democratic Republic",
+            "placard_name": "Laos",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/la.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 92,
+        "fields": {
+            "name": "Latvia",
+            "official_name": "Republic of Latvia",
+            "placard_name": "Latvia",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/lv.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 93,
+        "fields": {
+            "name": "Lebanon",
+            "official_name": "Republic of Lebanon",
+            "placard_name": "Lebanon",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/lb.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 94,
+        "fields": {
+            "name": "Lesotho",
+            "official_name": "Kingdom of Lesotho",
+            "placard_name": "Lesotho",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/ls.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 95,
+        "fields": {
+            "name": "Liberia",
+            "official_name": "Republic of Liberia",
+            "placard_name": "Liberia",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/lr.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 96,
+        "fields": {
+            "name": "Libya",
+            "official_name": "Libya",
+            "placard_name": "Libya",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/ly.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 97,
+        "fields": {
+            "name": "Liechtenstein",
+            "official_name": "Principality of Liechtenstein",
+            "placard_name": "Liechtenstein",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/li.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 98,
+        "fields": {
+            "name": "Lithuania",
+            "official_name": "Republic of Lithuania",
+            "placard_name": "Lithuania",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/lt.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 99,
+        "fields": {
+            "name": "Luxembourg",
+            "official_name": "Grand Duchy of Luxembourg",
+            "placard_name": "Luxembourg",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/lu.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 100,
+        "fields": {
+            "name": "Madagascar",
+            "official_name": "Republic of Madagascar",
+            "placard_name": "Madagascar",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/mg.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 101,
+        "fields": {
+            "name": "Malawi",
+            "official_name": "Republic of Malawi",
+            "placard_name": "Malawi",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/mw.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 102,
+        "fields": {
+            "name": "Malaysia",
+            "official_name": "Malaysia",
+            "placard_name": "Malaysia",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/my.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 103,
+        "fields": {
+            "name": "Maldives",
+            "official_name": "Republic of Maldives",
+            "placard_name": "Maldives",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/mv.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 104,
+        "fields": {
+            "name": "Mali",
+            "official_name": "Republic of Mali",
+            "placard_name": "Mali",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/ml.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 105,
+        "fields": {
+            "name": "Malta",
+            "official_name": "Republic of Malta",
+            "placard_name": "Malta",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/mt.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 106,
+        "fields": {
+            "name": "Marshall Islands",
+            "official_name": "Republic of the Marshall Islands",
+            "placard_name": "Marshall Islands",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/mh.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 107,
+        "fields": {
+            "name": "Mauritania",
+            "official_name": "Islamic Republic of Mauritania",
+            "placard_name": "Mauritania",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/mr.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 108,
+        "fields": {
+            "name": "Mauritius",
+            "official_name": "Republic of Mauritius",
+            "placard_name": "Mauritius",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/mu.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 109,
+        "fields": {
+            "name": "Mexico",
+            "official_name": "United Mexican States",
+            "placard_name": "Mexico",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/mx.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 110,
+        "fields": {
+            "name": "Micronesia",
+            "official_name": "Federated States of Micronesia",
+            "placard_name": "Micronesia",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/fm.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 111,
+        "fields": {
+            "name": "Monaco",
+            "official_name": "Principality of Monaco",
+            "placard_name": "Monaco",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/mc.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 112,
+        "fields": {
+            "name": "Mongolia",
+            "official_name": "Mongolia",
+            "placard_name": "Mongolia",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/mn.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 113,
+        "fields": {
+            "name": "Montenegro",
+            "official_name": "Montenegro",
+            "placard_name": "Montenegro",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/me.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 114,
+        "fields": {
+            "name": "Morocco",
+            "official_name": "Kingdom of Morocco",
+            "placard_name": "Morocco",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/ma.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 115,
+        "fields": {
+            "name": "Mozambique",
+            "official_name": "Republic of Mozambique",
+            "placard_name": "Mozambique",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/mz.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 116,
+        "fields": {
+            "name": "Myanmar",
+            "official_name": "Republic of the Union of Myanmar",
+            "placard_name": "Myanmar",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/mm.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 117,
+        "fields": {
+            "name": "Namibia",
+            "official_name": "Republic of Namibia",
+            "placard_name": "Namibia",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/na.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 118,
+        "fields": {
+            "name": "Nauru",
+            "official_name": "Republic of Nauru",
+            "placard_name": "Nauru",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/nr.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 119,
+        "fields": {
+            "name": "Nepal",
+            "official_name": "Federal Democratic Republic of Nepal",
+            "placard_name": "Nepal",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/np.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 120,
+        "fields": {
+            "name": "Netherlands",
+            "official_name": "Kingdom of the Netherlands",
+            "placard_name": "Netherlands",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/nl.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 121,
+        "fields": {
+            "name": "New Zealand",
+            "official_name": "New Zealand",
+            "placard_name": "New Zealand",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/nz.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 122,
+        "fields": {
+            "name": "Nicaragua",
+            "official_name": "Republic of Nicaragua",
+            "placard_name": "Nicaragua",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/ni.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 123,
+        "fields": {
+            "name": "Niger",
+            "official_name": "Republic of the Niger",
+            "placard_name": "Niger",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/ne.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 124,
+        "fields": {
+            "name": "Nigeria",
+            "official_name": "Federal Republic of Nigeria",
+            "placard_name": "Nigeria",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/ng.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 125,
+        "fields": {
+            "name": "Norway",
+            "official_name": "Kingdom of Norway",
+            "placard_name": "Norway",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/no.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 126,
+        "fields": {
+            "name": "Oman",
+            "official_name": "Sultanate of Oman",
+            "placard_name": "Oman",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/om.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 127,
+        "fields": {
+            "name": "Pakistan",
+            "official_name": "Islamic Republic of Pakistan",
+            "placard_name": "Pakistan",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/pk.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 128,
+        "fields": {
+            "name": "Palau",
+            "official_name": "Republic of Palau",
+            "placard_name": "Palau",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/pw.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 129,
+        "fields": {
+            "name": "Panama",
+            "official_name": "Republic of Panama",
+            "placard_name": "Panama",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/pa.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 130,
+        "fields": {
+            "name": "Papua New Guinea",
+            "official_name": "Independent State of Papua New Guinea",
+            "placard_name": "Papua New Guinea",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/pg.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 131,
+        "fields": {
+            "name": "Paraguay",
+            "official_name": "Republic of Paraguay",
+            "placard_name": "Paraguay",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/py.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 132,
+        "fields": {
+            "name": "Peru",
+            "official_name": "Republic of Peru",
+            "placard_name": "Peru",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/pe.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 133,
+        "fields": {
+            "name": "Philippines",
+            "official_name": "Republic of the Philippines",
+            "placard_name": "Philippines",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/ph.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 134,
+        "fields": {
+            "name": "Poland",
+            "official_name": "Republic of Poland",
+            "placard_name": "Poland",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/pl.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 135,
+        "fields": {
+            "name": "Portugal",
+            "official_name": "Republic of Portugal",
+            "placard_name": "Portugal",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/pt.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 136,
+        "fields": {
+            "name": "Qatar",
+            "official_name": "State of Qatar",
+            "placard_name": "Qatar",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/qa.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 137,
+        "fields": {
+            "name": "South Korea",
+            "official_name": "Republic of Korea",
+            "placard_name": "South Korea",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/kr.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 138,
+        "fields": {
+            "name": "Moldova",
+            "official_name": "Republic of Moldova",
+            "placard_name": "Moldova",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/md.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 139,
+        "fields": {
+            "name": "Romania",
+            "official_name": "Romania",
+            "placard_name": "Romania",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/ro.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 140,
+        "fields": {
+            "name": "Russia",
+            "official_name": "Russian Federation",
+            "placard_name": "Russia",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/ru.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 141,
+        "fields": {
+            "name": "Rwanda",
+            "official_name": "Republic of Rwanda",
+            "placard_name": "Rwanda",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/rw.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 142,
+        "fields": {
+            "name": "Saint Kitts and Nevis",
+            "official_name": "Saint Kitts and Nevis",
+            "placard_name": "St. Kitts and Nevis",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/kn.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 143,
+        "fields": {
+            "name": "Saint Lucia",
+            "official_name": "Saint Lucia",
+            "placard_name": "Saint Lucia",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/lc.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 144,
+        "fields": {
+            "name": "Saint Vincent and the Grenadines",
+            "official_name": "Saint Vincent and the Grenadines",
+            "placard_name": "St. Vincent and the Grenadines",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/vc.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 145,
+        "fields": {
+            "name": "Samoa",
+            "official_name": "Independent State of Samoa",
+            "placard_name": "Samoa",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/ws.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 146,
+        "fields": {
+            "name": "San Marino",
+            "official_name": "Republic of San Marino",
+            "placard_name": "San Marino",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/sm.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 147,
+        "fields": {
+            "name": "Sao Tome and Principe",
+            "official_name": "Democratic Republic of Sao Tome and Principe",
+            "placard_name": "Sao Tome and Principe",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/st.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 148,
+        "fields": {
+            "name": "Saudi Arabia",
+            "official_name": "Kingdom of Saudi Arabia",
+            "placard_name": "Saudi Arabia",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/sa.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 149,
+        "fields": {
+            "name": "Senegal",
+            "official_name": "Republic of Senegal",
+            "placard_name": "Senegal",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/sn.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 150,
+        "fields": {
+            "name": "Serbia",
+            "official_name": "Republic of Serbia",
+            "placard_name": "Serbia",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/rs.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 151,
+        "fields": {
+            "name": "Seychelles",
+            "official_name": "Republic of Seychelles",
+            "placard_name": "Seychelles",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/sc.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 152,
+        "fields": {
+            "name": "Sierra Leone",
+            "official_name": "Republic of Sierra Leone",
+            "placard_name": "Sierra Leone",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/sl.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 153,
+        "fields": {
+            "name": "Singapore",
+            "official_name": "Republic of Singapore",
+            "placard_name": "Singapore",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/sg.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 154,
+        "fields": {
+            "name": "Slovakia",
+            "official_name": "Slovak Republic",
+            "placard_name": "Slovakia",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/sk.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 155,
+        "fields": {
+            "name": "Slovenia",
+            "official_name": "Republic of Slovenia",
+            "placard_name": "Slovenia",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/si.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 156,
+        "fields": {
+            "name": "Solomon Islands",
+            "official_name": "Solomon Islands",
+            "placard_name": "Solomon Islands",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/sb.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 157,
+        "fields": {
+            "name": "Somalia",
+            "official_name": "Federal Republic of Somalia",
+            "placard_name": "Somalia",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/so.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 158,
+        "fields": {
+            "name": "South Africa",
+            "official_name": "Republic of South Africa",
+            "placard_name": "South Africa",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/za.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 159,
+        "fields": {
+            "name": "South Sudan",
+            "official_name": "Republic of South Sudan",
+            "placard_name": "South Sudan",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/ss.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 160,
+        "fields": {
+            "name": "Spain",
+            "official_name": "Kingdom of Spain",
+            "placard_name": "Spain",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/es.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 161,
+        "fields": {
+            "name": "Sri Lanka",
+            "official_name": "Democratic Socialist Republic of Sri Lanka",
+            "placard_name": "Sri Lanka",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/lk.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 162,
+        "fields": {
+            "name": "Sudan",
+            "official_name": "Republic of the Sudan",
+            "placard_name": "Sudan",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/ss.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 163,
+        "fields": {
+            "name": "Suriname",
+            "official_name": "Republic of Suriname",
+            "placard_name": "Suriname",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/sr.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 164,
+        "fields": {
+            "name": "Swaziland",
+            "official_name": "Kingdom of Swaziland",
+            "placard_name": "Swaziland",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/sz.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 165,
+        "fields": {
+            "name": "Sweden",
+            "official_name": "Kingdom of Sweden",
+            "placard_name": "Sweden",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/se.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 166,
+        "fields": {
+            "name": "Switzerland",
+            "official_name": "Swiss Confederation",
+            "placard_name": "Switzerland",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/ch.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 167,
+        "fields": {
+            "name": "Syria",
+            "official_name": "Syrian Arab Republic",
+            "placard_name": "Syria",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/sy.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 168,
+        "fields": {
+            "name": "Tajikistan",
+            "official_name": "Republic of Tajikistan",
+            "placard_name": "Tajikistan",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/tj.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 169,
+        "fields": {
+            "name": "Thailand",
+            "official_name": "Kingdom of Thailand",
+            "placard_name": "Thailand",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/th.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 170,
+        "fields": {
+            "name": "Macedonia",
+            "official_name": "The former Yugoslav Republic of Macedonia",
+            "placard_name": "Macedonia",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/mk.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 171,
+        "fields": {
+            "name": "Timor-Leste",
+            "official_name": "Democratic Republic of Timor-Leste",
+            "placard_name": "Timor-Leste",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/tl.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 172,
+        "fields": {
+            "name": "Togo",
+            "official_name": "Republic of Togo",
+            "placard_name": "Togo",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/tg.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 173,
+        "fields": {
+            "name": "Tonga",
+            "official_name": "Kingdom of Tonga",
+            "placard_name": "Tonga",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/to.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 174,
+        "fields": {
+            "name": "Trinidad and Tobago",
+            "official_name": "Republic of Trinidad and Tobago",
+            "placard_name": "Trinidad and Tobago",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/tt.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 175,
+        "fields": {
+            "name": "Tunisia",
+            "official_name": "Republic of Tunisia",
+            "placard_name": "Tunisia",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/tn.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 176,
+        "fields": {
+            "name": "Turkey",
+            "official_name": "Republic of Turkey",
+            "placard_name": "Turkey",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/tr.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 177,
+        "fields": {
+            "name": "Turkmenistan",
+            "official_name": "Turkmenistan",
+            "placard_name": "Turkmenistan",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/tm.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 178,
+        "fields": {
+            "name": "Tuvalu",
+            "official_name": "Tuvalu",
+            "placard_name": "Tuvalu",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/tv.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 179,
+        "fields": {
+            "name": "Uganda",
+            "official_name": "Republic of Uganda",
+            "placard_name": "Uganda",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/ug.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 180,
+        "fields": {
+            "name": "Ukraine",
+            "official_name": "Ukraine",
+            "placard_name": "Ukraine",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/ua.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 181,
+        "fields": {
+            "name": "UAE",
+            "official_name": "United Arab Emirates",
+            "placard_name": "United Arab Emirates",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/ae.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 182,
+        "fields": {
+            "name": "UK",
+            "official_name": "United Kingdom of Great Britain and Northern Ireland",
+            "placard_name": "United Kingdom",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/gb.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 183,
+        "fields": {
+            "name": "Tanzania",
+            "official_name": "United Republic of Tanzania",
+            "placard_name": "Tanzania",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/tz.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 184,
+        "fields": {
+            "name": "USA",
+            "official_name": "United States of America",
+            "placard_name": "United States",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/us.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 185,
+        "fields": {
+            "name": "Uruguay",
+            "official_name": "Oriental Republic of Uruguay",
+            "placard_name": "Uruguay",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/uy.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 186,
+        "fields": {
+            "name": "Uzbekistan",
+            "official_name": "Republic of Uzbekistan",
+            "placard_name": "Uzbekistan",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/uz.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 187,
+        "fields": {
+            "name": "Vanuatu",
+            "official_name": "Republic of Vanuatu",
+            "placard_name": "Vanuatu",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/vu.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 188,
+        "fields": {
+            "name": "Venezuela",
+            "official_name": "Bolivarian Republic of Venezuela",
+            "placard_name": "Venezuela",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/ve.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 189,
+        "fields": {
+            "name": "Vietnam",
+            "official_name": "Socialist Republic of Viet Nam",
+            "placard_name": "Vietnam",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/vn.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 190,
+        "fields": {
+            "name": "Yemen",
+            "official_name": "Republic of Yemen",
+            "placard_name": "Yemen",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/ye.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 191,
+        "fields": {
+            "name": "Zambia",
+            "official_name": "Republic of Zambia",
+            "placard_name": "Zambia",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/zm.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 192,
+        "fields": {
+            "name": "Zimbabwe",
+            "official_name": "Republic of Zimbabwe",
+            "placard_name": "Zimbabwe",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/zw.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 193,
+        "fields": {
+            "name": "Palestine",
+            "official_name": "State of Palestine",
+            "placard_name": "Palestine",
+            "status": "observer state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/ps.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 194,
+        "fields": {
+            "name": "USSR",
+            "official_name": "Union of Soviet Socialist Republics",
+            "placard_name": "USSR",
+            "status": "former member state",
+            "active": true,
+            "flag": "https://upload.wikimedia.org/wikipedia/commons/a/a9/Flag_of_the_Soviet_Union.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 195,
+        "fields": {
+            "name": "SFR Yugoslavia",
+            "official_name": "Socialist Federal Republic of Yugoslavia",
+            "placard_name": "SFR Yugoslavia",
+            "status": "former member state",
+            "active": false,
+            "flag": "https://upload.wikimedia.org/wikipedia/commons/e/e5/Flag_of_Yugoslavia_%281918%E2%80%931941%29.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 198,
+        "fields": {
+            "name": "EU",
+            "official_name": "European Union",
+            "placard_name": "European Union",
+            "status": "inter-governmental organization",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/eu.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 199,
+        "fields": {
+            "name": "AI",
+            "official_name": "Amnesty International",
+            "placard_name": "Amnesty International",
+            "status": "non-governmental organization",
+            "active": true,
+            "flag": "https://upload.wikimedia.org/wikipedia/en/e/ee/Amnesty_International_logo.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 200,
+        "fields": {
+            "name": "AU",
+            "official_name": "African Union",
+            "placard_name": "African Union",
+            "status": "inter-governmental organization",
+            "active": true,
+            "flag": "https://upload.wikimedia.org/wikipedia/commons/5/51/Flag_of_the_African_Union.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 203,
+        "fields": {
+            "name": "FAO",
+            "official_name": "Food and Agriculture Organization of the United Nations",
+            "placard_name": "FAO",
+            "status": "UN sub-body",
+            "active": true,
+            "flag": "https://upload.wikimedia.org/wikipedia/commons/d/db/FAO_logo.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 205,
+        "fields": {
+            "name": "UNEP",
+            "official_name": "United Nations Environment Programme",
+            "placard_name": "UNEP",
+            "status": "UN sub-body",
+            "active": true,
+            "flag": "https://upload.wikimedia.org/wikipedia/en/9/9b/UNEP_logo.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 206,
+        "fields": {
+            "name": "UNDP",
+            "official_name": "United Nations Development Programme",
+            "placard_name": "UNDP",
+            "status": "UN sub-body",
+            "active": true,
+            "flag": "https://upload.wikimedia.org/wikipedia/commons/9/9f/UNDP_logo.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 207,
+        "fields": {
+            "name": "ILO",
+            "official_name": "International Labour Organization",
+            "placard_name": "International Labour Organization",
+            "status": "UN sub-body",
+            "active": true,
+            "flag": "https://upload.wikimedia.org/wikipedia/commons/b/b8/Flag_of_ILO.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 208,
+        "fields": {
+            "name": "World Bank",
+            "official_name": "World Bank",
+            "placard_name": "World Bank",
+            "status": "inter-governmental organization",
+            "active": true,
+            "flag": "https://upload.wikimedia.org/wikipedia/commons/8/86/World_Bank_logo.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 209,
+        "fields": {
+            "name": "UNESCO",
+            "official_name": "United Nations Educational, Scientific and Cultural Organization",
+            "placard_name": "UNESCO",
+            "status": "UN sub-body",
+            "active": true,
+            "flag": "https://upload.wikimedia.org/wikipedia/commons/d/d0/Flag_of_UNESCO.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 210,
+        "fields": {
+            "name": "Transparency International",
+            "official_name": "Transparency International e.V.",
+            "placard_name": "Transparency International",
+            "status": "non-governmental organization",
+            "active": true,
+            "flag": "https://upload.wikimedia.org/wikipedia/commons/b/b8/Logo-transparency-international-en.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 211,
+        "fields": {
+            "name": "WHO",
+            "official_name": "World Health Organization",
+            "placard_name": "WHO",
+            "status": "UN sub-body",
+            "active": true,
+            "flag": "https://upload.wikimedia.org/wikipedia/commons/8/89/Flag_of_WHO.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 212,
+        "fields": {
+            "name": "WTO",
+            "official_name": "World Trade Organization",
+            "placard_name": "WTO",
+            "status": "inter-governmental organization",
+            "active": true,
+            "flag": "https://upload.wikimedia.org/wikipedia/commons/5/59/WTO_Logo.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 213,
+        "fields": {
+            "name": "Czechoslovakia",
+            "official_name": "Czechoslovakia",
+            "placard_name": "Czechoslovakia",
+            "status": "former member state",
+            "active": true,
+            "flag": "https://upload.wikimedia.org/wikipedia/commons/c/cb/Flag_of_the_Czech_Republic.svg"
+        }
+    },
+    {
+        "model": "api.memberorganization",
+        "pk": 214,
+        "fields": {
+            "name": "Dominican Republic",
+            "official_name": "Dominican Republic",
+            "placard_name": "Dominican Republic",
+            "status": "member state",
+            "active": true,
+            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/do.svg"
+        }
+    }
+]

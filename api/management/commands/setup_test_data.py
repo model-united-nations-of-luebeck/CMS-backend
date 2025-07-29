@@ -1,5 +1,5 @@
 from django.core.management.base import BaseCommand
-from testdata.generate_testdata import generate_advisors, generate_delegates, generate_executives, generate_mun_directors, generate_schools, generate_staffs, generate_student_officers
+from test_data.generate_test_data import generate_advisors, generate_delegates, generate_executives, generate_mun_directors, generate_schools, generate_staffs, generate_student_officers
 
 class Command(BaseCommand):
     help = 'Add test data to the database'
