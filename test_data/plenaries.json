@@ -6,9 +6,7 @@
             "name": "General Assembly",
             "abbreviation": "GA",
             "location": null,
-            "lunches": [
-                5
-            ]
+            "lunches": []
         }
     },
     {
@@ -17,10 +15,8 @@
         "fields": {
             "name": "Economic and Social Council",
             "abbreviation": "ECOSOC",
-            "location": 27,
-            "lunches": [
-                5
-            ]
+            "location": null,
+            "lunches": []
         }
     }
 ]
