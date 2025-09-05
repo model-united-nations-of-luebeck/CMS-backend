@@ -8,7 +8,7 @@
             "placard_name": "Afghanistan",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/af.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/af.svg"
         }
     },
     {
@@ -20,7 +20,7 @@
             "placard_name": "Albania",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/al.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/al.svg"
         }
     },
     {
@@ -32,7 +32,7 @@
             "placard_name": "Algeria",
             "status": "member state",
             "active": false,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/dz.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/dz.svg"
         }
     },
     {
@@ -44,7 +44,7 @@
             "placard_name": "Andorra",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/ad.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/ad.svg"
         }
     },
     {
@@ -56,7 +56,7 @@
             "placard_name": "Angola",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/ao.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/ao.svg"
         }
     },
     {
@@ -68,7 +68,7 @@
             "placard_name": "Antigua and Barbuda",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/ag.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/ag.svg"
         }
     },
     {
@@ -80,7 +80,7 @@
             "placard_name": "Argentina",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/ar.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/ar.svg"
         }
     },
     {
@@ -92,7 +92,7 @@
             "placard_name": "Armenia",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/am.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/am.svg"
         }
     },
     {
@@ -104,7 +104,7 @@
             "placard_name": "Australia",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/au.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/au.svg"
         }
     },
     {
@@ -116,7 +116,7 @@
             "placard_name": "Austria",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/at.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/at.svg"
         }
     },
     {
@@ -128,7 +128,7 @@
             "placard_name": "Azerbaijan",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/az.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/az.svg"
         }
     },
     {
@@ -140,7 +140,7 @@
             "placard_name": "Bahamas",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/bs.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/bs.svg"
         }
     },
     {
@@ -152,7 +152,7 @@
             "placard_name": "Bahrain",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/bh.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/bh.svg"
         }
     },
     {
@@ -164,7 +164,7 @@
             "placard_name": "Bangladesh",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/bd.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/bd.svg"
         }
     },
     {
@@ -176,7 +176,7 @@
             "placard_name": "Barbados",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/bb.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/bb.svg"
         }
     },
     {
@@ -188,7 +188,7 @@
             "placard_name": "Belarus",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/by.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/by.svg"
         }
     },
     {
@@ -200,7 +200,7 @@
             "placard_name": "Belgium",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/be.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/be.svg"
         }
     },
     {
@@ -212,7 +212,7 @@
             "placard_name": "Belize",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/bz.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/bz.svg"
         }
     },
     {
@@ -224,7 +224,7 @@
             "placard_name": "Benin",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/bj.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/bj.svg"
         }
     },
     {
@@ -236,7 +236,7 @@
             "placard_name": "Bhutan",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/bt.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/bt.svg"
         }
     },
     {
@@ -248,7 +248,7 @@
             "placard_name": "Bolivia",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/bo.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/bo.svg"
         }
     },
     {
@@ -260,7 +260,7 @@
             "placard_name": "Bosnia and Herzegovina",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/ba.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/ba.svg"
         }
     },
     {
@@ -272,7 +272,7 @@
             "placard_name": "Botswana",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/bw.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/bw.svg"
         }
     },
     {
@@ -284,7 +284,7 @@
             "placard_name": "Brazil",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/br.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/br.svg"
         }
     },
     {
@@ -296,7 +296,7 @@
             "placard_name": "Brunei",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/bn.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/bn.svg"
         }
     },
     {
@@ -308,7 +308,7 @@
             "placard_name": "Bulgaria",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/bg.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/bg.svg"
         }
     },
     {
@@ -320,7 +320,7 @@
             "placard_name": "Burkina Faso",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/bf.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/bf.svg"
         }
     },
     {
@@ -332,7 +332,7 @@
             "placard_name": "Burundi",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/bi.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/bi.svg"
         }
     },
     {
@@ -344,7 +344,7 @@
             "placard_name": "Cambodia",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/kh.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/kh.svg"
         }
     },
     {
@@ -356,7 +356,7 @@
             "placard_name": "Cameroon",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/cm.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/cm.svg"
         }
     },
     {
@@ -368,7 +368,7 @@
             "placard_name": "Canada",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/ca.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/ca.svg"
         }
     },
     {
@@ -380,7 +380,7 @@
             "placard_name": "Cape Verde",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/cv.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/cv.svg"
         }
     },
     {
@@ -392,7 +392,7 @@
             "placard_name": "Central African Republic",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/cf.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/cf.svg"
         }
     },
     {
@@ -404,7 +404,7 @@
             "placard_name": "Chad",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/td.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/td.svg"
         }
     },
     {
@@ -416,7 +416,7 @@
             "placard_name": "Chile",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/cl.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/cl.svg"
         }
     },
     {
@@ -428,7 +428,7 @@
             "placard_name": "China",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/cn.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/cn.svg"
         }
     },
     {
@@ -440,7 +440,7 @@
             "placard_name": "Colombia",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/co.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/co.svg"
         }
     },
     {
@@ -452,7 +452,7 @@
             "placard_name": "Comoros",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/km.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/km.svg"
         }
     },
     {
@@ -464,7 +464,7 @@
             "placard_name": "Congo",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/cg.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/cg.svg"
         }
     },
     {
@@ -476,7 +476,7 @@
             "placard_name": "Costa Rica",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/cr.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/cr.svg"
         }
     },
     {
@@ -488,7 +488,7 @@
             "placard_name": "Côte d’Ivoire",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/ci.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/ci.svg"
         }
     },
     {
@@ -500,7 +500,7 @@
             "placard_name": "Croatia",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/hr.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/hr.svg"
         }
     },
     {
@@ -512,7 +512,7 @@
             "placard_name": "Cuba",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/cu.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/cu.svg"
         }
     },
     {
@@ -524,7 +524,7 @@
             "placard_name": "Cyprus",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/cy.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/cy.svg"
         }
     },
     {
@@ -536,7 +536,7 @@
             "placard_name": "Czech Republic",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/cz.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/cz.svg"
         }
     },
     {
@@ -548,7 +548,7 @@
             "placard_name": "DPR Korea",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/kp.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/kp.svg"
         }
     },
     {
@@ -560,7 +560,7 @@
             "placard_name": "DR Congo",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/cd.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/cd.svg"
         }
     },
     {
@@ -572,7 +572,7 @@
             "placard_name": "Denmark",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/dk.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/dk.svg"
         }
     },
     {
@@ -584,7 +584,7 @@
             "placard_name": "Djibouti",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/dj.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/dj.svg"
         }
     },
     {
@@ -596,7 +596,7 @@
             "placard_name": "Dominica",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/do.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/do.svg"
         }
     },
     {
@@ -608,7 +608,7 @@
             "placard_name": "Ecuador",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/ec.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/ec.svg"
         }
     },
     {
@@ -620,7 +620,7 @@
             "placard_name": "Egypt",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/eg.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/eg.svg"
         }
     },
     {
@@ -632,7 +632,7 @@
             "placard_name": "El Salvador",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/sv.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/sv.svg"
         }
     },
     {
@@ -644,7 +644,7 @@
             "placard_name": "Equatorial Guinea",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/gq.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/gq.svg"
         }
     },
     {
@@ -656,7 +656,7 @@
             "placard_name": "Eritrea",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/er.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/er.svg"
         }
     },
     {
@@ -668,7 +668,7 @@
             "placard_name": "Estonia",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/ee.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/ee.svg"
         }
     },
     {
@@ -680,7 +680,7 @@
             "placard_name": "Ethiopia",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/et.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/et.svg"
         }
     },
     {
@@ -692,7 +692,7 @@
             "placard_name": "Fiji",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/fj.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/fj.svg"
         }
     },
     {
@@ -704,7 +704,7 @@
             "placard_name": "Finland",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/fi.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/fi.svg"
         }
     },
     {
@@ -716,7 +716,7 @@
             "placard_name": "France",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/fr.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/fr.svg"
         }
     },
     {
@@ -728,7 +728,7 @@
             "placard_name": "Gabon",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/ga.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/ga.svg"
         }
     },
     {
@@ -740,7 +740,7 @@
             "placard_name": "Gambia",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/gm.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/gm.svg"
         }
     },
     {
@@ -752,7 +752,7 @@
             "placard_name": "Georgia",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/gs.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/gs.svg"
         }
     },
     {
@@ -764,7 +764,7 @@
             "placard_name": "Germany",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/de.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/de.svg"
         }
     },
     {
@@ -776,7 +776,7 @@
             "placard_name": "Ghana",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/gh.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/gh.svg"
         }
     },
     {
@@ -788,7 +788,7 @@
             "placard_name": "Greece",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/gr.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/gr.svg"
         }
     },
     {
@@ -800,7 +800,7 @@
             "placard_name": "Grenada",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/gd.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/gd.svg"
         }
     },
     {
@@ -812,7 +812,7 @@
             "placard_name": "Guatemala",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/gt.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/gt.svg"
         }
     },
     {
@@ -824,7 +824,7 @@
             "placard_name": "Guinea",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/pg.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/pg.svg"
         }
     },
     {
@@ -836,7 +836,7 @@
             "placard_name": "Guinea-Bissau",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/gw.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/gw.svg"
         }
     },
     {
@@ -848,7 +848,7 @@
             "placard_name": "Guyana",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/gy.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/gy.svg"
         }
     },
     {
@@ -860,7 +860,7 @@
             "placard_name": "Haiti",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/ht.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/ht.svg"
         }
     },
     {
@@ -872,7 +872,7 @@
             "placard_name": "Honduras",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/hn.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/hn.svg"
         }
     },
     {
@@ -884,7 +884,7 @@
             "placard_name": "Hungary",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/hu.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/hu.svg"
         }
     },
     {
@@ -896,7 +896,7 @@
             "placard_name": "Iceland",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/is.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/is.svg"
         }
     },
     {
@@ -908,7 +908,7 @@
             "placard_name": "India",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/io.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/io.svg"
         }
     },
     {
@@ -920,7 +920,7 @@
             "placard_name": "Indonesia",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/id.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/id.svg"
         }
     },
     {
@@ -932,7 +932,7 @@
             "placard_name": "Iran",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/ir.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/ir.svg"
         }
     },
     {
@@ -944,7 +944,7 @@
             "placard_name": "Iraq",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/iq.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/iq.svg"
         }
     },
     {
@@ -956,7 +956,7 @@
             "placard_name": "Ireland",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/ie.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/ie.svg"
         }
     },
     {
@@ -968,7 +968,7 @@
             "placard_name": "Israel",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/il.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/il.svg"
         }
     },
     {
@@ -980,7 +980,7 @@
             "placard_name": "Italy",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/it.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/it.svg"
         }
     },
     {
@@ -992,7 +992,7 @@
             "placard_name": "Jamaica",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/jm.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/jm.svg"
         }
     },
     {
@@ -1004,7 +1004,7 @@
             "placard_name": "Japan",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/jp.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/jp.svg"
         }
     },
     {
@@ -1016,7 +1016,7 @@
             "placard_name": "Jordan",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/jo.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/jo.svg"
         }
     },
     {
@@ -1028,7 +1028,7 @@
             "placard_name": "Kazakhstan",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/kz.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/kz.svg"
         }
     },
     {
@@ -1040,7 +1040,7 @@
             "placard_name": "Kenya",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/ke.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/ke.svg"
         }
     },
     {
@@ -1052,7 +1052,7 @@
             "placard_name": "Kiribati",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/ki.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/ki.svg"
         }
     },
     {
@@ -1064,7 +1064,7 @@
             "placard_name": "Kuwait",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/kw.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/kw.svg"
         }
     },
     {
@@ -1076,7 +1076,7 @@
             "placard_name": "Kyrgyzstan",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/kg.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/kg.svg"
         }
     },
     {
@@ -1088,7 +1088,7 @@
             "placard_name": "Laos",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/la.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/la.svg"
         }
     },
     {
@@ -1100,7 +1100,7 @@
             "placard_name": "Latvia",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/lv.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/lv.svg"
         }
     },
     {
@@ -1112,7 +1112,7 @@
             "placard_name": "Lebanon",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/lb.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/lb.svg"
         }
     },
     {
@@ -1124,7 +1124,7 @@
             "placard_name": "Lesotho",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/ls.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/ls.svg"
         }
     },
     {
@@ -1136,7 +1136,7 @@
             "placard_name": "Liberia",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/lr.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/lr.svg"
         }
     },
     {
@@ -1148,7 +1148,7 @@
             "placard_name": "Libya",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/ly.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/ly.svg"
         }
     },
     {
@@ -1160,7 +1160,7 @@
             "placard_name": "Liechtenstein",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/li.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/li.svg"
         }
     },
     {
@@ -1172,7 +1172,7 @@
             "placard_name": "Lithuania",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/lt.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/lt.svg"
         }
     },
     {
@@ -1184,7 +1184,7 @@
             "placard_name": "Luxembourg",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/lu.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/lu.svg"
         }
     },
     {
@@ -1196,7 +1196,7 @@
             "placard_name": "Madagascar",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/mg.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/mg.svg"
         }
     },
     {
@@ -1208,7 +1208,7 @@
             "placard_name": "Malawi",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/mw.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/mw.svg"
         }
     },
     {
@@ -1220,7 +1220,7 @@
             "placard_name": "Malaysia",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/my.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/my.svg"
         }
     },
     {
@@ -1232,7 +1232,7 @@
             "placard_name": "Maldives",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/mv.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/mv.svg"
         }
     },
     {
@@ -1244,7 +1244,7 @@
             "placard_name": "Mali",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/ml.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/ml.svg"
         }
     },
     {
@@ -1256,7 +1256,7 @@
             "placard_name": "Malta",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/mt.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/mt.svg"
         }
     },
     {
@@ -1268,7 +1268,7 @@
             "placard_name": "Marshall Islands",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/mh.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/mh.svg"
         }
     },
     {
@@ -1280,7 +1280,7 @@
             "placard_name": "Mauritania",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/mr.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/mr.svg"
         }
     },
     {
@@ -1292,7 +1292,7 @@
             "placard_name": "Mauritius",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/mu.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/mu.svg"
         }
     },
     {
@@ -1304,7 +1304,7 @@
             "placard_name": "Mexico",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/mx.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/mx.svg"
         }
     },
     {
@@ -1316,7 +1316,7 @@
             "placard_name": "Micronesia",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/fm.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/fm.svg"
         }
     },
     {
@@ -1328,7 +1328,7 @@
             "placard_name": "Monaco",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/mc.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/mc.svg"
         }
     },
     {
@@ -1340,7 +1340,7 @@
             "placard_name": "Mongolia",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/mn.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/mn.svg"
         }
     },
     {
@@ -1352,7 +1352,7 @@
             "placard_name": "Montenegro",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/me.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/me.svg"
         }
     },
     {
@@ -1364,7 +1364,7 @@
             "placard_name": "Morocco",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/ma.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/ma.svg"
         }
     },
     {
@@ -1376,7 +1376,7 @@
             "placard_name": "Mozambique",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/mz.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/mz.svg"
         }
     },
     {
@@ -1388,7 +1388,7 @@
             "placard_name": "Myanmar",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/mm.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/mm.svg"
         }
     },
     {
@@ -1400,7 +1400,7 @@
             "placard_name": "Namibia",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/na.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/na.svg"
         }
     },
     {
@@ -1412,7 +1412,7 @@
             "placard_name": "Nauru",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/nr.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/nr.svg"
         }
     },
     {
@@ -1424,7 +1424,7 @@
             "placard_name": "Nepal",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/np.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/np.svg"
         }
     },
     {
@@ -1436,7 +1436,7 @@
             "placard_name": "Netherlands",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/nl.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/nl.svg"
         }
     },
     {
@@ -1448,7 +1448,7 @@
             "placard_name": "New Zealand",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/nz.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/nz.svg"
         }
     },
     {
@@ -1460,7 +1460,7 @@
             "placard_name": "Nicaragua",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/ni.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/ni.svg"
         }
     },
     {
@@ -1472,7 +1472,7 @@
             "placard_name": "Niger",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/ne.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/ne.svg"
         }
     },
     {
@@ -1484,7 +1484,7 @@
             "placard_name": "Nigeria",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/ng.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/ng.svg"
         }
     },
     {
@@ -1496,7 +1496,7 @@
             "placard_name": "Norway",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/no.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/no.svg"
         }
     },
     {
@@ -1508,7 +1508,7 @@
             "placard_name": "Oman",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/om.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/om.svg"
         }
     },
     {
@@ -1520,7 +1520,7 @@
             "placard_name": "Pakistan",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/pk.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/pk.svg"
         }
     },
     {
@@ -1532,7 +1532,7 @@
             "placard_name": "Palau",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/pw.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/pw.svg"
         }
     },
     {
@@ -1544,7 +1544,7 @@
             "placard_name": "Panama",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/pa.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/pa.svg"
         }
     },
     {
@@ -1556,7 +1556,7 @@
             "placard_name": "Papua New Guinea",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/pg.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/pg.svg"
         }
     },
     {
@@ -1568,7 +1568,7 @@
             "placard_name": "Paraguay",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/py.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/py.svg"
         }
     },
     {
@@ -1580,7 +1580,7 @@
             "placard_name": "Peru",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/pe.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/pe.svg"
         }
     },
     {
@@ -1592,7 +1592,7 @@
             "placard_name": "Philippines",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/ph.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/ph.svg"
         }
     },
     {
@@ -1604,7 +1604,7 @@
             "placard_name": "Poland",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/pl.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/pl.svg"
         }
     },
     {
@@ -1616,7 +1616,7 @@
             "placard_name": "Portugal",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/pt.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/pt.svg"
         }
     },
     {
@@ -1628,7 +1628,7 @@
             "placard_name": "Qatar",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/qa.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/qa.svg"
         }
     },
     {
@@ -1640,7 +1640,7 @@
             "placard_name": "South Korea",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/kr.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/kr.svg"
         }
     },
     {
@@ -1652,7 +1652,7 @@
             "placard_name": "Moldova",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/md.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/md.svg"
         }
     },
     {
@@ -1664,7 +1664,7 @@
             "placard_name": "Romania",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/ro.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/ro.svg"
         }
     },
     {
@@ -1676,7 +1676,7 @@
             "placard_name": "Russia",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/ru.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/ru.svg"
         }
     },
     {
@@ -1688,7 +1688,7 @@
             "placard_name": "Rwanda",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/rw.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/rw.svg"
         }
     },
     {
@@ -1700,7 +1700,7 @@
             "placard_name": "St. Kitts and Nevis",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/kn.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/kn.svg"
         }
     },
     {
@@ -1712,7 +1712,7 @@
             "placard_name": "Saint Lucia",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/lc.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/lc.svg"
         }
     },
     {
@@ -1724,7 +1724,7 @@
             "placard_name": "St. Vincent and the Grenadines",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/vc.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/vc.svg"
         }
     },
     {
@@ -1736,7 +1736,7 @@
             "placard_name": "Samoa",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/ws.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/ws.svg"
         }
     },
     {
@@ -1748,7 +1748,7 @@
             "placard_name": "San Marino",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/sm.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/sm.svg"
         }
     },
     {
@@ -1760,7 +1760,7 @@
             "placard_name": "Sao Tome and Principe",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/st.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/st.svg"
         }
     },
     {
@@ -1772,7 +1772,7 @@
             "placard_name": "Saudi Arabia",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/sa.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/sa.svg"
         }
     },
     {
@@ -1784,7 +1784,7 @@
             "placard_name": "Senegal",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/sn.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/sn.svg"
         }
     },
     {
@@ -1796,7 +1796,7 @@
             "placard_name": "Serbia",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/rs.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/rs.svg"
         }
     },
     {
@@ -1808,7 +1808,7 @@
             "placard_name": "Seychelles",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/sc.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/sc.svg"
         }
     },
     {
@@ -1820,7 +1820,7 @@
             "placard_name": "Sierra Leone",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/sl.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/sl.svg"
         }
     },
     {
@@ -1832,7 +1832,7 @@
             "placard_name": "Singapore",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/sg.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/sg.svg"
         }
     },
     {
@@ -1844,7 +1844,7 @@
             "placard_name": "Slovakia",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/sk.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/sk.svg"
         }
     },
     {
@@ -1856,7 +1856,7 @@
             "placard_name": "Slovenia",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/si.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/si.svg"
         }
     },
     {
@@ -1868,7 +1868,7 @@
             "placard_name": "Solomon Islands",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/sb.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/sb.svg"
         }
     },
     {
@@ -1880,7 +1880,7 @@
             "placard_name": "Somalia",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/so.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/so.svg"
         }
     },
     {
@@ -1892,7 +1892,7 @@
             "placard_name": "South Africa",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/za.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/za.svg"
         }
     },
     {
@@ -1904,7 +1904,7 @@
             "placard_name": "South Sudan",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/ss.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/ss.svg"
         }
     },
     {
@@ -1916,7 +1916,7 @@
             "placard_name": "Spain",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/es.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/es.svg"
         }
     },
     {
@@ -1928,7 +1928,7 @@
             "placard_name": "Sri Lanka",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/lk.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/lk.svg"
         }
     },
     {
@@ -1940,7 +1940,7 @@
             "placard_name": "Sudan",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/ss.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/ss.svg"
         }
     },
     {
@@ -1952,7 +1952,7 @@
             "placard_name": "Suriname",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/sr.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/sr.svg"
         }
     },
     {
@@ -1964,7 +1964,7 @@
             "placard_name": "Swaziland",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/sz.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/sz.svg"
         }
     },
     {
@@ -1976,7 +1976,7 @@
             "placard_name": "Sweden",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/se.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/se.svg"
         }
     },
     {
@@ -1988,7 +1988,7 @@
             "placard_name": "Switzerland",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/ch.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/ch.svg"
         }
     },
     {
@@ -2000,7 +2000,7 @@
             "placard_name": "Syria",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/sy.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/sy.svg"
         }
     },
     {
@@ -2012,7 +2012,7 @@
             "placard_name": "Tajikistan",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/tj.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/tj.svg"
         }
     },
     {
@@ -2024,7 +2024,7 @@
             "placard_name": "Thailand",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/th.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/th.svg"
         }
     },
     {
@@ -2036,7 +2036,7 @@
             "placard_name": "Macedonia",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/mk.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/mk.svg"
         }
     },
     {
@@ -2048,7 +2048,7 @@
             "placard_name": "Timor-Leste",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/tl.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/tl.svg"
         }
     },
     {
@@ -2060,7 +2060,7 @@
             "placard_name": "Togo",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/tg.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/tg.svg"
         }
     },
     {
@@ -2072,7 +2072,7 @@
             "placard_name": "Tonga",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/to.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/to.svg"
         }
     },
     {
@@ -2084,7 +2084,7 @@
             "placard_name": "Trinidad and Tobago",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/tt.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/tt.svg"
         }
     },
     {
@@ -2096,7 +2096,7 @@
             "placard_name": "Tunisia",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/tn.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/tn.svg"
         }
     },
     {
@@ -2108,7 +2108,7 @@
             "placard_name": "Turkey",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/tr.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/tr.svg"
         }
     },
     {
@@ -2120,7 +2120,7 @@
             "placard_name": "Turkmenistan",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/tm.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/tm.svg"
         }
     },
     {
@@ -2132,7 +2132,7 @@
             "placard_name": "Tuvalu",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/tv.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/tv.svg"
         }
     },
     {
@@ -2144,7 +2144,7 @@
             "placard_name": "Uganda",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/ug.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/ug.svg"
         }
     },
     {
@@ -2156,7 +2156,7 @@
             "placard_name": "Ukraine",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/ua.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/ua.svg"
         }
     },
     {
@@ -2168,7 +2168,7 @@
             "placard_name": "United Arab Emirates",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/ae.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/ae.svg"
         }
     },
     {
@@ -2180,7 +2180,7 @@
             "placard_name": "United Kingdom",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/gb.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/gb.svg"
         }
     },
     {
@@ -2192,7 +2192,7 @@
             "placard_name": "Tanzania",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/tz.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/tz.svg"
         }
     },
     {
@@ -2204,7 +2204,7 @@
             "placard_name": "United States",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/us.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/us.svg"
         }
     },
     {
@@ -2216,7 +2216,7 @@
             "placard_name": "Uruguay",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/uy.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/uy.svg"
         }
     },
     {
@@ -2228,7 +2228,7 @@
             "placard_name": "Uzbekistan",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/uz.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/uz.svg"
         }
     },
     {
@@ -2240,7 +2240,7 @@
             "placard_name": "Vanuatu",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/vu.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/vu.svg"
         }
     },
     {
@@ -2252,7 +2252,7 @@
             "placard_name": "Venezuela",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/ve.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/ve.svg"
         }
     },
     {
@@ -2264,7 +2264,7 @@
             "placard_name": "Vietnam",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/vn.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/vn.svg"
         }
     },
     {
@@ -2276,7 +2276,7 @@
             "placard_name": "Yemen",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/ye.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/ye.svg"
         }
     },
     {
@@ -2288,7 +2288,7 @@
             "placard_name": "Zambia",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/zm.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/zm.svg"
         }
     },
     {
@@ -2300,7 +2300,7 @@
             "placard_name": "Zimbabwe",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/zw.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/zw.svg"
         }
     },
     {
@@ -2312,7 +2312,7 @@
             "placard_name": "Palestine",
             "status": "observer state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/ps.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/ps.svg"
         }
     },
     {
@@ -2348,7 +2348,7 @@
             "placard_name": "European Union",
             "status": "inter-governmental organization",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/eu.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/eu.svg"
         }
     },
     {
@@ -2504,7 +2504,7 @@
             "placard_name": "Dominican Republic",
             "status": "member state",
             "active": true,
-            "flag": "https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/do.svg"
+            "flag": "https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/do.svg"
         }
     }
 ]
