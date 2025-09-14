@@ -69,11 +69,7 @@ class ForumSerializer(serializers.ModelSerializer):
         model = Forum
         fields = ['id', 'name', 'abbreviation', 'subtitle', 'email', 'room', 'plenary', 'lunches']
 
-class ParticipantSerializer(Base64ModelSerializer):
-    class Meta:
-        model = Participant
-        fields = ['id', 'first_name', 'last_name', 'gender', 'pronouns', 'email', 'mobile', 'picture', 'birthday', 'extras', 'role', 'data_consent_time', 'data_consent_ip', 'media_consent_time', 'media_consent_ip']
-
+class EmailConfirmationMixing:
     def update(self, instance, validated_data):
         old_email = instance.email
         new_email = validated_data.get('email', old_email)
@@ -94,32 +90,37 @@ class ParticipantSerializer(Base64ModelSerializer):
             )
         return instance
 
-class DelegateSerializer(Base64ModelSerializer):
+class ParticipantSerializer(EmailConfirmationMixing, Base64ModelSerializer):
+    class Meta:
+        model = Participant
+        fields = ['id', 'first_name', 'last_name', 'gender', 'pronouns', 'email', 'mobile', 'picture', 'birthday', 'extras', 'role', 'data_consent_time', 'data_consent_ip', 'media_consent_time', 'media_consent_ip']
+
+class DelegateSerializer(EmailConfirmationMixing, Base64ModelSerializer):
     class Meta:
         model = Delegate
         fields = ['id', 'first_name', 'last_name', 'gender', 'pronouns', 'email', 'mobile', 'picture', 'birthday', 'extras', 'data_consent_time', 'data_consent_ip', 'media_consent_time', 'media_consent_ip', 'ambassador', 'first_timer', 'represents', 'school', 'forum']
 
-class StudentOfficerSerializer(Base64ModelSerializer):
+class StudentOfficerSerializer(EmailConfirmationMixing, Base64ModelSerializer):
     class Meta:
         model = StudentOfficer
         fields = ['id', 'first_name', 'last_name', 'gender', 'pronouns', 'email', 'mobile', 'picture', 'birthday', 'extras', 'data_consent_time', 'data_consent_ip', 'media_consent_time', 'media_consent_ip', 'position_name', 'school_name', 'forum', 'plenary']
 
-class MUNDirectorSerializer(Base64ModelSerializer):
+class MUNDirectorSerializer(EmailConfirmationMixing, Base64ModelSerializer):
     class Meta:
         model = MUNDirector
         fields = ['id', 'first_name', 'last_name', 'gender', 'pronouns', 'email', 'mobile', 'picture', 'birthday', 'extras', 'data_consent_time', 'data_consent_ip', 'media_consent_time', 'media_consent_ip', 'english_teacher', 'school']
 
-class ExecutiveSerializer(Base64ModelSerializer):
+class ExecutiveSerializer(EmailConfirmationMixing, Base64ModelSerializer):
     class Meta:
         model = Executive
         fields = ['id', 'first_name', 'last_name', 'gender', 'pronouns', 'email', 'mobile', 'picture', 'birthday', 'extras', 'data_consent_time', 'data_consent_ip', 'media_consent_time', 'media_consent_ip', 'position_name', 'school_name']
 
-class StaffSerializer(Base64ModelSerializer):
+class StaffSerializer(EmailConfirmationMixing, Base64ModelSerializer):
     class Meta:
         model = Staff
         fields = ['id', 'first_name', 'last_name', 'gender', 'pronouns', 'email', 'mobile', 'picture', 'birthday', 'extras', 'data_consent_time', 'data_consent_ip', 'media_consent_time', 'media_consent_ip', 'position_name', 'school_name']
 
-class AdvisorSerializer(Base64ModelSerializer):
+class AdvisorSerializer(EmailConfirmationMixing, Base64ModelSerializer):
     class Meta:
         model = Advisor
         fields = ['id', 'first_name', 'last_name', 'gender', 'pronouns', 'email', 'mobile', 'picture', 'birthday', 'extras', 'data_consent_time', 'data_consent_ip', 'media_consent_time', 'media_consent_ip', 'car', 'availability', 'experience', 'help']
