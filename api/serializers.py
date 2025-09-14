@@ -2,6 +2,8 @@ from rest_framework import serializers
 from drf_base64.serializers import ModelSerializer as Base64ModelSerializer
 from django.contrib.auth.models import User
 from api.models import Conference, School, MemberOrganization, Location, Room, Event, Lunch, Plenary, Forum, Participant, Delegate, StudentOfficer, MUNDirector, Executive, Staff, Advisor, Issue, Document, ResearchReport, PositionPaper
+from django.core.mail import send_mail
+from django.urls import reverse
 
 # Serializers convert to JSON and validate data passed
 
@@ -71,6 +73,26 @@ class ParticipantSerializer(Base64ModelSerializer):
     class Meta:
         model = Participant
         fields = ['id', 'first_name', 'last_name', 'gender', 'pronouns', 'email', 'mobile', 'picture', 'birthday', 'extras', 'role', 'data_consent_time', 'data_consent_ip', 'media_consent_time', 'media_consent_ip']
+
+    def update(self, instance, validated_data):
+        old_email = instance.email
+        new_email = validated_data.get('email', old_email)
+
+        # Do actual update
+        instance = super().update(instance, validated_data)
+
+        # If email changes, send a confirmation email
+        if new_email and new_email != old_email:
+            request = self.context.get('request')
+            if request:
+                edit_url = request.build_absolute_uri(reverse("participant_update", args=[instance.pk]))
+            send_mail(
+                "Thank yo for registering",
+                f"Your registration worked! You can update it here: {edit_url}",
+                "noreply@munol.org",
+                [new_email],
+            )
+        return instance
 
 class DelegateSerializer(Base64ModelSerializer):
     class Meta:
