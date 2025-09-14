@@ -56,6 +56,8 @@ As the database is empty in the beginning and filling it manually is a lot of wo
 
    > python manage.py setup_test_data
 
+3. Create a conference item with the corresponding data in the Django Admin interface. In particular the `start_date` is essential, as it will be used to determine ages and the countdown.
+
 ## Deployment...
 
 Most configuration options can be set with an environment file. An example can be found in `.env.example`. Copy this, rename it to `.env`, and adjust it to your local setting. These variables are then read for example in `cms/settings.py`.
@@ -64,13 +66,13 @@ Most configuration options can be set with an environment file. An example can b
 
 In your .env file
 
-- add your domain to `ALLOWED_HOSTS`, e.g. `ALLOWED_HOSTS='mydomain.com my.second.domain.com'`. Note that a list can be given separated by whitespaces
-- add your domain to both `CORS_ORIGIN_WHITELIST` and `CSRF_TRUSTED_ORIGINS`, e.g. `CORS_ORIGIN_WHITELIST='https://mydomain.com'`. Note that here the protocol is also specified. Again, lists can be given by separating multiple entries with a white space.
+- add your domain to `ALLOWED_HOSTS`, e.g. `ALLOWED_HOSTS='mydomain.org my.second.domain.org'`. Note that a list can be given separated by whitespaces
+- add your domain to both `CORS_ORIGIN_WHITELIST` and `CSRF_TRUSTED_ORIGINS`, e.g. `CORS_ORIGIN_WHITELIST='https://mydomain.org'`. Note that here the protocol is also specified. Again, lists can be given by separating multiple entries with a white space.
 - set `DEBUG=True`
 
 Furthermore
 
-- add media (fonts, images) to `media` folder
+- add media (fonts, images) to `media` folder, which is served independently under `mydomain.org/media/`
 - add test data .json files if you want to populate your DB with them
 
 ### ...for production
@@ -81,9 +83,11 @@ In addition to testing deployment: In your production `.env` file set
 - `SECURITY_KEY` to a secure key that only you know
 - `USE_X_FORWARDED_HOST=True` and `FORCE_SCRIPT_NAME='/cms'` if you don't want to serve under root domain URL, but under something like `mydomain.org/cms`
 
-Serve static files by running `python manage.py collectstatic` which generates a `static/` folder that needs to be served under `mydomain.org/cms/static` and includes the CSS, JS and image files. If the styling is missing, it might be a hint that the static files aren't loaded correctly.
+Serve static files by running `python manage.py collectstatic` which generates a `static/` folder that includes the CSS, JS and image files. It needs to be copied and served independently under `mydomain.org/static`. If the styling is missing, it might be a hint that the static files aren't loaded correctly.
 
 Perform migration of the database by running `python manage.py migrate`.
+
+If you would like to use Django Admin for managing the database entries, you have to create a super user by running `python manage.py createsuperuser`.
 
 To setup the authentication correctly, adjust the authentication related environment variables. In particular you need to register an application in your Azure instance, as described in [this guide](https://medium.com/@kuntumallashivani/a-guide-to-msal-3-0-authentication-in-vue-3-8c364cc26f53). Read more on authentication in the [wiki](https://github.com/model-united-nations-of-luebeck/CMS-backend/wiki/Conference-Management-System-backend-wiki).
 
