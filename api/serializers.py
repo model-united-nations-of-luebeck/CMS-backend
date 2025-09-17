@@ -121,7 +121,19 @@ class AdvisorSerializer(EmailConfirmationMixin, Base64ModelSerializer):
     class Meta:
         model = Advisor
         fields = ['id', 'first_name', 'last_name', 'gender', 'pronouns', 'email', 'mobile', 'picture', 'birthday', 'extras', 'data_consent_time', 'data_consent_ip', 'media_consent_time', 'media_consent_ip', 'car', 'availability', 'experience', 'help']
-    
+
+    def create(self, validated_data):
+        advisor = super().create(validated_data)
+
+        # Send email to advisor
+        send_mail(
+            "Thank you for registering as an advisor",
+            f"Dear advisor,\n\nwe appreciate your successful registration. You can update your data at any time by replacing the 'add' in ..../registration/advisors/add with your personal user id: .../registration/advisors/{advisor.id}\n\nWe will then send you a 6 digit token to your email address once you open this page.\n\nIf this mail surprised you as you didn't register, please contact us at conferencemanager@munol.org.\n\nBest regards,\nThe MUNOL Team",
+            "noreply@munol.org",
+            [advisor.email]
+        )
+        return advisor
+
 class IssueSerializer(serializers.ModelSerializer):
     class Meta:
         model = Issue
