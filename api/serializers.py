@@ -125,6 +125,23 @@ class AdvisorSerializer(EmailConfirmationMixing, Base64ModelSerializer):
         model = Advisor
         fields = ['id', 'first_name', 'last_name', 'gender', 'pronouns', 'email', 'mobile', 'picture', 'birthday', 'extras', 'data_consent_time', 'data_consent_ip', 'media_consent_time', 'media_consent_ip', 'car', 'availability', 'experience', 'help']
 
+    def update(self, instance, validated_data):
+        old_email = instance.email
+        new_email = validated_data.get('email', old_email)
+
+        # Do actual update
+        instance = super().update(instance, validated_data)
+
+        # If email changed, send a confirmation email
+        if new_email and new_email != old_email:
+            send_mail(
+                "Thank you for registering",
+                "Dear participant,\n\nwe appreciate your successful registration. You can update your data at any time using the same URL. But from now on, we will send you a 6 digit token to your email address when you open this page.\n\nIf this mail surprised you as you didn't register, please contact us at conferencemanager@munol.org.\n\nBest regards,\nThe MUNOL Team",
+                "noreply@munol.org",
+                [new_email],
+            )
+        return instance
+    
 class IssueSerializer(serializers.ModelSerializer):
     class Meta:
         model = Issue
