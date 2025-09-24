@@ -79,12 +79,15 @@ class EmailConfirmationMixin:
 
         # If email changed, send a confirmation email
         if new_email and new_email != old_email:
-            send_mail(
-                "Thank you for registering",
-                "Dear participant,\n\nwe appreciate your successful registration. You can update your data at any time using the same URL. But from now on, we will send you a 6 digit token to your email address when you open this page.\n\nIf this mail surprised you as you didn't register, please contact us at conferencemanager@munol.org.\n\nBest regards,\nThe MUNOL Team",
-                "noreply@munol.org",
-                [new_email],
-            )
+            try:
+                send_mail(
+                    "Thank you for registering",
+                    "Dear participant,\n\nwe appreciate your successful registration. You can update your data at any time using the same URL. But from now on, we will send you a 6 digit token to your email address when you open this page.\n\nIf this mail surprised you as you didn't register, please contact us at conferencemanager@munol.org.\n\nBest regards,\nThe MUNOL Team",
+                    "noreply@munol.org",
+                    [new_email],
+                )
+            except Exception as e:
+                print(f"Failed to send email to {new_email}: {e}")
         return instance
 
 class ParticipantSerializer(EmailConfirmationMixin, Base64ModelSerializer):
@@ -126,12 +129,15 @@ class AdvisorSerializer(EmailConfirmationMixin, Base64ModelSerializer):
         advisor = super().create(validated_data)
 
         # Send email to advisor
-        send_mail(
-            "Thank you for registering as an advisor",
-            f"Dear advisor,\n\nwe appreciate your successful registration. You can update your data at any time by replacing the 'add' in ..../registration/advisors/add with your personal user id: .../registration/advisors/{advisor.id}\n\nWe will then send you a 6 digit token to your email address once you open this page.\n\nIf this mail surprised you as you didn't register, please contact us at conferencemanager@munol.org.\n\nBest regards,\nThe MUNOL Team",
-            "noreply@munol.org",
-            [advisor.email]
-        )
+        try:
+            send_mail(
+                "Thank you for registering as an advisor",
+                f"Dear advisor,\n\nwe appreciate your successful registration. You can update your data at any time by replacing the 'add' in ..../registration/advisors/add with your personal user id: .../registration/advisors/{advisor.id}\n\nWe will then send you a 6 digit token to your email address once you open this page.\n\nIf this mail surprised you as you didn't register, please contact us at conferencemanager@munol.org.\n\nBest regards,\nThe MUNOL Team",
+                "noreply@munol.org",
+                [advisor.email]
+            )
+        except Exception as e:
+            print(f"Failed to send email to advisor {advisor.email}: {e}")
         return advisor
 
 class IssueSerializer(serializers.ModelSerializer):
