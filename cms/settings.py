@@ -134,7 +134,7 @@ STATIC_URL = '/static/'
 
 # Media files (uploaded images, documents etc.)
 MEDIA_ROOT = os.getenv('MEDIA_ROOT', os.path.join(BASE_DIR, 'media'))
-MEDIA_URL = '/media/'
+MEDIA_URL = os.getenv('MEDIA_URL', '/media/')
 
 # Sets the prefix path for serving in subfolders, usually only done in production
 if os.getenv('USE_X_FORWARDED_HOST'):
