@@ -224,6 +224,12 @@ class Participant(Person):
             self.user.email = self.email
             self.user.save()
 
+    def delete(self, *args, **kwargs):
+        # on deletion of a participant, also delete the associated user to avoid orphaned users
+        # vice versa is handled by on_delete=models.CASCADE in the user field above
+        user = self.user
+        super().delete(*args, **kwargs)
+        user.delete()
 
 class Event(models.Model):
     ''' An event during the conference '''
