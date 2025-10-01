@@ -293,7 +293,7 @@ class Forum(models.Model):
 class Delegate(Participant):
     ''' Delegates are the main participants of MUN :model:`api.Conference` and represent a delegation's position in their :model:`api.Forum`. '''
     ambassador = models.BooleanField("Is the delegate the delegation's ambassador?", default=False,
-                                     help_text="one delegate per delegation has to be selected to be the ambassador of the delegation")  # Question: how do we ensure that there is one, but only one ambassador per delegation? Do we do it on database level or in front end software? Answer: Do it in front end and not in DB. If no ambassador is chosen, we simply select the first one of each delegation.
+                                     help_text="one delegate per delegation has to be selected to be the ambassador of the delegation")  
     first_timer = models.BooleanField("Is the delegate participating in their first MUN conference?", default=True,
                                       help_text="There is a first MUN conference for everyone. Knowing this in advance, the team can prepare a smooth first conference for first timers.")
     represents = models.ForeignKey(
@@ -305,6 +305,11 @@ class Delegate(Participant):
 
     def save(self, *args, **kwargs):
         self.role = 'delegate'
+
+        # If the ambassador field is set to true, ensure that no other delegate representing the same member organization has this field set to true. If another delegate has it set to true, set it to false.
+        if self.ambassador:
+            Delegate.objects.filter(represents=self.represents, ambassador=True).exclude(pk=self.pk).update(ambassador=False)
+
         return super().save(*args, **kwargs)
 
 
