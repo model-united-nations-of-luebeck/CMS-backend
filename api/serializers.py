@@ -132,7 +132,7 @@ class AdvisorSerializer(EmailConfirmationMixin, Base64ModelSerializer):
         try:
             send_mail(
                 "Thank you for registering as an advisor",
-                f"Dear advisor,\n\nwe appreciate your successful registration. You can update your data at any time by replacing the 'add' in ..../registration/advisors/add with your personal user id: .../registration/advisors/{advisor.id}\n\nWe will then send you a 6 digit token to your email address once you open this page.\n\nIf this mail surprised you as you didn't register, please contact us at conferencemanager@munol.org.\n\nBest regards,\nThe MUNOL Team",
+                f"Dear advisor,\n\nwe appreciate your successful registration. You can update your data at any time by replacing the 'add' at the end of the registration link with your unique personal user id: {advisor.id}\n\nWe will then send you a 6 digit token to your email address once you open this page.\n\nIf this mail surprised you as you didn't register, please contact us at conferencemanager@munol.org.\n\nBest regards,\nThe MUNOL Team",
                 "noreply@munol.org",
                 [advisor.email]
             )
