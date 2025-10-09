@@ -32,6 +32,7 @@ urlpatterns = [
 
     path('housing_all', housing.housing_all, name="housing_all"),
     path('housing_delegates', housing.housing_delegates, name="housing_delegates"),
+    path('housing_mun_directors', housing.housing_mun_directors, name="housing_mun_directors"),
     path('housing_schools', housing.housing_schools, name="housing_schools"),
 
     path('number_of_forums', stats.number_of_forums, name="number_of_forums"),
