@@ -1,6 +1,6 @@
 from django.http import HttpResponseBadRequest
 from django.urls import path
-from . import gender, age, origin, housing, stats
+from . import gender, age, first_time_delegates, origin, housing, stats
 
 app_name = 'stats'
 
@@ -32,6 +32,7 @@ urlpatterns = [
 
     path('housing_all', housing.housing_all, name="housing_all"),
     path('housing_delegates', housing.housing_delegates, name="housing_delegates"),
+    path('housing_mun_directors', housing.housing_mun_directors, name="housing_mun_directors"),
     path('housing_schools', housing.housing_schools, name="housing_schools"),
 
     path('number_of_forums', stats.number_of_forums, name="number_of_forums"),
@@ -46,5 +47,7 @@ urlpatterns = [
     path('number_of_participants', stats.number_of_participants, name="number_of_participants"),
     path('birthday_stats', stats.birthday_stats, name="birthday_stats"),
     path('all_stats', stats.all_stats, name="all_stats"),
+
+    path('first_time_delegates_per_forum', first_time_delegates.first_time_delegates_per_forum, name="first_time_delegates_per_forum"),
 ]
 
