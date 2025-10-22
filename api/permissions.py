@@ -12,7 +12,7 @@ class ParticipantAccess(BasePermission):
     '''
     Grants access to a participant's data if:
     1. the requesting user is authenticated and the participant themselves (authenticated via token)
-    2. the requesting user is authenticated (not necessarily the participant themselves) and there is no personal data stored in the participant's object yet (checked by data_consent_time). If personal data is stored, the viewset should send a passwordless token to the participant's email address to authenticate them.
+    2. the requesting user is authenticated (not necessarily the participant themselves) and there is no personal data stored in the participant's object yet (checked by data_consent_time in `ParticipantsViewSet` in `views.py`). If personal data is stored, the viewset should send a passwordless token to the participant's email address to authenticate them.
 
     Allows creating new Advisor objects.
 
@@ -42,6 +42,9 @@ class ParticipantAccess(BasePermission):
         # Allow other authenticated users to access non-personal data
         if request.method in SAFE_METHODS:
             return True # Further checks will be done in the viewset
+
+        if not obj.data_consent_time and request.method in ['PUT', 'PATCH']:
+            return True  # Allow updating data if no personal data is stored yet
         
         # Deny access for all other cases
         return False
