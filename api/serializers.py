@@ -4,6 +4,9 @@ from django.contrib.auth.models import User
 from api.models import Conference, School, MemberOrganization, Location, Room, Event, Lunch, Plenary, Forum, Participant, Delegate, StudentOfficer, MUNDirector, Executive, Staff, Advisor, Issue, Document, ResearchReport, PositionPaper
 from django.core.mail import send_mail
 from django.urls import reverse
+from dotenv import load_dotenv
+load_dotenv() # load .env file
+import os
 
 # Serializers convert to JSON and validate data passed
 
@@ -83,7 +86,7 @@ class EmailConfirmationMixin:
                 send_mail(
                     "Thank you for registering",
                     "Dear participant,\n\nwe appreciate your successful registration. You can update your data at any time using the same URL. But from now on, we will send you a 6 digit token to your email address when you open this page.\n\nIf this mail surprised you as you didn't register, please contact us at conferencemanager@munol.org.\n\nBest regards,\nThe MUNOL Team",
-                    "noreply@munol.org",
+                    os.getenv('EMAIL_FROM_ADDRESS', 'noreply@munol.org'),
                     [new_email],
                 )
             except Exception as e:
@@ -133,7 +136,7 @@ class AdvisorSerializer(EmailConfirmationMixin, Base64ModelSerializer):
             send_mail(
                 "Thank you for registering as an advisor",
                 f"Dear advisor,\n\nwe appreciate your successful registration. You can update your data at any time by replacing the 'add' at the end of the registration link with your unique personal user id: {advisor.id}\n\nWe will then send you a 6 digit token to your email address once you open this page.\n\nIf this mail surprised you as you didn't register, please contact us at conferencemanager@munol.org.\n\nBest regards,\nThe MUNOL Team",
-                "noreply@munol.org",
+                os.getenv('EMAIL_FROM_ADDRESS', 'noreply@munol.org'),
                 [advisor.email]
             )
         except Exception as e:
