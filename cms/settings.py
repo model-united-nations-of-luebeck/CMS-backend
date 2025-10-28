@@ -29,6 +29,12 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = (os.getenv('DEBUG', 'False') == 'True')
 
+# Admins who receive error notifications from django logs. When DEBUG=False, errors will be emailed to these addresses.
+ADMINS = eval(os.getenv('ADMINS', '[]'))
+
+# Email address that error messages come from
+SERVER_EMAIL = os.getenv('SERVER_EMAIL', 'noreply@example.com')
+
 # enter URLs of allowed hosts here, e.g. munoltom.pythonanywhere.com
 ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '').split()
 
