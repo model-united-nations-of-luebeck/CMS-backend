@@ -35,7 +35,7 @@ def get_current_user():
 def log_participant_save(sender, instance, created, **kwargs):
     user = get_current_user()
     action = "CREATED" if created else "UPDATED"
-    registration_logger.info(f"User {user} {action} {instance.__class__.__name__} {instance.id}")
+    registration_logger.debug(f"User {user} {action} {instance.__class__.__name__} {instance.id}")
 
 @receiver(post_delete, sender=Advisor)
 @receiver(post_delete, sender=Delegate)

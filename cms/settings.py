@@ -331,6 +331,10 @@ LOGGING = {
             "backupCount": 5,
             "formatter": "verbose",
         },
+        "registration_log_mail_admins": {
+            "level": "INFO",
+            "class": "django.utils.log.AdminEmailHandler",
+        },
     },
     "loggers": {
         "django": {
@@ -343,7 +347,7 @@ LOGGING = {
             "propagate": False,
         },
         "registration_log": {
-            "handlers": ["registration_log_file"],
+            "handlers": ["registration_log_file", "registaration_log_mail_admins"],
             "level": "DEBUG",
             "propagate": False,
         }
