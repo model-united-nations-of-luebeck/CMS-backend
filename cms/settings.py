@@ -32,9 +32,7 @@ DEBUG = (os.getenv('DEBUG', 'False') == 'True')
 # enter URLs of allowed hosts here, e.g. munoltom.pythonanywhere.com
 ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '').split()
 
-
 # Application definition
-
 INSTALLED_APPS = [
     'corsheaders',
     'django.contrib.admin',
@@ -61,6 +59,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'api.signals.CurrentUserMiddleware',
 ]
 
 ROOT_URLCONF = 'cms.urls'
@@ -283,3 +282,80 @@ AZURE_TENANT_ID = os.getenv('AZURE_TENANT_ID', None)
 AZURE_JWKS_URL = f"https://login.microsoftonline.com/{AZURE_TENANT_ID}/discovery/v2.0/keys"
 AZURE_AUDIENCE = os.getenv('AZURE_AUDIENCE', None)
 AZURE_ISSUER = f"https://login.microsoftonline.com/{AZURE_TENANT_ID}/v2.0"
+
+# Logging
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "filters": {
+        "require_debug_false": {
+            "()": "django.utils.log.RequireDebugFalse",
+        },
+        "require_debug_true": {
+            "()": "django.utils.log.RequireDebugTrue",
+        },
+    },
+    "formatters": {
+        "django.server": {
+            "()": "django.utils.log.ServerFormatter",
+            "format": "[{server_time}] {message}",
+            "style": "{",
+        },        
+        "verbose": {
+            "format": "[{asctime}] {levelname} {message}",
+            "style": "{",
+        },
+
+    },
+    "handlers": {
+        "console": {
+            "level": "INFO",
+            "filters": ["require_debug_true"],
+            "class": "logging.StreamHandler",
+        },
+        "django.server": {
+            "level": "INFO",
+            "class": "logging.StreamHandler",
+            "formatter": "django.server",
+        },
+        "mail_admins": {
+            "level": "ERROR",
+            "filters": ["require_debug_false"],
+            "class": "django.utils.log.AdminEmailHandler",
+        },
+        "registration_log_file": {
+            "level": "DEBUG",
+            "class": "logging.handlers.RotatingFileHandler",
+            "filename": os.environ.get("REGISTRATION_LOG_FILE", "registration.log"),
+            "maxBytes": 10*1024*1024, # 10 MB
+            "backupCount": 5,
+            "formatter": "verbose",
+        },
+        "registration_log_mail_admins": {
+            "level": "INFO",
+            "class": "django.utils.log.AdminEmailHandler",
+        },
+    },
+    "loggers": {
+        "django": {
+            "handlers": ["console", "mail_admins"],
+            "level": "INFO",
+        },
+        "django.server": {
+            "handlers": ["django.server"],
+            "level": "INFO",
+            "propagate": False,
+        },
+        "registration_log": {
+            "handlers": ["registration_log_file", "registration_log_mail_admins"],
+            "level": "DEBUG",
+            "propagate": False,
+        }
+    },
+}
+
+# Admins who receive error notifications from django logs. When DEBUG=False, errors will be emailed to these addresses.
+ADMINS = eval(os.getenv('ADMINS', '[]'))
+
+# Email address that error messages come from
+SERVER_EMAIL = os.getenv('SERVER_EMAIL', 'noreply@example.com')
