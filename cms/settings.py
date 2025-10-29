@@ -347,7 +347,7 @@ LOGGING = {
             "propagate": False,
         },
         "registration_log": {
-            "handlers": ["registration_log_file", "registaration_log_mail_admins"],
+            "handlers": ["registration_log_file", "registration_log_mail_admins"],
             "level": "DEBUG",
             "propagate": False,
         }
