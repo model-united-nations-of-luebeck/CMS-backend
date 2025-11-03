@@ -417,4 +417,3 @@ def participant_certificate(request, participants):
     
     
     return _create_certificate(participants = filtered_participants, session=session, year=year, startday=start_day, startmonth=start_month, endday=end_day, endmonth=end_month, secgen="Tom Rix", depsecgen="Tom Rix", cms='Tom Rix & Tom Rix')
-

@@ -50,4 +50,3 @@ urlpatterns = [
 
     path('first_time_delegates_per_forum', first_time_delegates.first_time_delegates_per_forum, name="first_time_delegates_per_forum"),
 ]
-
