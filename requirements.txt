@@ -21,6 +21,7 @@ typing_extensions==4.11.0
 
 # dev requirements
 pygraphviz==1.11
+pre-commit==4.3.0
 
 # production requirements
 gunicorn==23.0.0

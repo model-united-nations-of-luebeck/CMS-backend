@@ -6,7 +6,9 @@ This repo organizes the backend of a Conference Management System for Model UN c
 
 At the moment this project uses Python 3.8+ and Django 4.2.22 (LTS). It is recommended to create a virtual environment inside the `envs` folder, e.g. by using [venv](https://docs.python.org/3/tutorial/venv.html).
 
-To install the requirements after cloning the code and activating the environment (e.g. `source envs/my-env/bin/activate`), run
+### Dependencies
+
+To install the dependencies after cloning the code and activating the environment (e.g. `source envs/my-env/bin/activate`), run
 
 > pip install -r requirements.txt
 
@@ -17,6 +19,17 @@ To start the django project in a server type
 To update the requirements according to your virtual environment, use
 
 > pip freeze > requirements.txt
+
+### Pre-commit hooks
+
+To enable pre-commit hooks, download and install them with
+
+```bash
+pip install pre-commit
+pre-commit install
+```
+
+To run the hooks on all files run: `pre-commit run --all-files`
 
 ## Models Diagram
 
