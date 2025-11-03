@@ -85,4 +85,3 @@ def birthdays_during_conference(request):
                               "id": participant.id})
     
     return JsonResponse({"birthdays":birthdays})
-

@@ -15,4 +15,3 @@ class Command(BaseCommand):
         generate_delegates()
         generate_issues()
         self.stdout.write("Test data created successfully")
-
