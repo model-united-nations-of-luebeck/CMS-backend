@@ -71,6 +71,12 @@ As the database is empty in the beginning and filling it manually is a lot of wo
 
 3. Create a conference item with the corresponding data in the Django Admin interface. In particular the `start_date` is essential, as it will be used to determine ages and the countdown.
 
+To empty the database (e.g. after a conference) you may use this command:
+
+> python manage.py reset_data --dump-dir PATH
+
+This resets all conference related data but retains `Forums`, `MemberOrganizations`, `Rooms`, `Locations` as well as staff and super users.
+
 ## Deployment...
 
 Most configuration options can be set with an environment file. An example can be found in `.env.example`. Copy this, rename it to `.env`, and adjust it to your local setting. These variables are then read for example in `cms/settings.py`.
