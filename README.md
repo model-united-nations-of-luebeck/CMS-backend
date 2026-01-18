@@ -77,6 +77,10 @@ To empty the database (e.g. after a conference) you may use this command:
 
 This resets all conference related data but retains `Forums`, `MemberOrganizations`, `Rooms`, `Locations` as well as staff and super users.
 
+To export data in an anonymize manner for archive and statistical purposes run
+
+> python manage.py export_anonymized_data --output PATH
+
 ## Deployment...
 
 Most configuration options can be set with an environment file. An example can be found in `.env.example`. Copy this, rename it to `.env`, and adjust it to your local setting. These variables are then read for example in `cms/settings.py`.
