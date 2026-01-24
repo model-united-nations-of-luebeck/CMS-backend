@@ -75,7 +75,7 @@ To empty the database (e.g. after a conference) you may use this command:
 
 > python manage.py reset_data --dump-dir PATH
 
-This resets all conference related data but retains `Forums`, `MemberOrganizations`, `Rooms`, `Locations` as well as staff and super users.
+This resets all conference related data but retains `Forums`, `MemberOrganizations`, `Rooms`, `Locations` as well as staff users, super users and users with first_name=`API` and last_name= `Token`.
 
 To export data in an anonymize manner for archive and statistical purposes run
 

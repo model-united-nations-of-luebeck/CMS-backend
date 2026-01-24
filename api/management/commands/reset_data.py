@@ -33,7 +33,7 @@ User = get_user_model()
 
 
 class Command(BaseCommand):
-    help = ("Dumps database and deletes all conference-related data while preserving staff/superusers.")
+    help = ("Dumps database and deletes all conference-related data while preserving staff/superusers and users with first_name='API' and last_name='Token'.")
 
     def add_arguments(self, parser):
         parser.add_argument(
@@ -95,7 +95,7 @@ class Command(BaseCommand):
                 self.stdout.write(f"Deleted {count} rows from {model_name}")
 
         self.stdout.write("Deleting normal users...")
-        User.objects.filter(is_staff=False, is_superuser=False).delete()
+        User.objects.filter(is_staff=False, is_superuser=False).exclude(first_name="API", last_name="Token").delete()
 
     def _get_model_by_name(self, name):
         for model in apps.get_models():
