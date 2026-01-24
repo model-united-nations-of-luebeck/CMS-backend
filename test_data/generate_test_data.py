@@ -97,6 +97,8 @@ def generate_advisors(n:int=20):
             data_consent_ip=fake.ipv4_private(),
             media_consent_time=random.choice([fake.date_time_this_decade(tzinfo=datetime.timezone.utc), None]),
             media_consent_ip=random.choice([fake.ipv4_private(), None]),
+            organizers_notice_time=random.choice([fake.date_time_this_decade(tzinfo=datetime.timezone.utc), None]),
+            organizers_notice_ip=random.choice([fake.ipv4_private(), None]),
             car=random.choice([True, False]), 
             availability=fake.text(), 
             experience=fake.text(),
@@ -126,6 +128,8 @@ def generate_staffs(n:int=40):
             data_consent_ip=fake.ipv4_private(),
             media_consent_time=random.choice([fake.date_time_this_decade(tzinfo=datetime.timezone.utc), None]),
             media_consent_ip=random.choice([fake.ipv4_private(), None]),
+            organizers_notice_time=random.choice([fake.date_time_this_decade(tzinfo=datetime.timezone.utc), None]),
+            organizers_notice_ip=random.choice([fake.ipv4_private(), None]),
             position_name=random.choice(position_names), 
             school_name=fake.name()+ "-School")
         
@@ -153,6 +157,8 @@ def generate_executives(n:int=30):
             data_consent_ip=fake.ipv4_private(),
             media_consent_time=random.choice([fake.date_time_this_decade(tzinfo=datetime.timezone.utc), None]),
             media_consent_ip=random.choice([fake.ipv4_private(), None]),
+            organizers_notice_time=random.choice([fake.date_time_this_decade(tzinfo=datetime.timezone.utc), None]),
+            organizers_notice_ip=random.choice([fake.ipv4_private(), None]),
             position_name=random.choice(position_names), school_name=fake.name()+ "-School")
         
 def generate_mun_directors(n:int=50):
@@ -176,6 +182,8 @@ def generate_mun_directors(n:int=50):
             data_consent_ip=fake.ipv4_private(),
             media_consent_time=random.choice([fake.date_time_this_decade(tzinfo=datetime.timezone.utc), None]),
             media_consent_ip=random.choice([fake.ipv4_private(), None]),
+            organizers_notice_time=random.choice([fake.date_time_this_decade(tzinfo=datetime.timezone.utc), None]),
+            organizers_notice_ip=random.choice([fake.ipv4_private(), None]),
             english_teacher=random.choice([True, False]), school=random.choice(School.objects.all()))
 
 def generate_student_officers(n:int=30):
@@ -201,6 +209,8 @@ def generate_student_officers(n:int=30):
             data_consent_ip=fake.ipv4_private(),
             media_consent_time=random.choice([fake.date_time_this_decade(tzinfo=datetime.timezone.utc), None]),
             media_consent_ip=random.choice([fake.ipv4_private(), None]),
+            organizers_notice_time=random.choice([fake.date_time_this_decade(tzinfo=datetime.timezone.utc), None]),
+            organizers_notice_ip=random.choice([fake.ipv4_private(), None]),
             position_name=random.choice(position_names), school_name=fake.name()+"-School", forum=random.choice(Forum.objects.all()),
             plenary=random.choice(Plenary.objects.all()))
 
@@ -241,6 +251,8 @@ def generate_delegates(n:int=250):
             data_consent_ip=fake.ipv4_private(),
             media_consent_time=random.choice([fake.date_time_this_decade(tzinfo=datetime.timezone.utc), None]),
             media_consent_ip=random.choice([fake.ipv4_private(), None]),
+            organizers_notice_time=random.choice([fake.date_time_this_decade(tzinfo=datetime.timezone.utc), None]),
+            organizers_notice_ip=random.choice([fake.ipv4_private(), None]),
             school=random.choice(School.objects.all()), 
             represents=member_organization,
             forum=forum,

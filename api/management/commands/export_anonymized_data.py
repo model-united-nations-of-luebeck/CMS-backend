@@ -39,6 +39,8 @@ PARTICIPANT_FIELDS_TO_REMOVE = {
     "data_consent_ip",
     "media_consent_time",
     "media_consent_ip",
+    "organizers_notice_time",
+    "organizers_notice_ip",
 }
 
 
