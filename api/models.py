@@ -206,6 +206,8 @@ class Participant(Person):
     data_consent_ip = models.GenericIPAddressField("Data Consent given from IP", blank=True, null=True, help_text="From which IP address did the participant give consent to store their data? Null if not given yet.")
     media_consent_time = models.DateTimeField("Media Consent given at", blank=True, null=True, help_text="When did the participant give consent to use their media? Null if not given yet.")
     media_consent_ip = models.GenericIPAddressField("Media Consent given from IP", blank=True, null=True, help_text="From which IP address did the participant give consent to use their media? Null if not given yet.")
+    organizers_notice_time = models.DateTimeField("Organizer's Notice confirmed at", blank=True, null=True, help_text="When did the participant confirm that they've read the organizer's notice? Null if not confirmed yet.")
+    organizers_notice_ip = models.GenericIPAddressField("Organizer's Notice confirmed from IP", blank=True, null=True, help_text="From which IP address did the participant confirm that they've read the organizer's notice? Null if not confirmed yet.")
 
     def save(self, *args, **kwargs):
         # Always save participant first to get pk
