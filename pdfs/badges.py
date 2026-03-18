@@ -9,6 +9,8 @@ from reportlab.pdfgen import canvas
 from reportlab.lib.pagesizes import landscape
 from reportlab.lib.units import mm
 from api.models import Advisor, Conference, Delegate, Executive, MUNDirector, Participant, Staff, StudentOfficer
+from api.permissions import IsOrganizer, IsAdmin
+from rest_framework.decorators import api_view, permission_classes
 from reportlab.lib.utils import ImageReader
 from django.conf import settings
 from reportlab.pdfbase import pdfmetrics
@@ -110,30 +112,44 @@ def _create_badge(participants:list = [], color:tuple=(255,255,255), year=1998):
     buffer.seek(0)
     return FileResponse(FileWrapper(buffer), filename='badges.pdf', content_type="application/pdf", as_attachment=True)
 
+@api_view(["GET"])
+@permission_classes([IsOrganizer|IsAdmin])
 def advisor_badge(request):
     participants = Advisor.objects.all()
     return participant_badge(request, participants, color=(0, 1, 195/255))
 
+@api_view(["GET"])
+@permission_classes([IsOrganizer|IsAdmin])
 def mundirector_badge(request):
     participants = MUNDirector.objects.all()
     return participant_badge(request, participants, color=(16/255,1,0))
 
+@api_view(["GET"])
+@permission_classes([IsOrganizer|IsAdmin])
 def executive_badge(request):
     participants = Executive.objects.all()
     return participant_badge(request, participants, color=(1,0,0))
 
+@api_view(["GET"])
+@permission_classes([IsOrganizer|IsAdmin])
 def student_officer_badge(request):
     participants = StudentOfficer.objects.all()
     return participant_badge(request, participants, color=(0,140/255,1))
 
+@api_view(["GET"])
+@permission_classes([IsOrganizer|IsAdmin])
 def staff_badge(request):
     participants = Staff.objects.all()
     return participant_badge(request, participants, color=(188/255, 225/255, 1))    
 
+@api_view(["GET"])
+@permission_classes([IsOrganizer|IsAdmin])
 def delegate_badge(request):
     participants = Delegate.objects.all()
     return participant_badge(request, participants, color=(1, 144/255, 0))   
 
+@api_view(["GET"])
+@permission_classes([IsOrganizer|IsAdmin])
 def custom_badge(request):
     participant = Participant()
     color = (1,1,1)

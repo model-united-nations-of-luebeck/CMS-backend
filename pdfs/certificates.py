@@ -10,6 +10,8 @@ from reportlab.pdfgen import canvas
 from reportlab.lib.pagesizes import A4, portrait
 from reportlab.lib.units import mm
 from api.models import Advisor, Conference, Delegate, Executive, MUNDirector, Participant, Staff, StudentOfficer
+from api.permissions import IsOrganizer, IsAdmin
+from rest_framework.decorators import api_view, permission_classes
 from reportlab.lib.utils import ImageReader
 from django.conf import settings
 from reportlab.pdfbase import pdfmetrics
@@ -372,22 +374,32 @@ def _create_certificate(participants:list = [], session=1, year=1998, startday:s
     buffer.seek(0)
     return FileResponse(FileWrapper(buffer), filename='certificates.pdf', content_type="application/pdf", as_attachment=True)
 
+@api_view(["GET"])
+@permission_classes([IsOrganizer|IsAdmin])
 def delegate_certificate(request):
     participants = Delegate.objects.all()
     return participant_certificate(request, participants)   
 
+@api_view(["GET"])
+@permission_classes([IsOrganizer|IsAdmin])
 def executives_certificate(request):
     participants = Executive.objects.all()
     return participant_certificate(request, participants) 
 
+@api_view(["GET"])
+@permission_classes([IsOrganizer|IsAdmin])
 def mundirector_certificate(request):
     participants = MUNDirector.objects.all()
     return participant_certificate(request, participants) 
 
+@api_view(["GET"])
+@permission_classes([IsOrganizer|IsAdmin])
 def staff_certificate(request):
     participants = Staff.objects.all()
     return participant_certificate(request, participants)   
 
+@api_view(["GET"])
+@permission_classes([IsOrganizer|IsAdmin])
 def student_officer_certificate(request):
     participants = StudentOfficer.objects.all()
     return participant_certificate(request, participants)   

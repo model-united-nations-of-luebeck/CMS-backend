@@ -4,6 +4,8 @@ from django.http import FileResponse
 from reportlab.pdfgen import canvas
 from reportlab.lib.pagesizes import landscape, A4,A3 
 from api.models import Executive, MemberOrganization, StudentOfficer
+from api.permissions import IsOrganizer, IsAdmin
+from rest_framework.decorators import api_view, permission_classes
 from reportlab.lib.utils import ImageReader
 from django.conf import settings
 import os
@@ -115,6 +117,8 @@ def _create_orga_placards_file(officers: list = [], pagesize=A4):
     buffer.seek(0)
     return FileResponse(FileWrapper(buffer), filename='placards.pdf', content_type="application/pdf", as_attachment=True)
 
+@api_view(["GET"])
+@permission_classes([IsOrganizer|IsAdmin])
 def executive_placards(request):
     filtered_executives = []
     pagesize = A4
@@ -134,6 +138,8 @@ def executive_placards(request):
         pagesize = A3 if request.GET['pagesize'] == 'A3' else A4
     return _create_orga_placards_file(officers=filtered_executives, pagesize=pagesize)
 
+@api_view(["GET"])
+@permission_classes([IsOrganizer|IsAdmin])
 def student_officer_placards(request):
     filtered_student_officers = []
     pagesize = A4
@@ -153,7 +159,8 @@ def student_officer_placards(request):
         pagesize = A3 if request.GET['pagesize'] == 'A3' else A4
     return _create_orga_placards_file(officers=filtered_student_officers, pagesize=pagesize)
 
-
+@api_view(["GET"])
+@permission_classes([IsOrganizer|IsAdmin])
 def placards(request):
     ids = None
     pagesize = A4
@@ -164,6 +171,8 @@ def placards(request):
         pagesize = A3 if request.GET['pagesize'] == 'A3' else A4
     return _create_delegates_placards(member_ids = ids, pagesize=pagesize)
 
+@api_view(["GET"])
+@permission_classes([IsOrganizer|IsAdmin])
 def custom_placard(request):
     name = ''
     pagesize = A4

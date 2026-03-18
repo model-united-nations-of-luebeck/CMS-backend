@@ -10,6 +10,8 @@ from reportlab.pdfgen import canvas
 from reportlab.lib.pagesizes import A4, A3, landscape
 from reportlab.lib.units import mm
 from api.models import Delegate, Forum, MemberOrganization
+from api.permissions import IsOrganizer, IsAdmin
+from rest_framework.decorators import api_view, permission_classes
 from reportlab.lib.utils import ImageReader
 from django.conf import settings
 from reportlab.pdfbase import pdfmetrics
@@ -44,6 +46,8 @@ def _create_sign(text:str='', pagesize=A4):
     buffer.seek(0)
     return FileResponse(FileWrapper(buffer), filename='sign.pdf', content_type="application/pdf", as_attachment=True)
 
+@api_view(["GET"])
+@permission_classes([IsOrganizer|IsAdmin])
 def sign(request):
     
     text=''
