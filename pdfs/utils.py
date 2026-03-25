@@ -1,0 +1,53 @@
+import os
+
+from reportlab.pdfbase.ttfonts import TTFont
+from reportlab.pdfbase.pdfmetrics import stringWidth, registerFont
+from reportlab.lib.units import mm
+from reportlab.lib.utils import ImageReader
+
+from django.conf import settings
+
+def _register_MUNOL_fonts() -> None:
+    """
+    Registers the MUNOL CenturyGothic fonts if they exist in the media directory so that they are available for PDF generation.
+    """
+    _register_font('CenturyGothic', os.path.join(settings.MEDIA_ROOT, 'fonts/Century Gothic Regular.TTF'))
+    _register_font('CenturyGothicBold', os.path.join(settings.MEDIA_ROOT, 'fonts/Century Gothic Bold.TTF'))
+    _register_font('CenturyGothicItalic', os.path.join(settings.MEDIA_ROOT, 'fonts/Century Gothic Italic.TTF'))
+
+def _register_font(font_name:str, font_file:str) -> None:
+    """Helper function to register a single font if the font file exists.
+    Args:
+        font_name (str): The name to register the font under.
+        font_file (str): The path to the font file.
+    """
+    if os.path.exists(font_file):
+        registerFont(TTFont(font_name, font_file))
+    else:
+        print(f"Font file {font_file} not found. {font_name} will not be registered.")
+
+def _get_fitting_font_size(text: str, default_font_size: int=16, font_name: str='CenturyGothicBold', max_width=50*mm) -> int:
+    """Calculates the maximum font size that allows the given text to fit within the specified maximum width when rendered with the specified font.
+    Args:        
+        text (str): The text to fit.
+        default_font_size (int, optional): The starting font size to check from. Defaults to 16.
+        font_name (str, optional): The name of the registered font to use for width calculations. Defaults to 'CenturyGothicBold'.
+        max_width (float, optional): The maximum width in points that the text should fit within. Defaults to 50*mm.
+    
+    Returns:
+        int: The maximum font size that allows the text to fit within the max_width.
+    """
+    
+    width = max_width
+    font_size = default_font_size
+    while width >= max_width:
+        width = stringWidth(text, font_name, font_size)
+        font_size -= 1
+    return font_size
+        
+def _get_transparent_background_logo():
+    """Helper function to get the ImageReader for the transparent logo used in badges and placards.
+    Returns:
+        ImageReader: The ImageReader object for the transparent logo.
+    """
+    return ImageReader(os.path.join(settings.MEDIA_ROOT, 'images/logograytransparent.png'))
