@@ -3,6 +3,7 @@ import os
 from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.pdfbase.pdfmetrics import stringWidth, registerFont
 from reportlab.lib.units import mm
+from reportlab.lib.pagesizes import A4, A3
 from reportlab.lib.utils import ImageReader
 
 from django.conf import settings
@@ -66,3 +67,16 @@ def _filter_queryset_by_uuid(queryset, request):
     if request.GET is not None and 'uuid' in request.GET and request.GET['uuid'] != '':
         queryset = queryset.filter(id__in=request.GET['uuid'].split(","))
     return queryset.all()
+
+def _get_page_size_from_request(request):
+    """Helper function to determine the page size for PDF generation based on the 'pagesize' query parameter in the request. If 'pagesize' is set to 'A3', A3 page size is returned; otherwise, A4 is returned by default.
+    
+    Args:
+        request: The HTTP request object containing the query parameters.
+        
+    Returns:
+        A tuple representing the page size (width, height) in points. A3 or A4 depending on the 'pagesize' parameter.
+    """
+    if request.GET is not None and 'pagesize' in request.GET:
+        return A3 if request.GET['pagesize'] == 'A3' else A4
+    return A4

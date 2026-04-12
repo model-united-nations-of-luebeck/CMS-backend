@@ -27,5 +27,5 @@ urlpatterns = [
 
     path('forum_roll_call_list', roll_call_lists.forum_roll_call_list, name="forum roll call list"),
 
-    path('signs', signs.sign, name="signs"),
+    path('sign', signs.sign, name="sign"),
 ]

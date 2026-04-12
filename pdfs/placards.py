@@ -9,7 +9,7 @@ from rest_framework.decorators import api_view, permission_classes
 from reportlab.pdfgen import canvas
 from reportlab.lib.pagesizes import landscape, A4,A3 
 
-from pdfs.utils import _register_MUNOL_fonts, _get_transparent_background_logo, _get_fitting_font_size, _filter_queryset_by_uuid
+from pdfs.utils import _register_MUNOL_fonts, _get_transparent_background_logo, _get_fitting_font_size, _filter_queryset_by_uuid, _get_page_size_from_request
 _register_MUNOL_fonts()
 
 
@@ -103,10 +103,6 @@ def _create_organizers_placards_file(organizers: list = [], pagesize=A4):
     buffer.seek(0)
     return FileResponse(FileWrapper(buffer), filename='placards.pdf', content_type="application/pdf", as_attachment=False)
 
-def _get_page_size_from_request(request):
-    if request.GET is not None and 'pagesize' in request.GET:
-        return A3 if request.GET['pagesize'] == 'A3' else A4
-    return A4
 
 @api_view(["GET"])
 @permission_classes([IsOrganizer|IsAdmin])
