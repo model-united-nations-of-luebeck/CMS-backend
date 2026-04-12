@@ -15,7 +15,7 @@ from reportlab.lib.units import mm
 from reportlab.lib.utils import ImageReader
 from django.conf import settings
 
-from pdfs.utils import _register_MUNOL_fonts, _get_transparent_background_logo
+from pdfs.utils import _register_MUNOL_fonts, _get_transparent_background_logo, _filter_queryset_by_uuid
 _register_MUNOL_fonts()
 
 #determine year of current conference
@@ -125,16 +125,11 @@ def _draw_badges(participants:list = [], page_size=A4):
     buffer.seek(0)
     return FileResponse(FileWrapper(buffer), filename='badges.pdf', content_type="application/pdf", as_attachment=False)
 
-def filter_queryset_by_uuid(queryset, request):
-    if request.GET is not None and 'uuid' in request.GET and request.GET['uuid'] != '':
-        queryset = queryset.filter(id__in=request.GET['uuid'].split(","))
-    return queryset.all()
-
 @api_view(["GET"])
 @permission_classes([IsOrganizer|IsAdmin])
 def advisor_badges(request):
     queryset = Advisor.objects
-    participants = filter_queryset_by_uuid(queryset, request)
+    participants = _filter_queryset_by_uuid(queryset, request)
     participants = participants.order_by('first_name', 'last_name')
     badge_infos = [{
         "uuid": p.id,
@@ -151,7 +146,7 @@ def advisor_badges(request):
 @permission_classes([IsOrganizer|IsAdmin])
 def mun_director_badges(request):
     queryset = MUNDirector.objects
-    participants = filter_queryset_by_uuid(queryset, request)
+    participants = _filter_queryset_by_uuid(queryset, request)
     participants = participants.order_by('school')
     badge_infos = [{
         "name": f"{p.first_name} {p.last_name}",
@@ -167,7 +162,7 @@ def mun_director_badges(request):
 @permission_classes([IsOrganizer|IsAdmin])
 def executive_badges(request):
     queryset = Executive.objects
-    participants = filter_queryset_by_uuid(queryset, request)
+    participants = _filter_queryset_by_uuid(queryset, request)
     participants = participants.order_by('position_name')
     badge_infos = [{
         "name": f"{p.first_name} {p.last_name}",
@@ -183,7 +178,7 @@ def executive_badges(request):
 @permission_classes([IsOrganizer|IsAdmin])
 def student_officer_badges(request):
     queryset = StudentOfficer.objects
-    participants = filter_queryset_by_uuid(queryset, request)
+    participants = _filter_queryset_by_uuid(queryset, request)
     participants = participants.order_by('position_name')
     badge_infos = [{
         "name": f"{p.first_name} {p.last_name}",
@@ -199,7 +194,7 @@ def student_officer_badges(request):
 @permission_classes([IsOrganizer|IsAdmin])
 def staff_badges(request):
     queryset = Staff.objects
-    participants = filter_queryset_by_uuid(queryset, request)
+    participants = _filter_queryset_by_uuid(queryset, request)
     participants = participants.order_by('position_name')
     badge_infos = [{
         "name": f"{p.first_name} {p.last_name}",
@@ -214,7 +209,7 @@ def staff_badges(request):
 @permission_classes([IsOrganizer|IsAdmin])
 def delegate_badges(request):
     participants = Delegate.objects
-    participants = filter_queryset_by_uuid(participants, request)
+    participants = _filter_queryset_by_uuid(participants, request)
     participants = participants.order_by('school')
     badge_infos = [{
         "name": f"{p.first_name} {p.last_name}",

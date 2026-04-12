@@ -4,7 +4,9 @@ from . import placards, badges, certificates, roll_call_lists, signs
 app_name = 'pdfs'
 
 urlpatterns = [
-    path('placards', placards.placards, name="placards"),
+    path('delegate_placards_forum', placards.delegate_placards_forum, name="delegate placards forum"),
+    path('delegate_placards_plenary', placards.delegate_placards_plenary, name="delegate placards plenary"),
+    path('delegate_placards_ceremony', placards.delegate_placards_ceremony, name="delegate placards ceremony"),
     path('custom_placard', placards.custom_placard, name="custom placard"),
     path('executive_placards', placards.executive_placards, name="executive placard"),
     path('student_officer_placards', placards.student_officer_placards, name="student officer placard"),

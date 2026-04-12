@@ -51,3 +51,18 @@ def _get_transparent_background_logo():
         ImageReader: The ImageReader object for the transparent logo.
     """
     return ImageReader(os.path.join(settings.MEDIA_ROOT, 'images/logograytransparent.png'))
+
+def _filter_queryset_by_uuid(queryset, request):
+    """
+    Filters a queryset by a list of UUIDs provided in the request. The UUIDs should be passed as a comma-separated string in the 'uuid' query parameter. If the 'uuid' parameter is not provided or is empty, the original queryset is returned unfiltered, i.e. all entries are returned.
+
+    Args:        
+        queryset: The initial queryset to filter.
+        request: The HTTP request object containing the query parameters.
+
+    Returns:
+        The filtered queryset if 'uuid' parameter is provided and valid, otherwise the original queryset.
+    """
+    if request.GET is not None and 'uuid' in request.GET and request.GET['uuid'] != '':
+        queryset = queryset.filter(id__in=request.GET['uuid'].split(","))
+    return queryset.all()
