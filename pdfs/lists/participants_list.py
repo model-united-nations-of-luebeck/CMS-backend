@@ -66,7 +66,10 @@ def participants_list(request):
     )
 
     styles = getSampleStyleSheet()
+    styles["Normal"].fontName = "CenturyGothic"
+    styles["Title"].fontName = "CenturyGothicBold"
     cell_style = styles["BodyText"]
+    cell_style.fontName = "CenturyGothic"
     cell_style.fontSize = 8
     
     story = []

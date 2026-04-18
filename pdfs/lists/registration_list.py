@@ -64,7 +64,11 @@ def registration_list(request):
     )
 
     styles = getSampleStyleSheet()
+    styles["Normal"].fontName = "CenturyGothic"
+    styles["Title"].fontName = "CenturyGothicBold"
+    styles["Heading2"].fontName = "CenturyGothicBold"
     cell_style = styles["BodyText"]
+    cell_style.fontName = "CenturyGothic"
     
     story = []
 

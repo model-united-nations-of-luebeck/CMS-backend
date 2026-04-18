@@ -59,11 +59,14 @@ def staffs_list(request):
         topMargin=20,
         bottomMargin=20,
         title="Staff List",
-        author="MUNOL CMS"
+        author="MUNOL CMS",
     )
 
     styles = getSampleStyleSheet()
+    styles["Normal"].fontName = "CenturyGothic"
+    styles["Title"].fontName = "CenturyGothicBold"
     cell_style = styles["BodyText"]
+    cell_style.fontName = "CenturyGothic"
     
     story = []
 

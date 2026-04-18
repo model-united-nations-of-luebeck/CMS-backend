@@ -64,7 +64,10 @@ def roll_call_list_plenaries(request):
     )
 
     styles = getSampleStyleSheet()
+    styles["Normal"].fontName = "CenturyGothic"
+    styles["Title"].fontName = "CenturyGothicBold"
     cell_style = styles["BodyText"]
+    cell_style.fontName = "CenturyGothic"
     
     story = []
 

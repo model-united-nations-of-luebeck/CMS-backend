@@ -1,7 +1,7 @@
 import os
 
 from reportlab.pdfbase.ttfonts import TTFont
-from reportlab.pdfbase.pdfmetrics import stringWidth, registerFont
+from reportlab.pdfbase.pdfmetrics import stringWidth, registerFont, registerFontFamily
 from reportlab.lib.units import mm
 from reportlab.lib.pagesizes import A4, A3
 from reportlab.lib.utils import ImageReader
@@ -15,6 +15,8 @@ def _register_MUNOL_fonts() -> None:
     _register_font('CenturyGothic', os.path.join(settings.MEDIA_ROOT, 'fonts/Century Gothic Regular.TTF'))
     _register_font('CenturyGothicBold', os.path.join(settings.MEDIA_ROOT, 'fonts/Century Gothic Bold.TTF'))
     _register_font('CenturyGothicItalic', os.path.join(settings.MEDIA_ROOT, 'fonts/Century Gothic Italic.TTF'))
+
+    registerFontFamily('CenturyGothic', normal='CenturyGothic', bold='CenturyGothicBold', italic='CenturyGothicItalic')
 
 def _register_font(font_name:str, font_file:str) -> None:
     """Helper function to register a single font if the font file exists.

@@ -56,6 +56,8 @@ def issues_list(request):
     )
 
     styles = getSampleStyleSheet()
+    styles["Normal"].fontName = "CenturyGothic"
+    styles["Title"].fontName = "CenturyGothicBold"
 
     # Custom styles
     forum_title_style = ParagraphStyle(
@@ -64,7 +66,8 @@ def issues_list(request):
         fontSize=14,
         spaceBefore=0,
         spaceAfter=0,
-        textColor=colors.black
+        textColor=colors.black,
+        fontName='CenturyGothicBold'
     )
 
     subtitle_style = ParagraphStyle(
@@ -85,6 +88,7 @@ def issues_list(request):
     )
 
     story = []
+    story.append(Paragraph("Issues on the Agenda", styles["Title"]))
 
     forums = Forum.objects.all()
        
@@ -138,6 +142,8 @@ def schools_list(request):
     )
 
     styles = getSampleStyleSheet()
+    styles["Normal"].fontName = "CenturyGothic"
+    styles["Title"].fontName = "CenturyGothicBold"
 
     delegationsStyle = ParagraphStyle(
         name="Delegations",
@@ -150,6 +156,7 @@ def schools_list(request):
     )
     
     story = []
+    story.append(Paragraph("Participating Schools", styles["Title"]))
 
     schools = []
 
