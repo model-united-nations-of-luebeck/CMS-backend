@@ -2,7 +2,7 @@ import io
 import os
 import textwrap
 from wsgiref.util import FileWrapper
-import PIL
+
 import base64
 from django.http import FileResponse
 from django.template.defaultfilters import date
