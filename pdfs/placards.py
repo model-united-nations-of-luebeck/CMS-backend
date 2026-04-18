@@ -56,7 +56,7 @@ def _create_organizers_placards_file(organizers: list = [], pagesize=A4):
     logo = _get_transparent_background_logo()
     
     buffer = io.BytesIO()
-    c = canvas.Canvas(buffer, pagesize=landscape(pagesize), initialFontName='CenturyGothicBold')
+    c = canvas.Canvas(buffer, pagesize=landscape(pagesize), initialFontName='SmallCapsCenturyGothic')
     c.setTitle("Placards")
     c.setAuthor("MUNOL")
     c.setSubject("Placards for MUNOL Conference")
@@ -72,7 +72,7 @@ def _create_organizers_placards_file(organizers: list = [], pagesize=A4):
         name = f"{organizer.first_name.strip()} {organizer.last_name.strip()}"
         position_name = organizer.position_name.strip()
         
-        position_font_size = _get_fitting_font_size(position_name, 80 if pagesize==A4 else 100, 'CenturyGothic', max_width=pagesize[1] - margin)
+        position_font_size = _get_fitting_font_size(position_name, 80 if pagesize==A4 else 100, 'SmallCapsCenturyGothic', max_width=pagesize[1] - margin)
         name_font_size = _get_fitting_font_size(name, 60 if pagesize==A4 else 100, 'CenturyGothic', max_width=pagesize[1] - margin)
         
         c.drawImage(logo, pagesize[1]/2 - image_size/2,  center_margin, image_size, image_size, mask='auto')
@@ -80,7 +80,7 @@ def _create_organizers_placards_file(organizers: list = [], pagesize=A4):
         c.setFont('CenturyGothic', name_font_size)
         c.drawCentredString(pagesize[1]/2, pagesize[0]*1/10 - font_height, name)
         
-        c.setFont('CenturyGothicBold', position_font_size)
+        c.setFont('SmallCapsCenturyGothic', position_font_size)
         c.drawCentredString(pagesize[1]/2, pagesize[0]*2/8 - font_height, position_name)
 
         c.rotate(180)
@@ -90,7 +90,7 @@ def _create_organizers_placards_file(organizers: list = [], pagesize=A4):
         c.setFont('CenturyGothic', name_font_size)
         c.drawCentredString(-pagesize[1]/2, -pagesize[0]*9/10 - font_height, name)
         
-        c.setFont('CenturyGothicBold', position_font_size)
+        c.setFont('SmallCapsCenturyGothic', position_font_size)
         c.drawCentredString(-pagesize[1]/2, -pagesize[0]*6/8 - font_height, position_name)
         
 

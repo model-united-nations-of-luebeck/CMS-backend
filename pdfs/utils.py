@@ -12,11 +12,14 @@ def _register_MUNOL_fonts() -> None:
     """
     Registers the MUNOL CenturyGothic fonts if they exist in the media directory so that they are available for PDF generation.
     """
+    
     _register_font('CenturyGothic', os.path.join(settings.MEDIA_ROOT, 'fonts/Century Gothic Regular.TTF'))
     _register_font('CenturyGothicBold', os.path.join(settings.MEDIA_ROOT, 'fonts/Century Gothic Bold.TTF'))
     _register_font('CenturyGothicItalic', os.path.join(settings.MEDIA_ROOT, 'fonts/Century Gothic Italic.TTF'))
+    _register_font('SmallCapsCenturyGothic', os.path.join(settings.MEDIA_ROOT, 'fonts/Century Gothic Regular Small Caps.TTF'))
 
     registerFontFamily('CenturyGothic', normal='CenturyGothic', bold='CenturyGothicBold', italic='CenturyGothicItalic')
+    
 
 def _register_font(font_name:str, font_file:str) -> None:
     """Helper function to register a single font if the font file exists.
