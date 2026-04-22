@@ -112,8 +112,8 @@ def _draw_badges(participants:list = [], page_size=A4):
         c.drawCentredString(27*mm, 2.5*mm, f"MUNOL {year}")
 
         # no media consent icon
-        if p['media_consent'] == False:
-            c.drawImage(ImageReader(os.path.join(settings.MEDIA_ROOT, 'images/camera-off.png')), 78*mm, 1*mm, 5*mm, 5*mm, mask='auto')
+        # if p['media_consent'] == False:
+        #     c.drawImage(ImageReader(os.path.join(settings.MEDIA_ROOT, 'images/camera-off.png')), 78*mm, 1*mm, 5*mm, 5*mm, mask='auto')
 
         # place 8 badges per page, then create new page
         c.restoreState()
