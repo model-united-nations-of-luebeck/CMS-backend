@@ -1,6 +1,6 @@
 from django.urls import path
 
-from .lists import lists, executives_list, student_officer_list, advisors_list, staffs_list, mun_directors_list, roll_call_list_forums, roll_call_list_plenaries, registration_list, participants_list, allergy_list
+from .lists import lists, executives_list, student_officer_list, advisors_list, staffs_list, mun_directors_list, roll_call_list_forums, roll_call_list_plenaries, registration_list, registration_list_team, participants_list, allergy_list
 from . import placards, badges, certificates, signs
 
 app_name = 'pdfs'
@@ -37,6 +37,7 @@ urlpatterns = [
     path('roll_call_list_forums', roll_call_list_forums.roll_call_list_forums, name="roll call list forums"),
     path('roll_call_list_plenaries', roll_call_list_plenaries.roll_call_list_plenaries, name="roll call list plenaries"),
     path('registration_list', registration_list.registration_list, name="registration list"),
+    path('registration_list_team', registration_list_team.registration_list_team, name="registration list team"),
     path('participants_list', participants_list.participants_list, name="participants list"),
     path('allergy_list', allergy_list.allergy_list, name="allergy list"),
 

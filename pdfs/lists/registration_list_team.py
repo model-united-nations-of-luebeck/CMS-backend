@@ -5,7 +5,7 @@ from django.http import FileResponse
 from django.conf import settings
 from django.db.models.functions import Reverse
 
-from api.models import Conference, Delegate, Executive, Forum, Issue, MUNDirector, MemberOrganization, School, Staff, StudentOfficer
+from api.models import Advisor, Conference, Delegate, Executive, Forum, Issue, MUNDirector, MemberOrganization, School, Staff, StudentOfficer
 from api.permissions import IsOrganizer, IsAdmin
 from rest_framework.decorators import api_view, permission_classes
 
@@ -50,7 +50,7 @@ def add_logo_to_canvas(canvas, doc):
 
 @api_view(["GET"])
 @permission_classes([IsOrganizer|IsAdmin])
-def registration_list(request):
+def registration_list_team(request):
 
     pagesize = portrait(_get_page_size_from_request(request))
     buffer = io.BytesIO()
@@ -61,7 +61,7 @@ def registration_list(request):
         leftMargin=20,
         topMargin=20,
         bottomMargin=20,
-        title="Registration List Schools",
+        title="Registration List Team",
         author="MUNOL CMS"
     )
 
@@ -74,55 +74,39 @@ def registration_list(request):
     
     story = []
 
-    for school in School.objects.all():
+    for role_class in [Staff, Executive, StudentOfficer, Advisor]:
+
         # Title
-        story.append(Paragraph(f"{school.name}, {school.city}, {school.country}", styles["Title"]))
+        story.append(Paragraph(f"{role_class.__name__}s", styles["Title"]))
         story.append(Spacer(1, 12))
-
-        story.append(Paragraph(f"<b>Arrival: </b>{school.arrival}", cell_style))
-        story.append(Paragraph(f"<b>Departure: </b>{school.departure}", cell_style))
-        story.append(Paragraph(f"<b>Housing Delegates: </b>{school.housing_delegates}", cell_style))
-        story.append(Paragraph(f"<b>Housing MUN-Directors: </b>{school.housing_mun_directors}", cell_style))
-
-        story.append(Paragraph("MUN-Directors", styles["Heading2"]))
-
-        mun_directors = MUNDirector.objects.filter(school=school.id).order_by('first_name', 'last_name')
-        for mun_director in mun_directors:
-            media_consent = "" if mun_director.media_consent_time else f"<img src='{os.path.join(settings.MEDIA_ROOT, 'images/camera-off.png')}' width='10' height='10'/>"
-            organizers_notice = "" if mun_director.organizers_notice_time else f"<img src='{os.path.join(settings.MEDIA_ROOT, 'images/account-off.png')}' width='10' height='10'/>"
-            story.append(Paragraph(f"{media_consent}{organizers_notice}{mun_director.first_name} {mun_director.last_name} <font size=8>({mun_director.pronouns})</font>  <i>{mun_director.email}, {mun_director.mobile}</i>", cell_style))
-            story.append(Spacer(1, 6))
-
-        story.append(Paragraph("Delegates", styles["Heading2"]))
 
         # Table data
         data = [
-            ["", "","Name", "Delegation", "Forum", "Birthdate"]
+            ["", "","Name", "Position", "Birthdate"]
         ]
 
-        delegates = Delegate.objects.all().filter(school=school.id).order_by('represents__official_name', 'first_name', 'last_name')
-        for delegate in delegates:
+        participants = role_class.objects.all().order_by('first_name', 'last_name')
+        for participant in participants:
 
-            if delegate.birthday:
-                age = (Conference.objects.first().start_date - delegate.birthday).days // 365
-                birthdate = f"{delegate.birthday.strftime('%d. %m. %Y')} ({age})"
+            if participant.birthday:
+                age = (Conference.objects.first().start_date - participant.birthday).days // 365
+                birthdate = f"{participant.birthday.strftime('%d. %m. %Y')} ({age})"
             else: 
                 birthdate = "N/A"
             
             data.append([
-                Paragraph("" if delegate.media_consent_time else f"<img src='{os.path.join(settings.MEDIA_ROOT, 'images/camera-off.png')}' width='10' height='10'/>", cell_style),
-                Paragraph("" if delegate.organizers_notice_time else f"<img src='{os.path.join(settings.MEDIA_ROOT, 'images/account-off.png')}' width='10' height='10'/>", cell_style),
+                Paragraph("" if participant.media_consent_time else f"<img src='{os.path.join(settings.MEDIA_ROOT, 'images/camera-off.png')}' width='10' height='10'/>", cell_style),
+                Paragraph("" if participant.organizers_notice_time else f"<img src='{os.path.join(settings.MEDIA_ROOT, 'images/account-off.png')}' width='10' height='10'/>", cell_style),
                 
-                Paragraph(f"{delegate.first_name} {delegate.last_name} <font size=8>({delegate.pronouns})</font>", cell_style),
+                Paragraph(f"{participant.first_name} {participant.last_name} <font size=8>({participant.pronouns})</font>", cell_style),
                 
-                Paragraph(f"{delegate.represents.name}{' <font size=8>Ambassador</font>' if delegate.ambassador else ''}", cell_style),
+                Paragraph(f"{'Conference Advisor' if role_class == Advisor else participant.position_name }", cell_style),
                 
-                Paragraph(f"{delegate.forum.abbreviation}", cell_style),
                 Paragraph(f"{birthdate}", cell_style),
             ])
 
         # Table
-        table = Table(data, colWidths=[5*mm, 5*mm,60*mm, 60*mm, 30*mm, 35*mm], repeatRows=1)
+        table = Table(data, colWidths=[5*mm, 5*mm,60*mm,  60*mm, 40*mm], repeatRows=1)
 
         table_style= [
             ("BACKGROUND", (0, 0), (-1, 0), colors.grey),
@@ -153,4 +137,4 @@ def registration_list(request):
 
     # return document as pdf file response
     buffer.seek(0)
-    return FileResponse(FileWrapper(buffer), filename='registration_list.pdf', content_type="application/pdf", as_attachment=False)
+    return FileResponse(FileWrapper(buffer), filename='registration_list_team.pdf', content_type="application/pdf", as_attachment=False)
