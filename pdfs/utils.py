@@ -17,6 +17,7 @@ def _register_MUNOL_fonts() -> None:
     _register_font('CenturyGothicBold', os.path.join(settings.MEDIA_ROOT, 'fonts/Century Gothic Bold.TTF'))
     _register_font('CenturyGothicItalic', os.path.join(settings.MEDIA_ROOT, 'fonts/Century Gothic Italic.TTF'))
     _register_font('SmallCapsCenturyGothic', os.path.join(settings.MEDIA_ROOT, 'fonts/Century Gothic Regular Small Caps.TTF'))
+    _register_font('Times-Roman-Small-Caps-Bold', os.path.join(settings.MEDIA_ROOT, 'fonts/Times-Roman-Small-Caps-Bold.ttf'))
 
     registerFontFamily('CenturyGothic', normal='CenturyGothic', bold='CenturyGothicBold', italic='CenturyGothicItalic')
     

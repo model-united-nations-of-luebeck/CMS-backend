@@ -21,11 +21,11 @@ urlpatterns = [
     path('mun_director_badges', badges.mun_director_badges, name="mun_director badges"),
     path('custom_badge', badges.custom_badge, name="custom badge"),
 
-    path('delegate_certificate', certificates.delegate_certificate, name="delegate certificate"),
-    path('student_officer_certificate', certificates.student_officer_certificate, name="student officer certificate"),
-    path('executive_certificate', certificates.executives_certificate, name="executive certificate"),
-    path('staff_certificate', certificates.staff_certificate, name="staff certificate"),
-    path('mundirector_certificate', certificates.mundirector_certificate, name="mundirector certificate"),
+    path('delegate_certificates', certificates.delegate_certificates, name="delegate certificates"),
+    path('student_officer_certificates', certificates.student_officer_certificates, name="student officer certificates"),
+    path('executive_certificates', certificates.executive_certificates, name="executive certificates"),
+    path('staff_certificates', certificates.staff_certificates, name="staff certificates"),
+    path('mun_director_certificates', certificates.mun_director_certificates, name="mun_director certificates"),
 
     path('issues_list', lists.issues_list, name="issues list"),
     path('schools_list', lists.schools_list, name="schools list"),
