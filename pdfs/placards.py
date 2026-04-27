@@ -104,7 +104,7 @@ def _create_organizers_placards_file(organizers: list = [], pagesize=A4):
     return FileResponse(FileWrapper(buffer), filename='placards.pdf', content_type="application/pdf", as_attachment=False)
 
 
-@api_view(["GET"])
+@api_view(["POST"])
 @permission_classes([IsOrganizer|IsAdmin])
 def executive_placards(request):
     queryset = Executive.objects
@@ -113,7 +113,7 @@ def executive_placards(request):
     
     return _create_organizers_placards_file(executives, _get_page_size_from_request(request))
 
-@api_view(["GET"])
+@api_view(["POST"])
 @permission_classes([IsOrganizer|IsAdmin])
 def student_officer_placards(request):
 
@@ -123,19 +123,19 @@ def student_officer_placards(request):
 
     return _create_organizers_placards_file(student_officers, _get_page_size_from_request(request))
 
-@api_view(["GET"])
+@api_view(["POST"])
 @permission_classes([IsOrganizer|IsAdmin])
 def delegate_placards_forum(request):
     
-    voting_rights = request.GET.get('voting_rights', 'vote')
+    voting_rights = request.data.get('voting_rights', 'vote')
     if voting_rights == 'vote':
         voting_statuses = [MemberOrganization.MEMBER_STATE, MemberOrganization.FORMER_MEMBER]
     elif voting_rights == 'novote':
         voting_statuses = [MemberOrganization.OBSERVER_STATE, MemberOrganization.NON_GOVERNMENTAL_ORGANIZATION, MemberOrganization.INTER_GOVERNMENTAL_ORGANIZATION, MemberOrganization.UN_SUB_BODY]
     
-    forum_divider = request.GET.get('forum_divider', 'false').lower() == 'true'
+    forum_divider = request.data.get('forum_divider', 'false').lower() == 'true'
 
-    forum_ids = request.GET.get('forum_ids', [])
+    forum_ids = request.data.get('forum_ids', [])
     forum_ids = forum_ids.split(",")
     forum_ids = list(map(int, forum_ids)) #cast to ints
     forums = Forum.objects.filter(id__in=forum_ids)
@@ -152,17 +152,17 @@ def delegate_placards_forum(request):
            
     return _create_placards_file(names = names, pagesize= _get_page_size_from_request(request))
 
-@api_view(["GET"])
+@api_view(["POST"])
 @permission_classes([IsOrganizer|IsAdmin])
 def delegate_placards_plenary(request):
     
-    voting_rights = request.GET.get('voting_rights', 'vote')
+    voting_rights = request.data.get('voting_rights', 'vote')
     if voting_rights == 'vote':
         voting_statuses = [MemberOrganization.MEMBER_STATE, MemberOrganization.FORMER_MEMBER]
     elif voting_rights == 'novote':
         voting_statuses = [MemberOrganization.OBSERVER_STATE, MemberOrganization.NON_GOVERNMENTAL_ORGANIZATION, MemberOrganization.INTER_GOVERNMENTAL_ORGANIZATION, MemberOrganization.UN_SUB_BODY]
     
-    plenary_ids = request.GET.get('plenary_ids', [])
+    plenary_ids = request.data.get('plenary_ids', [])
     plenary_ids = plenary_ids.split(",")
     plenary_ids = list(map(int, plenary_ids)) #cast to ints
     
@@ -176,7 +176,7 @@ def delegate_placards_plenary(request):
            
     return _create_placards_file(names = names, pagesize= _get_page_size_from_request(request))
 
-@api_view(["GET"])
+@api_view(["POST"])
 @permission_classes([IsOrganizer|IsAdmin])
 def delegate_placards_ceremony(request):
     

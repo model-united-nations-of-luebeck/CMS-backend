@@ -40,7 +40,7 @@ def add_logo_to_canvas(canvas, doc):
 
     canvas.restoreState()
 
-@api_view(["GET"])
+@api_view(["POST"])
 @permission_classes([IsOrganizer|IsAdmin])
 def issues_list(request):
 
@@ -126,7 +126,7 @@ def issues_list(request):
     buffer.seek(0)
     return FileResponse(FileWrapper(buffer), filename='issues_list.pdf', content_type="application/pdf", as_attachment=False)
 
-@api_view(["GET"])
+@api_view(["POST"])
 @permission_classes([IsOrganizer|IsAdmin])
 def schools_list(request):
 

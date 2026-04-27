@@ -70,19 +70,19 @@ def _filter_queryset_by_uuid(queryset, request):
     Returns:
         The filtered queryset if 'uuid' parameter is provided and valid, otherwise the original queryset.
     """
-    if request.GET is not None and 'uuid' in request.GET and request.GET['uuid'] != '':
-        queryset = queryset.filter(id__in=request.GET['uuid'].split(","))
+    if request.data is not None and 'uuid' in request.data and request.data['uuid'] != '':
+        queryset = queryset.filter(id__in=request.data['uuid'].split(","))
     return queryset.all()
 
 def _get_page_size_from_request(request):
-    """Helper function to determine the page size for PDF generation based on the 'pagesize' query parameter in the request. If 'pagesize' is set to 'A3', A3 page size is returned; otherwise, A4 is returned by default.
+    """Helper function to determine the page size for PDF generation based on the 'page_size' query parameter in the request. If 'page_size' is set to 'A3', A3 page size is returned; otherwise, A4 is returned by default.
     
     Args:
         request: The HTTP request object containing the query parameters.
         
     Returns:
-        A tuple representing the page size (width, height) in points. A3 or A4 depending on the 'pagesize' parameter.
+        A tuple representing the page size (width, height) in points. A3 or A4 depending on the 'page_size' parameter.
     """
-    if request.GET is not None and 'pagesize' in request.GET:
-        return A3 if request.GET['pagesize'] == 'A3' else A4
+    if request.data is not None and 'page_size' in request.data:
+        return A3 if request.data['page_size'] == 'A3' else A4
     return A4
