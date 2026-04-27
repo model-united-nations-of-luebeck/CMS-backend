@@ -125,7 +125,7 @@ def _draw_badges(participants:list = [], page_size=A4):
     buffer.seek(0)
     return FileResponse(FileWrapper(buffer), filename='badges.pdf', content_type="application/pdf", as_attachment=False)
 
-@api_view(["GET"])
+@api_view(["POST"])
 @permission_classes([IsOrganizer|IsAdmin])
 def advisor_badges(request):
     queryset = Advisor.objects
@@ -140,9 +140,9 @@ def advisor_badges(request):
         "picture": p.picture,
         "media_consent": p.media_consent_time is not None
     } for p in participants]
-    return _draw_badges(badge_infos, request.GET.get('page_size', A4))
+    return _draw_badges(badge_infos, request.data.get('page_size', A4))
 
-@api_view(["GET"])
+@api_view(["POST"])
 @permission_classes([IsOrganizer|IsAdmin])
 def mun_director_badges(request):
     queryset = MUNDirector.objects
@@ -156,9 +156,9 @@ def mun_director_badges(request):
         "picture": p.picture,
         "media_consent": p.media_consent_time is not None
     } for p in participants]
-    return _draw_badges(badge_infos, request.GET.get('page_size', A4))
+    return _draw_badges(badge_infos, request.data.get('page_size', A4))
 
-@api_view(["GET"])
+@api_view(["POST"])
 @permission_classes([IsOrganizer|IsAdmin])
 def executive_badges(request):
     queryset = Executive.objects
@@ -172,9 +172,9 @@ def executive_badges(request):
         "picture": p.picture,
         "media_consent": p.media_consent_time is not None
     } for p in participants]
-    return _draw_badges(badge_infos, request.GET.get('page_size', A4))
+    return _draw_badges(badge_infos, request.data.get('page_size', A4))
 
-@api_view(["GET"])
+@api_view(["POST"])
 @permission_classes([IsOrganizer|IsAdmin])
 def student_officer_badges(request):
     queryset = StudentOfficer.objects
@@ -188,9 +188,9 @@ def student_officer_badges(request):
         "picture": p.picture,
         "media_consent": p.media_consent_time is not None
     } for p in participants]
-    return _draw_badges(badge_infos, request.GET.get('page_size', A4))
+    return _draw_badges(badge_infos, request.data.get('page_size', A4))
 
-@api_view(["GET"])
+@api_view(["POST"])
 @permission_classes([IsOrganizer|IsAdmin])
 def staff_badges(request):
     queryset = Staff.objects
@@ -204,7 +204,7 @@ def staff_badges(request):
         "picture": p.picture,
         "media_consent": p.media_consent_time is not None
     } for p in participants]
-    return _draw_badges(badge_infos, request.GET.get('page_size', A4))
+    return _draw_badges(badge_infos, request.data.get('page_size', A4))
 
 @permission_classes([IsOrganizer|IsAdmin])
 def delegate_badges(request):
@@ -219,7 +219,7 @@ def delegate_badges(request):
         "picture": p.picture,
         "media_consent": p.media_consent_time is not None
     } for p in participants]
-    return _draw_badges(badge_infos, request.GET.get('page_size', A4))
+    return _draw_badges(badge_infos, request.data.get('page_size', A4))
 
 @api_view(["POST"])
 @permission_classes([IsOrganizer|IsAdmin])

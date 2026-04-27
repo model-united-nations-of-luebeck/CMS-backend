@@ -46,7 +46,7 @@ def add_logo_to_canvas(canvas, doc):
 
     canvas.restoreState()
 
-@api_view(["GET"])
+@api_view(["POST"])
 @permission_classes([IsOrganizer|IsAdmin])
 def roll_call_list_plenaries(request):
 

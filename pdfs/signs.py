@@ -45,10 +45,10 @@ def _create_sign(label:str='', pagesize=A4):
     buffer.seek(0)
     return FileResponse(FileWrapper(buffer), filename='sign.pdf', content_type="application/pdf", as_attachment=False)
 
-@api_view(["GET"])
+@api_view(["POST"])
 @permission_classes([IsOrganizer|IsAdmin])
 def sign(request):
     
-    label = request.GET.get('label', '')
+    label = request.data.get('label', '')
     
     return _create_sign(label, pagesize=_get_page_size_from_request(request))   
