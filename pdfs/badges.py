@@ -206,6 +206,7 @@ def staff_badges(request):
     } for p in participants]
     return _draw_badges(badge_infos, request.data.get('page_size', A4))
 
+@api_view(["POST"])
 @permission_classes([IsOrganizer|IsAdmin])
 def delegate_badges(request):
     participants = Delegate.objects
@@ -213,8 +214,8 @@ def delegate_badges(request):
     participants = participants.order_by('school')
     badge_infos = [{
         "name": f"{p.first_name} {p.last_name}",
-        "affiliation": p.school.name,
-        "position": f"{p.represents.placard_name}\n--\n{p.forum.abbreviation}", 
+        "affiliation": p.school.name if p.school else "",
+        "position": f"{p.represents.placard_name}\n--\n{p.forum.abbreviation}" if p.represents and p.forum else "", 
         "color": ROLE_TO_COLOR[Delegate],
         "picture": p.picture,
         "media_consent": p.media_consent_time is not None
