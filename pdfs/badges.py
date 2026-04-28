@@ -96,7 +96,7 @@ def _draw_badges(participants:list = [], page_size=A4):
         c.drawString(3*mm,49*mm, f"{p['name']}")
 
         # school or association
-        font_size = _get_fitting_font_size(p['affiliation'], 11, 'Helvetica-Oblique', max_width=60*mm)
+        font_size = _get_fitting_font_size(p['affiliation'], 11, 'Helvetica-Oblique', max_width=55*mm)
         c.setFont('Helvetica-Oblique', font_size)
         c.drawString(3*mm,44*mm, p['affiliation'])
 
