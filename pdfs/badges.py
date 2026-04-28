@@ -15,7 +15,7 @@ from reportlab.lib.units import mm
 from reportlab.lib.utils import ImageReader
 from django.conf import settings
 
-from pdfs.utils import _register_MUNOL_fonts, _get_transparent_background_logo, _filter_queryset_by_uuid
+from pdfs.utils import _register_MUNOL_fonts, _get_transparent_background_logo, _filter_queryset_by_uuid, _get_fitting_font_size
 _register_MUNOL_fonts()
 
 #determine year of current conference
@@ -62,7 +62,7 @@ def _draw_badges(participants:list = [], page_size=A4):
         y = PAGE_HEIGHT - MARGIN_Y - (row + 1) * BADGE_HEIGHT
         c.saveState()
         if page_size == A4:
-            c.translate(x + i%2*mm, y - i//2*mm)
+            c.translate(x + i%2*mm, y - (i//2)%8*mm)
         
         c.setFont('CenturyGothicBold', 11)
 
@@ -96,7 +96,8 @@ def _draw_badges(participants:list = [], page_size=A4):
         c.drawString(3*mm,49*mm, f"{p['name']}")
 
         # school or association
-        c.setFont('Helvetica-Oblique', 11)
+        font_size = _get_fitting_font_size(p['affiliation'], 11, 'Helvetica-Oblique', max_width=60*mm)
+        c.setFont('Helvetica-Oblique', font_size)
         c.drawString(3*mm,44*mm, p['affiliation'])
 
         # position, if necessary split in multiple lines
@@ -206,6 +207,7 @@ def staff_badges(request):
     } for p in participants]
     return _draw_badges(badge_infos, request.data.get('page_size', A4))
 
+@api_view(["POST"])
 @permission_classes([IsOrganizer|IsAdmin])
 def delegate_badges(request):
     participants = Delegate.objects
@@ -213,8 +215,8 @@ def delegate_badges(request):
     participants = participants.order_by('school')
     badge_infos = [{
         "name": f"{p.first_name} {p.last_name}",
-        "affiliation": p.school.name,
-        "position": f"{p.represents.placard_name}\n--\n{p.forum.abbreviation}", 
+        "affiliation": p.school.name if p.school else "",
+        "position": f"{p.represents.placard_name}\n--\n{p.forum.abbreviation}" if p.represents and p.forum else "", 
         "color": ROLE_TO_COLOR[Delegate],
         "picture": p.picture,
         "media_consent": p.media_consent_time is not None
