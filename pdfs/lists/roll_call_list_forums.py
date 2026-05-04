@@ -87,7 +87,7 @@ def roll_call_list_forums(request):
         for delegate in delegates:
             data.append([
                 Paragraph(f"<b>{delegate.represents.name}</b>{'*' if delegate.represents.status not in [MemberOrganization.MEMBER_STATE, MemberOrganization.FORMER_MEMBER] else ''}<br/><font><i>{delegate.represents.official_name}</i></font>", cell_style),
-                Paragraph(f"{delegate.first_name} {delegate.last_name} <font size=8>({delegate.pronouns}){' FT' if delegate.first_timer else ''}</font><br/><i>{delegate.school.name}, {delegate.school.country}</i>", cell_style),
+                Paragraph(f"{delegate.first_name} {delegate.last_name} <font size=8>({delegate.pronouns}){' FT' if delegate.first_timer else ''}</font><br/><i>{delegate.school.name if delegate.school else ''}, {delegate.school.country if delegate.school else ''}</i>", cell_style),
                 
                 *[Paragraph("O", cell_style)]*n_cols,
             ])

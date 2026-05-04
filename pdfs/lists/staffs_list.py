@@ -85,8 +85,8 @@ def staffs_list(request):
         data.append([
             Paragraph(f"{staff.first_name} {staff.last_name}", cell_style),
             Paragraph(staff.position_name, cell_style),
-            Paragraph(staff.email, cell_style),
-            Paragraph(str(staff.mobile), cell_style),
+            Paragraph(staff.email if staff.email else "", cell_style),
+            Paragraph(str(staff.mobile) if staff.mobile else "", cell_style),
         ])
 
     # Table

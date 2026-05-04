@@ -89,7 +89,10 @@ def participants_list(request):
         for attr in [model.__name__.lower() for model in [Delegate, MUNDirector]]:
             if hasattr(participant, attr):
                 school = getattr(participant, attr).school
-                school_name = f"{school.name}, <font size=6>{school.city}, {school.country}</font>"
+                if school:
+                    school_name = f"{school.name}, <font size=6>{school.city}, {school.country}</font>"
+                else:
+                    school_name = ""
         for attr in [model.__name__.lower() for model in [Executive, Staff, StudentOfficer]]:
             if hasattr(participant, attr):
                 school_name = getattr(participant, attr).school_name
