@@ -85,8 +85,8 @@ def mun_directors_list(request):
         data.append([
             Paragraph(f"{mun_director.first_name} {mun_director.last_name}", cell_style),
             Paragraph(f"{mun_director.school.name}, {mun_director.school.city} ({mun_director.school.country})", cell_style),
-            Paragraph(mun_director.email, cell_style),
-            Paragraph(str(mun_director.mobile), cell_style),
+            Paragraph(mun_director.email if mun_director.email else "", cell_style),
+            Paragraph(str(mun_director.mobile) if mun_director.mobile else "", cell_style),
             Paragraph("Yes" if mun_director.english_teacher else "No", cell_style),
         ])
 
