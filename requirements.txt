@@ -21,7 +21,6 @@ requests~=2.29.0
 drf-spectacular=0.28.0
 
 # dev requirements
-pygraphviz==1.11
 pre_commit==3.5.0
 
 # production requirements
