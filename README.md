@@ -2,23 +2,11 @@
 
 This repo organizes the backend of a Conference Management System for Model UN conferences. It aims to allow smooth registration and administration of participants, allocation of delegations and general management of a conference.
 
-## Development Instructions
+### Development
 
-At the moment this project uses Python 3.11+ and Django 4.2.27 (LTS). It is recommended to create a virtual environment inside the `envs` folder, e.g. by using [venv](https://docs.python.org/3/tutorial/venv.html).
+To start the django project in a server, install [uv](https://github.com/astral-sh/uv), then type:
 
-### Dependencies
-
-To install the dependencies after cloning the code and activating the environment (e.g. `source envs/my-env/bin/activate`), run
-
-> pip install -r requirements.txt
-
-To start the django project in a server type
-
-> python manage.py runserver
-
-To update the requirements according to your virtual environment, use
-
-> pip freeze > requirements.txt
+> uv run manage.py runserver
 
 ### Pre-commit hooks
 
@@ -37,37 +25,37 @@ As the database is empty in the beginning and filling it manually is a lot of wo
 
 1. A set of initial data entries for data, that will most likely be used at every conference, e.g. member organizations, locations, forums and plenaries, is provided in the `test_data` directory. Simply load it as a [fixture](https://docs.djangoproject.com/en/4.0/howto/initial-data/#providing-initial-data-with-migrations) with
 
-   > python manage.py loaddata test_data/plenaries.json
+   > uv run manage.py loaddata test_data/plenaries.json
 
-   > python manage.py loaddata test_data/forums.json
+   > uv run manage.py loaddata test_data/forums.json
 
-   > python manage.py loaddata test_data/locations.json
+   > uv run manage.py loaddata test_data/locations.json
 
-   > python manage.py loaddata test_data/member_organizations.json
+   > uv run manage.py loaddata test_data/member_organizations.json
 
 2. Based on this initial data (from 1.) you can generate fake schools and participants for testing purposes. Use the custom commands in `management/commands/...`, e.g.
 
-   > python manage.py setup_test_delegates -n 200
+   > uv run manage.py setup_test_delegates -n 200
 
    or
 
-   > python manage.py setup_test_staffs -n 50
+   > uv run manage.py setup_test_staffs -n 50
 
    The `-n` or `--number` parameter is optional and specifies how many of this type shall be generated. If nothing is specified a sensible default number will be used. To populate the database with all types, use
 
-   > python manage.py setup_test_data
+   > uv run manage.py setup_test_data
 
 3. Create a conference item with the corresponding data in the Django Admin interface. In particular the `start_date` is essential, as it will be used to determine ages and the countdown.
 
 To empty the database (e.g. after a conference) you may use this command:
 
-> python manage.py reset_data --dump-dir PATH
+> uv run manage.py reset_data --dump-dir PATH
 
 This resets all conference related data but retains `Forums`, `MemberOrganizations`, `Rooms`, `Locations` as well as staff users, super users and users with first_name=`API` and last_name= `Token`.
 
 To export data in an anonymize manner for archive and statistical purposes run
 
-> python manage.py export_anonymized_data --output PATH
+> uv run manage.py export_anonymized_data --output PATH
 
 ## Deployment...
 
@@ -94,11 +82,11 @@ In addition to testing deployment: In your production `.env` file set
 - `SECURITY_KEY` to a secure key that only you know
 - `USE_X_FORWARDED_HOST=True` and `FORCE_SCRIPT_NAME='/cms'` if you don't want to serve under root domain URL, but under something like `mydomain.org/cms`
 
-Serve static files by running `python manage.py collectstatic` which generates a `static/` folder that includes the CSS, JS and image files. It needs to be copied and served independently under `mydomain.org/static`. If the styling is missing, it might be a hint that the static files aren't loaded correctly.
+Serve static files by running `uv run manage.py collectstatic` which generates a `static/` folder that includes the CSS, JS and image files. It needs to be copied and served independently under `mydomain.org/static`. If the styling is missing, it might be a hint that the static files aren't loaded correctly.
 
-Perform migration of the database by running `python manage.py migrate`.
+Perform migration of the database by running `uv run manage.py migrate`.
 
-If you would like to use Django Admin for managing the database entries, you have to create a super user by running `python manage.py createsuperuser`.
+If you would like to use Django Admin for managing the database entries, you have to create a super user by running `uv run manage.py createsuperuser`.
 
 To setup the authentication correctly, adjust the authentication related environment variables. In particular you need to register an application in your Azure instance, as described in [this guide](https://medium.com/@kuntumallashivani/a-guide-to-msal-3-0-authentication-in-vue-3-8c364cc26f53). Read more on authentication in the [wiki](https://github.com/model-united-nations-of-luebeck/CMS-backend/wiki/Conference-Management-System-backend-wiki).
 
