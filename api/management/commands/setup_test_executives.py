@@ -1,8 +1,8 @@
 from django.core.management.base import BaseCommand
-from testdata.generate_testdata import generate_executives
+from test_data.generate_test_data import generate_executives
 
 class Command(BaseCommand):
-    help = 'Add test executive to the database'
+    help = 'Add test executives to the database'
 
     def add_arguments(self, parser):
         # Optional argument

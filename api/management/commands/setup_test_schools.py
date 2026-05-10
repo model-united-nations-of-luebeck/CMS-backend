@@ -1,8 +1,8 @@
 from django.core.management.base import BaseCommand
-from testdata.generate_testdata import generate_schools
+from test_data.generate_test_data import generate_schools
 
 class Command(BaseCommand):
-    help = 'Add test school to the database'
+    help = 'Add test schools to the database'
 
     def add_arguments(self, parser):
         # Optional argument

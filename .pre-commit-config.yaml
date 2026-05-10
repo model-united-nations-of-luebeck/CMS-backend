@@ -1,0 +1,26 @@
+default_install_hook_types: [pre-commit, commit-msg]
+default_language_version:
+  python: python3.11
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.4.0
+    hooks:
+      - id: check-yaml
+      - id: check-json
+      - id: check-added-large-files # prevents adding large files, above 500kB
+      - id: end-of-file-fixer
+      - id: detect-private-key
+      - id: check-merge-conflict
+  - repo: https://github.com/Yelp/detect-secrets
+    rev: v1.5.0
+    hooks:
+      - id: detect-secrets
+        args:
+          [
+            "--exclude-lines",
+            "PASSWORDLESS",
+            "--exclude-secrets",
+            "very_secret_key_123",
+            "--exclude-secrets",
+            "your_password_here",
+          ]

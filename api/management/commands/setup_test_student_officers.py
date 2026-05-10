@@ -1,8 +1,8 @@
 from django.core.management.base import BaseCommand
-from testdata.generate_testdata import generate_student_officers
+from test_data.generate_test_data import generate_student_officers
 
 class Command(BaseCommand):
-    help = 'Add test student officer to the database'
+    help = 'Add test student officers to the database'
 
     def add_arguments(self, parser):
         # Optional argument

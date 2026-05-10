@@ -1,6 +1,12 @@
 from django.db import models
 from multiselectfield import MultiSelectField
 from phonenumber_field.modelfields import PhoneNumberField
+from django.contrib.auth.models import User
+from django.conf import settings
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+from rest_framework.authtoken.models import Token
+import uuid
 
 # Models (sometimes also called entities or data templates) are stored here. These models describe what kind of objects we deal with in our app. However, the objects themselves are stored in a database.
 
@@ -38,6 +44,7 @@ class Conference(models.Model):
 
 class School(models.Model):
     ''' School that is planning to attend the conference '''
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='school')
     name = models.CharField("School Name", max_length=50,
                             help_text="Name will be used like this for badges and certificates.")
     street = models.CharField(
@@ -153,7 +160,8 @@ class Room(Location):
 
 
 class Person(models.Model):
-    ''' Person in general as a human being'''
+    ''' Person in general as a human being. Used UUID as primary key to avoid id guessing.'''
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     first_name = models.CharField(
         "first name", max_length=50, help_text="Including second names if wanted", blank=True)
     last_name = models.CharField(
@@ -170,7 +178,8 @@ class Person(models.Model):
     ]
     gender = models.CharField("gender", max_length=1, choices=GENDER_CHOICES, default=UNSPECIFIED,
                               help_text="the diversity of genders is reflected in the 'other' choice")
-    email = models.EmailField("E-Mail", blank=True, null=True, unique=True)
+    email = models.EmailField("E-Mail", blank=True, null=True, unique=True,
+        help_text="Please provide a valid email address, e.g. for passwordless authentication (needs to be unique). If you don't have one, leave it blank.")
     email_verified = models.BooleanField("E-Mail verified", default=False, help_text="Has the email address been verified?")
     mobile = PhoneNumberField("mobile phone", blank=True,  null=True,
                               help_text="remember to include the country code, e.g. for Germany +49 and then leave out the leading 0")
@@ -187,16 +196,7 @@ class Person(models.Model):
 
 class Participant(Person):
     '''Participants are persons who take part in the conference and thus have additional attributes'''
-    MEAT = 'meat'
-    VEGETARIAN = 'vegetarian'
-    VEGAN = 'vegan'
-    DIET_CHOICES = [
-        (MEAT, 'meat'),
-        (VEGETARIAN, 'vegetarian'),
-        (VEGAN, 'vegan')
-    ]
-    diet = models.CharField("diet", max_length=10, choices=DIET_CHOICES, default=VEGETARIAN,
-                            help_text="main diet, smaller variations like allergies shall be indicated in the extras field")
+    user = models.OneToOneField(User, on_delete=models.CASCADE, null=True, blank=True, related_name='participant')
     ROLE_CHOICES = [("advisor", 'Conference Advisor'), ('student officer', 'Student Officer'), ('delegate', 'Delegate'),
                     ("mun_director", "MUN Director"), ('executive', 'Executive'), ("staff", 'Staff')]
     role = models.CharField("the role they are participating in the conference as",
@@ -209,13 +209,36 @@ class Participant(Person):
     data_consent_ip = models.GenericIPAddressField("Data Consent given from IP", blank=True, null=True, help_text="From which IP address did the participant give consent to store their data? Null if not given yet.")
     media_consent_time = models.DateTimeField("Media Consent given at", blank=True, null=True, help_text="When did the participant give consent to use their media? Null if not given yet.")
     media_consent_ip = models.GenericIPAddressField("Media Consent given from IP", blank=True, null=True, help_text="From which IP address did the participant give consent to use their media? Null if not given yet.")
-    position = models.CharField("the position specific to their role", max_length=100, blank=True)
     app_code = models.CharField("app login code", blank=True, editable=False, max_length=8, help_text="auto-generated one time login code")
     app_code_expires_by = models.DateTimeField("app code expires by", blank=True, editable=False, null=True, help_text="expiration date for the app code")
+    organizers_notice_time = models.DateTimeField("Organizer's Notice confirmed at", blank=True, null=True, help_text="When did the participant confirm that they've read the organizer's notice? Null if not confirmed yet.")
+    organizers_notice_ip = models.GenericIPAddressField("Organizer's Notice confirmed from IP", blank=True, null=True, help_text="From which IP address did the participant confirm that they've read the organizer's notice? Null if not confirmed yet.")
+
     def save(self, *args, **kwargs):
+        # Always save participant first to get pk
+        super().save(*args, **kwargs)
         if self.email is not None:
             self.email = self.email.lower()
-        return super().save(*args, **kwargs)
+
+        # Create user if it doesn't exist already
+        if not self.user:
+            user = User(username=f"participant_{self.pk}")
+            user.set_unusable_password()
+            user.save()
+            self.user = user
+            super().save(update_fields=["user"])
+
+        # Sync emails between user and participant, e.g. when email is updated
+        if self.email and self.user.email != self.email:
+            self.user.email = self.email
+            self.user.save()
+
+    def delete(self, *args, **kwargs):
+        # on deletion of a participant, also delete the associated user to avoid orphaned users
+        # vice versa is handled by on_delete=models.CASCADE in the user field above
+        user = self.user
+        super().delete(*args, **kwargs)
+        user.delete()
 
 class Event(models.Model):
     ''' An event during the conference '''
@@ -279,7 +302,7 @@ class Forum(models.Model):
 class Delegate(Participant):
     ''' Delegates are the main participants of MUN :model:`api.Conference` and represent a delegation's position in their :model:`api.Forum`. '''
     ambassador = models.BooleanField("Is the delegate the delegation's ambassador?", default=False,
-                                     help_text="one delegate per delegation has to be selected to be the ambassador of the delegation")  # Question: how do we ensure that there is one, but only one ambassador per delegation? Do we do it on database level or in front end software? Answer: Do it in front end and not in DB. If no ambassador is chosen, we simply select the first one of each delegation.
+                                     help_text="one delegate per delegation has to be selected to be the ambassador of the delegation")  
     first_timer = models.BooleanField("Is the delegate participating in their first MUN conference?", default=True,
                                       help_text="There is a first MUN conference for everyone. Knowing this in advance, the team can prepare a smooth first conference for first timers.")
     represents = models.ForeignKey(
@@ -291,6 +314,11 @@ class Delegate(Participant):
 
     def save(self, *args, **kwargs):
         self.role = 'delegate'
+
+        # If the ambassador field is set to true, ensure that no other delegate representing the same member organization has this field set to true. If another delegate has it set to true, set it to false.
+        if self.ambassador:
+            Delegate.objects.filter(represents=self.represents, ambassador=True).exclude(pk=self.pk).update(ambassador=False)
+
         return super().save(*args, **kwargs)
 
 
@@ -415,3 +443,10 @@ class PositionPaper(Document):
 
     class Meta:
         verbose_name = "Position Paper"
+
+
+@receiver(post_save, sender=settings.AUTH_USER_MODEL)
+def create_auth_token(sender, instance=None, created=False, **kwargs):
+    """Create an auth token for every newly created user."""
+    if created:
+        Token.objects.create(user=instance)

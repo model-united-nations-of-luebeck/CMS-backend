@@ -1,0 +1,343 @@
+[
+    {
+        "model": "api.location",
+        "pk": 2,
+        "fields": {
+            "name": "Thomas-Mann-Schule (TMS)",
+            "latitude": "53.860516",
+            "longitude": "10.713022",
+            "zoom_level": 16,
+            "address": "Thomas-Mann-Straße 14,23564 Lübeck"
+        }
+    },
+    {
+        "model": "api.location",
+        "pk": 3,
+        "fields": {
+            "name": "Musik- und Kongresshalle (MuK)",
+            "latitude": "53.869583",
+            "longitude": "10.677866",
+            "zoom_level": 16,
+            "address": "Willy-Brandt-Allee 10, 23554 Lübeck"
+        }
+    },
+    {
+        "model": "api.location",
+        "pk": 4,
+        "fields": {
+            "name": "Oberschule zum Dom (OzD)",
+            "latitude": "53.861279",
+            "longitude": "10.686822",
+            "zoom_level": 16,
+            "address": "Domkirchhof 1-3, 23552 Lübeck"
+        }
+    },
+    {
+        "model": "api.location",
+        "pk": 5,
+        "fields": {
+            "name": "Audienzsaal, Town Hall",
+            "latitude": "53.867118",
+            "longitude": "10.685575",
+            "zoom_level": 16,
+            "address": "Breite Straße 62, 23552 Lübeck"
+        }
+    },
+    {
+        "model": "api.location",
+        "pk": 6,
+        "fields": {
+            "name": "Ratskeller, Town Hall",
+            "latitude": "53.866920",
+            "longitude": "10.685221",
+            "zoom_level": 16,
+            "address": "Markttwiete 13,23552 Lübeck"
+        }
+    },
+    {
+        "model": "api.location",
+        "pk": 7,
+        "fields": {
+            "name": "Strandsalon",
+            "latitude": "53.875989",
+            "longitude": "10.688475",
+            "zoom_level": 16,
+            "address": "Willy-Brandt-Allee 25a,23554 Lübeck"
+        }
+    },
+    {
+        "model": "api.location",
+        "pk": 8,
+        "fields": {
+            "name": "European Hansemuseum",
+            "latitude": "53.874083",
+            "longitude": "10.689557",
+            "zoom_level": 16,
+            "address": "An der Untertrave 1, 23552 Lübeck"
+        }
+    },
+    {
+        "model": "api.location",
+        "pk": 9,
+        "fields": {
+            "name": "CVJM",
+            "latitude": "53.865264",
+            "longitude": "10.682760",
+            "zoom_level": 16,
+            "address": "Große Petersgrube 11,23552 Lübeck"
+        }
+    },
+    {
+        "model": "api.location",
+        "pk": 10,
+        "fields": {
+            "name": "Cargo Boat",
+            "latitude": "53.865940",
+            "longitude": "10.695687",
+            "zoom_level": 16,
+            "address": "Kanalstraße 100, 23552 Lübeck"
+        }
+    },
+    {
+        "model": "api.location",
+        "pk": 11,
+        "fields": {
+            "name": "Kartoffelkeller",
+            "latitude": "53.871139",
+            "longitude": "10.690390",
+            "zoom_level": 16,
+            "address": "Koberg 8, 23552 Lübeck"
+        }
+    },
+    {
+        "model": "api.location",
+        "pk": 12,
+        "fields": {
+            "name": "Cinestar Stadthalle",
+            "latitude": "53.860434",
+            "longitude": "10.690270",
+            "zoom_level": 16,
+            "address": "Mühlenbrücke 11, 23552 Lübeck"
+        }
+    },
+    {
+        "model": "api.location",
+        "pk": 13,
+        "fields": {
+            "name": "Secretariat",
+            "latitude": "53.860291",
+            "longitude": "10.713479",
+            "zoom_level": 18,
+            "address": "Thomas-Mann-Straße 14, 23564 Lübeck"
+        }
+    },
+    {
+        "model": "api.location",
+        "pk": 14,
+        "fields": {
+            "name": "ECA",
+            "latitude": "53.860233",
+            "longitude": "10.713346",
+            "zoom_level": 18,
+            "address": "Thomas-Mann-Straße 14, 23564 Lübeck"
+        }
+    },
+    {
+        "model": "api.location",
+        "pk": 15,
+        "fields": {
+            "name": "SCT",
+            "latitude": "53.860121",
+            "longitude": "10.713437",
+            "zoom_level": 18,
+            "address": "Thomas-Mann-Straße 14, 23564 Lübeck"
+        }
+    },
+    {
+        "model": "api.location",
+        "pk": 16,
+        "fields": {
+            "name": "Crisis Room",
+            "latitude": "53.860089",
+            "longitude": "10.713314",
+            "zoom_level": 18,
+            "address": "Thomas-Mann-Straße 14, 23564 Lübeck"
+        }
+    },
+    {
+        "model": "api.location",
+        "pk": 17,
+        "fields": {
+            "name": "EC",
+            "latitude": "53.860291",
+            "longitude": "10.713479",
+            "zoom_level": 18,
+            "address": "Thomas-Mann-Straße 14, 23564 Lübeck"
+        }
+    },
+    {
+        "model": "api.location",
+        "pk": 18,
+        "fields": {
+            "name": "GA4",
+            "latitude": "53.860231",
+            "longitude": "10.713469",
+            "zoom_level": 18,
+            "address": "Thomas-Mann-Straße 14, 23564 Lübeck"
+        }
+    },
+    {
+        "model": "api.location",
+        "pk": 19,
+        "fields": {
+            "name": "SC",
+            "latitude": "53.860051",
+            "longitude": "10.713416",
+            "zoom_level": 18,
+            "address": "Thomas-Mann-Straße 14, 23564 Lübeck"
+        }
+    },
+    {
+        "model": "api.location",
+        "pk": 20,
+        "fields": {
+            "name": "HSC",
+            "latitude": "53.860141",
+            "longitude": "10.713319",
+            "zoom_level": 18,
+            "address": "Thomas-Mann-Straße 14, 23564 Lübeck"
+        }
+    },
+    {
+        "model": "api.location",
+        "pk": 21,
+        "fields": {
+            "name": "GA2",
+            "latitude": "53.860141",
+            "longitude": "10.713319",
+            "zoom_level": 18,
+            "address": "Thomas-Mann-Straße 14, 23564 Lübeck"
+        }
+    },
+    {
+        "model": "api.location",
+        "pk": 22,
+        "fields": {
+            "name": "GA3",
+            "latitude": "53.860233",
+            "longitude": "10.713346",
+            "zoom_level": 18,
+            "address": "Thomas-Mann-Straße 14, 23564 Lübeck"
+        }
+    },
+    {
+        "model": "api.location",
+        "pk": 23,
+        "fields": {
+            "name": "HRC",
+            "latitude": "53.860121",
+            "longitude": "10.713437",
+            "zoom_level": 18,
+            "address": "Thomas-Mann-Straße 14, 23564 Lübeck"
+        }
+    },
+    {
+        "model": "api.location",
+        "pk": 24,
+        "fields": {
+            "name": "CPD",
+            "latitude": "53.860541",
+            "longitude": "10.714073",
+            "zoom_level": 18,
+            "address": "Thomas-Mann-Straße 14, 23564 Lübeck"
+        }
+    },
+    {
+        "model": "api.location",
+        "pk": 25,
+        "fields": {
+            "name": "GA1",
+            "latitude": "53.860089",
+            "longitude": "10.713314",
+            "zoom_level": 18,
+            "address": "Thomas-Mann-Straße 14, 23564 Lübeck"
+        }
+    },
+    {
+        "model": "api.location",
+        "pk": 26,
+        "fields": {
+            "name": "Entrance Thomas-Mann-School",
+            "latitude": "53.860514",
+            "longitude": "10.713132",
+            "zoom_level": 18,
+            "address": "Thomas-Mann-Straße 14, 23564 Lübeck"
+        }
+    },
+    {
+        "model": "api.location",
+        "pk": 27,
+        "fields": {
+            "name": "Lunch Room",
+            "latitude": "53.860661",
+            "longitude": "10.714098",
+            "zoom_level": 18,
+            "address": "Thomas-Mann-Straße 14, 23564 Lübeck"
+        }
+    },
+    {
+        "model": "api.location",
+        "pk": 28,
+        "fields": {
+            "name": "Approval Panel",
+            "latitude": "53.860429",
+            "longitude": "10.713220",
+            "zoom_level": 18,
+            "address": "Thomas-Mann-Straße 14, 23564 Lübeck"
+        }
+    },
+    {
+        "model": "api.location",
+        "pk": 29,
+        "fields": {
+            "name": "Computer Room",
+            "latitude": "53.860438",
+            "longitude": "10.713671",
+            "zoom_level": 18,
+            "address": "Thomas-Mann-Straße 14, 23564 Lübeck"
+        }
+    },
+    {
+        "model": "api.location",
+        "pk": 30,
+        "fields": {
+            "name": "Executive Board Office",
+            "latitude": "53.860412",
+            "longitude": "10.713524",
+            "zoom_level": 18,
+            "address": "Thomas-Mann-Straße 14, 23564 Lübeck"
+        }
+    },
+    {
+        "model": "api.location",
+        "pk": 31,
+        "fields": {
+            "name": "Press/Photo Room",
+            "latitude": "53.860231",
+            "longitude": "10.713469",
+            "zoom_level": 18,
+            "address": "Thomas-Mann-Straße 14, 23564 Lübeck"
+        }
+    },
+    {
+        "model": "api.location",
+        "pk": 32,
+        "fields": {
+            "name": "Kiosk",
+            "latitude": "53.860380",
+            "longitude": "10.713505",
+            "zoom_level": 18,
+            "address": "Thomas-Mann-Straße 14, 23564 Lübeck"
+        }
+    }
+]

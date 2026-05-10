@@ -1,8 +1,8 @@
 from django.core.management.base import BaseCommand
-from testdata.generate_testdata import generate_advisors
+from test_data.generate_test_data import generate_advisors
 
 class Command(BaseCommand):
-    help = 'Add test advisor to the database'
+    help = 'Add fake advisors to the database'
 
     def add_arguments(self, parser):
         # Optional argument

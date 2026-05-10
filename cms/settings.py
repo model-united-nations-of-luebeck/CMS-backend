@@ -32,9 +32,7 @@ DEBUG = (os.getenv('DEBUG', 'False') == 'True')
 # enter URLs of allowed hosts here, e.g. munoltom.pythonanywhere.com
 ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '').split()
 
-
 # Application definition
-
 INSTALLED_APPS = [
     'corsheaders',
     'django.contrib.admin',
@@ -50,7 +48,8 @@ INSTALLED_APPS = [
     'django_filters',
     'rest_framework',
     'rest_framework.authtoken',
-    'drf_spectacular'
+    'drf_spectacular',
+    'drfpasswordless',
 ]
 
 MIDDLEWARE = [
@@ -62,6 +61,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'api.signals.CurrentUserMiddleware',
 ]
 
 ROOT_URLCONF = 'cms.urls'
@@ -135,7 +135,7 @@ STATIC_URL = '/static/'
 
 # Media files (uploaded images, documents etc.)
 MEDIA_ROOT = os.getenv('MEDIA_ROOT', os.path.join(BASE_DIR, 'media'))
-MEDIA_URL = '/media/'
+MEDIA_URL = os.getenv('MEDIA_URL', '/media/')
 
 # Sets the prefix path for serving in subfolders, usually only done in production
 if os.getenv('USE_X_FORWARDED_HOST'):
@@ -150,13 +150,15 @@ GRAPH_MODELS = {
 }
 
 # Authentication methods and Permissions for the REST API
+
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.BasicAuthentication',
         'rest_framework.authentication.TokenAuthentication',
+        'api.authentication.AzureADJWTAuthentication',  # Single sign-on with Azure AD
     ],
     'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.IsAuthenticated',
+        'rest_framework.permissions.IsAdminUser', 
     ],
     'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
     'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
@@ -167,9 +169,197 @@ CORS_ORIGIN_ALLOW_ALL = False
 CORS_ORIGIN_WHITELIST = os.getenv('CORS_ORIGIN_WHITELIST', 'http://localhost:8080').split()
 CSRF_TRUSTED_ORIGINS = os.getenv('CSRF_TRUSTED_ORIGINS', 'http://localhost:8080').split()
 
-# since Django 3.2, the default primary key needs to be set explicitly to keep AutoField instead of enw BigAutoField
+# since Django 3.2, the default primary key needs to be set explicitly to keep AutoField instead of new BigAutoField
 DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 
-EMAIL_HOST = 'smtp.office365.com'
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
+PASSWORDLESS_AUTH = {
+
+    # Allowed auth types, can be EMAIL, MOBILE, or both.
+    'PASSWORDLESS_AUTH_TYPES': ['EMAIL'],
+
+    # URL Prefix for Authentication Endpoints
+    'PASSWORDLESS_AUTH_PREFIX': 'auth/',
+    
+    #  URL Prefix for Verification Endpoints
+    'PASSWORDLESS_VERIFY_PREFIX': 'auth/verify/',
+
+    # Amount of time that tokens last, in seconds
+    'PASSWORDLESS_TOKEN_EXPIRE_TIME': 15 * 60,
+
+    # The user's email field name
+    'PASSWORDLESS_USER_EMAIL_FIELD_NAME': 'email',
+
+    # The user's mobile field name
+    # 'PASSWORDLESS_USER_MOBILE_FIELD_NAME': 'mobile',
+
+    # Marks itself as verified the first time a user completes auth via token.
+    # Automatically unmarks itself if email is changed.
+    'PASSWORDLESS_USER_MARK_EMAIL_VERIFIED': True,
+    'PASSWORDLESS_USER_EMAIL_VERIFIED_FIELD_NAME': 'email_verified',
+
+    # Marks itself as verified the first time a user completes auth via token.
+    # Automatically unmarks itself if mobile number is changed.
+    # 'PASSWORDLESS_USER_MARK_MOBILE_VERIFIED': False,
+    # 'PASSWORDLESS_USER_MOBILE_VERIFIED_FIELD_NAME': 'mobile_verified',
+
+    # The email the callback token is sent from
+    'PASSWORDLESS_EMAIL_NOREPLY_ADDRESS': os.getenv('EMAIL_FROM_ADDRESS', None),
+
+    # The email subject
+    'PASSWORDLESS_EMAIL_SUBJECT': "Your Login Token",
+
+    # A plaintext email message overridden by the html message. Takes one string.
+    'PASSWORDLESS_EMAIL_PLAINTEXT_MESSAGE': (
+        "Enter this token to sign in: %s.\n\n"
+        "If you did not request this e-mail, please ignore it."
+    ),
+
+    # The email template name.
+    'PASSWORDLESS_EMAIL_TOKEN_HTML_TEMPLATE_NAME': "passwordless_default_token_email.html",
+
+    # Your twilio number that sends the callback tokens.
+    # 'PASSWORDLESS_MOBILE_NOREPLY_NUMBER': None,
+
+    # The message sent to mobile users logging in. Takes one string.
+    # 'PASSWORDLESS_MOBILE_MESSAGE': "Use this code to log in: %s",
+
+    # Registers previously unseen aliases as new users.
+    'PASSWORDLESS_REGISTER_NEW_USERS': False,
+
+    # Suppresses actual SMS for testing
+    # 'PASSWORDLESS_TEST_SUPPRESSION': False,
+
+    # Context Processors for Email Template
+    # 'PASSWORDLESS_CONTEXT_PROCESSORS': [],
+
+    # The verification email subject
+    # 'PASSWORDLESS_EMAIL_VERIFICATION_SUBJECT': "Your Verification Token",
+
+    # A plaintext verification email message overridden by the html message. Takes one string.
+    # 'PASSWORDLESS_EMAIL_VERIFICATION_PLAINTEXT_MESSAGE': "Enter this verification code: %s",
+
+    # The verification email template name.
+    # 'PASSWORDLESS_EMAIL_VERIFICATION_TOKEN_HTML_TEMPLATE_NAME': "passwordless_default_verification_token_email.html",
+
+    # The message sent to mobile users logging in. Takes one string.
+    # 'PASSWORDLESS_MOBILE_VERIFICATION_MESSAGE': "Enter this verification code: %s",
+
+    # Automatically send verification email or sms when a user changes their alias.
+    # 'PASSWORDLESS_AUTO_SEND_VERIFICATION_TOKEN': False,
+
+    # What function is called to construct an authentication tokens when
+    # exchanging a passwordless token for a real user auth token. This function
+    # should take a user and return a tuple of two values. The first value is
+    # the token itself, the second is a boolean value representing whether
+    # the token was newly created.
+    'PASSWORDLESS_AUTH_TOKEN_CREATOR': 'drfpasswordless.utils.create_authentication_token',
+    
+    # What function is called to construct a serializer for drf tokens when
+    # exchanging a passwordless token for a real user auth token.
+    'PASSWORDLESS_AUTH_TOKEN_SERIALIZER': 'drfpasswordless.serializers.TokenResponseSerializer',
+
+    # A dictionary of demo user's primary key mapped to their static pin
+    # 'PASSWORDLESS_DEMO_USERS': {},
+
+    # configurable function for sending email
+    # 'PASSWORDLESS_EMAIL_CALLBACK': 'drfpasswordless.utils.send_email_with_callback_token',
+    "PASSWORDLESS_EMAIL_CALLBACK": "api.auth.send_passwordless_email",
+    
+    # configurable function for sending sms
+    # 'PASSWORDLESS_SMS_CALLBACK': 'drfpasswordless.utils.send_sms_with_callback_token',
+
+    # Token Generation Retry Count
+    'PASSWORDLESS_TOKEN_GENERATION_ATTEMPTS': 3
+
+
+}
+
+EMAIL_HOST = os.getenv('EMAIL_HOST', None)
+EMAIL_PORT = os.getenv('EMAIL_PORT', 587)
+EMAIL_USE_TLS = os.getenv('EMAIL_USE_TLS', True)
+EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER', None)
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD', None)
+EMAIL_BACKEND = os.getenv('EMAIL_BACKEND', 'django.core.mail.backends.smtp.EmailBackend')
+
+# Azure AD JWT settings
+AZURE_TENANT_ID = os.getenv('AZURE_TENANT_ID', None)  
+AZURE_JWKS_URL = f"https://login.microsoftonline.com/{AZURE_TENANT_ID}/discovery/v2.0/keys"
+AZURE_AUDIENCE = os.getenv('AZURE_AUDIENCE', None)
+AZURE_ISSUER = f"https://login.microsoftonline.com/{AZURE_TENANT_ID}/v2.0"
+
+# Logging
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "filters": {
+        "require_debug_false": {
+            "()": "django.utils.log.RequireDebugFalse",
+        },
+        "require_debug_true": {
+            "()": "django.utils.log.RequireDebugTrue",
+        },
+    },
+    "formatters": {
+        "django.server": {
+            "()": "django.utils.log.ServerFormatter",
+            "format": "[{server_time}] {message}",
+            "style": "{",
+        },        
+        "verbose": {
+            "format": "[{asctime}] {levelname} {message}",
+            "style": "{",
+        },
+
+    },
+    "handlers": {
+        "console": {
+            "level": "INFO",
+            "filters": ["require_debug_true"],
+            "class": "logging.StreamHandler",
+        },
+        "django.server": {
+            "level": "INFO",
+            "class": "logging.StreamHandler",
+            "formatter": "django.server",
+        },
+        "mail_admins": {
+            "level": "ERROR",
+            "filters": ["require_debug_false"],
+            "class": "django.utils.log.AdminEmailHandler",
+        },
+        "registration_log_file": {
+            "level": "DEBUG",
+            "class": "logging.handlers.RotatingFileHandler",
+            "filename": os.environ.get("REGISTRATION_LOG_FILE", "registration.log"),
+            "maxBytes": 10*1024*1024, # 10 MB
+            "backupCount": 5,
+            "formatter": "verbose",
+        },
+        "registration_log_mail_admins": {
+            "level": "INFO",
+            "class": "django.utils.log.AdminEmailHandler",
+        },
+    },
+    "loggers": {
+        "django": {
+            "handlers": ["console", "mail_admins"],
+            "level": "INFO",
+        },
+        "django.server": {
+            "handlers": ["django.server"],
+            "level": "INFO",
+            "propagate": False,
+        },
+        "registration_log": {
+            "handlers": ["registration_log_file", "registration_log_mail_admins"],
+            "level": "DEBUG",
+            "propagate": False,
+        }
+    },
+}
+
+# Admins who receive error notifications from django logs. When DEBUG=False, errors will be emailed to these addresses.
+ADMINS = eval(os.getenv('ADMINS', '[]'))
+
+# Email address that error messages come from
+SERVER_EMAIL = os.getenv('SERVER_EMAIL', 'noreply@example.com')
