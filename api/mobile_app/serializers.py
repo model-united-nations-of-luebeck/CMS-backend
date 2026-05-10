@@ -1,4 +1,3 @@
-from drf_base64.serializers import ModelSerializer
 from rest_framework import serializers
 
 from api.models import Participant
@@ -22,17 +21,22 @@ class LoginProblemSerializer(serializers.Serializer):
 
 
 class DigitalBadgeSerializer(serializers.ModelSerializer):
+    position = serializers.SerializerMethodField()
+
     class Meta:
         model = Participant
         # This should NEVER serialize __all__, app_code or app_code_expires_by
-        fields = ['first_name', 'last_name',
-                  'picture', 'birthday', 'role', 'position']
+        fields = ["first_name", "last_name", "picture", "birthday", "role", "position"]
 
-
-class MigratedParticipantSerializer(ModelSerializer):
-    class Meta:
-        model = Participant
-        # This should NEVER serialize __all__, app_code or app_code_expires_by
-        fields = ['id', 'first_name', 'last_name', 'gender', 'email', 'mobile', 'diet', 'picture', 'birthday', 'extras',
-                  'role', 'position']
-        extra_kwargs = {'role': {'read_only': False}}
+    def get_position(self, obj: Participant):
+        match obj.role:
+            case "executive":
+                return obj.executive.position_name
+            case "delegate":
+                return f"{obj.delegate.represents.name} in {obj.delegate.forum.abbreviation}"
+            case "student officer":
+                return obj.studentofficer.position_name
+            case "staff":
+                return obj.staff.position_name
+            case _:
+                return ""
