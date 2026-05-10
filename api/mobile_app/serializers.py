@@ -25,7 +25,6 @@ class DigitalBadgeSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Participant
-        # This should NEVER serialize __all__, app_code or app_code_expires_by
         fields = ["first_name", "last_name", "picture", "birthday", "role", "position"]
 
     def get_position(self, obj: Participant):

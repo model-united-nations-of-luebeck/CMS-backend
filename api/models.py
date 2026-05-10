@@ -209,8 +209,6 @@ class Participant(Person):
     data_consent_ip = models.GenericIPAddressField("Data Consent given from IP", blank=True, null=True, help_text="From which IP address did the participant give consent to store their data? Null if not given yet.")
     media_consent_time = models.DateTimeField("Media Consent given at", blank=True, null=True, help_text="When did the participant give consent to use their media? Null if not given yet.")
     media_consent_ip = models.GenericIPAddressField("Media Consent given from IP", blank=True, null=True, help_text="From which IP address did the participant give consent to use their media? Null if not given yet.")
-    app_code = models.CharField("app login code", blank=True, editable=False, max_length=8, help_text="auto-generated one time login code")
-    app_code_expires_by = models.DateTimeField("app code expires by", blank=True, editable=False, null=True, help_text="expiration date for the app code")
     organizers_notice_time = models.DateTimeField("Organizer's Notice confirmed at", blank=True, null=True, help_text="When did the participant confirm that they've read the organizer's notice? Null if not confirmed yet.")
     organizers_notice_ip = models.GenericIPAddressField("Organizer's Notice confirmed from IP", blank=True, null=True, help_text="From which IP address did the participant confirm that they've read the organizer's notice? Null if not confirmed yet.")
 

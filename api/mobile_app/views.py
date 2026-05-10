@@ -19,6 +19,7 @@ from rest_framework.renderers import JSONRenderer
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
+from api.mobile_app.models import ParticipantLoginData
 from api.mobile_app.serializers import *
 from api.models import Participant, Conference
 
@@ -59,15 +60,20 @@ class RequestLoginCodeView(APIView):
                             data={"detail": "An account with the specified email "
                                             "address does not exist."})            
 
-        participant.app_code = generate_login_code()
-        participant.app_code_expires_by = timezone.now() + timedelta(minutes=15)
-        participant.save()
+        
+        app_code = generate_login_code()
+        login_data = ParticipantLoginData(
+            participant=participant,
+            app_code=app_code,
+            app_code_expires_by = timezone.now() + timedelta(minutes=15),
+        )
+        login_data.save()
 
         if email == "apple.tester@munol.org":
             return Response({"detail": "A login code was sent to your email address."})
         txt_template = loader.get_template("api/mobile_app/code_email.txt")
         html_template = loader.get_template("api/mobile_app/code_email.html")
-        context = {"code": participant.app_code}
+        context = {"code": app_code}
         email_txt = txt_template.render(context)
         email_html = html_template.render(context)
 
@@ -101,16 +107,19 @@ class LoginView(APIView):
                             data={"detail": "An account with the specified email address does not exist. "
                                             f"If you are sure that this is a correct email address, contact {APP_EMAIL}."})
         if not (email == "apple.tester@munol.org" and code == "ABCDEF"):
-            if not participant.app_code or participant.app_code != code:
+            try:
+                login_data = participant.participantlogindata
+            except ParticipantLoginData.DoesNotExist:
                 return Response(status=status.HTTP_403_FORBIDDEN,
                                 data={"detail": "The submitted code was not correct."})
-            if participant.app_code_expires_by < timezone.now():
+            if not login_data.app_code or login_data.app_code != code:
+                return Response(status=status.HTTP_403_FORBIDDEN,
+                                data={"detail": "The submitted code was not correct."})
+            if login_data.app_code_expires_by < timezone.now():
                 return Response(status=status.HTTP_410_GONE,
                                 data={"detail": "The login code expired."})
-
-        participant.app_code = ""
-        participant.app_code_expires_by = None
-        participant.save()
+            
+            login_data.delete()
 
         serializer = DigitalBadgeSerializer(participant)
         badge_data = serializer.data
