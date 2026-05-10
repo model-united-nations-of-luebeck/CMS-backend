@@ -121,3 +121,6 @@ venv.bak/
 
 # PyCharm files
 .idea/
+
+# Crypto keys
+*.pem

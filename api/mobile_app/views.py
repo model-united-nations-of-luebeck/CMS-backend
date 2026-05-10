@@ -1,4 +1,5 @@
 import json
+import os
 import secrets
 from typing import Any
 
@@ -12,8 +13,7 @@ from cryptography.hazmat.primitives import serialization
 from django.core.mail import send_mail
 from django.template import loader
 from django.utils import timezone
-from jwt import ExpiredSignatureError, InvalidTokenError
-from requests import get, HTTPError
+from jwt import ExpiredSignatureError
 from rest_framework import status
 from rest_framework.renderers import JSONRenderer
 from rest_framework.response import Response
@@ -22,18 +22,23 @@ from rest_framework.views import APIView
 from api.mobile_app.serializers import *
 from api.models import Participant, Conference
 
-# Make sure to create a secret.py in the same folder as this file and specify:
-# - MIGRATE_TOKEN for the old CMS
-# - EMAIL_PASSWORD for the smtp auth used in the verification code emails
-# - RSA_PUBLIC_KEY, RSA_PRIVATE_KEY, RSA_PASSPHRASE for the digital badge signature
-# Use secret.example.py as a template.
-from api.mobile_app.secret import MIGRATE_TOKEN, RSA_PASSPHRASE, EMAIL_PASSWORD, RSA_PRIVATE_KEY, RSA_PUBLIC_KEY
+APP_EMAIL = os.getenv("APP_EMAIL", None)
+APP_EMAIL_PASSWORD = os.getenv("APP_EMAIL_PASSWORD", None)
+DIGITAL_BADGE_PRIVATE_KEY = os.getenv("DIGITAL_BADGE_PRIVATE_KEY", None)
+DIGITAL_BADGE_PUBLIC_KEY = os.getenv("DIGITAL_BADGE_PUBLIC_KEY", None)
+DIGITAL_BADGE_KEY_PASSPHRASE = os.getenv("DIGITAL_BADGE_KEY_PASSPHRASE", None)
+if DIGITAL_BADGE_KEY_PASSPHRASE is not None:
+    DIGITAL_BADGE_KEY_PASSPHRASE = DIGITAL_BADGE_KEY_PASSPHRASE.encode()
 
-pgp_key = serialization.load_pem_private_key(
-    RSA_PRIVATE_KEY, password=RSA_PASSPHRASE, backend=default_backend())
+digital_badge_private_key = None
+if DIGITAL_BADGE_PRIVATE_KEY is not None:
+    with open(DIGITAL_BADGE_PRIVATE_KEY, "rb") as f:
+        digital_badge_private_key = serialization.load_pem_private_key(f.read(), password=DIGITAL_BADGE_KEY_PASSPHRASE, backend=default_backend())
 
-SENDER_EMAIL = "app@munol.org"
-
+digital_badge_public_key = None
+if DIGITAL_BADGE_PUBLIC_KEY is not None:
+    with open(DIGITAL_BADGE_PUBLIC_KEY, "rb") as f:
+        digital_badge_public_key = serialization.load_pem_public_key(f.read(), backend=default_backend())
 
 def generate_login_code():
     # Does not contain 0, O, 1, I as to not be ambiguous
@@ -50,29 +55,9 @@ class RequestLoginCodeView(APIView):
         try:
             participant = Participant.objects.get(email__exact=email)
         except Participant.DoesNotExist:
-            # Migrate participant from old CMS
-            try:
-                migrated_data = get("https://app.munol.org/migrate_participants.php?email",
-                                    headers={"X-Authorization": MIGRATE_TOKEN}, params={"email": email})
-                if migrated_data.status_code != 200 and migrated_data.status_code != 403:
-                    migrated_data.raise_for_status()
-            except HTTPError:
-                return Response(status=status.HTTP_500_INTERNAL_SERVER_ERROR,
-                                data={"detail": "Something went wrong while fetching participant data."})
-
-            if migrated_data.status_code == 403:
-                return Response(status=status.HTTP_403_FORBIDDEN,
-                                data={"detail": "An account with the specified email "
-                                                "address does not exist."})
-
-            serializer = MigratedParticipantSerializer(
-                data=migrated_data.json())
-            if not serializer.is_valid():
-                print("[Migration Error] " + serializer.errors)
-                print("[Migration Error] " + migrated_data.json())
-                return Response(status=status.HTTP_500_INTERNAL_SERVER_ERROR,
-                                data={"detail": "Something went wrong while fetching participant data."})
-            participant = serializer.save()
+            return Response(status=status.HTTP_403_FORBIDDEN,
+                            data={"detail": "An account with the specified email "
+                                            "address does not exist."})            
 
         participant.app_code = generate_login_code()
         participant.app_code_expires_by = timezone.now() + timedelta(minutes=15)
@@ -88,8 +73,8 @@ class RequestLoginCodeView(APIView):
 
         for _ in range(0, 5):
             try:
-                send_mail("MUNOL App verification code", email_txt, f'MUNOL App <{SENDER_EMAIL}>', [email],
-                          html_message=email_html, auth_user=SENDER_EMAIL, auth_password=EMAIL_PASSWORD)
+                send_mail("MUNOL App verification code", email_txt, f'MUNOL App <{APP_EMAIL}>', [email],
+                          html_message=email_html, auth_user=APP_EMAIL, auth_password=APP_EMAIL_PASSWORD)
                 return Response({"detail": "A login code was sent to your email address."})
             except SMTPException:
                 pass
@@ -114,7 +99,7 @@ class LoginView(APIView):
         except Participant.DoesNotExist:
             return Response(status=status.HTTP_403_FORBIDDEN,
                             data={"detail": "An account with the specified email address does not exist. "
-                                            "If you are sure that this is a correct email address, contact app@munol.org."})
+                                            f"If you are sure that this is a correct email address, contact {APP_EMAIL}."})
         if not (email == "apple.tester@munol.org" and code == "ABCDEF"):
             if not participant.app_code or participant.app_code != code:
                 return Response(status=status.HTTP_403_FORBIDDEN,
@@ -131,7 +116,7 @@ class LoginView(APIView):
         badge_data = serializer.data
         badge_data['exp'] = datetime.combine(
             next_conference.end_date + timedelta(days=1), datetime.min.time())
-        token = jwt.encode(badge_data, pgp_key, algorithm="RS256",
+        token = jwt.encode(badge_data, digital_badge_private_key, algorithm="RS256",
                            json_encoder=DigitalBadgeEncoder)
 
         return Response({"digital_badge": token})
@@ -144,7 +129,7 @@ class VerifyView(APIView):
             return Response(status=status.HTTP_400_BAD_REQUEST, data={"detail": "Invalid request body."})
         token = serializer.validated_data['token']
         try:
-            jwt.decode(token, RSA_PUBLIC_KEY, algorithms=["RS256"])
+            jwt.decode(token, digital_badge_public_key, algorithms=["RS256"])
         except ExpiredSignatureError:
             return Response({"expired": True, "invalid": True})
         except:
@@ -162,8 +147,8 @@ class LoginProblemView(APIView):
 
         for _ in range(0, 5):
             try:
-                send_mail("MUNOL App Login Issue", f"User with E-Mail \"{email}\" reported a login problem.", f'MUNOL App <{SENDER_EMAIL}>',
-                    [SENDER_EMAIL], auth_user=SENDER_EMAIL, auth_password=EMAIL_PASSWORD)
+                send_mail("MUNOL App Login Issue", f"User with E-Mail \"{email}\" reported a login problem.", f'MUNOL App <{APP_EMAIL}>',
+                    [APP_EMAIL], auth_user=APP_EMAIL, auth_password=EMAIL_PASSWORD)
                 return Response({"detail": "Your problem was reported."})
             except SMTPException:
                 pass
