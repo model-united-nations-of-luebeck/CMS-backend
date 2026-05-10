@@ -94,12 +94,13 @@ class LoginView(APIView):
             return Response(status=status.HTTP_400_BAD_REQUEST, data={"detail": "Invalid request body."})
         email = serializer.validated_data["email"].lower()
         code = serializer.validated_data["code"].upper()
-        try:
-            next_conference = Conference.objects.filter(
-                end_date__gte=date.today()).order_by("end_date")[0]
-        except Conference.DoesNotExist:
+
+        upcoming_conferences = Conference.objects.filter(end_date__gte=date.today()).order_by("end_date")
+        if len(upcoming_conferences) == 0:
             return Response(status=status.HTTP_403_FORBIDDEN,
                             data={"detail": "There is no planned upcoming conference."})
+        next_conference = upcoming_conferences[0]
+
         try:
             participant = Participant.objects.get(email__exact=email)
         except Participant.DoesNotExist:
