@@ -1,3 +1,4 @@
+from datetime import date, datetime
 import io
 import os
 import textwrap
@@ -19,7 +20,6 @@ from pdfs.utils import _register_MUNOL_fonts, _get_transparent_background_logo, 
 _register_MUNOL_fonts()
 
 #determine year of current conference
-year = Conference.objects.first().start_date.year
 
 
 ROLE_TO_COLOR = {
@@ -109,6 +109,10 @@ def _draw_badges(participants:list = [], page_size=A4):
             c.drawCentredString(27*mm, 24*mm + len(lines)*2*mm  - index* 6*mm, line)
             
         # year
+        
+        current_conference = Conference.objects.first()
+        year = current_conference.start_date.year if current_conference is not None else datetime.now().year
+
         c.setFont('CenturyGothicBold', 8)
         c.drawCentredString(27*mm, 2.5*mm, f"MUNOL {year}")
 
