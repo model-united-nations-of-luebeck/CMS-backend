@@ -41,6 +41,8 @@ if DIGITAL_BADGE_PUBLIC_KEY is not None:
     with open(DIGITAL_BADGE_PUBLIC_KEY, "rb") as f:
         digital_badge_public_key = serialization.load_pem_public_key(f.read(), backend=default_backend())
 
+DIGITAL_BADGE_LOGIN_TOKEN_EXP = os.getenv("DIGITAL_BADGE_LOGIN_TOKEN_EXP", 15)
+
 def generate_login_code():
     # Does not contain 0, O, 1, I as to not be ambiguous
     characters = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789"
@@ -60,13 +62,18 @@ class RequestLoginCodeView(APIView):
                             data={"detail": "An account with the specified email "
                                             "address does not exist."})            
 
-        
         app_code = generate_login_code()
-        login_data = ParticipantLoginData(
-            participant=participant,
-            app_code=app_code,
-            app_code_expires_by = timezone.now() + timedelta(minutes=15),
-        )
+        app_code_expires_by = timezone.now() + timedelta(minutes=15)
+        try:
+            login_data = participant.participantlogindata
+            login_data.app_code=app_code
+            login_data.app_code_expires_by=app_code_expires_by
+        except ParticipantLoginData.DoesNotExist:
+            login_data = ParticipantLoginData(
+                participant=participant,
+                app_code=app_code,
+                app_code_expires_by=app_code_expires_by,
+            )
         login_data.save()
 
         if email == "apple.tester@munol.org":
