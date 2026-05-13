@@ -85,7 +85,10 @@ class ParticipantViewSet(GenericMUNOLViewSet):
 
 
     def retrieve(self, request, *args, **kwargs):
-        instance = self.get_object()
+        instance = self.get_queryset().filter(pk=kwargs["pk"]).first()
+
+        if not instance:
+            return Response(status=status.HTTP_404_NOT_FOUND)
     
         # If the user is authenticated (by using the frontend) and not the participant themselves,
         # send a passwordless token to their email, if they have an email address stored and
@@ -105,7 +108,12 @@ class ParticipantViewSet(GenericMUNOLViewSet):
                     status=status.HTTP_403_FORBIDDEN,
                 )
 
-        return super().retrieve(request, *args, **kwargs)
+        # allowed access if the user is authenticated and is the participant themselves, or if the user is organizer
+        if request.user.is_staff or instance.user == request.user:
+            serializer = self.get_serializer(instance)
+            return Response(serializer.data)
+
+        return Response(status=status.HTTP_403_FORBIDDEN)
 
 class DelegateViewSet(ParticipantViewSet):
     queryset = Delegate.objects.select_related('user').all()
