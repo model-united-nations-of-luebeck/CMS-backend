@@ -85,7 +85,7 @@ class ParticipantViewSet(GenericMUNOLViewSet):
 
 
     def retrieve(self, request, *args, **kwargs):
-        instance = self.get_queryset().filter(pk=kwargs["pk"]).first()
+        instance = self.queryset.filter(pk=kwargs["pk"]).first()
 
         if not instance:
             return Response(status=status.HTTP_404_NOT_FOUND)
