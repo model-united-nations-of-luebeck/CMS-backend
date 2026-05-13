@@ -29,8 +29,7 @@ class ParticipantAccess(BasePermission):
         # Restrict creation to Advisor objects only
         if request.method == "POST":
             model_class = getattr(getattr(view, 'queryset', None), 'model', None)
-            if model_class != Advisor:
-                return False
+            return model_class == Advisor # Allow creating new Advisor objects
             
         return True
 
@@ -38,10 +37,6 @@ class ParticipantAccess(BasePermission):
         # Allow participant's own user to access/change their data
         if request.user == obj.user and request.method in ['GET', 'HEAD', 'OPTIONS', 'PUT', 'PATCH']:
             return True
-
-        # Allow other authenticated users to access non-personal data
-        if request.method in SAFE_METHODS:
-            return True # Further checks will be done in the viewset
 
         if not obj.data_consent_time and request.method in ['PUT', 'PATCH']:
             return True  # Allow updating data if no personal data is stored yet

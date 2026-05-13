@@ -68,6 +68,22 @@ class ParticipantViewSet(GenericMUNOLViewSet):
     serializer_class = ParticipantSerializer
     permission_classes = [ParticipantAccess|IsOrganizer]
 
+    def get_queryset(self):
+        user = self.request.user
+
+        if not user.is_authenticated:
+            return self.queryset.none()
+
+        if user.is_staff:
+            return self.queryset
+
+        if hasattr(user, 'participant') and user.participant is not None:
+            return self.queryset.filter(user=user)
+
+        return self.queryset.none()
+
+
+
     def retrieve(self, request, *args, **kwargs):
         instance = self.get_object()
     
