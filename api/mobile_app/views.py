@@ -141,22 +141,6 @@ class LoginView(APIView):
 
         return Response({"digital_badge": token})
 
-
-class VerifyView(APIView):
-    def post(self, request):
-        serializer = VerifySerializer(data=request.data)
-        if not serializer.is_valid():
-            return Response(status=status.HTTP_400_BAD_REQUEST, data={"detail": "Invalid request body."})
-        token = serializer.validated_data['token']
-        try:
-            jwt.decode(token, digital_badge_public_key, algorithms=["RS256"])
-        except ExpiredSignatureError:
-            return Response({"expired": True, "invalid": True})
-        except:
-            return Response({"expired": False, "invalid": True})
-        return Response({"expired": False, "invalid": False})
-
-
 class LoginProblemView(APIView):
     permission_classes = [AllowAny]
     def post(self, request):
