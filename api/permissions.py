@@ -1,5 +1,5 @@
 from rest_framework.permissions import BasePermission, SAFE_METHODS
-from api.models import School, MUNDirector, Delegate, Advisor
+from api.models import Executive, School, MUNDirector, Delegate, Advisor, Staff, StudentOfficer
 
 class ReadOnly(BasePermission):
     '''
@@ -30,6 +30,10 @@ class ParticipantAccess(BasePermission):
         if request.method == "POST":
             model_class = getattr(getattr(view, 'queryset', None), 'model', None)
             return model_class == Advisor # Allow creating new Advisor objects
+        
+        if request.method == "PATCH":
+            model_class = getattr(getattr(view, 'queryset', None), 'model', None)
+            return model_class in [Advisor, Staff, StudentOfficer, Executive, MUNDirector, Delegate] # Allow updating if it's one of these models
             
         return True
 
