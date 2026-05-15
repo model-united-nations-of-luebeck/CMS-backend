@@ -116,7 +116,7 @@ class ParticipantViewSet(GenericMUNOLViewSet):
                 )
 
         # allowed access if the user is authenticated and is the participant themselves, or if the user is organizer
-        if request.user.is_staff or instance.user == request.user:
+        if request.user.is_staff or instance.user == request.user or not instance.data_consent_time:
             serializer = self.get_serializer(instance)
             return Response(serializer.data)
 
