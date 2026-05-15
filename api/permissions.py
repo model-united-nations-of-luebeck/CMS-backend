@@ -1,5 +1,5 @@
 from rest_framework.permissions import BasePermission, SAFE_METHODS
-from api.models import School, MUNDirector, Delegate, Advisor
+from api.models import Executive, School, MUNDirector, Delegate, Advisor, Staff, StudentOfficer
 
 class ReadOnly(BasePermission):
     '''
@@ -54,7 +54,14 @@ class BelongsToSchool(BasePermission):
     def has_permission(self, request, view):
         if request.user.is_authenticated:
             return hasattr(request.user, 'school') and request.user.school is not None
-        return False
+        
+        # allow creating MUNDirectors
+        if request.method == "POST":
+            model = getattr(getattr(view, "queryset", None), "model", None)
+
+            return model == MUNDirector
+
+        return True
 
     def has_object_permission(self, request, view, obj):
         # if the user is authenticated and has a school, check permissions based on the object type
