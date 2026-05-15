@@ -121,6 +121,20 @@ class ParticipantViewSet(GenericMUNOLViewSet):
             return Response(serializer.data)
 
         return Response(status=status.HTTP_403_FORBIDDEN)
+    
+    def get_object(self):
+
+        # onboarding-access path
+        if self.request.method in ["PUT", "PATCH"]:
+
+            instance = self.queryset.filter(
+                pk=self.kwargs["pk"]
+            ).first()
+
+            if instance and not instance.data_consent_time:
+                return instance
+
+        return super().get_object()
 
 class DelegateViewSet(ParticipantViewSet):
     queryset = Delegate.objects.select_related('user').all()
