@@ -153,7 +153,7 @@ class LoginProblemView(APIView):
         for _ in range(0, 5):
             try:
                 send_mail("MUNOL App Login Issue", f"User with E-Mail \"{email}\" reported a login problem.", f'MUNOL App <{APP_EMAIL}>',
-                    [APP_EMAIL], auth_user=APP_EMAIL, auth_password=EMAIL_PASSWORD)
+                    [APP_EMAIL], auth_user=APP_EMAIL, auth_password=APP_EMAIL_PASSWORD)
                 return Response({"detail": "Your problem was reported."})
             except SMTPException:
                 pass
