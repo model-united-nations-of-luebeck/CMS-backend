@@ -4,7 +4,11 @@ This repo organizes the backend of a Conference Management System for Model UN c
 
 ### Development
 
-To start the django project in a server, install [uv](https://github.com/astral-sh/uv), then type:
+To start the django project in a server, install [uv](https://github.com/astral-sh/uv), then install the dependencies with:
+
+> uv sync
+
+and start the server by executing:
 
 > uv run manage.py runserver
 
@@ -13,7 +17,7 @@ To start the django project in a server, install [uv](https://github.com/astral-
 To enable pre-commit hooks, download and install them with
 
 ```bash
-pip install pre-commit
+uv add pre-commit
 pre-commit install
 ```
 
