@@ -68,6 +68,7 @@ coverage.xml
 *.log
 local_settings.py
 db.sqlite3
+db.sqlite
 
 # Flask stuff:
 instance/
@@ -84,9 +85,6 @@ target/
 
 # Jupyter Notebook
 .ipynb_checkpoints
-
-# pyenv
-.python-version
 
 # celery beat schedule file
 celerybeat-schedule
@@ -117,3 +115,12 @@ venv.bak/
 # mypy
 .mypy_cache/
 .DS_Store
+
+# Secret token file
+/api/mobile_app/secret.py
+
+# PyCharm files
+.idea/
+
+# Crypto keys
+*.pem

@@ -169,15 +169,18 @@ class Person(models.Model):
     MALE = 'm'
     FEMALE = 'f'
     OTHER = 'o'
+    UNSPECIFIED = 'u'
     GENDER_CHOICES = [
         (MALE, 'male'),
         (FEMALE, 'female'),
-        (OTHER, 'other')
+        (OTHER, 'other'),
+        (UNSPECIFIED, "prefer not to say")
     ]
-    gender = models.CharField("gender", max_length=1, choices=GENDER_CHOICES, default=FEMALE,
+    gender = models.CharField("gender", max_length=1, choices=GENDER_CHOICES, default=UNSPECIFIED,
                               help_text="the diversity of genders is reflected in the 'other' choice")
     email = models.EmailField("E-Mail", blank=True, null=True, unique=True,
-                              help_text="Please provide a valid email address, e.g. for passwordless authentication (needs to be unique). If you don't have one, leave it blank.")
+        help_text="Please provide a valid email address, e.g. for passwordless authentication (needs to be unique). If you don't have one, leave it blank.")
+    email_verified = models.BooleanField("E-Mail verified", default=False, help_text="Has the email address been verified?")
     mobile = PhoneNumberField("mobile phone", blank=True,  null=True,
                               help_text="remember to include the country code, e.g. for Germany +49 and then leave out the leading 0")
     birthday = models.DateField("birthday", blank=True, null=True)
@@ -212,6 +215,8 @@ class Participant(Person):
     def save(self, *args, **kwargs):
         # Always save participant first to get pk
         super().save(*args, **kwargs)
+        if self.email is not None:
+            self.email = self.email.lower()
 
         # Create user if it doesn't exist already
         if not self.user:
@@ -247,7 +252,7 @@ class Event(models.Model):
     location = models.ForeignKey(Location, blank=True, null=True,
                                  help_text="Select where the event happens", on_delete=models.SET_NULL)
     relevance = MultiSelectField(
-        choices=Participant.ROLE_CHOICES, blank=True, null=True)
+        choices=Participant.ROLE_CHOICES)
 
     def __str__(self):
         return "{}, {}, {}".format(self.name, self.day, self.start_time)

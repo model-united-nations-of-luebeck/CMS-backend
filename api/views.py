@@ -66,6 +66,7 @@ class ForumViewSet(GenericMUNOLViewSet):
 class ParticipantViewSet(GenericMUNOLViewSet):
     queryset = Participant.objects.select_related('user').all()
     serializer_class = ParticipantSerializer
+    filterset_fields = ['email']
     permission_classes = [ParticipantAccess|IsOrganizer]
 
     def get_queryset(self):
@@ -139,31 +140,37 @@ class ParticipantViewSet(GenericMUNOLViewSet):
 class DelegateViewSet(ParticipantViewSet):
     queryset = Delegate.objects.select_related('user').all()
     serializer_class = DelegateSerializer
+    filterset_fields = ['email']
     permission_classes = [ParticipantAccess|BelongsToSchool|IsOrganizer]
 
 class StudentOfficerViewSet(ParticipantViewSet):
     queryset = StudentOfficer.objects.select_related('user').all()
     serializer_class = StudentOfficerSerializer
+    filterset_fields = ['email']
     permission_classes = [ParticipantAccess|IsOrganizer]
 
 class MUNDirectorViewSet(ParticipantViewSet):
     queryset = MUNDirector.objects.select_related('user').all()
     serializer_class = MUNDirectorSerializer
+    filterset_fields = ['email']
     permission_classes = [ParticipantAccess|BelongsToSchool|IsOrganizer]
 
 class ExecutiveViewSet(ParticipantViewSet):
     queryset = Executive.objects.select_related('user').all()
     serializer_class = ExecutiveSerializer
+    filterset_fields = ['email']
     permission_classes = [ParticipantAccess|IsOrganizer]
 
 class StaffViewSet(ParticipantViewSet):
     queryset = Staff.objects.select_related('user').all()
     serializer_class = StaffSerializer
+    filterset_fields = ['email']
     permission_classes = [ParticipantAccess|IsOrganizer]
 
 class AdvisorViewSet(ParticipantViewSet):
     queryset = Advisor.objects.select_related('user').all()
     serializer_class = AdvisorSerializer
+    filterset_fields = ['email']
     permission_classes = [ParticipantAccess|IsOrganizer]
 
 class IssueViewSet(GenericMUNOLViewSet):
