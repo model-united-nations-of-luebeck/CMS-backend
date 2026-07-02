@@ -140,7 +140,7 @@ requires-dist = [
     { name = "python-dateutil", specifier = "==2.8.2" },
     { name = "python-dotenv", specifier = "==1.2.2" },
     { name = "reportlab", specifier = "==4.5.0" },
-    { name = "requests", specifier = "~=2.29.0" },
+    { name = "requests", specifier = "~=2.33.0" },
     { name = "six", specifier = "==1.12.0" },
     { name = "sqlparse", specifier = "==0.5.4" },
     { name = "typing-extensions", specifier = "==4.11.0" },
@@ -590,7 +590,7 @@ wheels = [
 
 [[package]]
 name = "requests"
-version = "2.29.0"
+version = "2.33.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "certifi" },
@@ -598,9 +598,9 @@ dependencies = [
     { name = "idna" },
     { name = "urllib3" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/4c/d2/70fc708727b62d55bc24e43cc85f073039023212d482553d853c44e57bdb/requests-2.29.0.tar.gz", hash = "sha256:f2e34a75f4749019bb0e3effb66683630e4ffeaf75819fb51bebef1bf5aef059", size = 108279, upload-time = "2023-04-26T15:24:34.435Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/34/64/8860370b167a9721e8956ae116825caff829224fbca0ca6e7bf8ddef8430/requests-2.33.0.tar.gz", hash = "sha256:c7ebc5e8b0f21837386ad0e1c8fe8b829fa5f544d8df3b2253bff14ef29d7652", size = 134232, upload-time = "2026-03-25T15:10:41.586Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/cf/e1/2aa539876d9ed0ddc95882451deb57cfd7aa8dbf0b8dbce68e045549ba56/requests-2.29.0-py3-none-any.whl", hash = "sha256:e8f3c9be120d3333921d213eef078af392fba3933ab7ed2d1cba3b56f2568c3b", size = 62499, upload-time = "2023-04-26T15:24:31.555Z" },
+    { url = "https://files.pythonhosted.org/packages/56/5d/c814546c2333ceea4ba42262d8c4d55763003e767fa169adc693bd524478/requests-2.33.0-py3-none-any.whl", hash = "sha256:3324635456fa185245e24865e810cecec7b4caf933d7eb133dcde67d48cee69b", size = 65017, upload-time = "2026-03-25T15:10:40.382Z" },
 ]
 
 [[package]]
