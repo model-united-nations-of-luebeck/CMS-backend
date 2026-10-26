@@ -27,6 +27,6 @@ dependencies = [
     "reportlab==4.5.0",
     "requests~=2.33.0",
     "six==1.12.0",
-    "sqlparse==0.5.4",
+    "sqlparse==0.6.0",
     "typing-extensions==4.11.0",
 ]
