@@ -21,7 +21,7 @@ dependencies = [
     "gunicorn==23.0.0",
     "phonenumbers==8.10.20",
     "pre-commit==3.5.0",
-    "pyjwt==2.13.0",
+    "pyjwt==2.15.0",
     "python-dateutil==2.8.2",
     "python-dotenv==1.2.2",
     "reportlab==4.5.0",
